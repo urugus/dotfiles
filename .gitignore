@@ -1,0 +1,30 @@
+# Ignore all files
+/*
+
+# Ignore files that include dot in name
+/.*
+
+
+# TARGETS
+!/.gitignore
+!/.gitmodules
+!/.tmux.conf
+!/.zshrc
+!/.config
+!/.config/fish
+!/.config/fish/functions
+!/.config/fish/config.fish
+!/bin
+
+# Ignore from TARGETS
+/.config/cheat
+/.config/fish/fishd.*
+/.config/fish/fish_variables
+/.config/fisher
+/.config/gh
+/.config/heroku
+/.config/htop
+/.config/omf
+/.config/pgcli
+/.config/yarn
+/.config/exercism
