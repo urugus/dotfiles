@@ -3,7 +3,7 @@ end
 
 " Fundamentals "{{{
 " ---------------------------------------------------------------------
-set guifont=DroidSansMono\ Nerd\ Font:h11
+set guifont=Source\ Code\ Pro\ for\ Powerline:h11
 set number             "行番号を表示
 set encoding=utf-8
 set autoindent         "改行時に自動でインデントする
