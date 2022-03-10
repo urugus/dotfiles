@@ -1,8 +1,11 @@
 if !exists('g:vscode')
 end
 
+" Fundamentals "{{{
+" ---------------------------------------------------------------------
 set guifont=DroidSansMono\ Nerd\ Font:h11
 set number             "行番号を表示
+set encoding=utf-8
 set autoindent         "改行時に自動でインデントする
 set tabstop=2          "タブを何文字の空白に変換するか
 set shiftwidth=2       "自動インデント時に入力する空白の数
@@ -12,6 +15,11 @@ set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 set hls                "検索した文字をハイライトする
 set mouse=a
 set shell=fish
+set smarttab
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
+" }}}
 
 " Nomal mode " {{{
 " ---------------------------------------------------------------------
@@ -55,6 +63,25 @@ if exists("&termguicolors") && exists("&winblend")
 endif
 
 "}}}
+
+
+" Imports "{{{
+" ---------------------------------------------------------------------
+runtime ./plug.vim
+if has("unix")
+  let s:uname = system("uname -s")
+  " Do Mac stuff
+  if s:uname == "Darwin\n"
+    runtime ./macos.vim
+  endif
+endif
+if has('win32')
+  runtime ./windows.vim
+endif
+
+runtime ./maps.vim
+"}}}
+
 
 " Neovide them " {{{
 " ---------------------------------------------------------------------
