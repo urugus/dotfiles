@@ -13,3 +13,8 @@ alias brc "bin/rails console"
 alias brs "bin/rails server"
 
 set -gx EDITOR neovide
+
+switch (uname)
+  case Darwin
+    source (dirname (status --current-filename))/config-osx.fish
+end
