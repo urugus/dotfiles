@@ -14,7 +14,7 @@ autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 	  " Define mappings
 	  nnoremap <silent><buffer><expr> <CR>
-	  \ defx#do_action('open')
+	  \ defx#do_action('drop')
 	  nnoremap <silent><buffer><expr> c
 	  \ defx#do_action('copy')
 	  nnoremap <silent><buffer><expr> m
@@ -22,11 +22,13 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> p
 	  \ defx#do_action('paste')
 	  nnoremap <silent><buffer><expr> l
-	  \ defx#do_action('open')
+	  \ defx#do_action('drop')
+    nnoremap <silent><buffer><expr> t
+    \ defx#do_action('drop','tabnew')
 	  nnoremap <silent><buffer><expr> E
-	  \ defx#do_action('open', 'vsplit')
+	  \ defx#do_action('drop', 'vsplit')
 	  nnoremap <silent><buffer><expr> P
-	  \ defx#do_action('open', 'pedit')
+	  \ defx#do_action('drop', 'pedit')
 	  nnoremap <silent><buffer><expr> o
 	  \ defx#do_action('open_or_close_tree')
 	  nnoremap <silent><buffer><expr> K

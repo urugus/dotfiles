@@ -1,4 +1,4 @@
-:Defx -columns=icons:indent:filename:typeif has("nvim")
+if has("nvim")
   let g:plug_home = stdpath('data') . '/plugged'
 endif
 
@@ -48,5 +48,3 @@ let g:ale_fix_on_save = 1
 
 " ctrlp
 let g:ctrlp_map = '<c-p>'
-
-

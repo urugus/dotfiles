@@ -1,7 +1,6 @@
 " Description: Keymaps
 " Set leader to Space-key
 let mapleader = "\<Space>"
-
 tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
 autocmd TermOpen * startinsert
@@ -41,8 +40,8 @@ vnoremap <silent> # :<C-U>
 
 " Open current directory
 nmap te :tabedit
-nmap <J> :tabprev<Return>
-nmap <K> :tabnext<Return>
+nmap <S-j> :tabprev<Return>
+nmap <S-k> :tabnext<Return>
 
 "------------------------------
 " Windows
@@ -50,18 +49,14 @@ nmap <K> :tabnext<Return>
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 " Move window
-map s<left> <C-w>h
-map s<up> <C-w>k
-map s<down> <C-w>j
-map s<right> <C-w>l
 map sh <C-w>h
 map sk <C-w>k
 map sj <C-w>j
 map sl <C-w>l
 " Resize window
-nmap <C-w><left> <C-w><
-nmap <C-w><right> <C-w>>
-nmap <C-w><up> <C-w>+
+map <C-w><right> <C-w><
+map <C-w><left> <C-w>>
+nmap <C-w><up> <C-w>+ 
 nmap <C-w><down> <C-w>-
 
 
