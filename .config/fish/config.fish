@@ -21,8 +21,15 @@ alias lla "ll -A"
 alias g git
 alias brc "bin/rails console"
 alias brs "bin/rails server"
+alias vi neovide
+command -qv neovim && alias vim neovim
 
 set -gx EDITOR neovide
+
+set -gx PATH bin $PATH
+set -gx PATH ~/bin $PATH
+set -gx PATH ~/.local/bin $PATH
+
 
 switch (uname)
   case Darwin

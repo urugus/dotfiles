@@ -1,4 +1,10 @@
 " Description: Keymaps
+" Set leader to Space-key
+let mapleader = "\<Space>"
+
+tnoremap <Esc> <C-\><C-n>
+command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
+autocmd TermOpen * startinsert
 
 nnoremap <S-C-p> "0p
 " Delete without yank
@@ -35,17 +41,15 @@ vnoremap <silent> # :<C-U>
 
 " Open current directory
 nmap te :tabedit
-nmap <S-Tab> :tabprev<Return>
-nmap <Tab> :tabnext<Return>
+nmap <J> :tabprev<Return>
+nmap <K> :tabnext<Return>
 
 "------------------------------
 " Windows
-
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 " Move window
-nmap <Space> <C-w>w
 map s<left> <C-w>h
 map s<up> <C-w>k
 map s<down> <C-w>j
@@ -59,3 +63,33 @@ nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
+
+
+"------------------------------
+" Plugins
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+
+" coc
+"
+nmap  gd (coc-definition)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nnoremap <silent> gp :bprevious<CR>
+nnoremap <silent> gn :bnext<CR>
+nnoremap gf :vertical wincmd f<CR>
+
+" defx
+nnoremap <silent> <Leader>f :<C-u> Defx <CR>
