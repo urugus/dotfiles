@@ -1,9 +1,7 @@
 " Description: Keymaps
 " Set leader to Space-key
 let mapleader = "\<Space>"
-tnoremap <Esc> <C-\><C-n>
-command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
-autocmd TermOpen * startinsert
+
 
 nnoremap <S-C-p> "0p
 " Delete without yank
@@ -54,11 +52,18 @@ map sk <C-w>k
 map sj <C-w>j
 map sl <C-w>l
 " Resize window
-map <C-w><right> <C-w><
-map <C-w><left> <C-w>>
+nmap <C-w><right> <C-w>>
+nmap <C-w><left> <C-w><
 nmap <C-w><up> <C-w>+ 
 nmap <C-w><down> <C-w>-
 
+
+"------------------------------
+" Terminal
+command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
+nnoremap <leader>t :T<CR>
+autocmd TermOpen * startinsert
+tnoremap <Esc> <C-\><C-n>
 
 "------------------------------
 " Plugins
@@ -84,7 +89,10 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 nnoremap <silent> gp :bprevious<CR>
 nnoremap <silent> gn :bnext<CR>
-nnoremap gf :vertical wincmd f<CR>
 
 " defx
 nnoremap <silent> <Leader>f :<C-u> Defx <CR>
+
+"------------------------------
+" Others
+

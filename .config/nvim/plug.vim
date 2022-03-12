@@ -33,6 +33,7 @@ if has("nvim")
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-endwise'
   Plug 'w0rp/ale'
+  Plug 'tomtom/tcomment_vim'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
