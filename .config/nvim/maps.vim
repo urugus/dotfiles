@@ -1,8 +1,13 @@
 " Description: Keymaps
+
 " Set leader to Space-key
 let mapleader = "\<Space>"
 
 
+" Text edit"{{{
+"-----------------------------
+
+" Change line
 nnoremap <S-C-p> "0p
 " Delete without yank
 nnoremap <leader>d "_d
@@ -33,16 +38,22 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
+" }}}
+
+
+" Tab" {{{
 "-----------------------------
-" Tabs
 
-" Open current directory
 nmap te :tabedit
-nmap <S-j> :tabprev<Return>
-nmap <S-k> :tabnext<Return>
+nmap <silent><S-j> :tabprev<Return>
+nmap <silent><S-k> :tabnext<Return>
+nmap <silent>T :tabnew#<CR>
 
+" }}}
+
+" Windows" {{{
 "------------------------------
-" Windows
+
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
@@ -52,28 +63,32 @@ map sk <C-w>k
 map sj <C-w>j
 map sl <C-w>l
 " Resize window
-nmap <C-w><right> <C-w>>
-nmap <C-w><left> <C-w><
-nmap <C-w><up> <C-w>+ 
-nmap <C-w><down> <C-w>-
+nmap <C-w><right> 3<C-w>>
+nmap <C-w><left> 3<C-w><
+nmap <C-w><up> 3<C-w>+ 
+nmap <C-w><down> 3<C-w>-
+
+" }}}
 
 
+" Terminal" {{{
 "------------------------------
-" Terminal
+
 command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
 nnoremap <leader>t :T<CR>
 autocmd TermOpen * startinsert
 tnoremap <Esc> <C-\><C-n>
+" }}}
 
+" Plugins" {{{
 "------------------------------
-" Plugins
 
 " ctrlp
 let g:ctrlp_map = '<c-p>'
 
 " coc
 "
-nmap  gd (coc-definition)
+nmap gd (coc-definition)
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -93,6 +108,9 @@ nnoremap <silent> gn :bnext<CR>
 " defx
 nnoremap <silent> <Leader>f :<C-u> Defx <CR>
 
-"------------------------------
-" Others
+" }}}
 
+" Others" {{{
+"------------------------------
+
+" }}}

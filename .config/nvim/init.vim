@@ -44,7 +44,6 @@ if exists("&termguicolors") && exists("&winblend")
   runtime ./colors/NeoSolarized.vim
   colorscheme NeoSolarized
 endif
-
 "}}}
 
 
