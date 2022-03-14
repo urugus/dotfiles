@@ -28,6 +28,7 @@ if has("nvim")
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'mattn/ctrlp-matchfuzzy'
   Plug 'ryanoasis/vim-devicons'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'tpope/vim-rails'
@@ -41,6 +42,7 @@ if has("nvim")
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
+  Plug 'Mofiqul/vscode.nvim'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -49,7 +51,7 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 call plug#end()
 
 
-" Plugin settings
+" Plugin settings"{{{
 " ---------------------------------------------------------------------
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
@@ -59,3 +61,5 @@ let g:ctrlp_map = '<c-p>'
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 let g:indent_guides_color_change_percent = 10
+" }}}
+

@@ -1,2 +1,4 @@
+code|codedark.vim|file
+code|codedark|buffer
 indent|indent_guides_enable_on_vim_startup|around
 O|Order|solargraph
