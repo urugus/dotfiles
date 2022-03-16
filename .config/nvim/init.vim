@@ -2,8 +2,10 @@
 " ---------------------------------------------------------------------
 autocmd VimEnter * execute 'Defx'
 
-set guifont=DroidSansMono\ Nerd\ Font:h12
+set guifont=Cica:h13
 set number relativenumber
+set cursorline
+set linespace=5
 set encoding=utf-8
 set autoindent         "改行時に自動でインデントする
 set tabstop=2          "タブを何文字の空白に変換するか
@@ -14,6 +16,7 @@ set hls                "検索した文字をハイライトする
 set mouse=a
 set shell=fish
 set smarttab
+set smartindent
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -40,14 +43,15 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   runtime ./colors/codedark.vim
-  " colorscheme codedark
+  colorscheme codedark
 endif
 "}}}
 
 
 " File types " {{
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+set suffixesadd=.rb,.js,.es,.jsx,.json,.css,.less,.slim,.sass,.styl,.php,.py,.md,.vim,.yml
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+filetype plugin indent on
 "}}}
 
 
@@ -69,7 +73,7 @@ runtime ./maps.vim
 " Neovide them " {{{
 " ---------------------------------------------------------------------
 let g:neovide_refresh_rate=140
-let g:neovide_transparency=0.8
+let g:neovide_transparency=1
 let g:neovide_cursor_animation_length=0.18
 let g:neovide_cursor_trail_length=1.3
 

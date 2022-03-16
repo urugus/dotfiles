@@ -6,6 +6,7 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+let g:ale_disable_lsp = 1
 
 if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
@@ -37,12 +38,15 @@ if has("nvim")
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'tomtom/tcomment_vim'
+  Plug 'itmammoth/run-rspec.vim'
   Plug 'w0rp/ale'
   Plug 'cohama/lexima.vim'
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
-  Plug 'Mofiqul/vscode.nvim'
+  Plug 'tomasiser/vim-code-dark'
+  Plug 'brooth/far.vim'
+  Plug 'brglng/vim-im-select'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -53,13 +57,12 @@ call plug#end()
 
 " Plugin settings"{{{
 " ---------------------------------------------------------------------
-let g:ale_fixers = {
-\   'ruby': ['rubocop'],
-\}
-let g:ale_fix_on_save = 1
+" let g:ale_fixers = {
+" \   'ruby': ['rubocop'],
+" \}
+" let g:ale_lint_on_text_changed = 1
+" let g:ale_set_highlights = 1
+" let g:ale_set_signs = 1
 let g:ctrlp_map = '<c-p>'
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-let g:indent_guides_color_change_percent = 10
 " }}}
 

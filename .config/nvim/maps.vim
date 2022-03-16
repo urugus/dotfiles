@@ -47,7 +47,7 @@ vnoremap <silent> # :<C-U>
 nmap te :tabedit
 nmap <silent><S-j> :tabprev<Return>
 nmap <silent><S-k> :tabnext<Return>
-nmap <silent>T :tabnew#<CR>
+nmap <silent>t :tabnew#<CR>
 
 " }}}
 
@@ -75,7 +75,7 @@ nmap <C-w><down> 3<C-w>-
 "------------------------------
 
 command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
-nnoremap <leader>t :T<CR>
+nnoremap <C-t> :T<CR>
 autocmd TermOpen * startinsert
 tnoremap <Esc> <C-\><C-n>
 " }}}
@@ -102,11 +102,9 @@ endfunction
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nnoremap <silent> gp :bprevious<CR>
-nnoremap <silent> gn :bnext<CR>
+nnoremap <silent> L :bprevious<CR>
+nnoremap <silent> H :bnext<CR>
 
-" defx
-nnoremap <silent> <Leader>f :<C-u> Defx <CR>
 
 " }}}
 

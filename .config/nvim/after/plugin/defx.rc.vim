@@ -4,29 +4,34 @@ if !exists('g:loaded_defx') | finish | endif
 "cnoreabbrev sf Defx -listed -new
 "      \ -columns=indent:mark:icon:icons:filename:git:size
 "      \ -buffer-name=tab`tabpagenr()`<CR>
-nnoremap <silent>sf :<C-u>Defx -listed -resume
-      \ -columns=indent:mark:icon:icons:filename:git:size
-      \ -buffer-name=tab`tabpagenr()`
-      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
-nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+" nnoremap <leader>f :<C-u>Defx -listed -resume
+"       \ -columns=indent:mark:icon:icons:filename:git:size
+"       \ -buffer-name=tab`tabpagenr()`
+"       \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
+" " nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap <leader>f :<C-u>Defx -split=vertical -winwidth=40 -search=`expand('%:p')` -direction=topleft `expand('%:p:h')`<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 	  " Define mappings
 	  nnoremap <silent><buffer><expr> <CR>
-	  \ defx#do_action('drop')
+    \ defx#is_directory() ?
+    \  defx#do_action('open_directory') :
+    \  defx#do_action('multi', ['quit', ['open', 'tab drop']])
+    nnoremap <silent><buffer><expr> l
+    \ defx#is_directory() ?
+    \  defx#do_action('open_directory') :
+    \  defx#do_action('multi', ['quit', ['open', 'tab drop']])
 	  nnoremap <silent><buffer><expr> c
 	  \ defx#do_action('copy')
 	  nnoremap <silent><buffer><expr> m
 	  \ defx#do_action('move')
 	  nnoremap <silent><buffer><expr> p
 	  \ defx#do_action('paste')
-	  nnoremap <silent><buffer><expr> l
-	  \ defx#do_action('drop')
     nnoremap <silent><buffer><expr> t
-    \ defx#do_action('drop','tabnew')
-	  nnoremap <silent><buffer><expr> E
-	  \ defx#do_action('drop', 'vsplit')
+    \ defx#do_action('multi', ['quit', ['open', 'tab drop']])
+	  nnoremap <silent><buffer><expr> v
+    \ defx#do_action('multi', [['open', 'vsplit'], 'quit'])
 	  nnoremap <silent><buffer><expr> P
 	  \ defx#do_action('drop', 'pedit')
 	  nnoremap <silent><buffer><expr> o
