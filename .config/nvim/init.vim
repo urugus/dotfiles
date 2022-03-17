@@ -2,10 +2,10 @@
 " ---------------------------------------------------------------------
 autocmd VimEnter * execute 'Defx'
 
-set guifont=Cica:h13
+set guifont=Cica:h15
 set number relativenumber
 set cursorline
-set linespace=5
+set linespace=7
 set encoding=utf-8
 set autoindent         "改行時に自動でインデントする
 set tabstop=2          "タブを何文字の空白に変換するか
@@ -73,10 +73,10 @@ runtime ./maps.vim
 " Neovide them " {{{
 " ---------------------------------------------------------------------
 let g:neovide_refresh_rate=140
-let g:neovide_transparency=1
-let g:neovide_cursor_animation_length=0.18
+let g:neovide_transparency=0.9
+let g:neovide_cursor_animation_length=0.13
 let g:neovide_cursor_trail_length=1.3
-
+let g:neovide_remember_window_size = v:true
 " }}}
 
 

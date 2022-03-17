@@ -83,9 +83,6 @@ tnoremap <Esc> <C-\><C-n>
 " Plugins" {{{
 "------------------------------
 
-" ctrlp
-let g:ctrlp_map = '<c-p>'
-
 " coc
 "
 nmap gd (coc-definition)
@@ -102,9 +99,11 @@ endfunction
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nnoremap <silent> L :bprevious<CR>
-nnoremap <silent> H :bnext<CR>
+nnoremap <silent> H :bprevious<CR>
+nnoremap <silent> L :bnext<CR>
 
+" vim-surround
+nnoremap ss viwS
 
 " }}}
 

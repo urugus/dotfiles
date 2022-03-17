@@ -32,6 +32,7 @@ if has("nvim")
   Plug 'mattn/ctrlp-matchfuzzy'
   Plug 'ryanoasis/vim-devicons'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neovim/neovim-ruby'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-endwise'
   Plug 'tpope/vim-repeat'
@@ -54,15 +55,6 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 call plug#end()
 
-
-" Plugin settings"{{{
-" ---------------------------------------------------------------------
-" let g:ale_fixers = {
-" \   'ruby': ['rubocop'],
-" \}
-" let g:ale_lint_on_text_changed = 1
-" let g:ale_set_highlights = 1
-" let g:ale_set_signs = 1
 let g:ctrlp_map = '<c-p>'
 " }}}
 
