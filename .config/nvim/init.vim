@@ -4,6 +4,11 @@ autocmd VimEnter * execute 'Defx'
 
 set guifont=Cica:h15
 set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
 set cursorline
 set linespace=7
 set encoding=utf-8
@@ -45,6 +50,7 @@ if exists("&termguicolors") && exists("&winblend")
   runtime ./colors/codedark.vim
   colorscheme codedark
 endif
+
 "}}}
 
 

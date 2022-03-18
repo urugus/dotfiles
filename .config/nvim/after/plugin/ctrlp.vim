@@ -1,5 +1,5 @@
 let g:ctrlp_map = '<Nop>'
-nnoremap <leader>p :<C-u>CtrlPMixed<CR>
+nnoremap <leader>p :<C-u>CtrlPMRUFiles<CR>
 let g:ctrlp_cmd = 'CtrlPMRUFiles'
 let g:ctrlp_open_new_file       = 1
 let g:ctrlp_clear_cache_on_exit = 0
