@@ -23,13 +23,6 @@ set shell=fish
 set smarttab
 set smartindent
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-" }}}
-
-
-
-
 if &term =~ "screen"
   autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
   autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'

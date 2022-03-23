@@ -9,7 +9,7 @@ if !exists('g:loaded_defx') | finish | endif
 "       \ -buffer-name=tab`tabpagenr()`
 "       \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
 " " nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
-nnoremap <silent><leader>f :<C-u>Defx -split=vertical -winwidth=40 -search=`expand('%:p')` -direction=topleft `expand('%:p:h')`<CR>
+nnoremap <silent><leader>b :<C-u>Defx -split=vertical -winwidth=40 -search=`expand('%:p')` -direction=topleft `expand('%:p:h')`<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort

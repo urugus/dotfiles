@@ -28,8 +28,6 @@ if has("nvim")
   Plug 'neovim/nvim-lspconfig'
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'mattn/ctrlp-matchfuzzy'
   Plug 'ryanoasis/vim-devicons'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'neovim/neovim-ruby'
@@ -46,8 +44,9 @@ if has("nvim")
   Plug 'airblade/vim-gitgutter'
   Plug 'vim-airline/vim-airline'
   Plug 'tomasiser/vim-code-dark'
-  Plug 'brooth/far.vim'
   Plug 'brglng/vim-im-select'
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -55,6 +54,5 @@ Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 call plug#end()
 
-let g:ctrlp_map = '<c-p>'
 " }}}
 

@@ -11,7 +11,10 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 
-# bind \cr peco_select_history # Bind for peco history to Ctrl+r
+# keybinds
+bind \cr peco_select_history # Bind for peco history to Ctrl+r
+bind \co peco_select_ghq_repository # Ctrl + o
+
 
 # aliases
 alias ls "ls -p -G"
