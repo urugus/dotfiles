@@ -34,3 +34,4 @@
 /.config/raycast
 /.config/coc/
 /.config/coc/suggest.txt
+../raycast/*

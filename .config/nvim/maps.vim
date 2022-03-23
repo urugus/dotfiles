@@ -51,6 +51,8 @@ nmap te :tabedit
 nmap <silent><S-j> :tabprev<Return>
 nmap <silent><S-k> :tabnext<Return>
 nmap <silent>t :tabnew#<CR>
+nmap <silent><C-,> :+tabmove<Return>
+nmap <silent><C-.> :-tabmove<Return>
 
 " }}}
 
@@ -81,7 +83,12 @@ command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
 nnoremap <C-t> :T<CR>
 autocmd TermOpen * startinsert
 tnoremap <Esc> <C-\><C-n>
+tnoremap <C-k> <up>
+tnoremap <C-j> <down>
+
+"------------------------------
 " }}}
+
 
 " Plugins" {{{
 "------------------------------

@@ -69,7 +69,7 @@ runtime ./maps.vim
 "}}}
 
 
-" Neovide them " {{{
+" Neovide theme " {{{
 " ---------------------------------------------------------------------
 let g:neovide_refresh_rate=140
 let g:neovide_transparency=0.9
