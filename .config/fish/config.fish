@@ -24,6 +24,9 @@ alias lla "ll -A"
 alias g git
 alias brc "bin/rails console"
 alias brs "bin/rails server"
+alias be "bundle exec"
+alias rc "rubocop"
+alias rs "rspec"
 alias vi neovide
 command -qv neovim && alias vim neovim
 

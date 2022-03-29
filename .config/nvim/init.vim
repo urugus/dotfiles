@@ -1,6 +1,5 @@
 " Fundamentals "{{{
 " ---------------------------------------------------------------------
-autocmd VimEnter * execute 'Defx'
 
 set guifont=Cica:h15
 set number relativenumber
@@ -12,15 +11,17 @@ augroup END
 set cursorline
 set linespace=7
 set encoding=utf-8
-set autoindent         "改行時に自動でインデントする
-set tabstop=2          "タブを何文字の空白に変換するか
-set shiftwidth=2       "自動インデント時に入力する空白の数
-set expandtab          "タブ入力を空白に変換
-set splitright         "画面を縦分割する際に右に開く
-set hls                "検索した文字をハイライトする
+set autoindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set splitright
+set hls
 set mouse=a
 set shell=fish
 set smarttab
+set foldmethod=syntax
+set foldlevel=10
 set smartindent
 
 if &term =~ "screen"
@@ -29,6 +30,26 @@ if &term =~ "screen"
 endif
 
 "}}}
+
+
+" Terminal setting "{{{
+" ---------------------------------------------------------------------
+function! s:open(args) abort
+    if empty(term_list())
+        execute "terminal" a:args
+    else
+        let bufnr = term_list()[0]
+        execute term_getsize(bufnr)[0] . "new"
+        execute "buffer + " bufnr
+    endif
+endfunction
+
+" すでに :terminal が存在していればその :terminal を使用する
+command! -nargs=*
+\   Terminal call s:open(<q-args>)
+
+"}}}
+
 
 " Syntax theme "{{{
 " ---------------------------------------------------------------------
@@ -80,3 +101,4 @@ let g:neovide_remember_window_size = v:true
 
 
 
+autocmd VimEnter * :term

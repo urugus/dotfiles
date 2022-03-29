@@ -51,8 +51,8 @@ nmap te :tabedit
 nmap <silent><S-j> :tabprev<Return>
 nmap <silent><S-k> :tabnext<Return>
 nmap <silent>t :tabnew#<CR>
-nmap <silent><C-,> :+tabmove<Return>
-nmap <silent><C-.> :-tabmove<Return>
+nmap <silent><C-.> :+tabmove<Return>
+nmap <silent><C-,> :-tabmove<Return>
 
 " }}}
 
@@ -85,6 +85,9 @@ autocmd TermOpen * startinsert
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-k> <up>
 tnoremap <C-j> <down>
+tnoremap <C-h> <left>
+tnoremap <C-l> <right>
+
 
 "------------------------------
 " }}}
@@ -110,8 +113,8 @@ endfunction
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nnoremap <silent> H :bprevious<CR>
-nnoremap <silent> L :bnext<CR>
+nnoremap <silent> L :bprevious<CR>
+nnoremap <silent> H :bnext<CR>
 
 " vim-surround
 nnoremap ss viwS
