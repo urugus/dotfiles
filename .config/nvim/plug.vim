@@ -47,6 +47,8 @@ if has("nvim")
   Plug 'brglng/vim-im-select'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
+  Plug 'github/copilot.vim'
+  Plug 'nvim-orgmode/orgmode'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

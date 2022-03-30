@@ -24,7 +24,8 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     "swift",
     "html",
-    "scss"
+    "scss",
+    "lua"
   },
   autotag = {
     enable = true,

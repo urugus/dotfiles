@@ -20,7 +20,7 @@ set hls
 set mouse=a
 set shell=fish
 set smarttab
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=10
 set smartindent
 
