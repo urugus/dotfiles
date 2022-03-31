@@ -17,7 +17,7 @@
 !/.config/fish/config-osx.fish
 !/.config/nvim
 !/.config/nvim/after
-!/.config/fig-autocomplete/src
+!/.config/fig-autocomplete/*
 !/bin
 
 # Ignore from TARGETS
