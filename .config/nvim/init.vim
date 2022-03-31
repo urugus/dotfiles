@@ -98,7 +98,3 @@ let g:neovide_cursor_animation_length=0.13
 let g:neovide_cursor_trail_length=1.3
 let g:neovide_remember_window_size = v:true
 " }}}
-
-
-
-autocmd VimEnter * :term
