@@ -1,3 +1,7 @@
+# Fig pre block. Keep at the top of this file.
+export PATH="${PATH}:${HOME}/.local/bin"
+eval "$(fig init zsh pre)"
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -223,3 +227,7 @@ bindkey '^R' peco-history-selection
 
 # alias
 alias vim='nvim'
+
+# Fig post block. Keep at the bottom of this file.
+eval "$(fig init zsh post)"
+

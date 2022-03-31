@@ -151,6 +151,18 @@ const completionSpec: Fig.Spec = {
     {
       name: "exec",
       description: "Execute a command in the context of the bundle",
+      args: [
+        {
+          name: "rspec",
+          description: "Run Rspec",
+          isOptional: true,
+        },
+        {
+          name: "rubocop",
+          description: "Run rubocop",
+          isOptional: true,
+        },
+      ]
       options: [
         {
           name: "--keep-file-descriptors",
