@@ -7,9 +7,6 @@ let mapleader = "\<Space>"
 " Text edit"{{{
 "-----------------------------
 
-" Escape
-inoremap <C-j>
-
 " Change line
 nnoremap <S-C-p> "0p
 " Delete without yank
@@ -47,10 +44,8 @@ vnoremap <silent> # :<C-U>
 " Tab" {{{
 "-----------------------------
 
-nmap te :tabedit
 nmap <silent><S-j> :tabprev<Return>
 nmap <silent><S-k> :tabnext<Return>
-nmap <silent>t :tabnew#<CR>
 nmap <silent><C-.> :+tabmove<Return>
 nmap <silent><C-,> :-tabmove<Return>
 
@@ -95,7 +90,6 @@ tnoremap <C-l> <right>
 
 " Plugins" {{{
 "------------------------------
-nnoremap <leader><leader> :
 
 " coc
 "
