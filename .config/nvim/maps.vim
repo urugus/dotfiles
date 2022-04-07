@@ -7,6 +7,9 @@ let mapleader = "\<Space>"
 " Text edit"{{{
 "-----------------------------
 
+" IME OFF with Esc
+" inoremap <ESC> <ESC>:set iminsert=0<CR>
+
 " Change line
 nnoremap <S-C-p> "0p
 " Delete without yank
@@ -88,6 +91,16 @@ tnoremap <C-l> <right>
 " }}}
 
 
+" CommandLine" {{{
+"------------------------------
+
+cnoremap <C-k> <up>
+cnoremap <C-j> <down>
+cnoremap <C-h> <left>
+cnoremap <C-l> <right>
+
+"------------------------------
+
 " Plugins" {{{
 "------------------------------
 
@@ -109,9 +122,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 nnoremap <silent> H :bprevious<CR>
 nnoremap <silent> L :bnext<CR>
-
-" vim-surround
-nnoremap ss viwS
 
 " }}}
 

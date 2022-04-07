@@ -50,6 +50,7 @@ if has("nvim")
   Plug 'github/copilot.vim'
   Plug 'nvim-orgmode/orgmode'
   Plug 'rhysd/clever-f.vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
