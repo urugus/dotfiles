@@ -158,14 +158,6 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"EthanJWright/toolwindow.nvim",
-		requires = { { "akinsho/toggleterm.nvim", opt = true, event = "VimEnter" } },
-		after = { "trouble.nvim", "toggleterm.nvim" },
-		config = function()
-			require("rc/pluginconfig/toolwindow")
-		end,
-	})
-	use({
 		"j-hui/fidget.nvim",
 		after = "nvim-lsp-installer",
 		config = function()
@@ -352,13 +344,6 @@ return require("packer").startup(function(use)
 		event = "VimEnter",
 		config = function()
 			require("colorizer").setup()
-		end,
-	})
-	use({
-		"t9md/vim-quickhl",
-		event = "VimEnter",
-		config = function()
-			vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-quickhl.vim")
 		end,
 	})
 	use({
