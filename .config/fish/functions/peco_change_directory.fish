@@ -7,7 +7,6 @@ function _peco_change_directory
   if [ $foo ]
     builtin cd $foo
     commandline -r ''
-    commandline -f repaint
   else
     commandline ''
   end
