@@ -2,6 +2,11 @@ local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvi
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.api.nvim_command("silent !git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
+if vim.fn.executable("python3") == 1 then
+	vim.cmd(
+		[[let g:python_version = substitute(system("python3 -c 'from sys import version_info as v; print(v[0] * 100 + v[1])'"), '\n', '', 'g')]]
+	)
+end
 
 vim.cmd([[packadd packer.nvim]])
 require("rc/packer")
@@ -30,12 +35,16 @@ return require("packer").startup(function(use)
 	end
 
 	--------------------------------
+	-- Notify
+	use({ "rcarriga/nvim-notify", event = "VimEnter" })
+
+	--------------------------------
 	-- ColorScheme
-	local colorscheme = "nightfox.nvim"
+	local colorscheme = "vscode.nvim"
 	use({
-		"EdenEast/nightfox.nvim",
+		"Mofiqul/vscode.nvim",
 		config = function()
-			require("rc/pluginconfig/nightfox")
+			require("rc/pluginconfig/vscode")
 		end,
 	})
 
@@ -212,6 +221,101 @@ return require("packer").startup(function(use)
 	})
 
 	--------------------------------------------------------------
+	-- FuzzyFinders
+
+	--------------------------------
+	-- telescope.nvim
+	use({
+		"nvim-telescope/telescope.nvim",
+		-- requires = { { "nvim-lua/plenary.nvim", opt = true }, { "nvim-lua/popup.nvim", opt = true } },
+		-- after = { "popup.nvim", "plenary.nvim", colorscheme },
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/telescope")
+		end,
+	})
+	use({
+		"nvim-telescope/telescope-frecency.nvim",
+		after = { "telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("frecency")
+		end,
+	})
+	use({
+		"nvim-telescope/telescope-github.nvim",
+		after = { "telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("gh")
+		end,
+	})
+	-- use({
+	-- 	"nvim-telescope/telescope-project.nvim",
+	-- 	after = { "telescope.nvim" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("project")
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"nvim-telescope/telescope-vimspector.nvim",
+	-- 	after = { "telescope.nvim" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("vimspector")
+	-- 	end,
+	-- })
+	use({ "nvim-telescope/telescope-symbols.nvim", after = { "telescope.nvim" } })
+	-- use({
+	-- 	"nvim-telescope/telescope-ghq.nvim",
+	-- 	after = { "telescope.nvim" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("ghq")
+	-- 	end,
+	-- })
+	use({
+		"nvim-telescope/telescope-fzf-writer.nvim",
+		after = { "telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("fzf_writer")
+		end,
+	})
+	use({
+		"nvim-telescope/telescope-packer.nvim",
+		after = { "telescope.nvim" },
+		config = function()
+			require("telescope").load_extension("packer")
+		end,
+	})
+	use({
+		"nvim-telescope/telescope-smart-history.nvim",
+		requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
+		after = { "telescope.nvim", "sqlite.lua" },
+		config = function()
+			require("telescope").load_extension("smart_history")
+		end,
+		run = function()
+			os.execute("mkdir -p ~/.local/share/nvim/databases/")
+		end,
+	})
+	-- I don't want to set items myself
+	-- use { "LinArcX/telescope-command-palette.nvim", 	after = { "telescope.nvim" } }
+	-- -> filer
+	-- use({
+	-- 	"nvim-telescope/telescope-file-browser.nvim",
+	-- 	after = { "telescope.nvim" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("file_browser")
+	-- 	end,
+	-- })
+	-- use {"sunjon/telescope-arecibo.nvim",
+	--   after = {'telescope.nvim'},
+	--   rocks = {"openssl", "lua-http-parser"- use({
+	-- 	"LinArcX/telescope-command-palette.nvim",
+	-- 	after = { "telescope.nvim" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("command_palette")
+	-- 	end,
+	-- })	
+
+	--------------------------------
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -369,6 +473,59 @@ return require("packer").startup(function(use)
 	})
 
 	--------------------------------
+	-- Sidebar
+	-- conflict with clever-f (augroup sidebar_nvim_prevent_buffer_override)
+	use({
+		"GustavoKatel/sidebar.nvim",
+		cmd = { "SidebarNvimToggle" },
+		config = function()
+			require("rc/pluginconfig/sidebar")
+		end,
+	})
+
+	--------------------------------
+	-- Menu
+	-- use {'kizza/actionmenu.nvim', event = "VimEnter"}
+	use({
+		"sunjon/stylish.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/stylish")
+		end,
+	})
+
+	--------------------------------
+	-- Startup screen
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("rc/pluginconfig/alpha-nvim")
+		end,
+	})
+	-- startup-nvim/startup.nvim
+	
+	--------------------------------
+	-- Scrollbar
+	use({
+		"petertriho/nvim-scrollbar",
+		requires = { { "kevinhwang91/nvim-hlslens", opt = true } },
+		after = { colorscheme, "nvim-hlslens" },
+		config = function()
+			require("rc/pluginconfig/nvim-scrollbar")
+		end,
+	})
+
+	--------------------------------
+	-- Cursor
+	use({
+		"edluffy/specs.nvim",
+		cmd = { "SpecsEnable" },
+		config = function()
+			require("rc/pluginconfig/specs")
+		end,
+	})
+
+	--------------------------------
 	-- Programming Languages
 
 	--------------------------------
@@ -381,13 +538,13 @@ return require("packer").startup(function(use)
 	--     run = ':GlowInstall',
 	--   }
 	-- end
-	use({
-		"SidOfc/mkdx",
-		ft = { "markdown" },
-		setup = function()
-			vim.cmd("source ~/.config/nvim/rc/pluginsetup/mkdx.vim")
-		end,
-	})
+	-- use({
+	-- 	"SidOfc/mkdx",
+	-- 	ft = { "markdown" },
+	-- 	setup = function()
+	-- 		vim.cmd("source ~/.config/nvim/rc/pluginsetup/mkdx.vim")
+	-- 	end,
+	-- })
 	use({
 		"dhruvasagar/vim-table-mode",
 		-- event = "VimEnter",
