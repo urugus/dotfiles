@@ -141,6 +141,17 @@ return require("packer").startup(function(use)
 	-- }
 
 	--------------------------------
+	-- Lintter
+	
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		after = "nvim-lsp-installer",
+		config = function()
+			require("rc/pluginconfig/null-ls")
+		end,
+	})
+
+	--------------------------------
 	-- LSP's UI
 	-- use {'nvim-lua/lsp-status.nvim', after = 'nvim-lspconfig'}
 	-- use {
@@ -524,6 +535,63 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/specs")
 		end,
 	})
+
+	-- ------------------------------------------------------------
+	-- Editing
+	
+	--------------------------------
+	-- Move
+	use({
+		"phaazon/hop.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/hop")
+		end,
+	})
+	----------------
+	-- Horizontal Move
+	-- use {'gukz/ftFt.nvim', event = "VimEnter", config = function() require 'rc/pluginconfig/ftFt' end}
+	-- still wasn't great.
+	use({
+		"ggandor/lightspeed.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/lightspeed")
+		end,
+	})
+
+	--------------------------------------------------------------
+	-- Search
+	
+	--------------------------------------------------------------
+	-- File switcher
+	
+	--------------------------------
+	-- Buffer
+	use({
+		"famiu/bufdelete.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/bufdelete")
+		end,
+	})
+	
+	--------------------------------
+	-- Filer
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "main",
+		requires = {
+			"MunifTanjim/nui.nvim",
+		},
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/neo-tree")
+		end,
+	})
+	
+	------------------------------------------------------------
+	-- Standard Feature Enhancement
 
 	--------------------------------
 	-- Programming Languages

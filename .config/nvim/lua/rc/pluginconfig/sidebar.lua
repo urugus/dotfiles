@@ -5,6 +5,11 @@ require("sidebar-nvim").setup({
 			require("sidebar-nvim").close()
 		end,
 	},
+	files = {
+		icon = "",
+		show_hidden = false,
+		ignored_paths = {"%.git$"}
+        },
 	open = false,
 	side = "right",
 	initial_width = 35,

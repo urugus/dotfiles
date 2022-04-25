@@ -293,9 +293,9 @@ end
 
 vim.api.nvim_set_keymap("n", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "[fuzzy-finder]", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "z", "[fuzzy-finder]", {})
-vim.api.nvim_set_keymap("v", "z", "[fuzzy-finder]", {})
-vim.api.nvim_set_keymap("n", "<Leader><Leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Space>", "[fuzzy-finder]", {})
+vim.api.nvim_set_keymap("v", "<Space>", "[fuzzy-finder]", {})
+vim.api.nvim_set_keymap("n", "[fuzzy-finder]<Space>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
 	"[fuzzy-finder]<Leader>",

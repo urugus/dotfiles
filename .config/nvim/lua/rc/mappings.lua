@@ -16,19 +16,15 @@
 
 -- variants
 local g = vim.g
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set 
 local o = vim.o
 
 -- custom leader
-vim.g.mapleader = "<Space>"
-
--- move buffer
-map("n", "J", ":tabprevious<CR>", { noremap = true, silent = true })
-map("n", "K", ":tabnext<CR>", { noremap = true, silent = true })
+g.mapleader = "<Space>"
 
 -- tab move
-map("n", "C-,", ":+tabmove<CR>", { noremap = true, silent = true })
-map("n", "C-.", ":-tabmove<CR>", { noremap = true, silent = true })
+-- map("n", "C-,", ":+tabmove<CR>", { noremap = true, silent = true })
+-- map("n", "C-.", ":-tabmove<CR>", { noremap = true, silent = true })
 
 
 -- comand mode
@@ -40,3 +36,10 @@ map("c", "<C-h>", "<Right>", { noremap = true, silent = true })
 
 -- terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
+
+-- [fuzzy-finder]
+map("n", "z", "<Nop>", { noremap = true, silent = true })
+map("n", "Z", "<Nop>", { noremap = true, silent = true })
+-- switch buffer
+map("n", "J", "<Nop>", { noremap = true, silent = true })
+map("n", "K", "<Nop>", { noremap = true, silent = true })
