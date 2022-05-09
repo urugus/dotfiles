@@ -82,6 +82,8 @@ local server_configs = {
 			},
 		},
 	},
+	["solargraph"] = {
+	}
 	-- ["grammarly"] = {
 	-- 	filetypes = { "markdown" },
 	-- 	handlers = {

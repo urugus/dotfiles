@@ -141,15 +141,20 @@ return require("packer").startup(function(use)
 	-- }
 
 	--------------------------------
-	-- Lintter
-	
+	-- Linter
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		after = "nvim-lsp-installer",
+		"dense-analysis/ale",
 		config = function()
-			require("rc/pluginconfig/null-ls")
+			require("rc/pluginconfig/ale")
 		end,
 	})
+	-- use({
+	-- 	"nathunsmitty/nvim-ale-diagnostic",
+	-- 	requires = "dense-analysis/ale",
+	-- 	module = "nvim-ale-diagnostic"
+	-- })
+
+
 
 	--------------------------------
 	-- LSP's UI

@@ -37,9 +37,3 @@ map("c", "<C-h>", "<Right>", { noremap = true, silent = true })
 -- terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
 
--- [fuzzy-finder]
-map("n", "z", "<Nop>", { noremap = true, silent = true })
-map("n", "Z", "<Nop>", { noremap = true, silent = true })
--- switch buffer
-map("n", "J", "<Nop>", { noremap = true, silent = true })
-map("n", "K", "<Nop>", { noremap = true, silent = true })
