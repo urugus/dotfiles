@@ -329,7 +329,7 @@ return require("packer").startup(function(use)
 	-- 	config = function()
 	-- 		require("telescope").load_extension("command_palette")
 	-- 	end,
-	-- })	
+	-- })
 
 	--------------------------------
 	-- Treesitter
@@ -489,6 +489,16 @@ return require("packer").startup(function(use)
 	})
 
 	--------------------------------
+	-- Layout
+	use({
+		"myusuf3/numbers.vim",
+		cmd = { "NumbersToggle", "NumbersOnOff" },
+		config = function()
+			vim.cmd("source ~/.config/nvim/rc/pluginconfig/numbers.vim")
+		end,
+	})
+
+	--------------------------------
 	-- Sidebar
 	-- conflict with clever-f (augroup sidebar_nvim_prevent_buffer_override)
 	use({
@@ -519,7 +529,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	-- startup-nvim/startup.nvim
-	
+
 	--------------------------------
 	-- Scrollbar
 	use({
@@ -543,7 +553,7 @@ return require("packer").startup(function(use)
 
 	-- ------------------------------------------------------------
 	-- Editing
-	
+
 	--------------------------------
 	-- Move
 	use({
@@ -565,12 +575,20 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	-- Operator
+	use({
+		"machakann/vim-sandwich",
+		config = function()
+			vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-sandwich.vim")
+		end,
+	})
+
 	--------------------------------------------------------------
 	-- Search
-	
+
 	--------------------------------------------------------------
 	-- File switcher
-	
+
 	--------------------------------
 	-- Buffer
 	use({
@@ -580,7 +598,7 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/bufdelete")
 		end,
 	})
-	
+
 	--------------------------------
 	-- Filer
 	use({
@@ -594,7 +612,39 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/neo-tree")
 		end,
 	})
-	
+
+	------------------------------------------------------------
+	-- Coding
+
+	--------------------------------
+	-- Comment out
+	use({
+		"numToStr/Comment.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/Comment")
+		end,
+	})
+
+	--------------------------------
+	-- Brackets
+	use({
+		"andymass/vim-matchup",
+		after = { "nvim-treesitter" },
+		config = function()
+			vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-matchup.vim")
+		end,
+	})
+	-- do not work correnctly
+	-- use {'monkoose/matchparen.nvim', config = function() require 'rc/pluginconfig/matchparen' end}
+	use({
+		"windwp/nvim-autopairs",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/nvim-autopairs")
+		end,
+	})
+
 	------------------------------------------------------------
 	-- Standard Feature Enhancement
 
