@@ -346,6 +346,12 @@ return require("packer").startup(function(use)
 	use({ "nvim-treesitter/nvim-tree-docs", after = { "nvim-treesitter" } })
 	use({ "vigoux/architext.nvim", after = { "nvim-treesitter" } })
 	use({ "yioneko/nvim-yati", after = "nvim-treesitter" })
+  use({ "RRethy/nvim-treesitter-endwise",
+    after = { "nvim-treesitter" },
+		config = function()
+			require("rc/pluginconfig/nvim-treesitter-endwise")
+		end,
+  })
 	-- use({
 	-- 	"bryall/contextprint.nvim",
 	-- 	after = { "nvim-treesitter" },
@@ -647,6 +653,17 @@ return require("packer").startup(function(use)
 
 	------------------------------------------------------------
 	-- Standard Feature Enhancement
+
+  --------------------------------
+	-- Terminal
+	use({
+		"akinsho/toggleterm.nvim",
+		-- after = { colorscheme },
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/toggleterm")
+		end,
+	})
 
 	--------------------------------
 	-- Programming Languages
