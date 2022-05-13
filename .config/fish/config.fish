@@ -17,6 +17,7 @@ set -g theme_hostname always
 # keybinds
 bind \cr peco_select_history # Bind for peco history to Ctrl+r
 bind \co peco_select_ghq_repository # Ctrl + o
+bind \cf forward-char
 
 
 # aliases
@@ -30,7 +31,7 @@ alias brs "bin/rails server"
 alias be "bundle exec"
 alias rc "rubocop"
 alias rs "rspec"
-alias vi neovide
+alias vi nvim
 command -qv neovim && alias vim neovim
 
 set -gx EDITOR neovide

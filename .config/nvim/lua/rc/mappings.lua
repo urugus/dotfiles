@@ -39,3 +39,5 @@ map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
 -- sandwich & <spector>
 map({ "n", "x" }, "s", "<Nop>", { noremap = true, silent = true })
 map({ "n", "x" }, "S", "<Nop>", { noremap = true, silent = true })
+-- git
+vim.api.nvim_set_keymap("n", "<Space>g", "[git]", {})

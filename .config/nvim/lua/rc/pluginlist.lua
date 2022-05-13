@@ -493,6 +493,7 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/modes")
 		end,
 	})
+  use({ "slim-template/vim-slim" })
 
 	--------------------------------
 	-- Layout
@@ -648,6 +649,38 @@ return require("packer").startup(function(use)
 		event = "VimEnter",
 		config = function()
 			require("rc/pluginconfig/nvim-autopairs")
+		end,
+	})
+
+  --------------------------------
+	-- Git
+  use({
+		"TimUntersberger/neogit",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/neogit")
+		end,
+	})
+  use({
+		"sindrets/diffview.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/diffview")
+		end,
+	})
+	use({
+		"akinsho/git-conflict.nvim",
+		event = "VimEnter",
+		config = function()
+			require("git-conflict").setup()
+		end,
+	})
+  use({
+		"lewis6991/gitsigns.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/gitsigns")
 		end,
 	})
 
