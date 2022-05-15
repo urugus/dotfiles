@@ -593,6 +593,23 @@ return require("packer").startup(function(use)
 	--------------------------------------------------------------
 	-- Search
 
+--------------------------------
+	-- Find
+	use({
+		"kevinhwang91/nvim-hlslens",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/nvim-hlslens")
+		end,
+	})
+	use({
+		"haya14busa/vim-asterisk",
+		event = "VimEnter",
+		config = function()
+			vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-asterisk.vim")
+		end,
+	})
+
 	--------------------------------------------------------------
 	-- File switcher
 
@@ -633,6 +650,16 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+  --------------------------------
+	-- Annotation
+	use({
+		"danymat/neogen",
+		config = function()
+			require("rc/pluginconfig/neogen")
+		end,
+		after = { "nvim-treesitter" },
+	})
+
 	--------------------------------
 	-- Brackets
 	use({
@@ -651,6 +678,19 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/nvim-autopairs")
 		end,
 	})
+
+  --------------------------------
+	-- Test
+	use({
+		"klen/nvim-test",
+		after = { "nvim-treesitter" },
+		config = function()
+			require("rc/pluginconfig/nvim-test")
+		end,
+	})
+	if vim.fn.executable("cargo") == 1 then
+		use({ "michaelb/sniprun", run = "bash install.sh", cmd = { "SnipRun" } })
+	end
 
   --------------------------------
 	-- Git
@@ -731,6 +771,25 @@ return require("packer").startup(function(use)
 	--   run = 'cargo build --release'
 	-- }
 
-	--------------------------------
+  --------------------------------------------------------------
+	-- New features
 
+  --------------------------------
+	-- Memo
+	use({
+		"renerocksai/telekasten.nvim",
+		after = { "telescope.nvim" },
+		require = { "renerocksai/calendar-vim" },
+		config = function()
+			require("rc/pluginconfig/telekasten")
+		end,
+	})
+
+  --------------------------------
+	-- Analytics
+	if not os.getenv("DISABLE_WAKATIME") or os.getenv("DISABLE_WAKATIME") == "true" then
+		if vim.fn.filereadable(vim.fn.expand("~/.wakatime.cfg")) == 1 then
+			use({ "wakatime/vim-wakatime", event = "VimEnter" })
+		end
+	end
 end)
