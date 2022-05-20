@@ -72,3 +72,5 @@ vim.api.nvim_create_autocmd({ "User" }, {
 	end,
 	once = true,
 })
+
+vim.api.nvim_set_keymap("n", "<Space>.", "<Cmd>Alpha<CR>", { noremap = true, silent = true })

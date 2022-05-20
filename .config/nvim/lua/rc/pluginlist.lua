@@ -590,6 +590,44 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+  --------------------------------
+	-- Yank
+	use({
+		"gbprod/yanky.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/yanky")
+		end,
+	})
+	use({
+		"AckslD/nvim-neoclip.lua",
+		requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
+		after = { "telescope.nvim", "sqlite.lua" },
+		config = function()
+			require("rc/pluginconfig/nvim-neoclip")
+		end,
+	})
+
+  --------------------------------
+	-- Paste
+	-- use({ "yutkat/auto-paste-mode.vim", event = "VimEnter" })
+	if vim.fn.has("clipboard") == 1 then
+		use({
+			"tversteeg/registers.nvim",
+			event = "VimEnter",
+			config = function()
+				require("rc/pluginconfig/registers")
+			end,
+		})
+	end
+	use({
+		"AckslD/nvim-anywise-reg.lua",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/nvim-anywise-reg")
+		end,
+	})
+
 	--------------------------------------------------------------
 	-- Search
 
@@ -728,6 +766,25 @@ return require("packer").startup(function(use)
 	-- Standard Feature Enhancement
 
   --------------------------------
+	-- Session
+	use({
+		"Shatur/neovim-session-manager",
+		config = function()
+			require("rc/pluginconfig/neovim-session-manager")
+		end,
+	})
+
+  --------------------------------
+	-- SpellCorrect (iabbr)
+	use({
+		"Pocco81/AbbrevMan.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/AbbrevMan")
+		end,
+	})
+
+  --------------------------------
 	-- Terminal
 	use({
 		"akinsho/toggleterm.nvim",
@@ -770,6 +827,10 @@ return require("packer").startup(function(use)
 	-- use {'euclio/vim-markdown-composer',
 	--   run = 'cargo build --release'
 	-- }
+
+  ------------------------------------------------------------
+	-- Standard Feature Enhancement
+  use({ "lambdalisue/readablefold.vim" })
 
   --------------------------------------------------------------
 	-- New features

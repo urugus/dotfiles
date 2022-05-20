@@ -32,7 +32,7 @@ require("toggleterm").setup({
 	},
 })
 
-vim.api.nvim_set_keymap("n", "<C-z>", '<Cmd>execute v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "tt", '<Cmd>execute v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
 
 vim.g.toglleterm_win_num = vim.fn.winnr()
 local groupname = "vimrc_toggleterm"
