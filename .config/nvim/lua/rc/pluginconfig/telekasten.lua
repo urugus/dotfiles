@@ -26,6 +26,15 @@ require("telekasten").setup({
 	-- default sort option: 'filename', 'modified'
 	sort = "modified",
 
+-- Generate note filenames. One of:
+  -- "title" (default) - Use title if supplied, uuid otherwise
+  -- "uuid" - Use uuid
+  -- "uuid-title" - Prefix title by uuid
+  -- "title-uuid" - Suffix title with uuid
+  new_note_filename = "title",
+  -- file uuid type ("rand" or input for os.date()")
+  uuid_type = "%Y%m%d%H%M",
+
 	-- integrate with calendar-vim
 	plug_into_calendar = true,
 	calendar_opts = {

@@ -1,8 +1,8 @@
 ---
-ID:{{date:YYYYMMDDHHmm}}
-date:{{date:YYYY-MM-DD}}
+ID:{{date}}
+date:{{date}}
 aliases:[]
-tags:[{{date:YYYY/MM/DD}},]
+tags:[{{date}},]
 category:
 ---
 
