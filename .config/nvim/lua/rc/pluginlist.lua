@@ -678,6 +678,17 @@ return require("packer").startup(function(use)
 	------------------------------------------------------------
 	-- Coding
 
+  --------------------------------
+	-- Reading assistant
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		-- after = { colorscheme },
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/indent-blankline")
+		end,
+	})
+
 	--------------------------------
 	-- Comment out
 	use({
@@ -764,15 +775,6 @@ return require("packer").startup(function(use)
 
 	------------------------------------------------------------
 	-- Standard Feature Enhancement
-
-  --------------------------------
-	-- Session
-	use({
-		"Shatur/neovim-session-manager",
-		config = function()
-			require("rc/pluginconfig/neovim-session-manager")
-		end,
-	})
 
   --------------------------------
 	-- SpellCorrect (iabbr)
