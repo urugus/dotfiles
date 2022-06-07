@@ -13,3 +13,5 @@ require('nvim-test.runners.rspec'):setup {
     -- filename_modifier = nil,                                                    -- modify filename before tests run (:h filename-modifiers)
     -- working_directory = nil,                                                    -- set working directory (cwd by default)
   }
+
+vim.keymap.set("n", "<Space>ta", "<Cmd>TestFile<CR>", { noremap = true, silent = true })
