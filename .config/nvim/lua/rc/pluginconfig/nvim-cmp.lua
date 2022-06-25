@@ -21,17 +21,20 @@ cmp.setup({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
 				cmp_tabnine = "[TabNine]",
+				copilot = "[Copilot]",
 				luasnip = "[LuaSnip]",
-				nvim_lua = "[Lua]",
+				nvim_lua = "[NeovimLua]",
 				latex_symbols = "[LaTeX]",
 				path = "[Path]",
 				omni = "[Omni]",
 				spell = "[Spell]",
 				emoji = "[Emoji]",
 				calc = "[Calc]",
+				rg = "[Rg]",
 				treesitter = "[TS]",
 				dictionary = "[Dictionary]",
 				mocword = "[mocword]",
+				cmdline_history = "[History]",
 			},
 		}),
 	},
@@ -45,6 +48,7 @@ cmp.setup({
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
 			cmp.config.compare.score,
+			require("cmp-under-comparator").under,
 			function(entry1, entry2)
 				local kind1 = entry1:get_kind()
 				kind1 = kind1 == types.lsp.CompletionItemKind.Text and 100 or kind1
@@ -92,8 +96,8 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
+				-- elseif luasnip.expand_or_jumpable() then
+				-- 	luasnip.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
 			else
@@ -133,8 +137,8 @@ cmp.setup({
 	},
 	-- LuaFormatter off
 	sources = cmp.config.sources({
-		{ name = "copilot", priority = 100 }, -- For luasnip users.
-		{ name = "nvim_lsp", priority = 90 },
+		{ name = "copilot", priority = 90 }, -- For luasnip users.
+		{ name = "nvim_lsp", priority = 100 },
 		{ name = "cmp_tabnine", priority = 30 },
 		{ name = "luasnip", priority = 20 }, -- For luasnip users.
 		{ name = "path", priority = 100 },
@@ -158,6 +162,7 @@ cmp.setup.filetype({ "gitcommit", "markdown" }, {
 		{ name = "nvim_lsp", priority = 100 },
 		{ name = "cmp_tabnine", priority = 30 },
 		{ name = "luasnip", priority = 80 }, -- For luasnip users.
+		{ name = "rg", priority = 70 },
 		{ name = "path", priority = 100 },
 		{ name = "emoji", insert = true, priority = 60 },
 	}, {
@@ -176,9 +181,9 @@ cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp_document_symbol" },
-	}, {
+		-- { name = "cmdline_history" },
 		{ name = "buffer" },
-	}),
+	}, {}),
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
@@ -206,7 +211,7 @@ cmp.setup.cmdline(":", {
 			c = cmp.mapping.abort(),
 		},
 	},
-	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
+	sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" }, { { name = "cmdline_history" } } }),
 })
 
 -- autopairs

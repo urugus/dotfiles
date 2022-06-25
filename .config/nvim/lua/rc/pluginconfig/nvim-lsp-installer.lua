@@ -1,5 +1,4 @@
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local lspconfig = require("lspconfig")
+require("nvim-lsp-installer").setup({})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -37,77 +36,73 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "[lsp]f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	-- require("lsp_signature").on_attach()
-
-	require("illuminate").on_attach(client)
+	-- require("illuminate").on_attach(client)
 end
 
--- local util = require('lspconfig.util')
--- local path = util.path
--- local function get_python_path(workspace)
---   -- Use activated virtualenv.
---   if vim.env.VIRTUAL_ENV then
---     return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
---   end
---
---   -- Find and use virtualenv in workspace directory.
---   for _, pattern in ipairs({'*', '.*'}) do
---     local match = vim.fn.glob(path.join(workspace, pattern, 'pyvenv.cfg'))
---     if match ~= '' then
---       return path.join(path.dirname(match), 'bin', 'python')
---     end
---     match = vim.fn.glob(path.join(workspace, 'poetry.lock'))
---     if match ~= '' then
---       local venv = vim.fn.trim(vim.fn.system('poetry env info -p'))
---       return path.join(venv, 'bin', 'python')
---     end
---   end
---
---   -- Fallback to system Python.
---   return vim.fn.exepath('python3') or vim.fn.exepath('python') or 'python'
--- end
+local lspconfig = require("lspconfig")
+-- lspconfig.sumneko_lua.setup({
+-- 	settings = {
+-- 		Lua = {
+-- 			workspace = {
+-- 				-- Make the server aware of Neovim runtime files
+-- 				-- library = vim.api.nvim_get_runtime_file("", true),
+-- 				preloadFileSize = 500,
+-- 				-- very slow
+-- 				-- library = vim.api.nvim_get_runtime_file("", true),
+-- 			},
+-- 			-- Do not send telemetry data containing a randomized but unique identifier
+-- 			telemetry = { enable = false },
+-- 		},
+-- 	},
+-- })
 
-local server_configs = {
-	["sumneko_lua"] = {
-		settings = {
-			Lua = {
-				workspace = {
-					-- Make the server aware of Neovim runtime files
-					-- library = vim.api.nvim_get_runtime_file("", true),
-					preloadFileSize = 500,
-					-- very slow
-					-- library = vim.api.nvim_get_runtime_file("", true),
-				},
-				-- Do not send telemetry data containing a randomized but unique identifier
-				telemetry = { enable = false },
-			},
-		},
-	},
-	["solargraph"] = {
-	}
-	-- ["grammarly"] = {
-	-- 	filetypes = { "markdown" },
-	-- 	handlers = {
-	-- 		["$/getToken"] = function()
-	-- 			return nil
-	-- 		end,
-	-- 		["$/getCredentials"] = function()
-	-- 			return nil
-	-- 		end,
-	-- 		["$/updateDocumentState"] = function()
-	-- 			return ""
-	-- 		end,
-	-- 	},
-	-- },
-	-- ["pyright"] = {settings = {python = {pythonPath = "python3"}}}
-}
-
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(function(server)
+-- lspconfig.grammarly.setup {
+-- 	filetypes = { "markdown" },
+-- 	handlers = {
+-- 		["$/getToken"] = function()
+-- 			return nil
+-- 		end,
+-- 		["$/getCredentials"] = function()
+-- 			return nil
+-- 		end,
+-- 		["$/updateDocumentState"] = function()
+-- 			return ""
+-- 		end,
+-- 	},
+-- }
+-- lspconfig.pyright.setup {settings = {python = {pythonPath = "python3"}}}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local servers = require("nvim-lsp-installer").get_installed_servers()
+for _, server in ipairs(servers) do
 	local opts = { capabilities = capabilities, on_attach = on_attach }
-	if server_configs[server.name] then
-		opts = vim.tbl_deep_extend("force", opts, server_configs[server.name])
+	-- use rust-tools
+	if server.name == "rust_analyzer" then
+		local has_rust_tools, rust_tools = pcall(require, "rust-tools")
+		if has_rust_tools then
+			rust_tools.setup({ server = opts })
+			goto continue
+		end
+	elseif server.name == "sumneko_lua" then
+		local has_lua_dev, lua_dev = pcall(require, "lua-dev")
+		if has_lua_dev then
+			local luadev = lua_dev.setup({
+				library = {
+					vimruntime = true, -- runtime path
+					types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+					-- plugins = false, -- installed opt or start plugins in packpath
+					-- you can also specify the list of plugins to make available as a workspace library
+					-- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
+					plugins = { "nvim-treesitter", "plenary.nvim" },
+				},
+				runtime_path = false,
+				lspconfig = opts,
+			})
+			lspconfig[server.name].setup(luadev)
+			goto continue
+		end
 	end
-	server:setup(opts)
+	lspconfig[server.name].setup(opts)
+	::continue::
 	vim.cmd([[ do User LspAttachBuffers ]])
-end)
+end

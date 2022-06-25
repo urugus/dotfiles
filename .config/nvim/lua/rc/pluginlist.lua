@@ -66,12 +66,11 @@ return require("packer").startup(function(use)
 	})
 	use({
 		"onsails/lspkind-nvim",
-		event = "VimEnter",
 		config = function()
 			require("rc/pluginconfig/lspkind-nvim")
 		end,
 	})
-	use({ "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" })
+	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lsp" })
 	use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer", after = "nvim-cmp" })
@@ -99,12 +98,14 @@ return require("packer").startup(function(use)
 	})
 	use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
 	use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
+  use({ "lukas-reineke/cmp-rg", after = "nvim-cmp" })
+  use({ "lukas-reineke/cmp-under-comparator", module = "cmp-under-comparator" })
 
 	--------------------------------
 	-- Language Server Protocol(LSP)
 	use({
 		"neovim/nvim-lspconfig",
-		after = "cmp-nvim-lsp",
+    event = { "VimEnter" },
 		config = function()
 			require("rc/pluginconfig/nvim-lspconfig")
 		end,
@@ -344,7 +345,6 @@ return require("packer").startup(function(use)
 	use({ "JoosepAlviste/nvim-ts-context-commentstring", after = { "nvim-treesitter" } })
 	use({ "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } })
 	use({ "nvim-treesitter/nvim-tree-docs", after = { "nvim-treesitter" } })
-	use({ "vigoux/architext.nvim", after = { "nvim-treesitter" } })
 	use({ "yioneko/nvim-yati", after = "nvim-treesitter" })
   use({ "RRethy/nvim-treesitter-endwise",
     after = { "nvim-treesitter" },
