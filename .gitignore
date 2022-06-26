@@ -35,4 +35,5 @@
 /.config/coc/
 /.config/coc/suggest.txt
 /.config/github-copilot/*
+/.config/configstore
 ../raycast/*
