@@ -1,4 +1,4 @@
-set -x PATH /opt/homebrew/bin $HOME/.pyenv/shims $HOME/nodenv/shims $HOME/.cargo/bin $HOME/.rbenv/shims (ruby -e 'print Gem.user_dir')/bin $GOPATH/bin $HOME/Library/Android/sdk/platform-tools $HOME/Library/Android/sdk/emulator $PATH
+set -x PATH /opt/homebrew/bin $HOME/.pyenv/shims $HOME/nodenv/shims $HOME/.cargo/bin $HOME/.rbenv/shims (ruby -e 'print Gem.user_dir')/bin $GOPATH/bin $HOME/Library/Android/sdk/platform-tools $HOME/Library/Android/sdk/emulator $PATH $HOME/.progate/bin
 set -x DENO_INSTALL /Users/YOUR_USER/.deno
 set -x PATH $DENO_INSTALL/bin:$PATH
 
