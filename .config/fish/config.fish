@@ -17,6 +17,7 @@ set -g theme_hostname always
 # keybinds
 bind \cr peco_select_history # Bind for peco history to Ctrl+r
 bind \co peco_select_ghq_repository # Ctrl + o
+bind \cf forward-char
 
 
 # aliases
