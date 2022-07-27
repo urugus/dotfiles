@@ -26,14 +26,6 @@ g.mapleader = "<Space>"
 -- map("n", "C-,", ":+tabmove<CR>", { noremap = true, silent = true })
 -- map("n", "C-.", ":-tabmove<CR>", { noremap = true, silent = true })
 
-
--- comand mode
-map("c", "<C-k>", "<Up>", { noremap = true, silent = true })
-map("c", "<C-j>", "<Down>", { noremap = true, silent = true })
-map("c", "<C-l>", "<Left>", { noremap = true, silent = true })
-map("c", "<C-h>", "<Right>", { noremap = true, silent = true })
-
-
 -- terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
 -- sandwich & <spector>

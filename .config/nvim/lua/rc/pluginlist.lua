@@ -561,6 +561,15 @@ return require("packer").startup(function(use)
 	-- Editing
 
 	--------------------------------
+  -- IME
+  use({
+    "brglng/vim-im-select",
+		config = function()
+			vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-im-select.vim")
+		end,
+  })
+
+	--------------------------------
 	-- Move
 	use({
 		"phaazon/hop.nvim",
