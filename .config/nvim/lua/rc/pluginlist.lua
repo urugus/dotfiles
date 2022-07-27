@@ -457,6 +457,13 @@ return require("packer").startup(function(use)
 	-- There are Lua plugin. I haven't tried it yet because I'm satisfied with coc.
 	-- norcalli/nvim-colorizer.lua
 	-- use {'powerman/vim-plugin-AnsiEsc', event = "VimEnter"}
+  use({
+		"xiyaowong/nvim-cursorword",
+		after = colorscheme,
+		config = function()
+			require("rc/pluginconfig/nvim-cursorword")
+		end,
+	})
 	use({
 		"RRethy/vim-illuminate",
 		event = "VimEnter",
