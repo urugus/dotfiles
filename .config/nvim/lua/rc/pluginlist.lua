@@ -228,11 +228,11 @@ return require("packer").startup(function(use)
 	use({ "github/copilot.vim", cmd = { "Copilot" } })
 	use({
 		"zbirenbaum/copilot.lua",
-		after = "copilot.vim",
+    event = { "VimEnter" },
 		config = function()
-			vim.schedule(function()
-				require("copilot")
-			end)
+			vim.defer_fn(function()
+				require("rc/pluginconfig/lualine").setup()
+			end, 100)
 		end,
 	})
 
