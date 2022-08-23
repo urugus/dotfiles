@@ -1,5 +1,5 @@
 ---
-ID:{{date}}
+title:
 date:{{date}}
 aliases:[]
 tags:[{{date}},]

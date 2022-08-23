@@ -1,5 +1,6 @@
 ---
 title:{{date}}
+date:{{date}}
 aliases:
 tags:[{{date}},]
 category:dialy
