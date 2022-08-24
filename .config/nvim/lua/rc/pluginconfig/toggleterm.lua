@@ -2,12 +2,12 @@ require("toggleterm").setup({
 	-- size can be a number or function which is passed the current terminal
 	size = function(term)
 		if term.direction == "horizontal" then
-			return vim.fn.float2nr(vim.o.lines * 0.25)
+			return vim.fn.float2nr(vim.o.lines * 0.4)
 		elseif term.direction == "vertical" then
 			return vim.o.columns * 0.4
 		end
 	end,
-	open_mapping = [[<c-z>]],
+	open_mapping = [[<tt>]],
 	hide_numbers = true, -- hide the number column in toggleterm buffers
 	shade_filetypes = {},
 	shade_terminals = true,
@@ -15,7 +15,7 @@ require("toggleterm").setup({
 	start_in_insert = false,
 	insert_mappings = true, -- whether or not the open mapping applies in insert mode
 	persist_size = false,
-	direction = "float",
+	direction = "horizontal",
 	close_on_exit = false, -- close the terminal window when the process exits
 	shell = vim.o.shell, -- change the default shell
 	-- This field is only relevant if direction is set to 'float'
@@ -32,7 +32,9 @@ require("toggleterm").setup({
 	},
 })
 
-vim.api.nvim_set_keymap("n", "tt", '<Cmd>execute v:count1 . "ToggleTerm"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "tt", '<Cmd>execute v:count1 . "ToggleTerm direction=horizontal"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "tf", '<Cmd>execute v:count1 . "ToggleTerm direction=float"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "tb", '<Cmd>execute v:count1 . "ToggleTerm direction=tab"<CR>', { noremap = true, silent = true })
 
 vim.g.toglleterm_win_num = vim.fn.winnr()
 local groupname = "vimrc_toggleterm"

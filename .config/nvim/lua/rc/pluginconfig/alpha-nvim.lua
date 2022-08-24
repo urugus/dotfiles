@@ -39,7 +39,7 @@ dashboard.section.footer.val = "Total plugins: " .. require("rc/packer").count_p
 dashboard.section.header.opts.hl = "Question"
 -- dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/dashboard_custom_header.txt"))
 dashboard.section.buttons.val = {
-	dashboard.button("t", " Open Terminal", ":ToggleTerm<CR>"),
+	dashboard.button("t", " Open Terminal", ":ToggleTerm direction=float<CR>"),
 	dashboard.button("g", "﬌ Go to workspace", ":cd /Users/suguru/Work/<CR>"),
 	dashboard.button("s", " Search key word", ":Telescope live_grep<CR>"),
 	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
