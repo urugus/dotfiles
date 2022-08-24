@@ -18,9 +18,12 @@ endfor
 ]],
 	true
 )
-for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/rc/myplugins", [[v:val =~ '\.lua$']])) do
-	require("rc/myplugins/" .. file:gsub("%.lua$", ""))
-end
+
+vim.schedule(function()
+	for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/rc/myplugins/opt", [[v:val =~ '\.lua$']])) do
+		require("rc/myplugins/opt/" .. file:gsub("%.lua$", ""))
+	end
+end)
 
 -- ===============================
 
