@@ -39,13 +39,15 @@ dashboard.section.footer.val = "Total plugins: " .. require("rc/packer").count_p
 dashboard.section.header.opts.hl = "Question"
 -- dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/dashboard_custom_header.txt"))
 dashboard.section.buttons.val = {
-	dashboard.button("s", " Open last session", ":SessionManager load_current_dir_session<CR>"),
+	dashboard.button("t", " Open Terminal", ":ToggleTerm<CR>"),
+	dashboard.button("g", "﬌ Go to workspace", ":cd /Users/suguru/Work/<CR>"),
+	dashboard.button("s", " Search key word", ":Telescope live_grep<CR>"),
+	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
 	dashboard.button("h", " Recently opened files", ":Telescope my_mru<CR>"),
-	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
 	dashboard.button("e", " New file", ":enew<CR>"),
 	dashboard.button("b", " Jump to bookmarks", ":Telescope marks<CR>"),
 	dashboard.button("n", " Memo New", ":Telekasten new_note<CR>"),
-	dashboard.button("t", " Memo Today", ":Telekasten goto_today<CR>"),
+	dashboard.button("d", " Memo Today", ":Telekasten goto_today<CR>"),
 	dashboard.button("w", " Memo Week", ":Telekasten goto_thisweek<CR>"),
 	dashboard.button("m", " Memo List", ":Telekasten find_notes<CR>"),
 	dashboard.button("p", " Update plugins", ":PackerSync<CR>"),
