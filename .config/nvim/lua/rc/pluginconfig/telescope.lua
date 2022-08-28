@@ -113,7 +113,7 @@ require("telescope").setup({
 				["<C-t>"] = action_layout.toggle_preview,
 				["<C-x>"] = false,
 				["<C-s>"] = actions.select_horizontal,
-				["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
+				-- ["<Tab>"] = actions.toggle_selection + actions.move_selection_next,
 				["<C-q>"] = actions.send_selected_to_qflist,
 				["<CR>"] = actions.select_default + actions.center,
 				["<C-g>"] = custom_actions.multi_selection_open,

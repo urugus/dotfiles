@@ -225,13 +225,19 @@ return require("packer").startup(function(use)
 	--------------------------------
 	-- AI completion
 	-- use {'zxqfl/tabnine-vim'}
-	use({ "github/copilot.vim", cmd = { "Copilot" } })
+	use({
+    "github/copilot.vim",
+    cmd = { "Copilot" },
+		config = function()
+			require("rc/pluginconfig/copilot")
+		end,
+  })
 	use({
 		"zbirenbaum/copilot.lua",
     event = { "VimEnter" },
 		config = function()
 			vim.defer_fn(function()
-				require("rc/pluginconfig/lualine").setup()
+				require("rc/pluginconfig/copilot").setup()
 			end, 100)
 		end,
 	})
