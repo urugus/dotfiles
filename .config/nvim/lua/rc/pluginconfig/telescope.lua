@@ -292,7 +292,6 @@ telescope_builtin.memo = function(opts)
 end
 
 vim.api.nvim_set_keymap("n", "<leader><leader>", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>s", "<Cmd>Telescope live_grep<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
 	"[FuzzyFinder]<Leader>",
