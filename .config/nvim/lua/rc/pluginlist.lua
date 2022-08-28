@@ -857,6 +857,15 @@ return require("packer").startup(function(use)
 
   --------------------------------------------------------------
 	-- New features
+--------------------------------
+	-- Manual
+    use({
+      "folke/which-key.nvim",
+      event = "VimEnter",
+      config = function()
+        require("rc/pluginconfig/which-key")
+      end,
+    })
 
   --------------------------------
 	-- Memo
