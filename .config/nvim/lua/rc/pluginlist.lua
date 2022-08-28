@@ -805,7 +805,7 @@ return require("packer").startup(function(use)
 	-- Terminal
 	use({
 		"akinsho/toggleterm.nvim",
-		-- after = { colorscheme },
+		after = { colorscheme },
 		event = "VimEnter",
 		config = function()
 			require("rc/pluginconfig/toggleterm")
