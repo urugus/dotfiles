@@ -18,9 +18,10 @@
 local g = vim.g
 local map = vim.keymap.set
 local o = vim.o
+local api = vim.api
 
 -- custom leader
-g.mapleader = "<Space>"
+g.mapleader = " "
 
 -- tab move
 -- map("n", "C-,", ":+tabmove<CR>", { noremap = true, silent = true })
@@ -28,8 +29,19 @@ g.mapleader = "<Space>"
 
 -- terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
+
 -- sandwich & <spector>
 map({ "n", "x" }, "s", "<Nop>", { noremap = true, silent = true })
 map({ "n", "x" }, "S", "<Nop>", { noremap = true, silent = true })
+
+-- [FuzzyFinder]
+map({ "n", "x" }, "z", "<Nop>", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
+api.nvim_set_keymap("v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "z", "[FuzzyFinder]", {})
+api.nvim_set_keymap("v", "z", "[FuzzyFinder]", {})
+api.nvim_set_keymap("n", "Z", "<Nop>", { noremap = true, silent = true })
+
 -- git
-vim.api.nvim_set_keymap("n", "<Space>g", "[git]", {})
+api.nvim_set_keymap("n", "<Leader>g", "[git]", {})
+
