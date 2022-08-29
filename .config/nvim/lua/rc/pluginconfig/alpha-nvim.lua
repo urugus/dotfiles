@@ -39,6 +39,7 @@ dashboard.section.footer.val = "Total plugins: " .. require("rc/packer").count_p
 dashboard.section.header.opts.hl = "Question"
 -- dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/dashboard_custom_header.txt"))
 dashboard.section.buttons.val = {
+  dashboard.button("o", "פּ Open File Tree", "<Cmd>NeoTreeFloatToggle<CR>"),
 	dashboard.button("t", " Open Terminal", ":ToggleTerm direction=float<CR>"),
 	dashboard.button("w", "﬌ Go to workspace", ":cd /Users/suguru/Work/<CR>"),
 	dashboard.button("c", "﬌ Go to neovim config", ":cd /Users/suguru/.config/nvim/<CR>"),
