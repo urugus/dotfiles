@@ -302,8 +302,8 @@ vim.api.nvim_set_keymap("n", "<Leader>;", "<Cmd>Telescope git_files<CR>", { nore
 vim.api.nvim_set_keymap("n", "[FuzzyFinder];", "<Cmd>Telescope git_files<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
 	"n",
-	"<Leader>.",
-	"<Cmd>Telecwoc diagnosticsscope find_files<CR>",
+	"[FuzzyFinder]df",
+	"<Cmd>Telescope diagnostics<CR>",
 	{ noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap("n", "[FuzzyFinder].", "<Cmd>Telescope my_mru<CR>", { noremap = true, silent = true })
