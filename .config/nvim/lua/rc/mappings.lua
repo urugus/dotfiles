@@ -20,9 +20,6 @@ local map = vim.keymap.set
 local o = vim.o
 local api = vim.api
 
--- custom leader
-g.mapleader = " "
-
 -- tab move
 -- map("n", "C-,", ":+tabmove<CR>", { noremap = true, silent = true })
 -- map("n", "C-.", ":-tabmove<CR>", { noremap = true, silent = true })
@@ -56,6 +53,14 @@ map("n", "gj", "j", { noremap = true, silent = true })
 map("n", "gk", "k", { noremap = true, silent = true })
 map("n", "X", "<Cmd>tabclose<CR>", { noremap = true, silent = true })
 
+-- move cursor
+vim.keymap.set({ "n", "x" }, "j", function()
+	return vim.v.count > 0 and "j" or "gj"
+end, { noremap = true, expr = true })
+vim.keymap.set({ "n", "x" }, "k", function()
+	return vim.v.count > 0 and "k" or "gk"
+end, { noremap = true, expr = true })
+
 -- ハイライトを消す
 map("n", "gq", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
@@ -67,3 +72,10 @@ map("n", "y<Space>", "yiw", { noremap = true, silent = true })
 -- インクリメント設定
 map({ "n", "x" }, "+", "<C-a>", { noremap = true, silent = true })
 map({ "n", "x" }, "_", "<C-x>", { noremap = true, silent = true })
+
+-- paste
+map({ "n", "x" }, "p", "]p", { noremap = true, silent = true })
+map({ "n", "x" }, "gp", "p", { noremap = true, silent = true })
+map({ "n", "x" }, "gP", "P", { noremap = true, silent = true })
+map({ "n", "x" }, "<LocalLeader>p", '"+p', { noremap = true, silent = true })
+map({ "n", "x" }, "<LocalLeader>P", '"+P', { noremap = true, silent = true })
