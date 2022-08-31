@@ -34,10 +34,9 @@ local function split(source, sep)
 	return result
 end
 
-dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/dashboard_custom_header.txt"))
+dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/neovim.txt"))
 dashboard.section.footer.val = "Total plugins: " .. require("rc/packer").count_plugins()
 dashboard.section.header.opts.hl = "Question"
--- dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/dashboard_custom_header.txt"))
 dashboard.section.buttons.val = {
   dashboard.button("o", "פּ Open File Tree", "<Cmd>NeoTreeFloatToggle<CR>"),
 	dashboard.button("t", " Open Terminal", ":ToggleTerm direction=float<CR>"),
