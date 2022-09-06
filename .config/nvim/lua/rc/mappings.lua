@@ -21,8 +21,8 @@ local o = vim.o
 local api = vim.api
 
 -- tab move
--- map("n", "C-,", ":+tabmove<CR>", { noremap = true, silent = true })
--- map("n", "C-.", ":-tabmove<CR>", { noremap = true, silent = true })
+map("n", "<C-,>", ":tabnext<CR>", { noremap = true, silent = true })
+map("n", "<C-.>", ":tabprevious<CR>", { noremap = true, silent = true })
 
 -- terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
