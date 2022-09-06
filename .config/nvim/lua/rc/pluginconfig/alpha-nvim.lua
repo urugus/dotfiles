@@ -34,7 +34,8 @@ local function split(source, sep)
 	return result
 end
 
-dashboard.section.header.val = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/neovim.txt"))
+local phrases = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/favorite_phrases.txt"))
+dashboard.section.header.val = phrases[ math.random(0, #phrases - 1 ) ]
 dashboard.section.footer.val = "Total plugins: " .. require("rc/packer").count_plugins()
 dashboard.section.header.opts.hl = "Question"
 dashboard.section.buttons.val = {
