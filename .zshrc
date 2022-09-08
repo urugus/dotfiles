@@ -228,7 +228,7 @@ alias vim='nvim'
 
 export PATH=$HOME/.progate/bin:$PATH
 
+export PATH=$HOME/.progate/bin:$PATH
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
-
-export PATH=$HOME/.progate/bin:$PATH
