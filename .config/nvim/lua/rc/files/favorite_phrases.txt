@@ -1,3 +1,5 @@
 Meet the expectations, beyond the expectations.
 Done is better than perfect.
 The biggest risks is not taking any risk.
+Make code easy to test, easy to read, easy to write.
+You Only Live Once
