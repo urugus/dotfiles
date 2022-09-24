@@ -41,7 +41,7 @@ dashboard.section.header.opts.hl = "Question"
 dashboard.section.buttons.val = {
   dashboard.button("o", "פּ Open File Tree", "<Cmd>NeoTreeFloatToggle<CR>"),
 	dashboard.button("t", " Open Terminal", ":ToggleTerm direction=float<CR>"),
-	dashboard.button("w", "﬌ Go to workspace", ":cd /Users/suguru/Work/<CR>"),
+	dashboard.button("w", "﬌ Go to workspace", ":cd /Users/suguru/Work/<CR>:cd "),
 	dashboard.button("c", "﬌ Go to neovim config", ":cd /Users/suguru/.config/nvim/<CR>"),
 	dashboard.button("s", " Search by word", ":Telescope live_grep<CR>"),
 	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
