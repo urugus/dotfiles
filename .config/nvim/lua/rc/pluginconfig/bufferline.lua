@@ -61,8 +61,8 @@ require("bufferline").setup({
 	},
 })
 vim.api.nvim_set_keymap("n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "J", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "K", "<Cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-j>", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-k>", "<Cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "@", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "#", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-S-F2>", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true })
