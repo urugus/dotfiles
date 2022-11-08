@@ -72,7 +72,7 @@ local lspconfig = require("lspconfig")
 -- }
 -- lspconfig.pyright.setup {settings = {python = {pythonPath = "python3"}}}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local servers = require("nvim-lsp-installer").get_installed_servers()
 for _, server in ipairs(servers) do
 	local opts = { capabilities = capabilities, on_attach = on_attach }
