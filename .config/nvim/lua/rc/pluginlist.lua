@@ -43,6 +43,7 @@ return require("packer").startup(function(use)
 	local colorscheme = "vscode.nvim"
 	use({
 		"Mofiqul/vscode.nvim",
+    event = { "VimEnter" },
 		config = function()
 			require("rc/pluginconfig/vscode")
 		end,
@@ -142,12 +143,12 @@ return require("packer").startup(function(use)
 
 	--------------------------------
 	-- Linter
-	use({
-		"dense-analysis/ale",
-		config = function()
-			require("rc/pluginconfig/ale")
-		end,
-	})
+	-- use({
+	-- 	"dense-analysis/ale",
+	-- 	config = function()
+	-- 		require("rc/pluginconfig/ale")
+	-- 	end,
+	-- })
 	-- use({
 	-- 	"nathunsmitty/nvim-ale-diagnostic",
 	-- 	requires = "dense-analysis/ale",
@@ -523,6 +524,7 @@ return require("packer").startup(function(use)
 	use({
 		"GustavoKatel/sidebar.nvim",
 		cmd = { "SidebarNvimToggle" },
+    event = "VimEnter",
 		config = function()
 			require("rc/pluginconfig/sidebar")
 		end,
@@ -758,9 +760,9 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/nvim-test")
 		end,
 	})
-	if vim.fn.executable("cargo") == 1 then
-		use({ "michaelb/sniprun", run = "bash install.sh", cmd = { "SnipRun" } })
-	end
+	-- if vim.fn.executable("cargo") == 1 then
+	-- 	use({ "michaelb/sniprun", run = "bash install.sh", cmd = { "SnipRun" } })
+	-- end
 
   --------------------------------
 	-- Git
