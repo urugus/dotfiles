@@ -12,7 +12,20 @@ vim.cmd([[packadd packer.nvim]])
 require("rc/packer")
 
 return require("packer").startup(function(use)
+  -- ------------------------------------------------------------
+	-- Installer
+
+	-- Plugin Manager
 	use({ "wbthomason/packer.nvim", opt = true })
+
+  -- External package Installer
+	use({
+		"williamboman/mason.nvim",
+		event = "VimEnter",
+		config = function()
+			require("rc/pluginconfig/mason")
+		end,
+	})
 
 	-- ------------------------------------------------------------
 	-- Library
@@ -22,32 +35,32 @@ return require("packer").startup(function(use)
 	use({ "tpope/vim-repeat" })
 
 	-- Lua Library
-	use({ "nvim-lua/popup.nvim" })
+	use({ "nvim-lua/popup.nvim", mocule = "popup" })
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "tami5/sqlite.lua", module = "sqlite" })
-	use({ "MunifTanjim/nui.nvim" })
-
-	--------------------------------
-	-- Font
-	if not os.getenv("DISABLE_DEVICONS") or os.getenv("DISABLE_DEVICONS") == "false" then
-		-- use {'ryanoasis/vim-devicons'}
-		use({ "kyazdani42/nvim-web-devicons" })
-	end
+	use({ "MunifTanjim/nui.nvim", module = "nui" })
 
 	--------------------------------
 	-- Notify
-	use({ "rcarriga/nvim-notify", event = "VimEnter" })
+	use({ "rcarriga/nvim-notify", module = "notify"})
 
 	--------------------------------
 	-- ColorScheme
 	local colorscheme = "vscode.nvim"
 	use({
 		"Mofiqul/vscode.nvim",
-    event = { "VimEnter" },
+    event = { "VimEnter", "ColorSchemePre" },
 		config = function()
 			require("rc/pluginconfig/vscode")
 		end,
 	})
+
+	--------------------------------
+	-- Font
+	if not os.getenv("DISABLE_DEVICONS") or os.getenv("DISABLE_DEVICONS") == "false" then
+		-- use {'ryanoasis/vim-devicons'}
+		use({ "kyazdani42/nvim-web-devicons", after = colorscheme })
+	end
 
 	--------------------------------------------------------------
 	-- LSP & completion
@@ -60,13 +73,14 @@ return require("packer").startup(function(use)
 			{ "L3MON4D3/LuaSnip", opt = true, event = "VimEnter" },
 			{ "windwp/nvim-autopairs", opt = true, event = "VimEnter" },
 		},
-		after = { "lspkind-nvim", "LuaSnip", "nvim-autopairs" },
+		after = { "LuaSnip", "nvim-autopairs" },
 		config = function()
 			require("rc/pluginconfig/nvim-cmp")
 		end,
 	})
 	use({
 		"onsails/lspkind-nvim",
+    module = "lspkind",
 		config = function()
 			require("rc/pluginconfig/lspkind-nvim")
 		end,
@@ -103,6 +117,14 @@ return require("packer").startup(function(use)
 
 	--------------------------------
 	-- Language Server Protocol(LSP)
+  use({
+		"williamboman/mason-lspconfig.nvim",
+    -- after = { "mason.nvim", "nvim-lspconfig", "cmp-nvim-lsp", "nlsp-settings.nvim" },
+    module = "mason-lspconfig",
+		config = function()
+			require("rc/pluginconfig/mason-lspconfig")
+		end,
+	})
 	use({
 		"neovim/nvim-lspconfig",
     event = { "VimEnter" },
@@ -110,14 +132,14 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/nvim-lspconfig")
 		end,
 	})
-	use({
-		"williamboman/nvim-lsp-installer",
-		requires = { { "RRethy/vim-illuminate", opt = true } },
-		after = { "nvim-lspconfig", "vim-illuminate", "nlsp-settings.nvim" },
-		config = function()
-			require("rc/pluginconfig/nvim-lsp-installer")
-		end,
-	})
+	-- use({
+	-- 	"williamboman/nvim-lsp-installer",
+	-- 	requires = { { "RRethy/vim-illuminate", opt = true } },
+	-- 	after = { "nvim-lspconfig", "vim-illuminate", "nlsp-settings.nvim" },
+	-- 	config = function()
+	-- 		require("rc/pluginconfig/nvim-lsp-installer")
+	-- 	end,
+	-- })
 	-- -> hrsh7th/cmp-nvim-lsp-signature-help, hrsh7th/cmp-nvim-lsp-document-symbol
 	-- use({
 	-- 	"ray-x/lsp_signature.nvim",
@@ -167,25 +189,25 @@ return require("packer").startup(function(use)
 	-- }
 	use({
 		"tami5/lspsaga.nvim",
-		after = "nvim-lsp-installer",
+		after = "mason.nvim",
 		config = function()
 			require("rc/pluginconfig/lspsaga")
 		end,
 	})
 	use({
 		"folke/lsp-colors.nvim",
-		event = "VimEnter",
+    module = "lsp-colors"
 	})
 	use({
 		"folke/trouble.nvim",
-		after = { "nvim-lsp-installer", "lsp-colors.nvim" },
+	  after = { "mason.nvim" },
 		config = function()
 			require("rc/pluginconfig/trouble")
 		end,
 	})
 	use({
 		"j-hui/fidget.nvim",
-		after = "nvim-lsp-installer",
+		after = "mason.nvim",
 		config = function()
 			require("rc/pluginconfig/fidget")
 		end,
@@ -348,7 +370,7 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/nvim-treesitter")
 		end,
 	})
-	use({ "JoosepAlviste/nvim-ts-context-commentstring", after = { "nvim-treesitter" } })
+	-- use({ "JoosepAlviste/nvim-ts-context-commentstring", after = { "nvim-treesitter" } })
 	use({ "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } })
 	use({ "nvim-treesitter/nvim-tree-docs", after = { "nvim-treesitter" } })
 	use({ "yioneko/nvim-yati", after = "nvim-treesitter" })
@@ -415,11 +437,6 @@ return require("packer").startup(function(use)
 		config = function()
 			require("rc/pluginconfig/hlargs")
 		end,
-	})
-	use({
-		"romgrk/nvim-treesitter-context",
-		-- after = {'nvim-treesitter'},
-		cmd = { "TSContextEnable" },
 	})
 
 	--------------------------------------------------------------
@@ -643,13 +660,13 @@ return require("packer").startup(function(use)
 			end,
 		})
 	end
-	use({
-		"AckslD/nvim-anywise-reg.lua",
-		event = "VimEnter",
-		config = function()
-			require("rc/pluginconfig/nvim-anywise-reg")
-		end,
-	})
+	-- use({
+	-- 	"AckslD/nvim-anywise-reg.lua",
+	-- 	event = "VimEnter",
+	-- 	config = function()
+	-- 		require("rc/pluginconfig/nvim-anywise-reg")
+	-- 	end,
+	-- })
 
 	--------------------------------------------------------------
 	-- Search
@@ -825,7 +842,7 @@ return require("packer").startup(function(use)
 
 	--------------------------------
 	-- Markdown
-	use({ "iamcco/markdown-preview.nvim", ft = { "markdown" }, run = ":call mkdp#util#install()" })
+	-- use({ "iamcco/markdown-preview.nvim", ft = { "markdown" }, run = ":call mkdp#util#install()" })
 	-- use markdown-preview.nvim
 	-- if vim.fn.executable('glow') then
 	--   use {'npxbr/glow.nvim',

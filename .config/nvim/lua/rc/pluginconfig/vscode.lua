@@ -1,10 +1,17 @@
--- For dark theme
-vim.g.vscode_style = "dark"
--- For light theme
--- Enable transparent background
-vim.g.vscode_transparent = 1
--- Enable italic comment
-vim.g.vscode_italic_comment = 1
--- Disable nvim-tree background color
-vim.g.vscode_disable_nvimtree_bg = true
-vim.cmd([[colorscheme vscode]])
+vim.o.background = 'dark'
+
+require('vscode').setup({
+  -- Enable transparent background
+  transparent = true,
+
+  -- Enable italic comment
+  italic_comments = true,
+
+  -- Disable nvim-tree background color
+  disable_nvimtree_bg = true,
+
+  -- Override colors (see ./lua/vscode/colors.lua)
+  color_overrides = {
+      vscLineNumber = '#FFFFFF',
+  },
+})
