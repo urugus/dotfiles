@@ -3,7 +3,7 @@ if vim.fn.has("unix") then
 else
 	vim.env.LANG = "en"
 end
-vim.cmd([[ "language " .. os.getenv("LANG") ]])
+-- vim.cmd([[ "language " .. os.getenv("LANG") ]])
 vim.o.langmenu = os.getenv("LANG")
 
 vim.o.encoding = "utf-8"
@@ -51,7 +51,7 @@ vim.g.loaded_pythonx_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
-
-vim.opt.runtimepath:remove("/etc/xdg/nvim")
-vim.opt.runtimepath:remove("/etc/xdg/nvim/after")
-vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
+ 
+-- vim.opt.runtimepath:remove("/etc/xdg/nvim")
+-- vim.opt.runtimepath:remove("/etc/xdg/nvim/after")
+-- vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")
