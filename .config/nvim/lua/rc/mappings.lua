@@ -46,6 +46,8 @@ api.nvim_set_keymap("n", "z", "[FuzzyFinder]", {})
 api.nvim_set_keymap("v", "z", "[FuzzyFinder]", {})
 api.nvim_set_keymap("n", "Z", "<Nop>", { noremap = true, silent = true })
 
+-- treesitter
+vim.keymap.set("n", "'", "<Nop>", { noremap = true, silent = true })
 
 ---- remap
 map("n", "gzz", "zz", { noremap = true, silent = true })
