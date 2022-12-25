@@ -2,7 +2,7 @@
 
 -- ===============================
 
--- require("rc/option")
+require("rc/option")
 require("rc/display")
 require("rc/pluginlist")
 require("rc/mappings")
