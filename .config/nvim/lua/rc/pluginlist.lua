@@ -37,7 +37,7 @@ return require("packer").startup(function(use)
 	-- Lua Library
 	use({ "nvim-lua/popup.nvim", mocule = "popup" })
 	use({ "nvim-lua/plenary.nvim" })
-	use({ "tami5/sqlite.lua", module = "sqlite" })
+	-- use({ "tami5/sqlite.lua", module = "sqlite" })
 	use({ "MunifTanjim/nui.nvim", module = "nui" })
 
 	--------------------------------
@@ -162,20 +162,14 @@ return require("packer").startup(function(use)
 
 	--------------------------------
 	-- AI completion
-	-- use {'zxqfl/tabnine-vim'}
-	use({
-		"github/copilot.vim",
-		cmd = { "Copilot" },
-		config = function()
-			require("rc/pluginconfig/copilot")
-		end,
-	})
+	use {'zxqfl/tabnine-vim'}
+	use({ "github/copilot.vim", cmd = { "Copilot" } })
 	use({
 		"zbirenbaum/copilot.lua",
-		event = { "VimEnter" },
+		after = { "copilot.vim" },
 		config = function()
-			vim.defer_fn(function()
-				require("rc/pluginconfig/copilot").setup()
+			vim.schedule(function()
+				require("copilot").setup()
 			end, 100)
 		end,
 	})
@@ -193,13 +187,13 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/telescope")
 		end,
 	})
-	use({
-		"nvim-telescope/telescope-frecency.nvim",
-		after = { "telescope.nvim" },
-		config = function()
-			require("telescope").load_extension("frecency")
-		end,
-	})
+	-- use({
+	-- 	"nvim-telescope/telescope-frecency.nvim",
+	-- 	after = { "telescope.nvim" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("frecency")
+	-- 	end,
+	-- })
 	use({
 		"nvim-telescope/telescope-github.nvim",
 		after = { "telescope.nvim" },
@@ -215,17 +209,17 @@ return require("packer").startup(function(use)
 			require("telescope").load_extension("packer")
 		end,
 	})
-	use({
-		"nvim-telescope/telescope-smart-history.nvim",
-		requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
-		after = { "telescope.nvim", "sqlite.lua" },
-		config = function()
-			require("telescope").load_extension("smart_history")
-		end,
-		run = function()
-			os.execute("mkdir -p ~/.local/share/nvim/databases/")
-		end,
-	})
+	-- use({
+	-- 	"nvim-telescope/telescope-smart-history.nvim",
+	-- 	requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
+	-- 	after = { "telescope.nvim", "sqlite.lua" },
+	-- 	config = function()
+	-- 		require("telescope").load_extension("smart_history")
+	-- 	end,
+	-- 	run = function()
+	-- 		os.execute("mkdir -p ~/.local/share/nvim/databases/")
+	-- 	end,
+	-- })
 
 	--------------------------------
 	-- Treesitter
@@ -478,14 +472,14 @@ return require("packer").startup(function(use)
 			require("rc/pluginconfig/yanky")
 		end,
 	})
-	use({
-		"AckslD/nvim-neoclip.lua",
-		requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
-		after = { "telescope.nvim", "sqlite.lua" },
-		config = function()
-			require("rc/pluginconfig/nvim-neoclip")
-		end,
-	})
+	-- use({
+	-- 	"AckslD/nvim-neoclip.lua",
+	-- 	requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
+	-- 	after = { "telescope.nvim", "sqlite.lua" },
+	-- 	config = function()
+	-- 		require("rc/pluginconfig/nvim-neoclip")
+	-- 	end,
+	-- })
 
 	--------------------------------
 	-- Paste

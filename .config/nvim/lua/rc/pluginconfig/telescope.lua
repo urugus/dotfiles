@@ -119,7 +119,7 @@ require("telescope").setup({
 				["<C-g>"] = custom_actions.multi_selection_open,
 			},
 		},
-		history = { path = "~/.local/share/nvim/databases/telescope_history.sqlite3", limit = 100 },
+		-- history = { path = "~/.local/share/nvim/databases/telescope_history.sqlite3", limit = 100 },
 	},
 	extensions = {
 		media_files = {
@@ -384,5 +384,5 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true }
 )
 
-vim.api.nvim_set_keymap("n", "[FuzzyFinder]:", "<Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "[FuzzyFinder]:", "<Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
