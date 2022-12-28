@@ -14,6 +14,7 @@ return  {
     { key = "\\", mods = "ALT", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
     { key = "c", mods = "ALT", action = act({ CopyTo = "Clipboard" }) },
     { key = "v", mods = "ALT", action = act({ PasteFrom = "Clipboard" }) },
+    { key = "x", mods = "ALT", action = act({ CloseCurrentPane = { confirm = true } }) },
   },
   font = wezterm.font 'JetBrains Mono',
 }
