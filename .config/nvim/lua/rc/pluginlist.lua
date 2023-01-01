@@ -242,6 +242,7 @@ return require("packer").startup(function(use)
       require("rc/pluginconfig/nvim-treesitter-endwise")
     end,
   })
+  use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
 
   --------------------------------
   -- Treesitter textobject & operator
@@ -605,6 +606,23 @@ return require("packer").startup(function(use)
   -- if vim.fn.executable("cargo") == 1 then
   --  use({ "michaelb/sniprun", run = "bash install.sh", cmd = { "SnipRun" } })
   -- end
+
+  --------------------------------
+  -- Lint
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    event = "VimEnter",
+    config = function()
+      require("rc/pluginconfig/null-ls")
+    end,
+  })
+  use({
+    "dense-analysis/ale",
+    event = "VimEnter",
+    config = function()
+      require("rc/pluginconfig/ale")
+    end,
+  })
 
   --------------------------------
   -- Git

@@ -31,6 +31,11 @@ map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
 map({ "n", "x" }, "s", "<Nop>", { noremap = true, silent = true })
 map({ "n", "x" }, "S", "<Nop>", { noremap = true, silent = true })
 
+-- [_Lsp]
+vim.keymap.set("n", ";", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "[_Lsp]", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", ";", "[_Lsp]", {})
+
 -- [Copilot]
 api.nvim_set_keymap("n", "[Copilot]", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<Leader>c", "[Copilot]", {})
