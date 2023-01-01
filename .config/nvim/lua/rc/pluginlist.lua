@@ -637,6 +637,13 @@ return require("packer").startup(function(use)
       require("rc/pluginconfig/gitsigns")
     end,
   })
+  use({
+    "dinhhuy258/git.nvim",
+    event = "VimEnter",
+    config = function()
+      require("rc/pluginconfig/git")
+    end
+  })
 
   ------------------------------------------------------------
   -- Standard Feature Enhancement
