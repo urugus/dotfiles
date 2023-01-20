@@ -162,7 +162,6 @@ return require("packer").startup(function(use)
 
   --------------------------------
   -- AI completion
-  use {'zxqfl/tabnine-vim'}
   use({ "github/copilot.vim", cmd = { "Copilot" } })
   use({
     "zbirenbaum/copilot.lua",
