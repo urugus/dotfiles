@@ -16,5 +16,8 @@ return  {
     { key = "v", mods = "ALT", action = act({ PasteFrom = "Clipboard" }) },
     { key = "x", mods = "ALT", action = act({ CloseCurrentPane = { confirm = true } }) },
   },
-  font = wezterm.font 'JetBrains Mono',
+  font = wezterm.font_with_fallback {
+    'Fira Code',
+    'Cica',
+  },
 }
