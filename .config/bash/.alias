@@ -1,0 +1,12 @@
+# aliases
+alias ls='ls -p -G'
+alias la='ls -A'
+alias ll='ls -l'
+alias lla='ll -A'
+alias g='git'
+alias brc='bin/rails console'
+alias brs='bin/rails server'
+alias be='bundle exec'
+alias rc='rubocop'
+alias rs='rspec'
+alias vi='nvim'
