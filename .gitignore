@@ -1,39 +1,28 @@
-# Ignore all files
+# Ignore all
 /*
-
-# Ignore files that include dot in name
-/.*
+/.**
 
 
-# TARGETS
-!/.gitignore
-!/.gitmodules
-!/.tmux.conf
-!/.zshrc
+## config
 !/.config
-!/.config/fish
-!/.config/fish/functions
-!/.config/fish/config.fish
-!/.config/fish/config-osx.fish
-!/.config/nvim
-!/.config/fig-autocomplete/*
-!/bin
+!/.config/**
 
-# Ignore from TARGETS
-/.config/cheat
-/.config/fish/fishd.*
-/.config/fish/fish_variables
-/.config/fisher
-/.config/gh
-/.config/heroku
-/.config/htop
-/.config/omf
-/.config/pgcli
-/.config/yarn
-/.config/exercism
-/.config/raycast
-/.config/coc/
-/.config/coc/suggest.txt
-/.config/github-copilot/*
-/.config/configstore
-../raycast/*
+
+## bash
+!/.config/bash
+!/.config/bash/**
+
+
+## neovim
+/.config/nvim/plugin/**
+!/.config/nvim
+!/.config/nvim/**
+
+
+## wezterm
+/.config/wezterm/local.lua
+
+
+# global #
+!/.README.md
+!/.gitignore
