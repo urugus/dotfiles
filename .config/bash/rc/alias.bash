@@ -11,6 +11,7 @@ alias g='git'
 alias gst='git status'
 alias gcm='git commit'
 alias gps='git push'
+alias gco='git checkout'
 
 # Ruby on Rails
 alias brc='bin/rails console'
