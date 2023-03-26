@@ -4,6 +4,8 @@ hi MatchWordCur cterm=underline gui=underline
 let g:matchup_motion_enabled = 1
 let g:matchup_text_obj_enabled = 1
 let g:matchup_matchparen_deferred_show_delay = 300
+let g:matchup_delim_start_plaintext = 0
+let g:matchup_delim_end_plaintext = 0
 omap % ]%
 
 lua vim.api.nvim_clear_autocmds({event = {"TextChangedI", "TextChangedP", "TextChanged"}, group = "matchup_matchparen"})

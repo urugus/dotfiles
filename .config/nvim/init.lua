@@ -39,3 +39,4 @@ if vim.fn.exists("g:neovide") then
   vim.g.neovide_transparency = 0.7
   vim.g.neovide_remember_window_size = true
 end
+

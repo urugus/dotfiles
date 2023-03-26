@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
   local colorscheme = "vscode.nvim"
   use({
     "Mofiqul/vscode.nvim",
-    event = { "VimEnter", "ColorSchemePre" },
+    event = { "VimEnter" },
     config = function()
       require("rc/pluginconfig/vscode")
     end,

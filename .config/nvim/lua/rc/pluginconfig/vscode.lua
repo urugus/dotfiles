@@ -15,3 +15,5 @@ require('vscode').setup({
       vscLineNumber = '#FFFFFF',
   },
 })
+
+require('vscode').load()
