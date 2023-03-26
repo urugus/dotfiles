@@ -18,3 +18,8 @@ cd dotfiles
 - bash
 - neovim
 - wezterm
+
+# Fonts
+
+- [Cica](https://github.com/miiton/Cica)
+- [Fira Code](https://github.com/tonsky/FiraCode)
