@@ -11,15 +11,8 @@ export BA_DIR=$HOME/dotfiles/.config/bash
 export BA_RC_DIR=$HOME/dotfiles/.config/bash/rc
 
 
- ### Aliases ###
+### Aliases ###
 source $BA_RC_DIR/alias.bash
 
-function _update_ps1() {
-  PS1="$(powerline-shell $?)\n$ "
-}
-
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+### Plugins ###
+source $BA_RC_DIR/pluginlist.bash
