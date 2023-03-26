@@ -1,6 +1,5 @@
 ## Environment Variables
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
