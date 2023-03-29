@@ -2,11 +2,9 @@
 /*
 /.**
 
-
-## config
-!/.config
-!/.config/**
-
+## Secrets
+/.config/gh/**
+/.config/github-copilot/**
 
 ## bash
 !/.bashenv
