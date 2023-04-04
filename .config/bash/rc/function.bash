@@ -13,11 +13,11 @@ fzf_git_checkout_branch() {
 # short hand 'git'
 git_command(){
   case "$1" in
-        ad) git add "${@}" ;;
-        br) git branch "${@}" ;;
-        co) git checkout "${@}" ;;
-        cm) git commit "${@}" ;;
-        st) git status "${@}" ;;
+        ad) git add "${@:2}" ;;
+        br) git branch "${@:2}" ;;
+        co) git checkout "${@:2}" ;;
+        cm) git commit "${@:2}" ;;
+        st) git status "${@:2}" ;;
         pl) git pull;;
         *)  git "$@" ;;
     esac
