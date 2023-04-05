@@ -735,6 +735,16 @@ return require("packer").startup(function(use)
   })
 
   --------------------------------
+  -- Use editor in the browser
+  use({
+    "subnut/nvim-ghost.nvim",
+    event = "VimEnter",
+    config = function()
+      require("rc/pluginconfig/nvim-ghost")
+    end
+  })
+
+  --------------------------------
   -- Analytics
   if not os.getenv("DISABLE_WAKATIME") or os.getenv("DISABLE_WAKATIME") == "true" then
     if vim.fn.filereadable(vim.fn.expand("~/.wakatime.cfg")) == 1 then
