@@ -1,0 +1,147 @@
+
+# tap repositories and their packages
+
+tap homebrew/core
+brew aom
+brew autoconf
+brew autojump
+brew bash
+brew bash-completion
+brew bat
+brew brew-pip
+brew brotli
+brew bzt
+brew c-ares
+brew ca-certificates
+brew cairo
+brew cheat
+brew cmake
+brew cocoapods
+brew cython
+brew deno
+brew docker-compose
+brew eslint
+brew exa
+brew exercism
+brew fd
+brew fish
+brew fontconfig
+brew fontforge
+brew freetype
+brew fribidi
+brew fzf
+brew gcc
+brew gd
+brew gdbm
+brew gdk-pixbuf
+brew gettext
+brew gh
+brew giflib
+brew glib
+brew gmp
+brew graphite2
+brew harfbuzz
+brew highway
+brew icu4c
+brew imath
+brew isl
+brew jpeg-turbo
+brew jpeg-xl
+brew krb5
+brew libavif
+brew libcython
+brew libgit2
+brew libidn2
+brew libmpc
+brew libnghttp2
+brew libpng
+brew libpq
+brew libspiro
+brew libssh2
+brew libtermkey
+brew libtiff
+brew libtool
+brew libuninameslist
+brew libunistring
+brew libuv
+brew libvmaf
+brew libvterm
+brew libx11
+brew libxau
+brew libxcb
+brew libxdmcp
+brew libxext
+brew libxrender
+brew libyaml
+brew little-cms2
+brew luajit
+brew luv
+brew lz4
+brew lzo
+brew m4
+brew mpdecimal
+brew mpfr
+brew msgpack
+brew ncurses
+brew neovim
+brew node
+brew node-build
+brew nodenv
+brew numpy
+brew oniguruma
+brew openblas
+brew openexr
+brew openssl@1.1
+brew openssl@3
+brew pango
+brew pcre2
+brew peco
+brew pixman
+brew pkg-config
+brew postgresql@14
+brew python@3.11
+brew pyyaml
+brew rbenv
+brew readline
+brew ripgrep
+brew ruby
+brew ruby-build
+brew six
+brew sqlite
+brew tig
+brew tree
+brew tree-sitter
+brew unibilium
+brew webp
+brew wget
+brew woff2
+brew xorgproto
+brew xz
+brew yarn
+brew z
+brew zola
+brew zstd
+
+tap homebrew/cask
+cask fig
+cask maccy
+cask powershell
+
+tap homebrew/services
+
+tap heroku/brew
+brew heroku
+brew heroku-node
+
+tap rcmdnk/file
+brew brew-file
+
+# App Store applications
+appstore 409183694 Keynote (12.2.1)
+appstore 539883307 LINE (7.16.1)
+appstore 634148309 Logic Pro X (10.7.7)
+appstore 1017470484 Next Meeting (2.7)
+appstore 1429033973 RunCat (9.7)
+appstore 425955336 Skitch (2.9)
+appstore 803453959 Slack (4.29.149)
+appstore 497799835 Xcode (14.2)

@@ -31,7 +31,14 @@ link_to_homedir() {
   else
     command echo "same install src dest"
   fi
+  command echo "completed: symbolic link"
 }
+
+brew_install() {
+  brew file install
+  command echo "completed: brew install"
+}
+
 
 while [ $# -gt 0 ];do
   case ${1} in
