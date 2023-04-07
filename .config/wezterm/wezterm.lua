@@ -1,5 +1,6 @@
 local wezterm = require "wezterm"
 local act = wezterm.action
+require("on")
 
 ---------------------------------------------------------------
 --- Config
