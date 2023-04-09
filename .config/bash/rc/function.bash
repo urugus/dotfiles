@@ -25,13 +25,34 @@ git_command(){
 }
 
 ### Bash ###
+# backup bash history
+backup_bash_history() {
+  local backup_file="${BACKUP_DIR}/.bash_history"
+  if [ ! -f "$backup_file" ]; then
+    echo "No backup directory!!"
+    return
+  fi
+
+  # common & uinique commands history
+  local unique_co_history=$(grep -v '^#' ~/.bash_history | sort -u <(grep -v '^#' "$backup_file" 2>/dev/null) | uniq)
+  local sorted_history=$(echo "$unique_co_history" | sort)
+  echo "$sorted_history" > "$backup_file"
+  cd $BACKUP_DIR >/dev/null
+  git add -A
+  # git commit if having git diff
+  if [ -n "$(git status --porcelain)" ]; then
+    git commit -q -m "bash: backup history"
+    git push
+  fi
+  cd - >/dev/null || return
+}
+
 # fzf history
 fzf_history() {
-  local l=$(HISTTIMEFORMAT= history | \
-  sort -r | sed -E s/^\ *[0-9]+\ +// | \
-  fzf --reverse)
+  local l=$(history  | awk '!a[$0]++{print $0}' | awk '{$1=""; print $0}' | fzf --reverse)
   if [ -n "$l" ]; then
-    READLINE_LINE="$l" READLINE_POINT=${#l}
+    local selected_command=$(echo "$l" | sed -E "s/\ *[0-9]*\ *([0-9]{2}\/[0-9]{2}\/[0-9]{2}\ [0-9]{2}:[0-9]{2}:[0-9]{2}\:\ )(.*)/\2/")
+    READLINE_LINE="$selected_command" READLINE_POINT=${#selected_command}
   fi
 }
 
@@ -111,3 +132,4 @@ bers(){
     fzf_select_and_run_rspec
   fi
 }
+
