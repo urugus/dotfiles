@@ -10,18 +10,26 @@ eval "$(nodenv init -)"
 # bash
 export BA_DIR=$HOME/dotfiles/.config/bash
 export BA_RC_DIR=$HOME/dotfiles/.config/bash/rc
+export BACKUP_DIR=$HOME/backup
 
 # git editor
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
 
+### Functions ###
+source $BA_RC_DIR/function.bash
+
 
 ### History settings ###
-export HISTSIZE=10000
-export HISTFILESIZE=20000
+HISTSIZE=300000
+HISTFILESIZE=20000
+HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
+HISTIGNORE="history:pwd:ls:ls *:ll:w:top:df *"   
+PROMPT_COMMAND='history -a; history -c; history -r'
 # Make history unique
-HISTCONTROL=ignoredups:erasedups
+HISTCONTROL=ignorespace
+backup_bash_history
 
 
 ### Aliases ###
@@ -30,10 +38,6 @@ source $BA_RC_DIR/alias.bash
 
 ### BindKeys ###
 source $BA_RC_DIR/bindkey.bash
-
-
-### Functions ###
-source $BA_RC_DIR/function.bash
 
 
 ### Plugins ###
