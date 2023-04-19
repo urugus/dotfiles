@@ -3,7 +3,7 @@
 ### Git ###
 # selecte & checkout git brahch
 fzf_git_checkout_branch() {
-  local selected_branch=$(git branch | sed -r "s/^[ \*]+//" | fzf --reverse)
+  local selected_branch=$(git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)' | awk '{print $1, $2}' | fzf --reverse | awk '{print $2}')
   if [[ -n "$selected_branch" ]]; then
     local command="git checkout $selected_branch"
     eval "$command"
@@ -92,7 +92,7 @@ run_rspec_for_all_changed_specs() {
 
 # Select changed spec
 run_selected_changed_spec(){
-  local selected_file=$(git diff --name-only | rg '_spec.rb' | fzf --reverse)
+  local selected_file=$(git ls-files --others --exclude-standard --modified | rg '_spec.rb' | fzf --reverse)
   if [[ -n "$selected_file" ]]; then
     echo "bundle exec $selected_file"
     history -s "be rs $selected_file"

@@ -25,10 +25,10 @@ source $BA_RC_DIR/function.bash
 HISTSIZE=300000
 HISTFILESIZE=20000
 HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
-HISTIGNORE="history:pwd:ls:ls *:ll:w:top:df *"   
 PROMPT_COMMAND='history -a; history -c; history -r'
 # Make history unique
-HISTCONTROL=ignorespace
+HISTCONTROL=ignorespace:ignoredups
+HISTIGNORE=ls:cd:ll:lla:pwd:vi
 backup_bash_history
 
 
