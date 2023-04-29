@@ -1,8 +1,8 @@
 ### Environment Variables ###
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
 eval "$(rbenv init -)"
@@ -17,6 +17,9 @@ export BACKUP_DIR=$HOME/backup
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
+
+# Obsidian
+export VAULT="/Users/urugus/.local/share/nvim/zettelkasten"
 
 ### Functions ###
 source $BA_RC_DIR/function.bash
