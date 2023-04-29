@@ -80,7 +80,7 @@ fzf_select_and_run_rspec() {
 
 # Run rspec for all changed files
 run_rspec_for_all_changed_specs() {
-  local selected_files=$(git diff --name-only --diff-filter=ACMR HEAD | rg '_spec.rb')
+  local selected_files=$(git diff --name-only --diff-filter=ACM HEAD | rg '_spec.rb')
   if [[ -n "$selected_files" ]]; then
     echo "run rspec for all changed specs"
     echo "$selected_files"

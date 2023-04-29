@@ -15,5 +15,9 @@ alias be='bundle_exec_command'
 alias bersdif='bundle exec rspec $(git diff --name-only HEAD^ | rg _spec.rb/ | peco)'
 alias br='bin/rails'
 
+# Pythhon
+alias python='python3'
+alias pip='pip3'
+
 # vi
 alias vi='nvim'
