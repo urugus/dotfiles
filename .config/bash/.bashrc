@@ -46,3 +46,7 @@ source $BA_RC_DIR/bindkey.bash
 
 ### Plugins ###
 source $BA_RC_DIR/pluginlist.bash
+
+if [ -f "/google/devshell/bashrc.google" ]; then
+  source "/google/devshell/bashrc.google"
+fi
