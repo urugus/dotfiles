@@ -162,7 +162,7 @@ return require("packer").startup(function(use)
 
   --------------------------------
   -- AI completion
-  use({ "github/copilot.vim", cmd = { "Copilot" } })
+  use({ "github/copilot.vim" })
   use({
     "zbirenbaum/copilot.lua",
     after = { "copilot.vim" },
