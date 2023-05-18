@@ -14,6 +14,9 @@ export BA_DIR=$HOME/dotfiles/.config/bash
 export BA_RC_DIR=$HOME/dotfiles/.config/bash/rc
 export BACKUP_DIR=$HOME/backup
 
+# Variables
+export CURRENT_BRANCH=$(git branch --show-current)
+
 # git editor
 export GIT_EDITOR=nvim
 export VISUAL=nvim
