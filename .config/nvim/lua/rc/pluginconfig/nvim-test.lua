@@ -18,4 +18,5 @@ require('nvim-test.runners.rspec'):setup {
   }
 
 vim.keymap.set("n", "<Space>ta", "<Cmd>TestFile<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Space>te", "<Cmd>TestEdit<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Space>tl", "<Cmd>TestNearest<CR>", { noremap = true, silent = true })

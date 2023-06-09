@@ -20,6 +20,7 @@ brew cocoapods
 brew cython
 brew deno
 brew docker-compose
+brew emscripten
 brew eslint
 brew exa
 brew exercism
@@ -39,6 +40,7 @@ brew gh
 brew giflib
 brew glib
 brew gmp
+brew gobject-introspection
 brew graphite2
 brew harfbuzz
 brew highway
@@ -74,6 +76,7 @@ brew libxext
 brew libxrender
 brew libyaml
 brew little-cms2
+brew lua
 brew luajit
 brew luv
 brew lz4
@@ -99,7 +102,11 @@ brew pcre2
 brew peco
 brew pixman
 brew pkg-config
+brew poetry
 brew postgresql@14
+brew py3cairo
+brew pygobject3
+brew python@3.10
 brew python@3.11
 brew pyyaml
 brew rbenv
@@ -113,12 +120,14 @@ brew tig
 brew tree
 brew tree-sitter
 brew unibilium
+brew virtualenv
 brew webp
 brew wget
 brew woff2
 brew xorgproto
 brew xz
 brew yarn
+brew yuicompressor
 brew z
 brew zola
 brew zstd
@@ -126,6 +135,7 @@ brew zstd
 tap homebrew/cask
 cask fig
 cask maccy
+cask neovide
 cask powershell
 
 tap homebrew/services
@@ -139,14 +149,14 @@ brew brew-file
 
 # App Store applications
 appstore 682658836 GarageBand (10.4.8)
-appstore 408981434 iMovie (10.3.5)
+appstore 408981434 iMovie (10.3.6)
 appstore 409183694 Keynote (13.0)
-appstore 539883307 LINE (7.16.1)
-appstore 634148309 Logic Pro X (10.7.7)
+appstore 539883307 LINE (7.17.0)
+appstore 634148309 Logic Pro X (10.7.8)
 appstore 1017470484 Next Meeting (2.7)
 appstore 409203825 Numbers (13.0)
 appstore 409201541 Pages (13.0)
-appstore 1429033973 RunCat (9.7)
+appstore 1429033973 RunCat (10.2)
 appstore 425955336 Skitch (2.9)
-appstore 803453959 Slack (4.31.155)
+appstore 803453959 Slack (4.32.122)
 appstore 497799835 Xcode (14.3)
