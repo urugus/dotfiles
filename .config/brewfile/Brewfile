@@ -8,24 +8,33 @@ brew autojump
 brew bash
 brew bash-completion
 brew bat
+brew boost
 brew brew-pip
 brew brotli
 brew bzt
 brew c-ares
 brew ca-certificates
 brew cairo
+brew cffi
 brew cheat
 brew cmake
 brew cocoapods
 brew cython
 brew deno
 brew docker-compose
+brew double-conversion
+brew edencommon
 brew emscripten
 brew eslint
 brew exa
 brew exercism
+brew fb303
+brew fbthrift
 brew fd
 brew fish
+brew fizz
+brew fmt
+brew folly
 brew fontconfig
 brew fontforge
 brew freetype
@@ -36,9 +45,11 @@ brew gd
 brew gdbm
 brew gdk-pixbuf
 brew gettext
+brew gflags
 brew gh
 brew giflib
 brew glib
+brew glog
 brew gmp
 brew gobject-introspection
 brew graphite2
@@ -52,12 +63,14 @@ brew jpeg-xl
 brew krb5
 brew libavif
 brew libcython
+brew libevent
 brew libgit2
 brew libidn2
 brew libmpc
 brew libnghttp2
 brew libpng
 brew libpq
+brew libsodium
 brew libspiro
 brew libssh2
 brew libtermkey
@@ -105,6 +118,7 @@ brew pkg-config
 brew poetry
 brew postgresql@14
 brew py3cairo
+brew pycparser
 brew pygobject3
 brew python@3.10
 brew python@3.11
@@ -115,12 +129,15 @@ brew ripgrep
 brew ruby
 brew ruby-build
 brew six
+brew snappy
 brew sqlite
 brew tig
 brew tree
 brew tree-sitter
 brew unibilium
 brew virtualenv
+brew wangle
+brew watchman
 brew webp
 brew wget
 brew woff2
@@ -150,13 +167,14 @@ brew brew-file
 # App Store applications
 appstore 682658836 GarageBand (10.4.8)
 appstore 408981434 iMovie (10.3.6)
-appstore 409183694 Keynote (13.0)
+appstore 409183694 Keynote (13.1)
 appstore 539883307 LINE (7.17.0)
 appstore 634148309 Logic Pro X (10.7.8)
 appstore 1017470484 Next Meeting (2.7)
-appstore 409203825 Numbers (13.0)
-appstore 409201541 Pages (13.0)
-appstore 1429033973 RunCat (10.2)
+appstore 409203825 Numbers (13.1)
+appstore 409201541 Pages (13.1)
+appstore 1429033973 RunCat (10.3)
 appstore 425955336 Skitch (2.9)
-appstore 803453959 Slack (4.32.122)
-appstore 497799835 Xcode (14.3)
+appstore 803453959 Slack (4.32.127)
+appstore 1219074514 Vectornator (4.13.6)
+appstore 497799835 Xcode (14.3.1)
