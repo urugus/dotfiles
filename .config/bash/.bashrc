@@ -7,6 +7,7 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="$HOME/.nodenv/bin:$PATH"
 export PATH="$HOME/.nodenv/shims:$PATH"
 export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 
@@ -22,6 +23,9 @@ export CURRENT_BRANCH=$(git branch --show-current)
 export GIT_EDITOR=nvim
 export VISUAL=nvim
 export EDITOR=nvim
+
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
 
 # Obsidian
 export VAULT="/Users/urugus/.local/share/nvim/zettelkasten"
