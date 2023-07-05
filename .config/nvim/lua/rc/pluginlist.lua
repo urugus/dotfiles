@@ -626,7 +626,7 @@ return require("packer").startup(function(use)
   --------------------------------
   -- Git
   use({
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
     event = "VimEnter",
     config = function()
       require("rc/pluginconfig/neogit")
