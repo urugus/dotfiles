@@ -4,3 +4,4 @@ The biggest risks is not taking any risk.
 Be coding easy to test, easy to read, easy to write.
 You Only Live Once
 When you don’t create things, you become defined by your tastes rather than ability. your tastes only narrow & exclude people. so create. – Why the lucky stiff
+Every line of code is a seed that might sprout a bug in the future.
