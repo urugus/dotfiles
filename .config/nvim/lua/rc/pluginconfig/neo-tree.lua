@@ -77,8 +77,8 @@ require("neo-tree").setup({
 			mappings = {
 				["<2-LeftMouse>"] = "open",
 				["<cr>"] = "open",
-				["S"] = "open_split",
-				["s"] = "open_vsplit",
+				["<C-s>"] = "open_split",
+				["<C-v>"] = "open_vsplit",
 				["C"] = "close_node",
 				["<bs>"] = "navigate_up",
 				["."] = "set_root",
@@ -108,8 +108,8 @@ require("neo-tree").setup({
 			mappings = {
 				["<2-LeftMouse>"] = "open",
 				["<cr>"] = "open",
-				["s"] = "open_split",
-				["v"] = "open_vsplit",
+				["<C-s>"] = "open_split",
+				["<C-v>"] = "open_vsplit",
 				["<bs>"] = "navigate_up",
 				["."] = "set_root",
 				["R"] = "refresh",
@@ -129,8 +129,8 @@ require("neo-tree").setup({
 			mappings = {
 				["<2-LeftMouse>"] = "open",
 				["<cr>"] = "open",
-				["S"] = "open_split",
-				["s"] = "open_vsplit",
+				["<C-s>"] = "open_split",
+				["<C-v>"] = "open_vsplit",
 				["C"] = "close_node",
 				["R"] = "refresh",
 				["d"] = "delete",
@@ -150,4 +150,4 @@ require("neo-tree").setup({
 	},
 })
 -- vim.keymap.set("n", "<C-s>", "<Cmd>NeoTreeRevealToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-s>", "<Cmd>Neotree toggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-s>", "<Cmd>Neotree focus<CR>", { noremap = true, silent = true })
