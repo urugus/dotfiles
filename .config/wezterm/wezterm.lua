@@ -18,7 +18,7 @@ return  {
     { key = "x", mods = "ALT", action = act({ CloseCurrentPane = { confirm = true } }) },
   },
   font = wezterm.font_with_fallback {
-    'Fira Code',
-    'Cica',
+    "UDEV Gothic LG",
+    "Fira Code"
   },
 }
