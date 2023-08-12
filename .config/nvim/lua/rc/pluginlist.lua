@@ -173,6 +173,10 @@ return require("packer").startup(function(use)
     end,
   })
 
+  -------------------------------
+  -- Auto fixing typo
+  use({ "tani/vim-typo" })
+
   --------------------------------------------------------------
   -- FuzzyFinders
 
