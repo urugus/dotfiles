@@ -8,7 +8,7 @@ alias lla='ll -A'
 
 # Git
 alias g='git_command'
-alias gcob='fzf_git_checkout_branch'
+alias gswb='fzf_git_switch_branch'
 
 # Ruby on Rails
 alias be='bundle_exec_command'

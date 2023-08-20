@@ -1,11 +1,11 @@
 # Functions
 
 ### Git ###
-# selecte & checkout git brahch
-fzf_git_checkout_branch() {
+# selecte & switch git brahch
+fzf_git_switch_branch() {
   local selected_branch=$(git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)' | awk '{print $1, $2}' | fzf --reverse | awk '{print $2}')
   if [[ -n "$selected_branch" ]]; then
-    local command="git checkout $selected_branch"
+    local command="git switch $selected_branch"
     eval "$command"
   fi
 }
@@ -20,6 +20,8 @@ git_command(){
         pl) git pull;;
         ps) git push "${@:2}" ;;
         st) git status "${@:2}" ;;
+        sw) git switch "${@:2}" ;;
+        swc) git switch -c "${@:2}" ;;
         *)  git "$@" ;;
     esac
 }
