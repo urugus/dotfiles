@@ -755,4 +755,11 @@ return require("packer").startup(function(use)
       use({ "wakatime/vim-wakatime", event = "VimEnter" })
     end
   end
+
+  --------------------------------
+  -- Funny
+  use({
+    "eandrju/cellular-automaton.nvim",
+    after = {"nvim-treesitter"}
+  })
 end)
