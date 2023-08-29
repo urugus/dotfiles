@@ -159,6 +159,7 @@ brew zstd
 
 tap homebrew/cask
 cask fig
+cask lapce
 cask maccy
 cask neovide
 cask powershell
@@ -179,7 +180,7 @@ tap rcmdnk/file
 brew brew-file
 
 # App Store applications
-appstore 1219074514 Curve (5.0.3)
+appstore 1219074514 Curve (5.1.0)
 appstore 682658836 GarageBand (10.4.8)
 appstore 408981434 iMovie (10.3.8)
 appstore 409183694 Keynote (13.1)
@@ -190,5 +191,5 @@ appstore 409203825 Numbers (13.1)
 appstore 409201541 Pages (13.1)
 appstore 1429033973 RunCat (10.3)
 appstore 425955336 Skitch (2.9)
-appstore 803453959 Slack (4.33.84)
+appstore 803453959 Slack (4.33.90)
 appstore 497799835 Xcode (14.3.1)
