@@ -246,6 +246,13 @@ return require("packer").startup(function(use)
     end,
   })
   use({ "windwp/nvim-ts-autotag", after = { "nvim-treesitter" } })
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    after = { "nvim-treesitter" },
+    config = function()
+      require("rc/pluginconfig/treesitter-context")
+    end,
+  })
 
   --------------------------------
   -- Treesitter textobject & operator
