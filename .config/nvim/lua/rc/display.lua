@@ -45,6 +45,9 @@ vim.o.foldlevel = 1
 vim.o.foldlevelstart = 99
 vim.w.foldcolumn = "0:"
 
+-- font
+vim.o.guifont = "UDEV Gothic LG:style=Regular:size=12"
+
 -- Cursor style
 vim.o.guicursor = "n-v-c-sm:block-Cursor/lCursor-blinkon0,i-ci-ve:ver25-Cursor/lCursor,r-cr-o:hor20-Cursor/lCursor"
 
