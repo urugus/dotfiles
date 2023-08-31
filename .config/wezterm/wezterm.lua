@@ -8,7 +8,10 @@ require("on")
 
 return  {
   use_ime = true,
-  window_background_opacity = 0.8,
+  window_background_opacity = 0.7,
+  freetype_load_target = "Light",
+  front_end = "WebGpu",
+  cell_width = 0.9,
   keys = {
     -- default keybinds
     { key = "-", mods = "ALT", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
