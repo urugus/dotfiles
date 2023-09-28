@@ -163,6 +163,7 @@ cask lapce
 cask maccy
 cask neovide
 cask powershell
+cask visual-studio-code
 cask wezterm
 
 tap homebrew/cask-fonts
