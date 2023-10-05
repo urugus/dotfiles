@@ -1,32 +1,42 @@
-vim.g.indent_blankline_enabled = true
-vim.opt.termguicolors = true
+local highlight = {
+  "CursorColumn",
+  "Whitespace",
+}
 
-require("indent_blankline").setup({
-  use_treesitter = true,
-  buftype_exclude = { "terminal" },
-  filetype_exclude = {
-    "help",
-    "dashboard",
-    "dashpreview",
-    "NvimTree",
-    "neo-tree",
-    "vista",
-    "sagahover",
-    "sagasignature",
-    "packer",
-    "log",
-    "lspsagafinder",
-    "lspinfo",
-    "dapui_scopes",
-    "dapui_breakpoints",
-    "dapui_stacks",
-    "dapui_watches",
-    "dap-repl",
-    "toggleterm",
-    "alpha",
-    "coc-explorer",
+require("ibl").setup({
+  indent = {
+    highlight = highlight,
+    char = ""
   },
-  show_current_context = true,
-  show_current_context_start = true,
+  whitespace = {
+    highlight = highlight,
+    remove_blankline_trail = false,
+  },
+  exclude = {
+    filetypes = {
+      "help",
+      "dashboard",
+      "dashpreview",
+      "NvimTree",
+      "neo-tree",
+      "vista",
+      "sagahover",
+      "sagasignature",
+      "packer",
+      "log",
+      "lspsagafinder",
+      "lspinfo",
+      "dapui_scopes",
+      "dapui_breakpoints",
+      "dapui_stacks",
+      "dapui_watches",
+      "dap-repl",
+      "toggleterm",
+      "alpha",
+      "coc-explorer",
+    },
+  },
+  scope = { enabled = false }
 })
+
 
