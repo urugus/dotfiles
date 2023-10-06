@@ -128,6 +128,7 @@ brew py3cairo
 brew pycparser
 brew pygobject3
 brew python-certifi
+brew python-pytz
 brew python@3.10
 brew python@3.11
 brew pyyaml
@@ -163,6 +164,7 @@ cask lapce
 cask maccy
 cask neovide
 cask powershell
+cask qmk-toolbox
 cask visual-studio-code
 cask wezterm
 
