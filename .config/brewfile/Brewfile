@@ -2,6 +2,7 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew act
 brew aom
 brew autoconf
 brew autojump
@@ -65,6 +66,8 @@ brew isl
 brew jasper
 brew jpeg-turbo
 brew jpeg-xl
+brew jq
+brew keyring
 brew krb5
 brew libavif
 brew libcython
@@ -127,8 +130,12 @@ brew postgresql@14
 brew py3cairo
 brew pycparser
 brew pygobject3
+brew python-build
 brew python-certifi
+brew python-packaging
+brew python-pyproject-hooks
 brew python-pytz
+brew python-setuptools
 brew python@3.10
 brew python@3.11
 brew pyyaml
@@ -188,7 +195,7 @@ brew brew-file
 # App Store applications
 appstore 1219074514 Curve (5.1.2)
 appstore 682658836 GarageBand (10.4.8)
-appstore 408981434 iMovie (10.3.9)
+appstore 408981434 iMovie (10.3.10)
 appstore 409183694 Keynote (13.2)
 appstore 539883307 LINE (8.3.0)
 appstore 634148309 Logic Pro X (10.7.9)
@@ -197,5 +204,5 @@ appstore 409203825 Numbers (13.2)
 appstore 409201541 Pages (13.2)
 appstore 1429033973 RunCat (10.3)
 appstore 425955336 Skitch (2.9)
-appstore 803453959 Slack (4.34.119)
+appstore 803453959 Slack (4.34.121)
 appstore 497799835 Xcode (15.0)
