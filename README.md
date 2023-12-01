@@ -1,7 +1,7 @@
 # Install
 
 1. Download
-
+  
 ```
 git clone https://github.com/urugus/dotfiles.git
 cd dotfiles
@@ -13,11 +13,31 @@ cd dotfiles
 ./install.sh
 ```
 
+# Hardware
+ 
+- [wings42](https://shop.dailycraft.jp/products/wings42?variant=39928490229957)
+- [テンティングスタンド](https://jp.mercari.com/item/m42715950947)
+    - [docs](https://sites.google.com/view/tentingsatnd-instructions/%E3%83%9B%E3%83%BC%E3%83%A0?authuser=0) 
 # Components
 
-- bash
-- neovim
+## Editor
+
+- [neovim](https://neovim.io)
+  - [config](https://github.com/urugus/dotfiles/tree/master/.config/nvim) 
+  - [plugins](https://github.com/urugus/dotfiles/blob/master/.config/nvim/lua/rc/pluginlist.lua)
+
+## CUI
+
+- [bash](https://devdocs.io/bash/)
+- [packages](https://github.com/urugus/dotfiles/blob/master/.config/brewfile/Brewfile)
 - [wezterm](https://wezfurlong.org/wezterm/index.html)
+  - [config](https://github.com/urugus/dotfiles/blob/master/.config/wezterm/wezterm.lua)
+- たまに気分で [neovide](https://neovide.dev)
+
+### Fonts
+
+- [UDEV Gothic](https://github.com/yuru7/udev-gothic)
+- [Cica](https://github.com/miiton/Cica)
 
 # Apps
 
@@ -29,13 +49,32 @@ cd dotfiles
 
 - [Vivaldi](https://vivaldi.com/ja/)
 
-### ClipBoard
+#### Browser Plugins
+
+- [DeepL](https://chrome.google.com/webstore/detail/deepl-translate-reading-w/cofdbpoegempjloogbagkncekinflcnj?hl=ja)
+- [GhostText](https://chrome.google.com/webstore/detail/ghosttext/godiecgffnchndlihlpaajjcplehddca?hl=ja)
+- [Pushbullet](https://chrome.google.com/webstore/detail/pushbullet/chlffgpmiacpedhhbkiomidkjlcfhogd?hl=ja)
+- [MarkDownload](https://chrome.google.com/webstore/detail/markdownload-markdown-web/pcmpcfapbekmbjjkdalcgopdkipoggdi?hl=ja)
+- [React Developper Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=ja)
+- [Urql Devtools](https://chrome.google.com/webstore/detail/urql-devtools/mcfphkbpmkbeofnkjehahlmidmceblmm?hl=ja)
+- [Vimnium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
+
+### Clipboard
 
 - [Maccy](https://maccy.app)
+
+### File Transfer
+
+- [NearDrop](https://github.com/grishka/NearDrop)
+- [Pushbullet](https://www.pushbullet.com)
 
 ### Launcher
 
 - [Raycast](https://www.raycast.com)
+
+### Mailer
+
+- [shortwave](https://www.shortwave.com)
 
 ### Note
 
@@ -54,8 +93,3 @@ cd dotfiles
 ### System Info
 
 - [RunCat](https://kyome.io/runcat/index.html?lang=ja#plugins)
-
-# Fonts
-
-- [Cica](https://github.com/miiton/Cica)
-- [Fira Code](https://github.com/tonsky/FiraCode)

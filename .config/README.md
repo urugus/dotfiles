@@ -1,6 +1,6 @@
 # Vim Setup
 ## Editor
-- [Neovide](https://github.com/neovide/neovide)
+- たまに[Neovide](https://github.com/neovide/neovide)
 
 ## Plugins
 
