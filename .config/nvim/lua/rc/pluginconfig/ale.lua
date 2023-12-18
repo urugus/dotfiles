@@ -43,6 +43,7 @@ vim.g.ale_fixers = {
   ruby = { "rubocop" },
   -- javascript
   typescript = { "prettier", "eslint" },
+  typescriptreact = { "prettier", "eslint" },
   javascript = { "prettier", "eslint" },
   javascriptreact = { "prettier", "eslint" },
   css = { "prettier", "eslint" },
@@ -57,6 +58,7 @@ vim.g.ale_linters = {
   ruby = { "rubocop" },
   -- javascript
   typescript = { "prettier", "eslint" },
+  typescriptreact = { "prettier", "eslint" },
   javascript = { "prettier", "eslint" },
   javascriptreact = { "prettier", "eslint" },
   css = { "prettier", "eslint" },

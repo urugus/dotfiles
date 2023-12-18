@@ -4,29 +4,9 @@ for type, icon in pairs(signs) do
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local on_attach = function(client, bufnr)
-  -- format on save
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
-      buffer = bufnr,
-      callback = function() vim.lsp.buf.format() end
-    })
-  end
-end
-
 -- typescript
-vim.lsp.start({
-  on_attach = on_attach,
-  cmd = { "typescript-language-server", "--stdio" },
-  root_dir = vim.fs.dirname(
-    vim.fs.find({
-      "package.json",
-      "tsconfig.json",
-      "jsconfig.json",
-      ".git",
-      "next.config.js",
-      'jest.config.js',
-    })[1]
-  )
+local lspconfig = require("lspconfig")
+lspconfig.tsserver.setup({
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
 })
+
