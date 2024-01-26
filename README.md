@@ -15,9 +15,21 @@ cd dotfiles
 
 # Hardware
  
+ ### Keyboard
+
 - [wings42](https://shop.dailycraft.jp/products/wings42?variant=39928490229957)
-- [テンティングスタンド](https://jp.mercari.com/item/m42715950947)
-    - [docs](https://sites.google.com/view/tentingsatnd-instructions/%E3%83%9B%E3%83%BC%E3%83%A0?authuser=0) 
+
+### Stand
+
+- [テンティングスタンド](https://item.rakuten.co.jp/yamada-denki/3187522013/?scid=wi_ich_androidapp_item_share)
+- [雲台マグネット 43mm](https://www.amazon.co.jp/dp/B0BTSZNRLJ?ref=ppx_pop_mob_ap_share&th=1)
+- [マグネットプレート](https://www.amazon.co.jp/dp/B0CG5YDG3V?ref=ppx_pop_mob_ap_share&th=1)
+
+#### Reference
+
+- [【コレは凄い…！】分離式＆トラックボール搭載・究極キーボード keyball39 を使い倒す方法（iPadでも使える）](https://www.youtube.com/watch?v=QC791UY_M6Y&t=398s)
+
+
 # Components
 
 ## Editor
