@@ -6,8 +6,7 @@ end
 require("cmp_dictionary").setup({
   dic = { ["*"] = dic },
   -- The following are default values, so you don't need to write them if you don't want to change them
-  exact = 2,
+  exact_length = 2,
   async = false,
-  capacity = 5,
   debug = false,
 })

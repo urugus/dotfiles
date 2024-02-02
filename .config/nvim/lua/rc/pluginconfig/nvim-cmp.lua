@@ -137,7 +137,7 @@ cmp.setup({
   },
   -- LuaFormatter off
   sources = cmp.config.sources({
-    -- { name = "copilot", priority = 100 }, -- For luasnip users.
+    -- { name = "copilot", priority = 40 }, -- For luasnip users.
     { name = "nvim_lsp", priority = 100 },
     { name = "cmp_tabnine", priority = 30 },
     { name = "luasnip", priority = 20 }, -- For luasnip users.
