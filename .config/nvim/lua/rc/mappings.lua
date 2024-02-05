@@ -20,6 +20,25 @@ local map = vim.keymap.set
 local o = vim.o
 local api = vim.api
 
+-- buffer move
+map("n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true })
+map("n", "<C-h>", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
+map("n", "<C-l>", "<Cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true })
+map("n", "<<", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true })
+map("n", ">>", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true })
+map("n", "<C-S-F2>", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true })
+map("n", "<C-S-F3>", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true })
+
+map("n", "<Space>1", "<Cmd>BufferLineGoToBuffer 1<CR>", { noremap = true, silent = true })
+map("n", "<Space>2", "<Cmd>BufferLineGoToBuffer 2<CR>", { noremap = true, silent = true })
+map("n", "<Space>3", "<Cmd>BufferLineGoToBuffer 3<CR>", { noremap = true, silent = true })
+map("n", "<Space>4", "<Cmd>BufferLineGoToBuffer 4<CR>", { noremap = true, silent = true })
+map("n", "<Space>5", "<Cmd>BufferLineGoToBuffer 5<CR>", { noremap = true, silent = true })
+map("n", "<Space>6", "<Cmd>BufferLineGoToBuffer 6<CR>", { noremap = true, silent = true })
+map("n", "<Space>7", "<Cmd>BufferLineGoToBuffer 7<CR>", { noremap = true, silent = true })
+map("n", "<Space>8", "<Cmd>BufferLineGoToBuffer 8<CR>", { noremap = true, silent = true })
+map("n", "<Space>9", "<Cmd>BufferLineGoToBuffer 9<CR>", { noremap = true, silent = true })
+
 -- tab move
 map("n", "<C-,>", ":tabnext<CR>", { noremap = true, silent = true })
 map("n", "<C-.>", ":tabprevious<CR>", { noremap = true, silent = true })
@@ -62,10 +81,10 @@ map("n", "X", "<Cmd>tabclose<CR>", { noremap = true, silent = true })
 
 -- move cursor
 vim.keymap.set({ "n", "x" }, "j", function()
-	return vim.v.count > 0 and "j" or "gj"
+  return vim.v.count > 0 and "j" or "gj"
 end, { noremap = true, expr = true })
 vim.keymap.set({ "n", "x" }, "k", function()
-	return vim.v.count > 0 and "k" or "gk"
+  return vim.v.count > 0 and "k" or "gk"
 end, { noremap = true, expr = true })
 
 -- ハイライトを消す

@@ -60,20 +60,3 @@ require("bufferline").setup({
     -- sort_by = 'relative_directory'
   },
 })
-vim.api.nvim_set_keymap("n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<Cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<<", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", ">>", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-S-F2>", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-S-F3>", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap("n", "<Space>1", "<Cmd>BufferLineGoToBuffer 1<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>2", "<Cmd>BufferLineGoToBuffer 2<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>3", "<Cmd>BufferLineGoToBuffer 3<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>4", "<Cmd>BufferLineGoToBuffer 4<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>5", "<Cmd>BufferLineGoToBuffer 5<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>6", "<Cmd>BufferLineGoToBuffer 6<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>7", "<Cmd>BufferLineGoToBuffer 7<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>8", "<Cmd>BufferLineGoToBuffer 8<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Space>9", "<Cmd>BufferLineGoToBuffer 9<CR>", { noremap = true, silent = true })
