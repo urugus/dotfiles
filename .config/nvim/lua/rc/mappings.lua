@@ -20,6 +20,10 @@ local map = vim.keymap.set
 local o = vim.o
 local api = vim.api
 
+-- input
+map('i', '<C-j>', '<Plug>(skkeleton-toggle)', { silent = true })
+map('c', '<C-j>', '<Plug>(skkeleton-toggle)', { silent = true })
+
 -- buffer move
 map("n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true })
 map("n", "<C-h>", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })

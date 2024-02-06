@@ -18,6 +18,7 @@ cmp.setup({
     format = require("lspkind").cmp_format({
       with_text = true,
       menu = {
+        skkeleton = '[Skkeleton]',
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         cmp_tabnine = "[TabNine]",
@@ -138,6 +139,7 @@ cmp.setup({
   -- LuaFormatter off
   sources = cmp.config.sources({
     -- { name = "copilot", priority = 40 }, -- For luasnip users.
+    { name = "skkeleton", priority = 80 },
     { name = "nvim_lsp", priority = 100 },
     { name = "cmp_tabnine", priority = 30 },
     { name = "luasnip", priority = 20 }, -- For luasnip users.
@@ -159,6 +161,7 @@ cmp.setup({
 cmp.setup.filetype({ "gitcommit", "markdown" }, {
   sources = cmp.config.sources({
     -- { name = "copilot", priority = 90 }, -- For luasnip users.
+    { name = "skkeleton", priority = 80 },
     { name = "nvim_lsp", priority = 100 },
     { name = "cmp_tabnine", priority = 30 },
     { name = "luasnip", priority = 80 }, -- For luasnip users.

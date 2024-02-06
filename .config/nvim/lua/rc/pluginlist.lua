@@ -95,6 +95,7 @@ return require("packer").startup(function(use)
   use({ "hrsh7th/cmp-calc", after = "nvim-cmp" })
   use({ "f3fora/cmp-spell", after = "nvim-cmp" })
   use({ "yutkat/cmp-mocword", after = "nvim-cmp" })
+  use { 'rinx/cmp-skkeleton', after = { 'nvim-cmp', 'skkeleton' } }
   use({
     "uga-rosa/cmp-dictionary",
     after = "nvim-cmp",
@@ -437,11 +438,17 @@ return require("packer").startup(function(use)
   -- Editing
 
   --------------------------------
-  -- IME
+  -- runtime
+  use({'vim-denops/denops.vim'})
+
+
+  --------------------------------
+  -- IM
   use({
-    "brglng/vim-im-select",
+    "vim-skk/skkeleton",
+    after = { "denops.vim" },
     config = function()
-      vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-im-select.vim")
+      require("rc/pluginconfig/skkeleton")
     end,
   })
 
