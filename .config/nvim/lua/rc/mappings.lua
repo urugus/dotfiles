@@ -94,11 +94,6 @@ end, { noremap = true, expr = true })
 -- ハイライトを消す
 map("n", "gq", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
--- yank
-map("n", "d<Space>", "diw", { noremap = true, silent = true })
-map("n", "c<Space>", "ciw", { noremap = true, silent = true })
-map("n", "y<Space>", "yiw", { noremap = true, silent = true })
-
 -- インクリメント設定
 map({ "n", "x" }, "+", "<C-a>", { noremap = true, silent = true })
 map({ "n", "x" }, "_", "<C-x>", { noremap = true, silent = true })
