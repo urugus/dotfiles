@@ -5,21 +5,22 @@ vim.o.synmaxcol = 200
 -- ColorScheme
 vim.cmd([[ syntax enable ]]) -- シンタックスカラーリングオン
 -- vim.o.t_Co = 256
+vim.g.transparency = 0.7
 vim.o.background = "dark"
 
 -- true color support
 vim.g.colorterm = os.getenv("COLORTERM")
 if
-	vim.g.colorterm == "truecolor"
-	or vim.g.colorterm == "24bit"
-	or vim.g.colorterm == "rxvt"
-	or vim.g.colorterm == ""
+  vim.g.colorterm == "truecolor"
+  or vim.g.colorterm == "24bit"
+  or vim.g.colorterm == "rxvt"
+  or vim.g.colorterm == ""
 then
-	if vim.fn.exists("+termguicolors") then
-		vim.o.t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-		vim.o.t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-		vim.o.termguicolors = true
-	end
+  if vim.fn.exists("+termguicolors") then
+    vim.o.t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+    vim.o.t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+    vim.o.termguicolors = true
+  end
 end
 
 -- colorscheme pluginconfig -> colorscheme
@@ -58,11 +59,11 @@ vim.o.cursorlineopt = "number"
 vim.o.laststatus = 3
 vim.o.shortmess = "aItToOF"
 vim.opt.fillchars = {
-	horiz = "━",
-	horizup = "┻",
-	horizdown = "┳",
-	vert = "┃",
-	vertleft = "┫",
-	vertright = "┣",
-	verthoriz = "╋",
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = "┃",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
 }
