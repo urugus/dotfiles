@@ -15,6 +15,9 @@
 !/.config/brewfile
 !/.config/brewfile/**
 
+## git
+
+!/.config/git
 
 ## neovim
 !/.config/nvim/pluginconfig/**
