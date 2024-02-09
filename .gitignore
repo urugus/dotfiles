@@ -17,10 +17,15 @@
 
 
 ## neovim
-/.config/nvim/plugin/**
+!/.config/nvim/pluginconfig/**
 !/.config/nvim
 !/.config/nvim/**
 
+## raycast
+!/.config/raycast
+
+## skk
+!/.config/skk
 
 ## wezterm
 /.config/wezterm/local.lua
