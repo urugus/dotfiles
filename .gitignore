@@ -24,9 +24,6 @@
 !/.config/nvim
 !/.config/nvim/**
 
-## raycast
-!/.config/raycast
-
 ## skk
 !/.config/skk
 
