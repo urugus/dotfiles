@@ -18,6 +18,7 @@ git_command(){
         cm) git commit "${@:2}" ;;
         co) git checkout "${@:2}" ;;
         pl) git pull;;
+        pr) gh pr create -a @me -w ;;
         ps) git push "${@:2}" ;;
         st) git status "${@:2}" ;;
         sw) git switch "${@:2}" ;;
@@ -43,10 +44,19 @@ backup_bash_history() {
   git add -A
   # git commit if having git diff
   if [ -n "$(git status --porcelain)" ]; then
-    git commit -q -m "bash: backup history"
+    git commit -q -m "auto backup: bash history & user dictionary"
     git push
   fi
   cd - >/dev/null || return
+}
+
+# backup skk user dictionary
+backup_skk_dictionary() {
+  local backup_file="${BACKUP_DIR}/skk/skk-jisyo.utf8"
+  local local_file="${AQUA_SKK_DIR}/skk-jisyo.utf8"
+  cat "$backup_file" >> "$local_file"
+  sort "$backup_file" | uniq > temp_file.utf8
+  mv temp_file.utf8 "$backup_file"
 }
 
 # fzf history

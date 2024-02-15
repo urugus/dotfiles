@@ -1,10 +1,8 @@
 local actions = require("telescope.actions")
 local action_layout = require("telescope.actions.layout")
-local config = require("telescope.config")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local make_entry = require("telescope.make_entry")
-local previewers = require("telescope.previewers")
 local utils = require("telescope.utils")
 local conf = require("telescope.config").values
 local telescope_builtin = require("telescope.builtin")
@@ -154,19 +152,6 @@ require("telescope").setup({
     },
   },
 })
-
-local function remove_duplicate_paths(tbl, cwd)
-  local res = {}
-  local hash = {}
-  for _, v in ipairs(tbl) do
-    local v1 = Path:new(v):normalize(cwd)
-    if not hash[v1] then
-      res[#res + 1] = v1
-      hash[v1] = true
-    end
-  end
-  return res
-end
 
 local function join_uniq(tbl, tbl2)
   local res = {}
@@ -384,5 +369,3 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
--- vim.api.nvim_set_keymap("n", "[FuzzyFinder]:", "<Cmd>Telescope command_history<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("c", "<C-t>", "<BS><Cmd>Telescope command_history<CR>", { noremap = true, silent = true })

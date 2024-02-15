@@ -20,6 +20,9 @@ export BA_DIR=$HOME/dotfiles/.config/bash
 export BA_RC_DIR=$HOME/dotfiles/.config/bash/rc
 export BACKUP_DIR=$HOME/backup
 
+# SKK 
+export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK
+
 # Variables
 export CURRENT_BRANCH=$(git branch --show-current)
 
@@ -47,6 +50,9 @@ PROMPT_COMMAND='history -a; history -c; history -r'
 HISTCONTROL=ignorespace:ignoredups
 HISTIGNORE=ls:cd:ll:lla:pwd:vi
 backup_bash_history
+
+# backup skk user dictionary
+backup_skk_dictionary
 
 
 ### Aliases ###
