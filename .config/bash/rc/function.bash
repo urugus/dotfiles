@@ -55,8 +55,8 @@ backup_skk_dictionary() {
   local backup_file="${BACKUP_DIR}/skk/skk-jisyo.utf8"
   local local_file="${AQUA_SKK_DIR}/skk-jisyo.utf8"
   cat "$backup_file" >> "$local_file"
-  sort "$backup_file" | uniq > temp_file.utf8
-  mv temp_file.utf8 "$backup_file"
+  sort "$backup_file" | uniq > /tmp/temp_file.utf8
+  mv /tmp/temp_file.utf8 "$backup_file"
 }
 
 # fzf history

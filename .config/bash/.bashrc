@@ -24,7 +24,10 @@ export BACKUP_DIR=$HOME/backup
 export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK
 
 # Variables
-export CURRENT_BRANCH=$(git branch --show-current)
+# only ~/.bashrc or ~/.bash_profile
+if [[ $- == *i* ]]; then
+  export CURRENT_BRANCH=$(git branch --show-current)
+fi
 
 # git editor
 export GIT_EDITOR=nvim
@@ -42,17 +45,20 @@ source $BA_RC_DIR/function.bash
 
 
 ### History settings ###
-HISTSIZE=300000
-HISTFILESIZE=20000
-HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
-PROMPT_COMMAND='history -a; history -c; history -r'
-# Make history unique
-HISTCONTROL=ignorespace:ignoredups
-HISTIGNORE=ls:cd:ll:lla:pwd:vi
-backup_bash_history
+if [[ $- == *i* ]]; then
+  # backup bash history
+  HISTSIZE=300000
+  HISTFILESIZE=20000
+  HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
+  PROMPT_COMMAND='history -a; history -c; history -r'
+  # Make history unique
+  HISTCONTROL=ignorespace:ignoredups
+  HISTIGNORE=ls:cd:ll:lla:pwd:vi
+  backup_bash_history
 
-# backup skk user dictionary
-backup_skk_dictionary
+  # backup skk user dictionary
+  backup_skk_dictionary
+fi
 
 
 ### Aliases ###
