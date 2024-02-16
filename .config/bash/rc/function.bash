@@ -20,6 +20,8 @@ git_command(){
         pl) git pull;;
         pr) gh pr create -a @me -w ;;
         ps) git push "${@:2}" ;;
+        rb) git rebase "${@:2}" ;;
+        ri) git rebase -i HEAD~"${@:2}" ;;
         st) git status "${@:2}" ;;
         sw) git switch "${@:2}" ;;
         swc) git switch -c "${@:2}" ;;
