@@ -44,8 +44,7 @@ map("n", "<Space>8", "<Cmd>BufferLineGoToBuffer 8<CR>", { noremap = true, silent
 map("n", "<Space>9", "<Cmd>BufferLineGoToBuffer 9<CR>", { noremap = true, silent = true })
 
 -- tab move
-map("n", "<C-,>", ":tabnext<CR>", { noremap = true, silent = true })
-map("n", "<C-.>", ":tabprevious<CR>", { noremap = true, silent = true })
+map("n", "<C-t>n", ":tab new<CR>", { noremap = true, silent = true })
 
 -- terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false })
