@@ -11,6 +11,15 @@
 !/.config/bash
 !/.config/bash/**
 
+### zsh
+!/.zshenv
+!/zsh/*
+!/zsh/.zshenv
+!/zsh/rc/**
+
+### starship
+!/.config/starship.toml
+
 ## brew-file
 !/.config/brewfile
 !/.config/brewfile/**
