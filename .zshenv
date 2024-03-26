@@ -10,9 +10,15 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
  
 export ZDOTDIR=$HOME/.config/zsh
 export ZHOMEDIR=$HOME/.config/zsh
+export ZENVDIR=$ZDOTDIR/environment.sh
 export ZRCDIR=$ZHOMEDIR/rc
 export ZDATADIR=$XDG_DATA_HOME/zsh
 export ZCACHEDIR=$XDG_CACHE_HOME/zsh
+
+# Backup
+export BACKUP_DIR=$HOME/backup
+export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK
+
 
 # editor
 export EDITOR=nvim
