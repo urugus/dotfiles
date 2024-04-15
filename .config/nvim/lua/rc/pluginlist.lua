@@ -709,21 +709,17 @@ return require("packer").startup(function(use)
 
   --------------------------------
   -- Markdown
-  -- use({ "iamcco/markdown-preview.nvim", ft = { "markdown" }, run = ":call mkdp#util#install()" })
-  -- use markdown-preview.nvim
-  -- if vim.fn.executable('glow') then
-  --   use {'npxbr/glow.nvim',
-  --     ft = {'markdown'},
-  --     run = ':GlowInstall',
-  --   }
-  -- end
-  -- use({
-  --  "SidOfc/mkdx",
-  --  ft = { "markdown" },
-  --  setup = function()
-  --   vim.cmd("source ~/.config/nvim/rc/pluginsetup/mkdx.vim")
-  --  end,
-  -- })
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  })
 
   ------------------------------------------------------------
   -- Standard Feature Enhancement
