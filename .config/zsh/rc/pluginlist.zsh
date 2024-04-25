@@ -63,3 +63,9 @@ zinit wait'1' lucid \
   if"(( ${ZSH_VERSION%%.*} > 4.4))" \
   light-mode for @wting/autojump
 
+#--------------------------------#
+# vim mode
+#--------------------------------#
+zinit ice lucid wait
+zinit light jeffreytse/zsh-vi-mode
+zvm_after_init_commands+=('[ -f ~/.zsh-history-substring-search.zsh ] && source ~/.zsh-history-substring-search.zsh')
