@@ -50,3 +50,4 @@ setopt no_global_rcs
 if [[ -f $(brew --prefix)/etc/profile.d/autojump.sh ]]; then
   . $(brew --prefix)/etc/profile.d/autojump.sh
 fi
+. "$HOME/.cargo/env"
