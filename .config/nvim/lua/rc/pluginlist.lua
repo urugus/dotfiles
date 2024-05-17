@@ -106,8 +106,10 @@ return require("packer").startup(function(use)
   use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" })
   use({
     "tzachar/cmp-tabnine",
-    run = "./install.sh",
     after = "nvim-cmp",
+    config = function()
+      require("rc/pluginconfig/cmp-tabnine")
+    end,
   })
   use({ "ray-x/cmp-treesitter", after = "nvim-cmp" })
   use({ "hrsh7th/cmp-cmdline", after = "nvim-cmp" })
@@ -615,7 +617,7 @@ return require("packer").startup(function(use)
   -- Test
   use({
     "klen/nvim-test",
-    after = { "nvim-treesitter" },
+    after = { "nvim-treesitter", "plenary", "toggleterm" },
     config = function()
       require("rc/pluginconfig/nvim-test")
     end,
@@ -684,16 +686,6 @@ return require("packer").startup(function(use)
   -- Standard Feature Enhancement
 
   --------------------------------
-  -- SpellCorrect (iabbr)
-  use({
-    "Pocco81/AbbrevMan.nvim",
-    event = "VimEnter",
-    config = function()
-      require("rc/pluginconfig/AbbrevMan")
-    end,
-  })
-
-  --------------------------------
   -- Terminal
   use({
     "akinsho/toggleterm.nvim",
@@ -709,11 +701,6 @@ return require("packer").startup(function(use)
 
   --------------------------------
   -- Markdown
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
-
   use({
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",

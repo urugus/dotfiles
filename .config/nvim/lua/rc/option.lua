@@ -4,7 +4,6 @@ vim.g.maplocalleader = "\\"
 vim.o.shada = "'50,<1000,s100,\"1000,!" -- YankRing用に!を追加
 vim.o.shadafile = vim.fn.stdpath("data") .. "/shada/main.shada"
 vim.fn.mkdir(vim.fn.fnamemodify(vim.fn.expand(vim.g.viminfofile), ":h"), "p")
-vim.o.shellslash = true -- Windowsでディレクトリパスの区切り文字に / を使えるようにする
 -- vim.o.lazyredraw   vim-anzuの検索結果が見えなくなることがあるためOFF
 vim.o.complete = vim.o.complete .. ",k" -- 補完に辞書ファイル追加
 vim.o.completeopt = "menuone,noselect,noinsert"
