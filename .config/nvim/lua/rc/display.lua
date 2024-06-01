@@ -32,7 +32,7 @@ vim.o.foldlevelstart = 99
 vim.w.foldcolumn = "0:"
 
 -- font
-vim.o.guifont = "UDEV Gothic LG:style=Regular:size=12"
+vim.o.guifont = "UDEV Gothic LG,Hack Nerd Font,Fira Code"
 
 -- Cursor style
 vim.o.guicursor = "n-v-c-sm:block-Cursor/lCursor-blinkon0,i-ci-ve:ver25-Cursor/lCursor,r-cr-o:hor20-Cursor/lCursor"
@@ -66,7 +66,7 @@ if vim.fn.exists("g:neovide") then
   vim.g.neovide_floating_z_height = 20
   vim.g.neovide_light_angle_degree = 45
   vim.g.neovide_light_radius = 5
-  vim.g.neovide_font = 'UDEV Gothic LG'
+  vim.g.neovide_font = 'UDEV Gothic LG,Hack Nerd Font,Fira Code'
   vim.g.neovide_default_font_size = 12
 end
 

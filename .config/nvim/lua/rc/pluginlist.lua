@@ -107,6 +107,8 @@ return require("packer").startup(function(use)
   use({
     "tzachar/cmp-tabnine",
     after = "nvim-cmp",
+    run = "powershell ./install.ps1",
+    requires = { "hrsh7th/nvim-cmp" },
     config = function()
       require("rc/pluginconfig/cmp-tabnine")
     end,
@@ -618,6 +620,7 @@ return require("packer").startup(function(use)
   use({
     "klen/nvim-test",
     after = { "nvim-treesitter", "plenary", "toggleterm" },
+    requires = { "nvim-lua/plenary.nvim" },
     config = function()
       require("rc/pluginconfig/nvim-test")
     end,

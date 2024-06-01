@@ -22,6 +22,7 @@ return  {
   },
   font = wezterm.font_with_fallback {
     "UDEV Gothic LG",
+    "Hack Nerd Font",
     "Fira Code"
   },
 }
