@@ -710,6 +710,14 @@ return require("packer").startup(function(use)
   })
 
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    'MeanderingProgrammer/markdown.nvim',
+    as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    after = { 'nvim-treesitter' },
+    config = function()
+      require('rc/pluginconfig/render-markdown')
+    end,
+})
 
   ------------------------------------------------------------
   -- Standard Feature Enhancement
