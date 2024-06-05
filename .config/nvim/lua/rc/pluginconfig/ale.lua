@@ -63,6 +63,7 @@ vim.g.ale_linters = {
   javascriptreact = { "prettier", "eslint" },
   css = { "prettier", "eslint" },
   scss = { "prettier", "eslint" },
+  astro = {"prettier", "eslint"},
   -- lua
   lua  = { "lua-format" },
 }

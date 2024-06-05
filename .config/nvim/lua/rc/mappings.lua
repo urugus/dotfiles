@@ -69,12 +69,11 @@ api.nvim_set_keymap("n", "<Leader>g", "[git]", {})
 map({ "n", "x" }, "z", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
-api.nvim_set_keymap("n", "z", "[FuzzyFinder]", {})
-api.nvim_set_keymap("v", "z", "[FuzzyFinder]", {})
-api.nvim_set_keymap("n", "Z", "<Nop>", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "Z", "[FuzzyFinder]", {})
 
 -- treesitter
 vim.keymap.set("n", "'", "<Nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'zf', 'zfa{', { noremap = true, silent = true })
 
 ---- remap
 map("n", "gzz", "zz", { noremap = true, silent = true })
