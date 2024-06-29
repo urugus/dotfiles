@@ -704,12 +704,7 @@ return require("packer").startup(function(use)
 
   --------------------------------
   -- Markdown
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
-
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use {'iamcco/markdown-preview.nvim'}
   use({
     'MeanderingProgrammer/markdown.nvim',
     as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim

@@ -25,7 +25,7 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
       actions.file_vsplit(prompt_bufnr)
     elseif open_cmd == "split" then
       actions.file_split(prompt_bufnr)
-    elseif open_cmd == "tabe" then
+    elseif open_cmd == "table" then
       actions.file_tab(prompt_bufnr)
     else
       actions.file_edit(prompt_bufnr)
@@ -40,7 +40,7 @@ function custom_actions.multi_selection_open_split(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "split")
 end
 function custom_actions.multi_selection_open_tab(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "tabe")
+  custom_actions._multiopen(prompt_bufnr, "table")
 end
 function custom_actions.multi_selection_open(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "edit")
@@ -217,7 +217,7 @@ telescope_builtin.my_mru = function(opts)
   local show_untracked = vim.F.if_nil(opts.show_untracked, true)
   local recurse_submodules = vim.F.if_nil(opts.recurse_submodules, false)
   if show_untracked and recurse_submodules then
-    error("Git does not suppurt both --others and --recurse-submodules")
+    error("Git does not support both --others and --recurse-submodules")
   end
   local cmd = {
     "git",
