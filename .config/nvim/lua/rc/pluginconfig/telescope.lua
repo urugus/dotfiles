@@ -323,6 +323,8 @@ vim.api.nvim_set_keymap("n", "[FuzzyFinder]l", "<Cmd>Telescope loclist<CR>", { n
 vim.api.nvim_set_keymap("n", "[FuzzyFinder]m", "<Cmd>Telescope marks<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[FuzzyFinder]r", "<Cmd>Telescope registers<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "[FuzzyFinder]*", "<Cmd>Telescope grep_string<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[FuzzyFinder]a", "<Cmd>Telescope<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "[FuzzyFinder]k", "<Cmd>Telescope kensaku<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap(
   "n",
   "[FuzzyFinder]f",

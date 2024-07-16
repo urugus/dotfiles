@@ -217,17 +217,17 @@ return require("packer").startup(function(use)
       require("telescope").load_extension("packer")
     end,
   })
-  -- use({
-  --   "nvim-telescope/telescope-smart-history.nvim",
-  --   requires = { { "nvim-telescope/telescope.nvim", opt = true }, { "tami5/sqlite.lua", opt = true } },
-  --   after = { "telescope.nvim", "sqlite.lua" },
-  --   config = function()
-  --     require("telescope").load_extension("smart_history")
-  --   end,
-  --   run = function()
-  --     os.execute("mkdir -p ~/.local/share/nvim/databases/")
-  --   end,
-  -- })
+  use({ "lambdalisue/kensaku.vim" })
+
+  -- telescope-kensaku.nvim のインストールと設定
+  use({
+      "Allianaab2m/telescope-kensaku.nvim",
+      requires = { "nvim-telescope/telescope.nvim" },
+      config = function()
+        require("telescope").setup{}
+        require("telescope").load_extension("kensaku")
+      end
+  })
 
   --------------------------------
   -- Treesitter
