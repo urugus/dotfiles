@@ -7,8 +7,9 @@ require("on")
 ---------------------------------------------------------------
 
 return  {
-  use_ime = true,
+  use_ime = false,
   window_background_opacity = 0.7,
+  macos_window_background_blur = 2,
   freetype_load_target = "Light",
   front_end = "WebGpu",
   cell_width = 0.9,
