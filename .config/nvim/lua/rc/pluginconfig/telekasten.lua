@@ -2,24 +2,22 @@ local home = vim.fn.stdpath("data") .. "/zettelkasten"
 local templ_dir = vim.fn.stdpath("config") .. "/zettelkasten/templates"
 require("telekasten").setup({
 	home = home,
-	dailies = home .. "/" .. "daily",
-	weeklies = home .. "/" .. "weekly",
+	dailies = home .. "/private" .. "/diary",
 	templates = templ_dir,
 	extension = ".md",
 
 	-- following a link to a non-existing note will create it
 	follow_creates_nonexisting = true,
 	dailies_create_nonexisting = true,
-	weeklies_create_nonexisting = true,
 
 	-- template for new notes (new_note, follow_link)
-	template_new_note = templ_dir .. "/new_note.md",
+	template_new_note = templ_dir .. "/note_template.md",
 
 	-- template for newly created daily notes (goto_today)
-	template_new_daily = templ_dir .. "/daily.md",
+	template_new_daily = templ_dir .. "/daily_template.md",
 
 	-- template for newly created weekly notes (goto_thisweek)
-	template_new_weekly = templ_dir .. "/weekly.md",
+	template_new_weekly = templ_dir .. "/daily_template.md",
 
 	image_link_style = "markdown",
 

@@ -1,4 +1,4 @@
--- require("rc/base")
+require("rc/base")
 
 -- ===============================
 
