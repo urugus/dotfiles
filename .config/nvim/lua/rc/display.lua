@@ -3,10 +3,11 @@ vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 vim.o.synmaxcol = 200
 -- ColorScheme
-vim.cmd([[ syntax enable ]]) -- シンタックスカラーリングオン
+vim.cmd.syntax("enable")
 -- vim.o.t_Co = 256
 vim.g.transparency = 0.7
 vim.o.background = "dark"
+
 
 -- colorscheme pluginconfig -> colorscheme
 vim.o.cursorline = false

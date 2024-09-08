@@ -36,7 +36,7 @@ end
 
 local phrases = vim.fn.readfile(vim.fn.expand("~/.config/nvim/lua/rc/files/favorite_phrases.txt"))
 dashboard.section.header.val = phrases[ math.random(0, #phrases - 1 ) ]
-dashboard.section.footer.val = "Total plugins: " .. require("rc/packer").count_plugins()
+dashboard.section.footer.val = "Total plugins: " .. require("lazy").stats().count
 dashboard.section.header.opts.hl = "Question"
 dashboard.section.buttons.val = {
   dashboard.button("o", "פּ Open File Tree", "<Cmd>NeoTreeFloatToggle<CR>"),
@@ -51,7 +51,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("n", " Memo New", ":Telekasten new_note<CR>"),
 	dashboard.button("d", " Memo Today", ":Telekasten goto_today<CR>"),
 	dashboard.button("m", " Memo List", ":Telekasten find_notes<CR>"),
-	dashboard.button("p", " Update plugins", ":PackerSync<CR>"),
+	dashboard.button("p", " Update plugins", ":Lazy sync<CR>"),
 	dashboard.button("q", " Exit", ":qa<CR>"),
 }
 

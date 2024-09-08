@@ -1,6 +1,9 @@
 vim.o.background = 'dark'
 
-require('vscode').setup({
+local vscode = require('vscode')
+
+vscode.setup({
+  style = 'dark',
   -- Enable transparent background
   transparent = true,
 
@@ -16,4 +19,4 @@ require('vscode').setup({
   },
 })
 
-require('vscode').load()
+vim.cmd.colorscheme('vscode')
