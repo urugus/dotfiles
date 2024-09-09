@@ -592,9 +592,11 @@ require("lazy").setup({
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "canary",
-		event = { "CmdlineEnter" },
+    config = function()
+      require("rc/pluginconfig/CopilotChat")
+    end,
 		opts = {
-			debug = false,
+			debug = true,
 		},
 	},
 
