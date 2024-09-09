@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.o.termguicolors = true
 vim.o.shada = "'50,<1000,s100,\"1000,!" -- YankRing用に!を追加
 vim.o.shadafile = vim.fn.stdpath("data") .. "/shada/main.shada"
 vim.fn.mkdir(vim.fn.fnamemodify(vim.fn.expand(vim.g.viminfofile), ":h"), "p")
