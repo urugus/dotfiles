@@ -68,6 +68,21 @@ vim.g.ale_linters = {
   lua  = { "lua-format" },
 }
 
+vim.g.ale_fixers = {
+  -- ruby
+  ruby = { "rubocop" },
+  -- javascript
+  typescript = { "prettier", "eslint" },
+  typescriptreact = { "prettier", "eslint" },
+  javascript = { "prettier", "eslint" },
+  javascriptreact = { "prettier", "eslint" },
+  css = { "prettier", "eslint" },
+  scss = { "prettier", "eslint" },
+  astro = {"prettier", "eslint"},
+  -- lua
+  lua  = { "lua-format" },
+}
+
 
 -- --------------------------------------------------------
 -- language settings
