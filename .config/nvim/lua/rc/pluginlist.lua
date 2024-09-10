@@ -27,7 +27,18 @@ require("lazy").setup({
       require("rc/pluginconfig/mason")
     end,
   },
-  { "folke/which-key.nvim", lazy = true },
+  { "folke/which-key.nvim" },
+
+  --------------------------------
+  -- runtime
+  { 'vim-denops/denops.vim' },
+  { 
+    "vim-skk/skkeleton",
+    config = function()
+      require("rc/pluginconfig/skkeleton")
+    end,
+  },
+
 
   --------------------------------------------------------------
   -- Appearance
@@ -290,18 +301,31 @@ require("lazy").setup({
 			require("telescope").load_extension("luasnip")
 		end,
 	},
---------------------------------------------------------------
-	-- FuzzyFinders
+  --------------------------------------------------------------
+  -- FuzzyFinders
 
-	--------------------------------
-	-- telescope.nvim
-	{
-		"nvim-telescope/telescope.nvim",
-		event = { "VimEnter" },
-		config = function()
-			require("rc/pluginconfig/telescope")
-		end,
-	},
+  --------------------------------
+  -- telescope.nvim
+  {
+    "nvim-telescope/telescope.nvim",
+    event = { "VimEnter" },
+    config = function()
+      require("rc/pluginconfig/telescope")
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "Allianaab2m/telescope-kensaku.nvim",
+        config = function()
+          require("telescope").load_extension("kensaku") -- :Telescope kensaku
+        end,
+        dependencies = {
+          { "lambdalisue/vim-kensaku", lazy = true },
+        }
+      }
+    }
+  },
+
 
   {
     "nvim-telescope/telescope-github.nvim",
@@ -599,16 +623,6 @@ require("lazy").setup({
 			debug = true,
 		},
 	},
-
-  --------------------------------
-    -- runtime
-    { 'vim-denops/denops.vim' },
-    { 
-      "vim-skk/skkeleton",
-      config = function()
-        require("rc/pluginconfig/skkeleton")
-      end,
-    },
 
   --------------------------------
   -- Using editor in the browser
