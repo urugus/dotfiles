@@ -38,6 +38,12 @@ require("lazy").setup({
       require("rc/pluginconfig/skkeleton")
     end,
   },
+  {
+    "delphinus/skkeleton_indicator.nvim",
+    config = function()
+      require("rc/pluginconfig/skkeleton_indicator")
+    end,
+  },
 
 
   --------------------------------------------------------------
