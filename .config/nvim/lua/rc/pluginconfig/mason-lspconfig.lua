@@ -58,7 +58,7 @@ local capabilities = vim.tbl_deep_extend("force",
 )
 require("mason-lspconfig").setup_handlers({
   function(server_name)
-    if server_name == "tsserver" then
+    if server_name == "ts_server" then
       server_name = "ts_ls"
     end
 

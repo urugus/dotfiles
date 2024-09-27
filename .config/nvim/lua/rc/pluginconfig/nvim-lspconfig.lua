@@ -6,8 +6,15 @@ end
 
 -- typescript
 local lspconfig = require("lspconfig")
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+})
+
+-- astro
+lspconfig.astro.setup({
+  cmd = { "astro-ls", "--studio" },
+  filetypes = { "astro" },
+  init_options = {}
 })
 
 
