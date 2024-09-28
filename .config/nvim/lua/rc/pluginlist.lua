@@ -489,15 +489,6 @@ require("lazy").setup({
   -- Programming Languages
 
   --------------------------------
-  {
-    'MeanderingProgrammer/markdown.nvim',
-    as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-    config = function()
-      require('rc/pluginconfig/render-markdown')
-    end,
-  },
-
-  --------------------------------
   -- Brackets
   {
     "andymass/vim-matchup",
