@@ -1,4 +1,4 @@
-/opt/homebrew/bin/pip
+#!/bin/bash
 
 set -ue
 
@@ -34,11 +34,25 @@ link_to_homedir() {
   command echo "completed: symbolic link"
 }
 
-brew_install() {
-  brew file install
-  command echo "completed: brew install"
+brew_install_check() {
+  if ! command -v brew &> /dev/null; then
+    command echo "Homebrew is not installed. Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    command echo "Homebrew installed."
+  else
+    command echo "Homebrew is already installed."
+  fi
 }
 
+pip_install_check() {
+  if ! command -v pip &> /dev/null; then
+    command echo "pip not found. Installing via Homebrew..."
+    brew install python
+    command echo "pip installed."
+  else
+    command echo "pip is already installed."
+  fi
+}
 
 while [ $# -gt 0 ];do
   case ${1} in
@@ -55,6 +69,14 @@ while [ $# -gt 0 ];do
   shift
 done
 
+# Check if Homebrew is installed, if not, install it automatically
+brew_install_check
+
+# Check if pip is installed, if not, install it
+pip_install_check
+
+# Proceed with symbolic linking and other configurations
 link_to_homedir
 git config --global include.path "~/.gitconfig_shared"
-command echo -e "\e[1;36m Install completed!!!! \e[m"
+command echo -e "Install completed!!!!"
+
