@@ -16,15 +16,26 @@ link_to_homedir() {
   fi
 
   local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-  local dotdir=$(dirname ${script_dir})
+  local dotdir="$script_dir"
+  local ignore_files=(".git" ".gitignore" "DS_Store" ".gitmodules")
+
   if [[ "$HOME" != "$dotdir" ]];then
-    for f in $dotdir/.??*; do
-      [[ `basename $f` == ".git" ]] && continue
-      if [[ -L "$HOME/`basename $f`" ]];then
-        command rm -f "$HOME/`basename $f`"
+    for f in $dotdir/.[^.]*; do
+      local basefile=$(basename $f)
+
+      for ignore in "${ignore_files[@]}"; do
+        if [[ "$basefile" == "$ignore" ]]; then
+          command echo "Skipping $basefile"
+          continue 2
+        fi
+      done
+
+      if [[ -L "$HOME/$basefile" ]]; then
+        command rm -f "$HOME/$basefile"
       fi
-      if [[ -e "$HOME/`basename $f`" ]];then
-        command mv "$HOME/`basename $f`" "$HOME/.dotbackup"
+
+      if [[ -e "$HOME/$basefile" ]]; then
+        command mv "$HOME/$basefile" "$HOME/.dotbackup"
       fi
       command ln -snf $f $HOME
     done
