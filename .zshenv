@@ -25,6 +25,7 @@ export EDITOR=nvim
 
 typeset -U path PATH manpath sudo_path
 
+# paths
 path=(
   /opt/homebrew/bin
   $HOME/.rbenv/shims

@@ -19,6 +19,9 @@ setopt hist_reduce_blanks         # remove leading and trailing blanks from each
 setopt hist_expand                # expand history in line
 setopt share_history              # share command history data
 
+# Display
+eval "$(starship init zsh)"
+
 # Others
 setopt no_beep
 
