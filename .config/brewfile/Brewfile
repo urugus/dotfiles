@@ -179,6 +179,7 @@ cask powershell
 cask qmk-toolbox
 cask raycast
 cask visual-studio-code
+cask warp
 cask wezterm
 
 tap grishka/grishka
