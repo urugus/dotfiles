@@ -147,6 +147,7 @@ brew ruby-build
 brew six
 brew snappy
 brew sqlite
+brew starship
 brew tig
 brew tree
 brew tree-sitter
@@ -167,7 +168,7 @@ brew zplug
 brew zstd
 
 cask aquaskk
-cask fig
+cask discord
 cask font-plemol-jp
 cask keycastr
 cask lapce
@@ -175,7 +176,6 @@ cask neardrop
 cask neovide
 cask notion
 cask obsidian
-cask powershell
 cask qmk-toolbox
 cask raycast
 cask visual-studio-code
