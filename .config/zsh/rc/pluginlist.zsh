@@ -59,9 +59,7 @@ zinit wait'1' lucid \
 #--------------------------------#
 # move directory
 #--------------------------------#
-zinit wait'1' lucid \
-  if"(( ${ZSH_VERSION%%.*} > 4.4))" \
-  light-mode for @wting/autojump
+eval "$(zoxide init zsh)"
 
 #--------------------------------#
 # vim mode
