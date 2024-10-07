@@ -138,12 +138,12 @@ brew python-setuptools
 brew python@3.10
 brew python@3.11
 brew python@3.12
-brew pyyaml
 brew rbenv
 brew readline
 brew ripgrep
 brew ruby
 brew ruby-build
+brew rust
 brew six
 brew snappy
 brew sqlite
@@ -164,6 +164,7 @@ brew yarn
 brew yuicompressor
 brew z
 brew zola
+brew zoxide
 brew zplug
 brew zstd
 
@@ -179,6 +180,7 @@ cask obsidian
 cask qmk-toolbox
 cask raycast
 cask visual-studio-code
+cask vivaldi
 cask warp
 cask wezterm
 
