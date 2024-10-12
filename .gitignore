@@ -29,9 +29,9 @@
 !/.config/git
 
 ## neovim
-!/.config/nvim/pluginconfig/**
 !/.config/nvim
 !/.config/nvim/**
+!/.config/nvim/pluginconfig/**
 
 ## skk
 !/.config/skk

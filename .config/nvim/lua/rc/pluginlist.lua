@@ -201,18 +201,18 @@ require("lazy").setup({
     end,
   },
 
-	--------------------------------------------------------------
-	-- LSP & completion
+  --------------------------------------------------------------
+  -- LSP & completion
 
-	--------------------------------
-	-- Auto Completion
-	{
-		"hrsh7th/nvim-cmp",
-		event = "VimEnter",
-		config = function()
-			require("rc/pluginconfig/nvim-cmp")
-		end,
-	},
+  --------------------------------
+  -- Auto Completion
+  {
+    "hrsh7th/nvim-cmp",
+    event = "VimEnter",
+    config = function()
+      require("rc/pluginconfig/nvim-cmp")
+    end,
+  },
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
   { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true },
   { "hrsh7th/cmp-buffer", lazy = true },
@@ -266,47 +266,47 @@ require("lazy").setup({
     lazy = true,
   },
 
-	--------------------------------
-	-- LSP's UI
-	{
-		"nvimdev/lspsaga.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("rc/pluginconfig/lspsaga")
-		end,
-	},
-	{
-		"folke/trouble.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("rc/pluginconfig/trouble")
-		end,
-	},
+  --------------------------------
+  -- LSP's UI
   {
-		"j-hui/fidget.nvim",
-		tag = "legacy",
-		event = "BufEnter",
-		config = function()
-			require("rc/pluginconfig/fidget")
-		end,
-	},
-	----------------------------------
-	---- Snippet
-	{
-		"L3MON4D3/LuaSnip",
-		event = "VimEnter",
-		build = "make install_jsregexp",
-		config = function()
-			require("rc/pluginconfig/LuaSnip")
-		end,
-	},
-	{
-		"benfowler/telescope-luasnip.nvim",
-		event = "VimEnter",
-		config = function()
-			require("telescope").load_extension("luasnip")
-		end,
-	},
+    "nvimdev/lspsaga.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("rc/pluginconfig/lspsaga")
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("rc/pluginconfig/trouble")
+    end,
+  },
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "BufEnter",
+    config = function()
+      require("rc/pluginconfig/fidget")
+    end,
+  },
+  ----------------------------------
+  ---- Snippet
+  {
+    "L3MON4D3/LuaSnip",
+    event = "VimEnter",
+    build = "make install_jsregexp",
+    config = function()
+      require("rc/pluginconfig/LuaSnip")
+    end,
+  },
+  {
+    "benfowler/telescope-luasnip.nvim",
+    event = "VimEnter",
+    config = function()
+      require("telescope").load_extension("luasnip")
+    end,
+  },
   --------------------------------------------------------------
   -- FuzzyFinders
 
@@ -487,6 +487,20 @@ require("lazy").setup({
 
   --------------------------------
   -- Programming Languages
+  
+  --------------------------------
+  -- Markdown
+{
+  "toppair/peek.nvim",
+  build = "deno task --quiet build:fast",
+  ft = { "markdown" },
+  enabled = function()
+    return vim.fn.executable("deno")
+  end,
+  config = function()
+    require("rc/pluginconfig/peek")
+  end,
+  },
 
   --------------------------------
   -- Brackets
@@ -561,19 +575,19 @@ require("lazy").setup({
 
   --------------------------------
   -- Notify
-	{
-		"rcarriga/nvim-notify",
-		event = "VeryLazy",
-		config = function()
-			require("rc/pluginconfig/nvim-notify")
-		end,
-	},
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require("rc/pluginconfig/nvim-notify")
+    end,
+  },
 
   --------------------------------
   -- Lua Library
-	{ "nvim-lua/popup.nvim" },
-	{ "nvim-lua/plenary.nvim" },
-	{ "MunifTanjim/nui.nvim" },
+  { "nvim-lua/popup.nvim" },
+  { "nvim-lua/plenary.nvim" },
+  { "MunifTanjim/nui.nvim" },
   ------------------------------------------------------------
   -- Standard Feature Enhancement
 
@@ -587,39 +601,39 @@ require("lazy").setup({
   },
 
   --------------------------------
-	-- Filer
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		event = "VimEnter",
-		branch = "main",
-		config = function()
-			require("rc/pluginconfig/neo-tree")
-		end,
-	},
+  -- Filer
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    event = "VimEnter",
+    branch = "main",
+    config = function()
+      require("rc/pluginconfig/neo-tree")
+    end,
+  },
 
   --------------------------------
-	-- AI completion
+  -- AI completion
   { "github/copilot.vim" },
-	{
-		"zbirenbaum/copilot.lua",
-		-- cmd = { "Copilot" },
-		event = "InsertEnter",
-		config = function()
-			vim.defer_fn(function()
-				require("rc/pluginconfig/copilot")
-			end, 100)
-		end,
-	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		branch = "canary",
+  {
+    "zbirenbaum/copilot.lua",
+    -- cmd = { "Copilot" },
+    event = "InsertEnter",
+    config = function()
+      vim.defer_fn(function()
+        require("rc/pluginconfig/copilot")
+      end, 100)
+    end,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
     config = function()
       require("rc/pluginconfig/CopilotChat")
     end,
-		opts = {
-			debug = true,
-		},
-	},
+    opts = {
+      debug = true,
+    },
+  },
 
   --------------------------------
   -- Using editor in the browser
