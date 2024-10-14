@@ -475,6 +475,13 @@ require("lazy").setup({
     config = true,
   },
 
+  {
+    'hat0uma/csvview.nvim',
+    config = function()
+      require('csvview').setup()
+    end
+  },
+
   --------------------------------
   -- Annotation
   {
