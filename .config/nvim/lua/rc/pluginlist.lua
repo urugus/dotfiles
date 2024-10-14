@@ -53,7 +53,6 @@ require("lazy").setup({
   -- ColorScheme
   {
     "Mofiqul/vscode.nvim",
-    lazy = false,
     config = function()
       require("rc/pluginconfig/vscode")
     end,
