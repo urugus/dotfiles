@@ -170,6 +170,7 @@ brew zstd
 
 cask aquaskk
 cask discord
+cask docker
 cask font-plemol-jp
 cask keycastr
 cask lapce
