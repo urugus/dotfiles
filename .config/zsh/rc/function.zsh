@@ -32,19 +32,12 @@ fzf_git_switch_branch() {
 ### Backup ###
 
 # backup skk user dictionary
-backup_skk_dictionary() {
-  local backup_file="${BACKUP_DIR}/skk/skk-jisyo.utf8"
-  local local_file="${AQUA_SKK_DIR}/skk-jisyo.utf8"
-  cat "$backup_file" >> "$local_file"
-  sort "$backup_file" | uniq > /tmp/temp_file.utf8
-  mv /tmp/temp_file.utf8 "$backup_file"
-  echo "Backuped skk-jisyo.utf8"
-}
-
-# restore backup
 restore_backup_all() {
-  # backup skk dictionary
-  backup_skk_dictionary
+  # check backup_dir existance
+  if [ ! -d "$BACKUP_DIR" ]; then
+    echo "Error: $BACKUP_DIR does not exist."
+    return 1
+  fi
 
   cd $BACKUP_DIR >/dev/null
   git add -A

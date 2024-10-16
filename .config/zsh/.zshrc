@@ -43,9 +43,9 @@ source "$ZRCDIR/function.zsh"
 ##           Before Actions                                   ## 
 #--------------------------------------------------------------#
 # backup history
-# if [[ $- == *i* ]]; then
-#   # backup skk user dictionary
-#   restore_backup_all
-# fi
+if [[ $- == *i* ]]; then
+  # backup skk user dictionary
+  restore_backup_all
+fi
 
 
