@@ -135,9 +135,7 @@ brew pygobject3
 brew python-build
 brew python-packaging
 brew python-setuptools
-brew python@3.10
-brew python@3.11
-brew python@3.12
+brew python
 brew rbenv
 brew readline
 brew ripgrep
