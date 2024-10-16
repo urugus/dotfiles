@@ -2,23 +2,23 @@
 
 ### Git ###
 # short hand 'git'
-git_command(){
-  case "$1" in
-        ad) git add "${@:2}" ;;
-        br) git branch "${@:2}" ;;
-        cm) git commit "${@:2}" ;;
-        co) git checkout "${@:2}" ;;
-        pl) git pull;;
-        pr) gh pr create -a @me -w ;;
-        ps) git push "${@:2}" ;;
-        rb) git rebase "${@:2}" ;;
-        ri) git rebase -i HEAD~"${@:2}" ;;
-        st) git status "${@:2}" ;;
-        sw) git switch "${@:2}" ;;
-        swc) git switch -c "${@:2}" ;;
-        *)  git "$@" ;;
-    esac
-}
+# git_command(){
+#   case "$1" in
+#         ad) git add "${@:2}" ;;
+#         br) git branch "${@:2}" ;;
+#         cm) git commit "${@:2}" ;;
+#         co) git checkout "${@:2}" ;;
+#         pl) git pull;;
+#         pr) gh pr create -a @me -w ;;
+#         ps) git push "${@:2}" ;;
+#         rb) git rebase "${@:2}" ;;
+#         ri) git rebase -i HEAD~"${@:2}" ;;
+#         st) git status "${@:2}" ;;
+#         sw) git switch "${@:2}" ;;
+#         swc) git switch -c "${@:2}" ;;
+#         *)  git "$@" ;;
+#     esac
+# }
 
 # selecte & switch git brahch
 fzf_git_switch_branch() {

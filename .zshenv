@@ -15,6 +15,7 @@ export ZRCDIR=$ZHOMEDIR/rc
 export ZDATADIR=$XDG_DATA_HOME/zsh
 export ZCACHEDIR=$XDG_CACHE_HOME/zsh
 
+
 # Backup
 export BACKUP_DIR=$HOME/backup
 export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK

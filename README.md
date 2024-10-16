@@ -7,10 +7,10 @@ git clone https://github.com/urugus/dotfiles.git
 cd dotfiles
 ```
 
-2. Install
+2. Setup
 
 ```
-./install.sh
+./setup.sh
 ```
 
 # Hardware
