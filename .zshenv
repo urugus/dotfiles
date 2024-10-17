@@ -46,6 +46,7 @@ path=(
 
 export PATH
 
+eval "$(rbenv init -)"
 setopt no_global_rcs
 
 . "$HOME/.cargo/env"

@@ -20,6 +20,6 @@ lspconfig.astro.setup({
 
 -- ruby
 lspconfig.solargraph.setup({
-  cmd = { "solargraph", "stdio" },
+  cmd = { "solargraph", "stdio", "ruby-lsp" },
   filetypes = { "ruby" }
 })
