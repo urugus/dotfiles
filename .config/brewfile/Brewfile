@@ -53,6 +53,7 @@ brew giflib
 brew glib
 brew glog
 brew gmp
+brew go
 brew gobject-introspection
 brew graphite2
 brew graphviz
