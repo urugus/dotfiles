@@ -8,6 +8,10 @@ alias la='ls -A'
 alias ll='ls -l'
 alias lla='ll -A'
 
+### docker
+alias dc='docker-compose'
+alias dce='docker-compose exec'
+
 # Git
 alias g='git_command'
 alias gswb='fzf_git_switch_branch'
