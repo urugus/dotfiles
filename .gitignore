@@ -21,8 +21,8 @@
 !/.config/starship.toml
 
 ## brew-file
-!/.config/brewfile
-!/.config/brewfile/**
+!/.config/Brewfile
+!/.config/Brewfile/**
 
 ## git
 

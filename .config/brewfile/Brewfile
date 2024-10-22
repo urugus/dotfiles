@@ -178,6 +178,7 @@ cask neovide
 cask notion
 cask obsidian
 cask qmk-toolbox
+cask typora
 cask raycast
 cask visual-studio-code
 cask vivaldi
