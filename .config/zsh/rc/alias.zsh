@@ -10,7 +10,7 @@ alias lla='ll -A'
 
 ### docker
 alias dc='docker-compose'
-alias dce='docker-compose exec'
+alias dce='docker_compose_exec'
 
 # Git
 alias g='git_command'
