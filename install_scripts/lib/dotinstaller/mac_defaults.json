@@ -1,0 +1,37 @@
+{
+  "global": {
+    "KeyRepeat": 2,
+    "InitialKeyRepeat": 15
+  },
+  "com":{
+    "apple": {
+      "dock": {
+        "autohide": true,
+        "largesize": 65,
+        "magnification": true,
+        "orientation": "right"
+      },
+      "trackpad": {
+        "scaling": 3
+      }
+      "HIToolbox": {
+        "AppleInputSourceHistory": [{
+          "Bundle ID" : "jp.sourceforge.inputmethod.aquaskk",
+          "Input Mode" : "com.apple.inputmethod.Roman",
+          "InputSourceKind" : "Input Mode",
+        },
+        {
+          "Bundle ID" : "jp.sourceforge.inputmethod.aquaskk",
+          "Input Mode" : "com.apple.inputmethod.Japanese.Hiragana",
+          "InputSourceKind": "Input Mode",
+        },
+        {
+          "Bundle ID": "jp.sourceforge.inputmethod.aquaskk",
+          "Input Mode": "com.apple.inputmethod.Japanese",
+          "InputSourceKind": "Input Mode",
+        }]
+      },
+    },
+  },
+}
+

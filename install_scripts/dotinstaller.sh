@@ -29,7 +29,7 @@ function main() {
   local is_install="false"
   local is_update="false"
 
-  while [ $# -gt 0]; do
+  while [ $# -gt 0 ]; do
     case ${1} in
       --help | -h)
         helpmsg
@@ -51,7 +51,7 @@ function main() {
         exit 1
         ;;
     esac
-    shif
+    shift
   done
 
   # default befavior
@@ -61,30 +61,36 @@ function main() {
     is_update="false"
   fi
 
-  # is_install: true
-  if [[ "$is_install" = true ]]; then
-    # install fonts
-    source $current_dir/lib/dotsinstaller/install-fonts.sh
-    # install libraries & GUI Apps
-    brew file install
-  fi
-
-  # is_update: true
-  if [[ "$is_update" = true ]]; then
-    brew file update
-  fi
-
   # is_link: true
   if [[ "$is_link" = true ]]; then
     # Add Symbolic Link
-    source $current_dir/lib/dotsinstaller/link-to-homedir.sh
+    source "$current_dir/lib/dotinstaller/link-to-homedir.sh"
     # Set git config
-    source $current_dir/lib/dotsinstaller/gitconfig.sh
+    source "$current_dir/lib/dotinstaller/gitconfig.sh"
     print_info ""
     print_info "#####################################################"
     print_info "$(basename "${BASH_SOURCE[0]:-$0}") link success!!!"
     print_info "#####################################################"
     print_info ""
+  fi
+
+  # is_install: true
+  if [[ "$is_install" = true ]]; then
+    # install Homebrew
+    source $current_dir/lib/dotinstaller/install-homebrew.sh
+
+    # install Homebrew file
+    source $current_dir/lib/dotinstaller/install-brewfile.sh
+
+    # install libraries & GUI Apps
+    brew file install
+    # install fonts
+    source $current_dir/lib/dotinstaller/install-fonts.sh
+  fi
+
+  # is_update: true
+  if [[ "$is_update" = true ]]; then
+    brew file update
   fi
 }
 
