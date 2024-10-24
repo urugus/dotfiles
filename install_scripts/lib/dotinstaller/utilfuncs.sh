@@ -51,3 +51,31 @@ case $answer in
     ;;
 esac
 }
+
+# 設定ファイルを読み込み、設定ペアを返す関数
+parse_settings_file() {
+  local file="$1"
+  local ext="${file##*.}"
+
+  case "$ext" in
+    json)
+      jq -r 'to_entries[] | "\(.key) \(.value | to_entries[] | "\(.key) \(.value)")"' "$file"
+      ;;
+    yml|yaml)
+      yq -r 'to_entries[] | "\(.key) \(.value | to_entries[] | "\(.key) \(.value)")"' "$file"
+      ;;
+    *)
+      echo "Unsupported file format. Please use .json or .yml"
+      exit 1
+      ;;
+  esac
+}
+
+# macOS環境かどうかをチェックする関数
+is_macos() {
+  if [[ "$(uname)" == "Darwin" ]]; then
+    return 0  # macOSの場合
+  else
+    return 1  # macOS以外の場合
+  fi
+}
