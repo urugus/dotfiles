@@ -121,7 +121,6 @@ brew oniguruma
 brew openblas
 brew openexr
 brew openjdk
-brew openssl@1.1
 brew openssl@3
 brew pango
 brew pcre2
@@ -168,6 +167,7 @@ brew zplug
 brew zstd
 
 cask aquaskk
+cask chatgpt
 cask discord
 cask docker
 cask font-plemol-jp
@@ -184,6 +184,7 @@ cask visual-studio-code
 cask vivaldi
 cask warp
 cask wezterm
+cask zoom
 
 tap grishka/grishka
 tap homebrew/cask
