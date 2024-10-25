@@ -1,6 +1,7 @@
 
 # tap repositories and their packages
 
+tap homebrew/core
 brew act
 brew aom
 brew autoconf
@@ -9,7 +10,6 @@ brew bash
 brew bash-completion
 brew bat
 brew boost
-brew brew-file
 brew brotli
 brew bzt
 brew c-ares
@@ -61,6 +61,7 @@ brew gts
 brew harfbuzz
 brew highway
 brew icu4c
+brew icu4c@75
 brew imath
 brew isl
 brew jasper
@@ -70,6 +71,7 @@ brew jq
 brew keyring
 brew krb5
 brew libavif
+brew libdeflate
 brew libevent
 brew libgit2
 brew libgit2@1.7
@@ -98,6 +100,7 @@ brew libxext
 brew libxrender
 brew libyaml
 brew little-cms2
+brew llvm
 brew lpeg
 brew lua
 brew luajit
@@ -105,6 +108,7 @@ brew luv
 brew lz4
 brew lzo
 brew m4
+brew mas
 brew mpdecimal
 brew mpfr
 brew msgpack
@@ -135,13 +139,14 @@ brew pygobject3
 brew python-build
 brew python-packaging
 brew python-setuptools
-brew python
+brew python@3.12
 brew rbenv
 brew readline
 brew ripgrep
 brew ruby
 brew ruby-build
 brew rust
+brew rustup
 brew six
 brew snappy
 brew sqlite
@@ -157,52 +162,58 @@ brew webp
 brew wget
 brew woff2
 brew xorgproto
+brew xxhash
 brew xz
 brew yarn
 brew yuicompressor
 brew z
+brew z3
 brew zola
 brew zoxide
 brew zplug
 brew zstd
 
+tap homebrew/cask
 cask aquaskk
-cask chatgpt
 cask discord
 cask docker
 cask font-plemol-jp
 cask keycastr
 cask lapce
-cask neardrop
 cask neovide
 cask notion
 cask obsidian
 cask qmk-toolbox
-cask typora
 cask raycast
+cask typora
 cask visual-studio-code
 cask vivaldi
 cask warp
 cask wezterm
 cask zoom
 
-tap grishka/grishka
-tap homebrew/cask
-tap homebrew/core
 tap homebrew/services
+
+tap grishka/grishka
+cask neardrop
+
 tap rcmdnk/file
+brew brew-file
+
+# Other Homebrew packages
+brew python
 
 # App Store applications
-appstore 302584613 Amazon Kindle (7.20)
+appstore 302584613 Amazon Kindle (7.21)
 appstore 682658836 GarageBand (10.4.11)
-appstore 408981434 iMovie (10.4.2)
+appstore 408981434 iMovie (10.4.1)
 appstore 409183694 Keynote (14.1)
 appstore 539883307 LINE (9.3.0)
-appstore 1219074514 Linearity Curve (5.12.0)
+appstore 1219074514 Linearity Curve (5.13.0)
 appstore 634148309 Logic Pro X (11.0.1)
 appstore 1017470484 Next Meeting (2.7)
 appstore 409203825 Numbers (14.1)
 appstore 409201541 Pages (14.1)
 appstore 1429033973 RunCat (11.4)
-appstore 803453959 Slack (4.40.128)
+appstore 803453959 Slack (4.40.133)
 appstore 497799835 Xcode (16.0)
