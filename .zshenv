@@ -29,6 +29,7 @@ typeset -U path PATH manpath sudo_path
 # paths
 path=(
   /opt/homebrew/bin
+  /usr/local/bin
   $HOME/.rbenv/shims
   $HOME/.local/share/zsh/zinit/polaris/bin(N-/)
   $HOME/bin(N-/)
