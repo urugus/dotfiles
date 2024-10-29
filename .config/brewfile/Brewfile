@@ -175,6 +175,7 @@ brew zstd
 
 tap homebrew/cask
 cask aquaskk
+cask chatgpt
 cask discord
 cask docker
 cask font-plemol-jp
@@ -201,6 +202,7 @@ tap rcmdnk/file
 brew brew-file
 
 # Other Homebrew packages
+brew openssl@3.0
 brew python
 
 # App Store applications
@@ -215,5 +217,6 @@ appstore 1017470484 Next Meeting (2.7)
 appstore 409203825 Numbers (14.1)
 appstore 409201541 Pages (14.1)
 appstore 1429033973 RunCat (11.4)
+appstore 425955336 Skitch (2.9)
 appstore 803453959 Slack (4.40.133)
 appstore 497799835 Xcode (16.0)
