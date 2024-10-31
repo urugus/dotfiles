@@ -406,6 +406,7 @@ require("lazy").setup({
   {
     "RRethy/nvim-treesitter-endwise",
     lazy = true,
+    event = "InsertEnter",
     config = function()
       require("rc/pluginconfig/nvim-treesitter-endwise")
     end,
