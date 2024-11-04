@@ -46,6 +46,7 @@ restore_backup_all() {
     git commit -q -m "auto backup: skk dictionary"
     git push
   fi
+  git pull --rebase
   cd - >/dev/null || return
 }
 
