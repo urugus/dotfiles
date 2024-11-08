@@ -54,8 +54,10 @@ restore_backup_all() {
 ### Rails Development ###
 
 # short hand 'docker-compose exec'
-docker_compose_exec(){
+docker_compose(){
   case "$1" in
+        up) docker-compose up "${@:2}" ;;
+        cs) docker compose exec app bundle exec rails c ;;
         rs) docker-compose exec rspec bundle exec rspec "${@:2}" ;;
         rc) docker-compose exec rspec bundle exec rubocop -a "${@:2}" ;;
         rr) docker-compose exec rspec bundle exec rspec "${@:2}" && docker-compose exec rspec bundle exec rubocop -a "${@:2}" ;;
