@@ -31,6 +31,8 @@
 ## neovim
 !/.config/nvim
 !/.config/nvim/**
+!/.config/nvim/lua/**
+!/.config/nvim/lua/rc/**
 !/.config/nvim/pluginconfig/**
 
 ## skk
