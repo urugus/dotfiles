@@ -31,7 +31,7 @@ animate.setup({
     enable = true,
 
     -- Timing of animation (how steps will progress in time)
-    -- timing = --<function: implements linear total 250ms animation duration>,
+    timing = animate.gen_timing.linear({ duration = 80, unit = 'total' }),
     --
     -- -- Subresize generator for all steps of resize animations
     -- subresize = --<function: implements equal linear steps>,
