@@ -82,6 +82,16 @@ require("lazy").setup({
     end,
   },
 
+  --------------------------------
+  --- Animation
+  {
+    'echasnovski/mini.animate',
+    version = '*',
+    config = function()
+      require('rc/pluginconfig/mini-animate')
+    end,
+  },
+
   --------------------------------------------------------------
   -- File switcher
 
