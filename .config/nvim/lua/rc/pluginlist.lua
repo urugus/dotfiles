@@ -526,6 +526,14 @@ require("lazy").setup({
     },
     ft = { "markdown", "Avante" },
   },
+  {
+    -- support for image pasting
+    "HakonHarnes/img-clip.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("rc/pluginconfig/img-clip")
+    end,
+  },
 
   --------------------------------
   -- Brackets
