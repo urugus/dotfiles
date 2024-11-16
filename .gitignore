@@ -27,6 +27,8 @@
 ## git
 
 !/.config/git
+/.config/gh/**
+!/.config/gh/config.yml
 
 ## neovim
 !/.config/nvim
