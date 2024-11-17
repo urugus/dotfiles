@@ -37,6 +37,7 @@ brew exercism
 brew fb303
 brew fbthrift
 brew fd
+brew ffmpeg
 brew fish
 brew fizz
 brew fmt
@@ -161,7 +162,9 @@ brew starship
 brew tig
 brew tree
 brew tree-sitter
+brew ttyd
 brew unibilium
+brew vhs
 brew virtualenv
 brew wangle
 brew watchman
@@ -184,7 +187,6 @@ tap homebrew/cask
 cask aquaskk
 cask chatgpt
 cask discord
-cask docker
 cask font-plemol-jp
 cask keycastr
 cask lapce
