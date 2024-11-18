@@ -33,23 +33,39 @@ fzf_git_switch_branch() {
 
 # backup skk user dictionary
 restore_backup_all() {
-  # check backup_dir existance
-  if [ ! -d "$BACKUP_DIR" ]; then
-    echo "Error: $BACKUP_DIR does not exist."
+# check backup_dir existence
+if [ ! -d "$BACKUP_DIR" ]; then
+  echo "Error: $BACKUP_DIR does not exist."
+  return 1
+fi
+
+cd "$BACKUP_DIR" >/dev/null || return 1
+
+git add -A
+# Commit if there are changes
+if [ -n "$(git status --porcelain)" ]; then
+  git commit -q -m "auto backup: skk dictionary"
+  git push || { echo "Error: Failed to push changes."; return 1; }
+fi
+
+# Attempt to pull with rebase
+if ! git pull --rebase; then
+  echo "Conflict detected. Attempting to resolve conflicts..."
+
+  # Mark all conflicts as resolved by using 'theirs' strategy
+  git merge --strategy-option=theirs || {
+    echo "Error: Merge failed. Please resolve manually."
+    cd - >/dev/null || return
     return 1
-  fi
+  }
 
-  cd $BACKUP_DIR >/dev/null
-  git add -A
-  # git commit if having git diff
-  if [ -n "$(git status --porcelain)" ]; then
-    git commit -q -m "auto backup: skk dictionary"
-    git push
-  fi
-  git pull --rebase
-  cd - >/dev/null || return
+  # Commit the resolved changes
+  git commit -q -m "auto resolved merge conflict: skk dictionary"
+  git push || { echo "Error: Failed to push resolved changes."; return 1; }
+fi
+
+cd - >/dev/null || return
 }
-
 
 ### Rails Development ###
 
