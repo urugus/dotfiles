@@ -90,7 +90,7 @@ vim.g.ale_fixers = {
 -- --------------------------------
 -- ruby
 vim.g.ale_ruby_rubocop_executable = 'docker-compose'
-vim.g.ale_ruby_rubocop_options = 'exec rspec bundle exec rubocop -a -D'
+vim.g.ale_ruby_rubocop_options = 'exec rspec bundle exec rubocop -a -D --config=.rubocop.yml'
 
 -- --------------------------------
 -- typescript
