@@ -467,13 +467,6 @@ require("lazy").setup({
   end,
   },
   {
-    "haringsrob/nvim_context_vt",
-    event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim_context_vt")
-    end,
-  },
-  {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
     config = function()
