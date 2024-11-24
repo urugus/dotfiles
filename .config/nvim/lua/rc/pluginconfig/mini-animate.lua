@@ -28,7 +28,7 @@ animate.setup({
   -- Window resize
   resize = {
     -- Whether to enable this animation
-    enable = true,
+    enable = false,
 
     -- Timing of animation (how steps will progress in time)
     timing = animate.gen_timing.linear({ duration = 80, unit = 'total' }),
@@ -40,7 +40,7 @@ animate.setup({
   -- Window open
   open = {
     -- Whether to enable this animation
-    enable = true,
+    enable = false,
     --
     -- -- Timing of animation (how steps will progress in time)
     -- timing = --<function: implements linear total 250ms animation duration>,

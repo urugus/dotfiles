@@ -54,7 +54,7 @@
   "nvim-cursorword": { "branch": "master", "commit": "c0f2958ec729b47be2dba0d79ef43d005dac9f4e" },
   "nvim-ghost.nvim": { "branch": "main", "commit": "67cc8f38c69d271af1c2430ff5099766f3550eb8" },
   "nvim-lsp-smag": { "branch": "master", "commit": "add830cb376ebe3daac3f63b7f4349c499090918" },
-  "nvim-lspconfig": { "branch": "master", "commit": "3002276159bf7cd0f3db070507f8bbb60fcda393" },
+  "nvim-lspconfig": { "branch": "master", "commit": "ac936a66fba9a58613bed95d7615cff2c5bf0387" },
   "nvim-notify": { "branch": "master", "commit": "fbef5d32be8466dd76544a257d3f3dce20082a07" },
   "nvim-scrollbar": { "branch": "main", "commit": "6994eb9f73d5fdc36ee2c8717940e8c853e51a49" },
   "nvim-surround": { "branch": "main", "commit": "dca2e998ff26681ee422b92c6ed39b3d2908d8a9" },
