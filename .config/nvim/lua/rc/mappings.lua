@@ -103,3 +103,7 @@ map({ "n", "x" }, "gp", "p", { noremap = true, silent = true })
 map({ "n", "x" }, "gP", "P", { noremap = true, silent = true })
 map({ "n", "x" }, "<LocalLeader>p", '"+p', { noremap = true, silent = true })
 map({ "n", "x" }, "<LocalLeader>P", '"+P', { noremap = true, silent = true })
+
+-- [Markdown]
+map("n", "<Leader>mo", "<Cmd>MarkdownOpen<CR>", { noremap = true, silent = true })
+map("n", "<Leader>mc", "<Cmd>MarkdownClose<CR>", { noremap = true, silent = true })
