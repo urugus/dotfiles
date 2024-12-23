@@ -84,6 +84,7 @@ brew json-c
 brew keyring
 brew krb5
 brew lame
+brew lazygit
 brew leptonica
 brew libarchive
 brew libass
@@ -221,6 +222,7 @@ brew xvid
 brew xxhash
 brew xz
 brew yarn
+brew yazi
 brew yuicompressor
 brew z
 brew z3
@@ -239,6 +241,7 @@ cask docker
 cask font-plemol-jp
 cask keycastr
 cask lapce
+cask neat
 cask neovide
 cask notion
 cask obsidian
