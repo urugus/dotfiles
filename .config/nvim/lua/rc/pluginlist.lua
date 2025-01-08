@@ -637,6 +637,15 @@ require("lazy").setup({
     end,
   },
 
+  --------------------------------------------------------------
+  -- Github
+  {
+    'pwntester/octo.nvim',
+    config = function ()
+      require"octo".setup()
+    end
+  },
+
   --------------------------------
   -- AI completion
   { "github/copilot.vim" },
