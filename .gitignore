@@ -30,6 +30,10 @@
 /.config/gh/**
 !/.config/gh/config.yml
 
+## github
+!/.github
+/.github/workflows/**
+
 ## neovim
 !/.config/nvim
 !/.config/nvim/**
