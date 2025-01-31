@@ -17,7 +17,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
     -- Installer
-  { "folke/lazy.nvim" },
+  { 
+    "folke/lazy.nvim",
+    config = function()
+      require("rc/pluginconfig/lazy")
+    end,
+  },
 
   {
     "williamboman/mason.nvim",
@@ -490,6 +495,7 @@ require("lazy").setup({
   -- Annotation
   {
     "danymat/neogen",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/neogen")
     end,
@@ -661,7 +667,7 @@ require("lazy").setup({
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
+    branch = "main",
     config = function()
       require("rc/pluginconfig/CopilotChat")
     end,
