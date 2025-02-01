@@ -107,3 +107,6 @@ map({ "n", "x" }, "<LocalLeader>P", '"+P', { noremap = true, silent = true })
 -- [Markdown]
 map("n", "<Leader>mo", "<Cmd>MarkdownOpen<CR>", { noremap = true, silent = true })
 map("n", "<Leader>mc", "<Cmd>MarkdownClose<CR>", { noremap = true, silent = true })
+
+-- [Window]
+map("n", "<Leader>wc", "<Cmd>NoNeckPain<CR>", { noremap = true, silent = true })

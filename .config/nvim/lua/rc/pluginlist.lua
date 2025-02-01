@@ -127,6 +127,15 @@ require("lazy").setup({
     end,
   },
 
+  --------------------------------
+  --- Window
+  {
+    "shortcuts/no-neck-pain.nvim",
+    config = function()
+      require("rc/pluginconfig/no-neck-pain")
+    end,
+  },
+
 
   --------------------------------------------------------------
   -- Search
