@@ -16,8 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Setup lazy.nvim
 require("lazy").setup({
-    -- Installer
-  { 
+  -- Installer
+  {
     "folke/lazy.nvim",
     config = function()
       require("rc/pluginconfig/lazy")
@@ -36,8 +36,8 @@ require("lazy").setup({
 
   --------------------------------
   -- runtime
-  { 'vim-denops/denops.vim' },
-  { 
+  { "vim-denops/denops.vim" },
+  {
     "vim-skk/skkeleton",
     config = function()
       require("rc/pluginconfig/skkeleton")
@@ -49,7 +49,6 @@ require("lazy").setup({
       require("rc/pluginconfig/skkeleton_indicator")
     end,
   },
-
 
   --------------------------------------------------------------
   -- Appearance
@@ -90,10 +89,10 @@ require("lazy").setup({
   --------------------------------
   --- Animation
   {
-    'echasnovski/mini.animate',
-    version = '*',
+    "echasnovski/mini.animate",
+    version = "*",
     config = function()
-      require('rc/pluginconfig/mini-animate')
+      require("rc/pluginconfig/mini-animate")
     end,
   },
 
@@ -135,7 +134,6 @@ require("lazy").setup({
       require("rc/pluginconfig/no-neck-pain")
     end,
   },
-
 
   --------------------------------------------------------------
   -- Search
@@ -212,7 +210,7 @@ require("lazy").setup({
     "gbprod/yanky.nvim",
     config = function()
       require("rc/pluginconfig/yanky")
-      end,
+    end,
   },
 
   --------------------------------
@@ -243,7 +241,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-nvim-lua", lazy = true },
   { "hrsh7th/cmp-emoji", lazy = true },
   { "hrsh7th/cmp-calc", lazy = true },
-  { 'rinx/cmp-skkeleton', lazy = true },
+  { "rinx/cmp-skkeleton", lazy = true },
   { "f3fora/cmp-spell", lazy = true },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   {
@@ -262,8 +260,8 @@ require("lazy").setup({
     end,
   },
 
-	--------------------------------
-	-- Language Server Protocol(LSP)
+  --------------------------------
+  -- Language Server Protocol(LSP)
   {
     "folke/neoconf.nvim",
     config = function()
@@ -350,11 +348,10 @@ require("lazy").setup({
         end,
         dependencies = {
           { "lambdalisue/vim-kensaku", lazy = true },
-        }
-      }
-    }
+        },
+      },
+    },
   },
-
 
   {
     "nvim-telescope/telescope-github.nvim",
@@ -403,7 +400,7 @@ require("lazy").setup({
     end,
   },
 
---------------------------------
+  --------------------------------
   -- Memo
   {
     "renerocksai/telekasten.nvim",
@@ -411,7 +408,6 @@ require("lazy").setup({
       require("rc/pluginconfig/telekasten")
     end,
   },
-
 
   --------------------------------
   -- Treesitter
@@ -471,14 +467,14 @@ require("lazy").setup({
   --------------------------------
   -- Treesitter UI customize
   {
-  "HiPhish/rainbow-delimiters.nvim",
-  event = "VeryLazy",
-  config = function()
-    -- patch https://github.com/nvim-treesitter/nvim-treesitter/issues/1124
-    if vim.fn.expand('%:p') ~= "" then
-      vim.cmd.edit({ bang = true })
-    end
-  end,
+    "HiPhish/rainbow-delimiters.nvim",
+    event = "VeryLazy",
+    config = function()
+      -- patch https://github.com/nvim-treesitter/nvim-treesitter/issues/1124
+      if vim.fn.expand("%:p") ~= "" then
+        vim.cmd.edit({ bang = true })
+      end
+    end,
   },
   {
     "m-demare/hlargs.nvim",
@@ -494,10 +490,10 @@ require("lazy").setup({
   },
 
   {
-    'hat0uma/csvview.nvim',
+    "hat0uma/csvview.nvim",
     config = function()
-      require('csvview').setup()
-    end
+      require("csvview").setup()
+    end,
   },
 
   --------------------------------
@@ -512,23 +508,23 @@ require("lazy").setup({
 
   --------------------------------
   -- Programming Languages
-  
+
   --------------------------------
   -- Markdown
-{
-  "toppair/peek.nvim",
-  build = "deno task --quiet build:fast",
-  ft = { "markdown" },
-  enabled = function()
-    return vim.fn.executable("deno")
-  end,
-  config = function()
-    require("rc/pluginconfig/peek")
-  end,
+  {
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    ft = { "markdown" },
+    enabled = function()
+      return vim.fn.executable("deno")
+    end,
+    config = function()
+      require("rc/pluginconfig/peek")
+    end,
   },
   {
     -- Make sure to set this up properly if you have lazy=true
-    'MeanderingProgrammer/render-markdown.nvim',
+    "MeanderingProgrammer/render-markdown.nvim",
     opts = {
       file_types = { "markdown", "Avante" },
     },
@@ -562,25 +558,39 @@ require("lazy").setup({
     "kylechui/nvim-surround",
     event = "VeryLazy",
     config = function()
-      require('rc/pluginconfig/nvim-surround')
-    end
+      require("rc/pluginconfig/nvim-surround")
+    end,
   },
 
   --------------------------------
   -- Lint
+  -- {
+  --   "jay-babu/mason-null-ls.nvim",
+  --   config = function()
+  --     require("rc/pluginconfig/mason-null-ls")
+  --   end
+  -- },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   config = function()
+  --     require("rc/pluginconfig/none-ls")
+  --   end,
+  -- },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "mfussenegger/nvim-lint",
+    event = "VeryLazy",
     config = function()
-      require("rc/pluginconfig/null-ls")
-    end,
-  },
-  {
-    "dense-analysis/ale",
-    config = function()
-      require("rc/pluginconfig/ale")
+      require("rc/pluginconfig/nvim-lint")
     end,
   },
 
+  {
+    "stevearc/conform.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("rc/pluginconfig/conform")
+    end,
+  },
 
   -------------------------------
   -- Auto fixing typo
@@ -590,17 +600,19 @@ require("lazy").setup({
   -- Git
   {
     "NeogitOrg/neogit",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/neogit")
     end,
   },
   {
     "sindrets/diffview.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/diffview")
     end,
   },
-  { "akinsho/git-conflict.nvim", },
+  { "akinsho/git-conflict.nvim" },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
@@ -611,7 +623,7 @@ require("lazy").setup({
     "dinhhuy258/git.nvim",
     config = function()
       require("rc/pluginconfig/git")
-    end
+    end,
   },
 
   --------------------------------
@@ -655,10 +667,11 @@ require("lazy").setup({
   --------------------------------------------------------------
   -- Github
   {
-    'pwntester/octo.nvim',
-    config = function ()
-      require"octo".setup()
-    end
+    "pwntester/octo.nvim",
+    event = "VimEnter",
+    config = function()
+      require("octo").setup()
+    end,
   },
 
   --------------------------------
@@ -701,7 +714,7 @@ require("lazy").setup({
     "subnut/nvim-ghost.nvim",
     config = function()
       require("rc/pluginconfig/nvim-ghost")
-    end
+    end,
   },
 
   --------------------------------
@@ -722,13 +735,10 @@ require("lazy").setup({
     end,
   },
 
-
   --------------------------------
   -- Analytics
   { "wakatime/vim-wakatime" },
 
   -- automatically check for plugin updates
   checker = { enabled = true },
-
 })
-
