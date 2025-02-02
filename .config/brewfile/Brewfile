@@ -154,6 +154,7 @@ brew neovide
 brew neovim
 brew netpbm
 brew nettle
+brew ngrok
 brew node
 brew node-build
 brew nodenv
