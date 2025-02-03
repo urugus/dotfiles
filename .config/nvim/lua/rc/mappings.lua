@@ -21,8 +21,8 @@ local o = vim.o
 local api = vim.api
 
 -- input
-map('i', '<C-j>', '<Plug>(skkeleton-toggle)', { silent = true })
-map('c', '<C-j>', '<Plug>(skkeleton-toggle)', { silent = true })
+map("i", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true })
+map("c", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true })
 
 -- buffer move
 map("n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true })
@@ -63,6 +63,9 @@ api.nvim_set_keymap("n", "<Leader>c", "[Copilot]", {})
 
 --[git]
 api.nvim_set_keymap("n", "<Leader>g", "[git]", {})
+api.nvim_set_keymap("n", "<Leader>gg", "[Octo]", {})
+api.nvim_set_keymap("n", "[Octo]pn", "Octo pr create", {})
+api.nvim_set_keymap("n", "[Octo]pp", "Octo pr draft", {})
 
 -- [FuzzyFinder]
 map({ "n", "x" }, "z", "<Nop>", { noremap = true, silent = true })
@@ -74,7 +77,7 @@ api.nvim_set_keymap("n", "Z", "<Nop>", { noremap = true, silent = true })
 
 -- treesitter
 vim.keymap.set("n", "'", "<Nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'zf', 'zfa{', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "zf", "zfa{", { noremap = true, silent = true })
 
 ---- remap
 map("n", "gzz", "zz", { noremap = true, silent = true })
