@@ -192,6 +192,7 @@ brew ruby
 brew ruby-build
 brew rust
 brew rustup
+brew selene
 brew sdl2
 brew six
 brew snappy
