@@ -90,6 +90,7 @@ require("lazy").setup({
   --- Animation
   {
     "echasnovski/mini.animate",
+    event = "VeryLazy",
     version = "*",
     config = function()
       require("rc/pluginconfig/mini-animate")
@@ -199,6 +200,7 @@ require("lazy").setup({
   -- Sidebar
   {
     "GustavoKatel/sidebar.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/sidebar")
     end,
@@ -208,6 +210,7 @@ require("lazy").setup({
   -- Yank
   {
     "gbprod/yanky.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/yanky")
     end,
@@ -217,6 +220,7 @@ require("lazy").setup({
   -- Paste
   {
     "tversteeg/registers.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/registers")
     end,
@@ -543,12 +547,14 @@ require("lazy").setup({
   -- Brackets
   {
     "andymass/vim-matchup",
+    event = "VeryLazy",
     config = function()
       vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-matchup.vim")
     end,
   },
   {
     "windwp/nvim-autopairs",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/nvim-autopairs")
     end,
@@ -668,7 +674,7 @@ require("lazy").setup({
   -- Github
   {
     "pwntester/octo.nvim",
-    event = "VimEnter",
+    event = "VeryLazy",
     config = function()
       require("octo").setup()
     end,
@@ -712,6 +718,7 @@ require("lazy").setup({
   -- Using editor in the browser
   {
     "subnut/nvim-ghost.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/nvim-ghost")
     end,
@@ -730,6 +737,7 @@ require("lazy").setup({
   -- Test
   {
     "klen/nvim-test",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/nvim-test")
     end,
