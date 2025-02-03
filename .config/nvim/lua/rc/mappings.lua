@@ -63,9 +63,19 @@ api.nvim_set_keymap("n", "<Leader>c", "[Copilot]", {})
 
 --[git]
 api.nvim_set_keymap("n", "<Leader>g", "[git]", {})
+api.nvim_set_keymap("n", "[Octo]", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<Leader>gg", "[Octo]", {})
-api.nvim_set_keymap("n", "[Octo]pn", "Octo pr create", {})
-api.nvim_set_keymap("n", "[Octo]pp", "Octo pr draft", {})
+api.nvim_set_keymap("v", "<Leader>gg", "[Octo]", {})
+api.nvim_set_keymap("n", "[Octo]l", "<Cmd>Octo pr list<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]is", "<Cmd>Octo issue search<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]ib", "<Cmd>Octo issue browser<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]ps", "<Cmd>Octo pr search<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]pn", "<Cmd>Octo pr create<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]pp", "<Cmd>Octo pr draft<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]rva", "<Cmd>Octo reviewer add<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]rs", "<Cmd>Octo review start<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]re", "<Cmd>Octo review submit<Cr>", {})
+api.nvim_set_keymap("n", "[Octo]rc", "<Cmd>Octo review comments<Cr>", {})
 
 -- [FuzzyFinder]
 map({ "n", "x" }, "z", "<Nop>", { noremap = true, silent = true })
