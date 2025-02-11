@@ -62,6 +62,7 @@ brew gettext
 brew gflags
 brew gh
 brew giflib
+brew git-delta
 brew glib
 brew glog
 brew gmp
@@ -152,6 +153,7 @@ brew mvfst
 brew ncurses
 brew neovide
 brew neovim
+brew neovim-remote
 brew netpbm
 brew nettle
 brew ngrok
