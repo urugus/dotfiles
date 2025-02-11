@@ -64,6 +64,7 @@ require("lazy").setup({
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/indent-blankline")
     end,
@@ -72,6 +73,7 @@ require("lazy").setup({
   -- Comment out
   {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/Comment")
     end,
@@ -81,6 +83,7 @@ require("lazy").setup({
   -- Font
   {
     "kyazdani42/nvim-web-devicons",
+    lazy = false,
     enabled = function()
       return not os.getenv("DISABLE_DEVICONS") or os.getenv("DISABLE_DEVICONS") == "false"
     end,
@@ -258,7 +261,7 @@ require("lazy").setup({
   { "lukas-reineke/cmp-under-comparator", lazy = true },
   {
     "onsails/lspkind-nvim",
-    lazy = true,
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/lspkind-nvim")
     end,
@@ -288,7 +291,7 @@ require("lazy").setup({
   },
   {
     "weilbith/nvim-lsp-smag",
-    lazy = true,
+    event = "VeryLazy",
   },
 
   --------------------------------
@@ -518,6 +521,7 @@ require("lazy").setup({
   {
     "toppair/peek.nvim",
     build = "deno task --quiet build:fast",
+    event = "VeryLazy",
     ft = { "markdown" },
     enabled = function()
       return vim.fn.executable("deno")
@@ -627,6 +631,7 @@ require("lazy").setup({
   },
   {
     "dinhhuy258/git.nvim",
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/git")
     end,
@@ -686,7 +691,7 @@ require("lazy").setup({
   {
     "zbirenbaum/copilot.lua",
     -- cmd = { "Copilot" },
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function()
       vim.defer_fn(function()
         require("rc/pluginconfig/copilot")
@@ -738,7 +743,7 @@ require("lazy").setup({
   -- Test
   {
     "klen/nvim-test",
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       require("rc/pluginconfig/nvim-test")
     end,

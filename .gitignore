@@ -41,6 +41,14 @@
 !/.config/nvim/lua/rc/**
 !/.config/nvim/pluginconfig/**
 
+## library
+
+!/.config/lazygit/**
+
+## stylelint
+
+!/stylua.toml
+
 ## skk
 !/.config/skk
 
