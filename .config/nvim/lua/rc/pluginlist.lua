@@ -695,6 +695,7 @@ require("lazy").setup({
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    event = "VeryLazy",
     branch = "main",
     config = function()
       require("rc/pluginconfig/CopilotChat")

@@ -12,7 +12,8 @@ if vim.fn.exists("g:neovide") then
   vim.g.neovide_floating_blur_amount_y = 2.0
   vim.g.neovide_light_angle_degree = 45
   vim.g.neovide_light_radius = 5
-  vim.g.neovide_font = 'UDEV Gothic LG,Hack Nerd Font,Fira Code'
+  vim.g.neovide_font = "UDEV Gothic LG,Hack Nerd Font,Fira Code"
   vim.g.neovide_default_font_size = 12
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  vim.g.neovide_cursor_vfx_particle_speed = 10.0
 end
-
