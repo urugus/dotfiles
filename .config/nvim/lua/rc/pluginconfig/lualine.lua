@@ -6,11 +6,21 @@ local function is_available_gps()
   return require("nvim-gps").is_available()
 end
 
+local function copilot_status()
+  -- Copilot の有効状態を取得
+  local status = vim.fn["copilot#Enabled"]()
+  if status == 1 then
+    return "" -- Copilot が有効ならロゴ付きで表示
+  else
+    return "" -- 無効なら Off 表示
+  end
+end
+
 local sections_1 = {
   lualine_a = { "mode" },
   lualine_b = { { "filetype", icon_only = true }, { "filename", path = 1 } },
   lualine_c = { { 'require("nvim-gps").get_location()', cond = is_available_gps } },
-  lualine_x = { "require'lsp-status'.status()", "diagnostics" },
+  lualine_x = { "require'lsp-status'.status()", "diagnostics", copilot_status },
   lualine_y = { "branch", "diff" },
   lualine_z = { "location" },
 }
@@ -92,10 +102,8 @@ end
 
 local terminal_status = function()
   if
-    vim.api.nvim_exec(
-      [[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]],
-      true
-    ) ~= ""
+    vim.api.nvim_exec([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]], true)
+    ~= ""
   then
     local result = get_exit_status()
     if result == nil then
@@ -108,10 +116,8 @@ local terminal_status = function()
     return "Finished"
   end
   if
-    vim.api.nvim_exec(
-      [[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]],
-      true
-    ) ~= ""
+    vim.api.nvim_exec([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]], true)
+    ~= ""
   then
     return "Running"
   end
