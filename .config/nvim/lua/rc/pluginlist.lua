@@ -135,6 +135,15 @@ require("lazy").setup({
       require("rc/pluginconfig/nvim-scrollbar")
     end,
   },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    config = function()
+      require("rc/pluginconfig/nvim-ufo")
+    end,
+  },
 
   ------------------------------------------------------------
   -- IV. Window, Buffers
