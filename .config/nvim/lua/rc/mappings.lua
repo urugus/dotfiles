@@ -15,9 +15,7 @@
 ---------------------------------------------------------------------------------------------------+
 
 -- variants
-local g = vim.g
 local map = vim.keymap.set
-local o = vim.o
 local api = vim.api
 
 -- input
@@ -62,7 +60,11 @@ api.nvim_set_keymap("n", "[Copilot]", "<Nop>", { noremap = true, silent = true }
 api.nvim_set_keymap("n", "<Leader>c", "[Copilot]", {})
 
 --[git]
+map("n", "<C-g>", function()
+  require("snacks").lazygit()
+end, { noremap = true, silent = true, desc = "Open LazyGit" })
 api.nvim_set_keymap("n", "<Leader>g", "[git]", {})
+map("n", "[git]o", function() require("snacks").gitbrowse({ notify = true }) end, { noremap = true, silent = true })
 api.nvim_set_keymap("n", "[Octo]", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("n", "<Leader>gg", "[Octo]", {})
 api.nvim_set_keymap("v", "<Leader>gg", "[Octo]", {})
@@ -81,9 +83,30 @@ api.nvim_set_keymap("n", "[Octo]rc", "<Cmd>Octo review comments<Cr>", {})
 -- [FuzzyFinder]
 api.nvim_set_keymap("n", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
-api.nvim_set_keymap("n", "<Leader>z", "[FuzzyFinder]", {})
-api.nvim_set_keymap("v", "<Leader>z", "[FuzzyFinder]", {})
-api.nvim_set_keymap("n", "<Leader>Z", "<Nop>", { noremap = true, silent = true })
+api.nvim_set_keymap("n", "<Leader>f", "[FuzzyFinder]", {})
+api.nvim_set_keymap("v", "<Leader>f", "[FuzzyFinder]", {})
+map("n", "<Leader><Leader>", function() require("snacks").picker.smart() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder].", function() require("snacks").picker.files({ ignored = true, hidden = true, }) end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder],", function()
+  require("snacks").picker.buffers({
+    unloaded = true,
+    current = true,
+    sort_lastused = true,
+    win = {
+      list = { keys = { ["dd"] = "bufdelete"} }
+    }
+  })
+end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]h", function() require("snacks").picker.search_history() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]r", function() require("snacks").picker.registers() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]k", function() require("snacks").picker.keymaps() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]/", function() require("snacks").picker.grep({ regex = true, live = true }) end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]sw", function() require("snacks").picker.grep_word({ live = true }) end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]n", function() require("snacks").picker.notifications() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]m", function() require("snacks").picker.marks() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]p", function() require("snacks").picker.projects() end, { noremap = true, silent = true })
+map("n", "[FuzzyFinder]sp", function() require("snacks").picker.spelling() end, { noremap = true, silent = true })
+
 
 ---- remap
 map("n", "gzz", "zz", { noremap = true, silent = true })

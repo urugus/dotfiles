@@ -7,7 +7,7 @@ animate.setup({
     enable = true,
 
     -- Timing of animation (how steps will progress in time)
-    timing = animate.gen_timing.linear({ duration = 80, unit = 'total' }),
+    timing = animate.gen_timing.linear({ duration = 80, unit = "total" }),
     --
     -- -- Path generator for visualized cursor movement
     -- path = --<function: implements shortest line path>,
@@ -16,13 +16,7 @@ animate.setup({
   -- Vertical scroll
   scroll = {
     -- Whether to enable this animation
-    enable = true,
-
-    -- Timing of animation (how steps will progress in time)
-    timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
-    --
-    -- -- Subscroll generator based on total scroll
-    -- subscroll = --<function: implements equal scroll with at most 60 steps>,
+    enable = false,
   },
 
   -- Window resize
@@ -31,7 +25,7 @@ animate.setup({
     enable = false,
 
     -- Timing of animation (how steps will progress in time)
-    timing = animate.gen_timing.linear({ duration = 80, unit = 'total' }),
+    timing = animate.gen_timing.linear({ duration = 80, unit = "total" }),
     --
     -- -- Subresize generator for all steps of resize animations
     -- subresize = --<function: implements equal linear steps>,

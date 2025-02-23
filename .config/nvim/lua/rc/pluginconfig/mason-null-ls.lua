@@ -16,6 +16,7 @@ require("mason-null-ls").setup({
     "yamlfmt",
     -- Lua
     "stylua",
+    "selene",
     -- Shell
     "shellcheck",
     "shfmt",

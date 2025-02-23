@@ -67,6 +67,14 @@ require("lazy").setup({
     end,
   },
   {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("rc/pluginconfig/snacks")
+    end,
+  },
+  {
     "echasnovski/mini.animate",
     event = "VeryLazy",
     version = "*",
@@ -74,6 +82,8 @@ require("lazy").setup({
       require("rc/pluginconfig/mini-animate")
     end,
   },
+  -- "folke/snacks.nvim" animate
+
   -- B. Layout
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -82,6 +92,7 @@ require("lazy").setup({
       require("rc/pluginconfig/indent-blankline")
     end,
   },
+  -- "folke/snacks.nvim" indent
   {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
@@ -121,6 +132,7 @@ require("lazy").setup({
   },
   { "slim-template/vim-slim" },
   -- C. Sidebar, Scroll
+  -- "folke/snacks.nvim" scroll
   {
     "GustavoKatel/sidebar.nvim",
     event = "VeryLazy",
@@ -197,71 +209,73 @@ require("lazy").setup({
       vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-asterisk.vim")
     end,
   },
-  {
-    "nvim-telescope/telescope.nvim",
-    event = { "VimEnter" },
-    config = function()
-      require("rc/pluginconfig/telescope")
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      {
-        "Allianaab2m/telescope-kensaku.nvim",
-        config = function()
-          require("telescope").load_extension("kensaku") -- :Telescope kensaku
-        end,
-        dependencies = {
-          { "lambdalisue/vim-kensaku", lazy = true },
-        },
-      },
-    },
-  },
-  {
-    "nvim-telescope/telescope-github.nvim",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("gh")
-    end,
-  },
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("ui-select")
-    end,
-  },
-  {
-    "LinArcX/telescope-changes.nvim",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("changes")
-    end,
-  },
-  {
-    "nvim-telescope/telescope-live-grep-args.nvim",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("live_grep_args")
-    end,
-  },
-  {
-    "nvim-telescope/telescope-smart-history.nvim",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("smart_history")
-    end,
-    build = function()
-      os.execute("mkdir -p " .. vim.fn.stdpath("state") .. "databases/")
-    end,
-  },
-  { "nvim-telescope/telescope-symbols.nvim", lazy = true },
-  {
-    "debugloop/telescope-undo.nvim",
-    lazy = true,
-    config = function()
-      require("telescope").load_extension("undo")
-    end,
-  },
+  -- "folke/snacks.nvim" picker
+
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   event = { "VimEnter" },
+  --   config = function()
+  --     require("rc/pluginconfig/telescope")
+  --   end,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     {
+  --       "Allianaab2m/telescope-kensaku.nvim",
+  --       config = function()
+  --         require("telescope").load_extension("kensaku") -- :Telescope kensaku
+  --       end,
+  --       dependencies = {
+  --         { "lambdalisue/vim-kensaku", lazy = true },
+  --       },
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "nvim-telescope/telescope-github.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require("telescope").load_extension("gh")
+  --   end,
+  -- },
+  -- {
+  --   "nvim-telescope/telescope-ui-select.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require("telescope").load_extension("ui-select")
+  --   end,
+  -- },
+  -- {
+  --   "LinArcX/telescope-changes.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require("telescope").load_extension("changes")
+  --   end,
+  -- },
+  -- {
+  --   "nvim-telescope/telescope-live-grep-args.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require("telescope").load_extension("live_grep_args")
+  --   end,
+  -- },
+  -- {
+  --   "nvim-telescope/telescope-smart-history.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require("telescope").load_extension("smart_history")
+  --   end,
+  --   build = function()
+  --     os.execute("mkdir -p " .. vim.fn.stdpath("state") .. "databases/")
+  --   end,
+  -- },
+  -- { "nvim-telescope/telescope-symbols.nvim", lazy = true },
+  -- {
+  --   "debugloop/telescope-undo.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require("telescope").load_extension("undo")
+  --   end,
+  -- },
 
   ------------------------------------------------------------
   -- VII. LSP & Completion / Snipped
@@ -355,13 +369,13 @@ require("lazy").setup({
       require("rc/pluginconfig/LuaSnip")
     end,
   },
-  {
-    "benfowler/telescope-luasnip.nvim",
-    event = "VimEnter",
-    config = function()
-      require("telescope").load_extension("luasnip")
-    end,
-  },
+  -- {
+  --   "benfowler/telescope-luasnip.nvim",
+  --   event = "VimEnter",
+  --   config = function()
+  --     require("telescope").load_extension("luasnip")
+  --   end,
+  -- },
 
   ------------------------------------------------------------
   -- VIII. Treesitter & Cordes analyzer
@@ -519,6 +533,7 @@ require("lazy").setup({
   },
   { "tani/vim-typo" },
   -- F. Git & Version control
+  -- "folke/snacks.nvim" lazygit
   {
     "NeogitOrg/neogit",
     event = "VeryLazy",
@@ -548,13 +563,8 @@ require("lazy").setup({
     end,
   },
   -- G. Notification
-  {
-    "rcarriga/nvim-notify",
-    event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim-notify")
-    end,
-  },
+  -- "folke/snacks.nvim" notifier
+
   -- H. Lua libraries
   { "nvim-lua/popup.nvim" },
   { "nvim-lua/plenary.nvim" },
@@ -577,9 +587,9 @@ require("lazy").setup({
   -- J. Github
   {
     "pwntester/octo.nvim",
-    event = "VeryLazy",
+    dependencies = { "folke/snacks.nvim" },
     config = function()
-      require("octo").setup()
+      require("rc/pluginconfig/octo")
     end,
   },
   -- K. AI Support
@@ -623,12 +633,8 @@ require("lazy").setup({
     end,
   },
   -- M. Startup menu
-  {
-    "goolord/alpha-nvim",
-    config = function()
-      require("rc/pluginconfig/alpha-nvim")
-    end,
-  },
+  -- "folke/snacks.nvim" dashboard
+
   -- N. Test
   {
     "klen/nvim-test",
