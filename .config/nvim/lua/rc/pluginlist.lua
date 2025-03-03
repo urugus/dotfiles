@@ -75,12 +75,18 @@ require("lazy").setup({
     end,
   },
   {
-    "echasnovski/mini.animate",
+    "sphamba/smear-cursor.nvim",
     event = "VeryLazy",
     version = "*",
-    config = function()
-      require("rc/pluginconfig/mini-animate")
-    end,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      smear_between_buffers = true,
+      smear_between_neighbor_lines = true,
+      scroll_buffer_space = true,
+      legacy_computing_symbols_support = false,
+      smear_insert_mode = true,
+      cursor_color = "#d3cdc3",
+    },
   },
   -- "folke/snacks.nvim" animate
 
