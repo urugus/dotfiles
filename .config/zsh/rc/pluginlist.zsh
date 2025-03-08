@@ -21,6 +21,7 @@ autoload -Uz _zinit
 ## Plugin load                                                ##
 #==============================================================#
 
+
 #--------------------------------#
 # history
 #--------------------------------#
@@ -37,6 +38,18 @@ zinit wait'1' lucid \
   light-mode for @mollifier/anyframe
   autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
   add-zsh-hook chpwd chpwd_recent_dirs
+
+#--------------------------------#
+# vim mode
+#--------------------------------#
+# zsh-history-substring-search script path
+
+zinit ice lucid wait
+zinit light jeffreytse/zsh-vi-mode
+HIST_SEARCH_SCRIPT="${ZINIT_PLUGINS_DIR}/zsh-users---zsh-history-substring-search/zsh-history-substring-search.zsh"
+zvm_after_init_commands+=('[ -f ${HIST_SEARCH_SCRIPT} ] && source ${HIST_SEARCH_SCRIPT}')
+zvm_after_init_commands+=('bindkey "^P" history-substring-search-up')
+zvm_after_init_commands+=('bindkey "^N" history-substring-search-down')
 
 #--------------------------------#
 # completion
@@ -60,10 +73,3 @@ zinit wait'1' lucid \
 # move directory
 #--------------------------------#
 eval "$(zoxide init zsh)"
-
-#--------------------------------#
-# vim mode
-#--------------------------------#
-zinit ice lucid wait
-zinit light jeffreytse/zsh-vi-mode
-zvm_after_init_commands+=('[ -f ~/.zsh-history-substring-search.zsh ] && source ~/.zsh-history-substring-search.zsh')

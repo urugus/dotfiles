@@ -7,13 +7,14 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
- 
+
 export ZDOTDIR=$HOME/.config/zsh
 export ZHOMEDIR=$HOME/.config/zsh
 export ZENVDIR=$ZDOTDIR/environment.sh
 export ZRCDIR=$ZHOMEDIR/rc
 export ZDATADIR=$XDG_DATA_HOME/zsh
 export ZCACHEDIR=$XDG_CACHE_HOME/zsh
+export ZINIT_PLUGINS_DIR="${ZDATADIR}/zinit/plugins"
 
 
 # Backup

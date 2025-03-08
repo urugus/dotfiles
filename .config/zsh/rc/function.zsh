@@ -20,7 +20,7 @@ git_command(){
     esac
 }
 
-# selecte & switch git brahch
+# select & switch git brahch
 fzf_git_switch_branch() {
   local selected_branch=$(git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)' | awk '{print $1, $2}' | fzf --reverse | awk '{print $2}')
   if [[ -n "$selected_branch" ]]; then
