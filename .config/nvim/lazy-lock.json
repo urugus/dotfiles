@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "CopilotChat.nvim": { "branch": "main", "commit": "7ba905eefb9f42ac7de20607b29f54b922750de8" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "78595bb6153dd835c1bfd797de6ab073c093d4ad" },
   "LuaSnip": { "branch": "master", "commit": "c9b9a22904c97d0eb69ccb9bab76037838326817" },
   "avante.nvim": { "branch": "main", "commit": "d75094b81579e2b36dc8fa9fc21bd499dea37590" },
   "bufdelete.nvim": { "branch": "master", "commit": "f6bcea78afb3060b198125256f897040538bcb81" },
@@ -79,6 +79,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "81374ffd26f9a9d5f44274a9e7e60547b5fd106f" },
   "sidebar.nvim": { "branch": "main", "commit": "5695712eef6288fff667343c4ae77c54911bdb1b" },
   "skkeleton": { "branch": "main", "commit": "f1f0586c69d84c6ee5f3e5a4ca76cc188161b944" },
+  "skkeleton-snacks": { "branch": "main", "commit": "017dedf8f7a699060fa760c429d31cd3a5dc1683" },
   "skkeleton_indicator.nvim": { "branch": "v2", "commit": "d9b649d734ca7d3871c4f124004771d0213dc747" },
   "smear-cursor.nvim": { "branch": "main", "commit": "4b7334a09cd2434e73588cc0ea63e71177251249" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },

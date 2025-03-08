@@ -44,6 +44,15 @@ require("lazy").setup({
     end,
   },
   {
+    "urugus/skkeleton-snacks",
+    dependencies = {
+      "vim-skk/skkeleton",
+      "folke/snacks.nvim",
+    },
+    event = "VeryLazy", -- 遅延読み込み
+    config = true,
+  },
+  {
     "delphinus/skkeleton_indicator.nvim",
     config = function()
       require("rc/pluginconfig/skkeleton_indicator")
