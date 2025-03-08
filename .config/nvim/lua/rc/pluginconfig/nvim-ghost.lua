@@ -1,4 +1,4 @@
--- vim.g.nvim_ghost_server_port = 5001
+vim.g.nvim_ghost_server_port = 4001
 vim.cmd([[
   augroup nvim_ghost_user_autocommands
     autocmd User *github.com setfiletype markdown
