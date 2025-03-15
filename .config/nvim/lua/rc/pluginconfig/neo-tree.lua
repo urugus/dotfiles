@@ -58,7 +58,7 @@ require("neo-tree").setup({
         --"node_modules"
       },
       never_show = { -- remains hidden even if visible is toggled to true
-        --".DS_Store",
+        ".DS_Store",
         --"thumbs.db"
       },
     },

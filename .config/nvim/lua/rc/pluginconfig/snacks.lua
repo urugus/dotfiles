@@ -57,7 +57,9 @@ snacks.setup({
       multi = { "buffers", "recent", "files" },
       matcher = {
         cwd_bonus = true, -- boost cwd matches
-        frecency = true, -- use frecency boosting
+        cwd_weight = 2.0, -- weight for cwd matches
+        cwd_first = true, -- show cwd matches first
+        frecency = false, -- use frecency boosting
         sort_empty = true, -- sort even when the filter is empty
       },
       transform = "unique_file",
