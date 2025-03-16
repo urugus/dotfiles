@@ -342,6 +342,13 @@ require("lazy").setup({
     end,
   },
   {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("rc/pluginconfig/tiny-inline-diagnostic")
+    end,
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     event = "VimEnter",
     config = function()
