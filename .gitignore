@@ -39,7 +39,7 @@
 !/.config/nvim/**
 !/.config/nvim/lua/**
 !/.config/nvim/lua/rc/**
-!/.config/nvim/pluginconfig/**
+!/.config/nvim/lua/rc/pluginconfig/**
 
 ## library
 
