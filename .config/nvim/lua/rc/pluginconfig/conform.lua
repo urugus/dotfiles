@@ -18,10 +18,11 @@ require("conform").setup({
         ]],
       },
       stdin = true,
+      timeout = 10000, -- 10秒に延長（大きなファイル用）
     },
   },
   format_on_save = {
-    timeout_ms = 1200,
-    -- lsp_fallback = true,
+    timeout_ms = 5000, -- 5秒に延長
+    lsp_fallback = true, -- LSPのフォーマッタをフォールバックとして使用
   },
 })

@@ -20,6 +20,23 @@ lspconfig.astro.setup({
 
 -- ruby
 lspconfig.solargraph.setup({
-  cmd = { "solargraph", "stdio", "ruby-lsp" },
-  filetypes = { "ruby" }
+  cmd = { "solargraph", "stdio" },  -- 余分なパラメータを削除
+  filetypes = { "ruby" },
+  init_options = {
+    formatting = true,
+    diagnostics = true,
+    autoformat = false,  -- 自動フォーマットを無効化して起動を早める
+    completion = true
+  },
+  settings = {
+    solargraph = {
+      commandPath = vim.fn.exepath("solargraph"),
+      useBundler = false,  -- Bundlerを使わない設定に（高速化）
+      bundlerPath = vim.fn.exepath("bundle"),
+      transport = "stdio",
+      logLevel = "warn",  -- ログレベルを下げて起動を早める
+      promptDownload = false,  -- プロンプトを表示しない
+      diagnostics = true
+    }
+  }
 })
