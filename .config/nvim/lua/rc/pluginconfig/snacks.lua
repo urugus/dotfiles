@@ -54,16 +54,17 @@ snacks.setup({
   },
   picker = {
     smart = {
-      multi = { "buffers", "recent", "files" },
+      multi = { "buffers", "project", "recent", "files" },
       matcher = {
         cwd_bonus = true, -- boost cwd matches
         cwd_weight = 2.0, -- weight for cwd matches
         cwd_first = true, -- show cwd matches first
-        frecency = false, -- use frecency boosting
+        frecency = true, -- use frecency boosting
         sort_empty = true, -- sort even when the filter is empty
       },
       transform = "unique_file",
     },
+    format = "file",
     prompt = " ",
     sources = {},
     focus = "input",
@@ -380,7 +381,7 @@ snacks.setup({
   },
   scroll = {
     animate = {
-      duration = { step = 15, total = 80 },
+      duration = { step = 10, total = 100 },
       easing = "linear",
     },
     animate_repeat = {

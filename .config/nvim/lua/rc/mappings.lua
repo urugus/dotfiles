@@ -88,7 +88,7 @@ api.nvim_set_keymap("v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = tr
 api.nvim_set_keymap("n", "<Leader>f", "[FuzzyFinder]", {})
 api.nvim_set_keymap("v", "<Leader>f", "[FuzzyFinder]", {})
 map("n", "<Leader><Leader>", function()
-  require("snacks").picker.smart()
+  require("snacks").picker.smart({ ignored = true, hidden = true })
 end, { noremap = true, silent = true })
 map("n", "[FuzzyFinder].", function()
   require("snacks").picker.files({ ignored = true, hidden = true })
