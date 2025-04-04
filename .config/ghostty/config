@@ -4,8 +4,6 @@ background-opacity = 0.7
 clipboard-trim-trailing-spaces
 copy-on-select = true 
 font-family = "UDEV Gothic LG Regular"
-font-family = "Hack Nerd Font Mono Regular"
-font-family = "Fira Code Regular"
 keybind = global:f18=toggle_quick_terminal
 macos-icon-frame = chrome
 macos-titlebar-proxy-icon = hidden
