@@ -7,6 +7,7 @@ require("conform").setup({
     sh = { "shfmt" },
     yaml = { "yamlfmt" },
     lua = { "stylua" },
+    terraform = { "terraform_fmt" },
   },
   formatters = {
     rubocop = {

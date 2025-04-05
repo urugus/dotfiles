@@ -1,4 +1,12 @@
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "terraformls",  -- Terraform LSP
+    "lua_ls",       -- Lua
+    "ts_ls",  -- TypeScript
+    "pyright",      -- Python
+    "solargraph",   -- Ruby
+  }
+})
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -94,4 +102,3 @@ require("mason-lspconfig").setup_handlers({
     end
   end,
 })
-

@@ -40,3 +40,9 @@ lspconfig.solargraph.setup({
     }
   }
 })
+
+-- terraform
+lspconfig.terraformls.setup({
+  filetypes = { "terraform", "terraform-vars", "tf" },
+  cmd = { "terraform-ls", "serve" }
+})

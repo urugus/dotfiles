@@ -20,5 +20,8 @@ require("mason-null-ls").setup({
     -- Shell
     "shellcheck",
     "shfmt",
+    -- Terraform
+    "terraform_fmt",
+    "tflint",
   },
 })

@@ -7,7 +7,8 @@ require('lint').linters_by_ft = {
   typescript = { 'eslint_d' },
   python = { "flake8" },
   ruby = { 'rubocop' },
-  rust = { 'clippy', }
+  rust = { 'clippy', },
+  terraform = { 'tflint', }
 }
 require("lint").try_lint()
 
