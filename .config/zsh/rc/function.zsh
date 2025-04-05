@@ -114,3 +114,60 @@ bers(){
   fi
 }
 
+### AWS ###
+
+# AWS プロファイル切り替え関数
+aws_switch_profile() {
+  local selected_profile
+  selected_profile=$(grep '\[profile' ~/.aws/config | sed 's/.*profile \(.*\)\]/\1/' | fzf --prompt="AWS Profile> ")
+  
+  if [[ -z "$selected_profile" ]]; then
+    echo "No profile selected."
+    return 1
+  fi
+
+  local role_arn source_profile mfa_serial
+  role_arn=$(aws configure get role_arn --profile "$selected_profile")
+  source_profile=$(aws configure get source_profile --profile "$selected_profile")
+  mfa_serial=$(aws configure get mfa_serial --profile "$selected_profile")
+
+  if [[ -z "$role_arn" || -z "$source_profile" ]]; then
+    echo "No AssumeRole configuration found. Setting profile directly."
+    export AWS_PROFILE="$selected_profile"
+    unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+    echo "Switched to AWS_PROFILE=$AWS_PROFILE"
+    return
+  fi
+
+  local creds
+  if [[ -n "$mfa_serial" ]]; then
+    echo -n "Enter MFA code: "
+    read mfa_code
+    creds=$(aws sts assume-role --profile "$source_profile" --role-arn "$role_arn" \
+      --role-session-name "zsh-session-$(date +%s)" \
+      --serial-number "$mfa_serial" --token-code "$mfa_code")
+  else
+    creds=$(aws sts assume-role --profile "$source_profile" --role-arn "$role_arn" \
+      --role-session-name "zsh-session-$(date +%s)")
+  fi
+
+  if [[ $? -ne 0 ]]; then
+    echo "Failed to assume role."
+    return 1
+  fi
+
+  local aws_access_key_id aws_secret_access_key aws_session_token aws_region
+
+  aws_access_key_id=$(echo "$creds" | jq -r '.Credentials.AccessKeyId')
+  aws_secret_access_key=$(echo "$creds" | jq -r '.Credentials.SecretAccessKey')
+  aws_session_token=$(echo "$creds" | jq -r '.Credentials.SessionToken')
+  aws_region=$(aws configure get region --profile "$selected_profile")
+
+  export AWS_ACCESS_KEY_ID=$aws_access_key_id
+  export AWS_SECRET_ACCESS_KEY=$aws_secret_access_key
+  export AWS_SESSION_TOKEN=$aws_session_token
+  export AWS_REGION=$aws_region
+
+  unset AWS_PROFILE
+  echo "Switched to AWS profile '$selected_profile'."
+}
