@@ -9,6 +9,7 @@ brew autoconf
 brew autojump
 brew automake
 brew awscli
+brew aws-vault
 brew bash
 brew bash-completion
 brew bat
