@@ -24,7 +24,7 @@ vim.o.softtabstop = 0
 vim.o.expandtab = true -- タブを空白文字に展開
 -- vim.o.autoindent smartindent  -- 自動インデント，スマートインデント
 vim.o.list = true
-vim.o.listchars = "tab:»-"
+vim.o.listchars = "tab:  "
 
 -- 入力補助
 vim.o.backspace = "indent,eol,start" -- バックスペースでなんでも消せるように
@@ -75,7 +75,7 @@ vim.o.modeline = false
 -- +レジスタ：Ubuntuの[Ctrl-v]で貼り付けられるもの unnamedplus
 -- *レジスタ：マウス中クリックで貼り付けられるもの unnamed
 if vim.fn.has("clipboard") == 1 then
-	vim.o.clipboard = "unnamedplus,unnamed"
+  vim.o.clipboard = "unnamedplus,unnamed"
 end
 
 -- ビープ音除去
