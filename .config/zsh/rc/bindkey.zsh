@@ -29,3 +29,6 @@ bindkey '^f' _yazi-widget
 ## Completion ##
 zle -N zi
 bindkey '^z' zi
+
+## SKK用に<C-j>のバインディングを無効化
+bindkey -r '^J'  # Unbind Ctrl+J

@@ -2,9 +2,11 @@ adjust-cell-width = -13%
 background-blur-radius = 2
 background-opacity = 0.7
 clipboard-trim-trailing-spaces
-copy-on-select = true 
+copy-on-select = true
 font-family = "UDEV Gothic LG Regular"
 keybind = global:f18=toggle_quick_terminal
+# キーバインディングを無効化（コメントアウト）
+# keybind = ctrl+j=text:\x0A
 macos-icon-frame = chrome
 macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = transparent
