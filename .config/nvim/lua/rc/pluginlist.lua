@@ -668,6 +668,25 @@ require("lazy").setup({
   -- O. Analyzer
   { "wakatime/vim-wakatime" },
 
+  -- P. GUI
+  {
+    "3rd/image.nvim",
+    lazy = true,
+  },
+
+  -- Q. External services
+  {
+    "urugus/neo-slack.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "junegunn/vim-emoji",
+    },
+    lazy = false,
+    config = function()
+      require("rc/pluginconfig/neo-slack")
+    end,
+  },
+
   ------------------------------------------------------------
   -- 自動プラグイン更新チェック
   checker = { enabled = true },
