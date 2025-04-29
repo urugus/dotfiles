@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+  <key>Label</key>            <string>com.user.yaskkserv2</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/$USER/.dotfiles/skk/update-dictionary.zsh</string>
+  </array>
+  <key>KeepAlive</key>        <true/>
+  <key>RunAtLoad</key>        <true/>
+  <key>StandardOutPath</key>  <string>/tmp/yaskkserv2.log</string>
+  <key>StandardErrorPath</key><string>/tmp/yaskkserv2.err</string>
+  <!-- 1 日に 1 回、辞書を自動再生成 -->
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>4</integer><key>Minute</key><integer>30</integer></dict>
+</dict>
+</plist>

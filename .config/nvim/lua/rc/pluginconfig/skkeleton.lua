@@ -8,17 +8,18 @@ if handle then
   handle:close()
 end
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'skkeleton-initialize-pre',
+vim.api.nvim_create_autocmd("User", {
+  pattern = "skkeleton-initialize-pre",
   callback = function()
-    vim.fn['skkeleton#config']({
+    vim.fn["skkeleton#config"]({
       eggLikeNewline = true,
       registerConvertResult = true,
       globalDictionaries = dictionaries,
       -- AquaSKK と共有
-      userDictionary = "~/backup/skk/skk-jisyo.utf8"
+      userDictionary = "~/backup/skk/skk-jisyo.utf8",
+      -- 辞書サーバーを使用せず、直接辞書を読み込む
+      sources = { "skk_dictionary" },
     })
   end,
-  group = vim.api.nvim_create_augroup('SkkeletonInitPre', { clear = true }),
+  group = vim.api.nvim_create_augroup("SkkeletonInitPre", { clear = true }),
 })
-
