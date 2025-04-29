@@ -51,6 +51,7 @@
 
 ## skk
 !/.config/skk
+!/.config/skk/**
 
 ## wezterm
 /.config/wezterm/local.lua
