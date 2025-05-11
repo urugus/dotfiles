@@ -1,11 +1,11 @@
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "terraformls",  -- Terraform LSP
-    "lua_ls",       -- Lua
-    "ts_ls",  -- TypeScript
-    "pyright",      -- Python
-    "solargraph",   -- Ruby
-  }
+    "terraformls", -- Terraform LSP
+    "lua_ls", -- Lua
+    "ts_ls", -- TypeScript
+    "pyright", -- Python
+    "solargraph", -- Ruby
+  },
 })
 
 -- Use an on_attach function to only map the following keys
@@ -60,45 +60,68 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 local lspconfig = require("lspconfig")
-local capabilities = vim.tbl_deep_extend("force",
+local capabilities = vim.tbl_deep_extend(
+  "force",
   vim.lsp.protocol.make_client_capabilities(),
-  require('cmp_nvim_lsp').default_capabilities()
+  require("cmp_nvim_lsp").default_capabilities()
 )
-require("mason-lspconfig").setup_handlers({
-  function(server_name)
-    if server_name == "ts_server" then
-      server_name = "ts_ls"
-    end
 
-    if server_name == "rust_analyzer" then
-      local has_rust_tools, rust_tools = pcall(require, "rust-tools")
-      if has_rust_tools then
-        rust_tools.setup({ server = { capabilities = capabilities, on_attach = on_attach } })
-      else
-        lspconfig.rust_analyzer.setup({ capabilities = capabilities, on_attach = on_attach })
-      end
-    elseif server_name == "lua_ls" then
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-            hint = { enable = true },
-            format = {
-              enable = true,
-              defaultConfig = {
-                indent_style = "tab",
-                indent_size = "2",
-              }
+local mason = require("mason")
+local mason_lsp = require("mason-lspconfig")
+
+-- 事前に capabilities, on_attach を定義しておく
+-- local capabilities = …
+-- local on_attach    = …
+
+mason.setup()
+mason_lsp.setup({
+  -- 必要なら ensure_installed にサーバー名を列挙
+  ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls" },
+
+  handlers = {
+    -- デフォルトハンドラ（全サーバー共通）
+    function(server_name)
+      -- rust_analyzer は rust-tools 経由でセットアップ
+      if server_name == "rust_analyzer" then
+        local ok, rust_tools = pcall(require, "rust-tools")
+        if ok then
+          rust_tools.setup({
+            server = { capabilities = capabilities, on_attach = on_attach },
+          })
+        else
+          lspconfig.rust_analyzer.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+          })
+        end
+
+      -- lua_ls はネームスペース付きで個別設定
+      elseif server_name == "lua_ls" then
+        lspconfig.lua_ls.setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = {
+            Lua = {
+              diagnostics = { globals = { "vim" } },
+              hint = { enable = true },
+              format = {
+                enable = true,
+                defaultConfig = {
+                  indent_style = "tab",
+                  indent_size = "2",
+                },
+              },
             },
           },
-        },
-      })
-    else
-      lspconfig[server_name].setup({ capabilities = capabilities, on_attach = on_attach })
-    end
-  end,
+        })
+
+      -- それ以外は lspconfig で標準設定
+      else
+        lspconfig[server_name].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+      end
+    end,
+  },
 })
