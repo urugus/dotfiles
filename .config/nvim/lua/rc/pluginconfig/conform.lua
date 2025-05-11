@@ -2,6 +2,7 @@ require("conform").setup({
   formatters_by_ft = {
     javascript = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
+    go = { "goimports", "gofmt" },
     ruby = { "rubocop" },
     python = { "black" },
     sh = { "shfmt" },
