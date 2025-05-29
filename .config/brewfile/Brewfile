@@ -2,6 +2,8 @@
 # tap repositories and their packages
 
 tap homebrew/core
+tap daipeihust/tap
+
 brew act
 brew aom
 brew aribb24
@@ -77,6 +79,7 @@ brew harfbuzz
 brew highway
 brew icu4c@75
 brew imath
+brew im-select
 brew isl
 brew jasper
 brew jpeg-turbo

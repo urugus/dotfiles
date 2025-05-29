@@ -23,7 +23,7 @@ export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK
 
 
 # editor
-export EDITOR=nvim
+export EDITOR="ghostty nvim"
 
 typeset -U path PATH manpath sudo_path
 
