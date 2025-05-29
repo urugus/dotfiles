@@ -31,10 +31,10 @@ lspconfig.solargraph.setup({
   settings = {
     solargraph = {
       commandPath = vim.fn.exepath("solargraph"),
-      useBundler = false,  -- Bundlerを使わない設定に（高速化）
+      useBundler = true,  -- Bundlerを使う設定に
       bundlerPath = vim.fn.exepath("bundle"),
       transport = "stdio",
-      logLevel = "warn",  -- ログレベルを下げて起動を早める
+      logLevel = "info",  -- ログレベルを上げて詳細を確認
       promptDownload = false,  -- プロンプトを表示しない
       diagnostics = true
     }

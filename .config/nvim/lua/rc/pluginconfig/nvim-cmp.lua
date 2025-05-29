@@ -18,7 +18,7 @@ cmp.setup({
     format = require("lspkind").cmp_format({
       with_text = true,
       menu = {
-        skkeleton = '[Skkeleton]',
+        skkeleton = "[Skkeleton]",
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
         cmp_tabnine = "[TabNine]",
@@ -97,9 +97,9 @@ cmp.setup({
     ["<C-n>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-        -- elseif luasnip.expand_or_jumpable() then
-        --   luasnip.expand_or_jump()
-      elseif has_words_before() then
+      end
+
+      if has_words_before() then
         cmp.complete()
       else
         fallback()
@@ -216,4 +216,3 @@ cmp.setup.cmdline(":", {
   },
   sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" }, { { name = "cmdline_history" } } }),
 })
-

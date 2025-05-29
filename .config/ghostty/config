@@ -18,3 +18,4 @@ theme = Wez
 window-inherit-working-directory = true
 window-padding-balance = true
 window-save-state = always
+# keybind = shift+enter=text:\n
