@@ -16,6 +16,7 @@ git_command(){
         st) git status "${@:2}" ;;
         sw) git switch "${@:2}" ;;
         swc) git switch -c "${@:2}" ;;
+        wt) git worktree "${@:2}" ;;
         *)  git "$@" ;;
     esac
 }
