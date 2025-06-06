@@ -26,7 +26,7 @@ export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK
 export EDITOR="ghostty nvim"
 
 # AI
-export CLAUDE_CODE_USE_BEDROCK=1
+# export CLAUDE_CODE_USE_BEDROCK=1
 
 typeset -U path PATH manpath sudo_path
 

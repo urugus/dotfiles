@@ -2,6 +2,9 @@
 ##          Key Bindings                                      ##
 #==============================================================## Bind keys
 
+# Disable vi-mode and use emacs mode
+bindkey -e
+
 ## move ##
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
@@ -16,6 +19,11 @@ bindkey '^x^b' fzf_git_switch_branch
 bindkey '^x^c' anyframe-widget-cdr
 bindkey '^x^k' anyframe-widget-killfzf_git_switch_branch
 
+## Claude ##
+function _claude-widget() { claude }
+zle -N _claude-widget
+bindkey '^o' _claude-widget
+
 ## Git ##
 function _lazygit-widget() { lazygit }
 zle -N _lazygit-widget
@@ -29,6 +37,3 @@ bindkey '^f' _yazi-widget
 ## Completion ##
 zle -N zi
 bindkey '^z' zi
-
-## SKK用に<C-j>のバインディングを無効化
-bindkey -r '^J'  # Unbind Ctrl+J
