@@ -680,8 +680,9 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "junegunn/vim-emoji",
+      "folke/snacks.nvim",
     },
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/neo-slack")
     end,
