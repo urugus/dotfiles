@@ -226,72 +226,6 @@ require("lazy").setup({
   },
   -- "folke/snacks.nvim" picker
 
-  -- {
-  --   "nvim-telescope/telescope.nvim",
-  --   event = { "VimEnter" },
-  --   config = function()
-  --     require("rc/pluginconfig/telescope")
-  --   end,
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     {
-  --       "Allianaab2m/telescope-kensaku.nvim",
-  --       config = function()
-  --         require("telescope").load_extension("kensaku") -- :Telescope kensaku
-  --       end,
-  --       dependencies = {
-  --         { "lambdalisue/vim-kensaku", lazy = true },
-  --       },
-  --     },
-  --   },
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-github.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("telescope").load_extension("gh")
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-ui-select.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("telescope").load_extension("ui-select")
-  --   end,
-  -- },
-  -- {
-  --   "LinArcX/telescope-changes.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("telescope").load_extension("changes")
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-live-grep-args.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("telescope").load_extension("live_grep_args")
-  --   end,
-  -- },
-  -- {
-  --   "nvim-telescope/telescope-smart-history.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("telescope").load_extension("smart_history")
-  --   end,
-  --   build = function()
-  --     os.execute("mkdir -p " .. vim.fn.stdpath("state") .. "databases/")
-  --   end,
-  -- },
-  -- { "nvim-telescope/telescope-symbols.nvim", lazy = true },
-  -- {
-  --   "debugloop/telescope-undo.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require("telescope").load_extension("undo")
-  --   end,
-  -- },
-
   ------------------------------------------------------------
   -- VII. LSP & Completion / Snipped
   -- A. Completion
@@ -505,9 +439,9 @@ require("lazy").setup({
   {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
-      file_types = { "markdown", "Avante" },
+      file_types = { "markdown" },
     },
-    ft = { "markdown", "Avante" },
+    ft = { "markdown" },
   },
   {
     "HakonHarnes/img-clip.nvim",
@@ -635,16 +569,6 @@ require("lazy").setup({
     opts = {
       debug = true,
     },
-  },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    build = "make",
-    config = function()
-      require("rc/pluginconfig/avante")
-    end,
   },
   -- L. Browser support
   {
