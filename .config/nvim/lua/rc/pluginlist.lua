@@ -570,6 +570,15 @@ require("lazy").setup({
       debug = true,
     },
   },
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for git operations
+    },
+    config = function()
+      require("rc/pluginconfig/claude-code")
+    end,
+  },
   -- L. Browser support
   {
     "subnut/nvim-ghost.nvim",
