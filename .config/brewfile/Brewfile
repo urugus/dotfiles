@@ -174,6 +174,7 @@ brew openjpeg
 brew openssl@3
 brew openssl@3.0
 brew opus
+brew orbstack
 brew oven-sh/bun/bun
 brew p11-kit
 brew pango
