@@ -487,7 +487,6 @@ require("lazy").setup({
       require("rc/pluginconfig/conform")
     end,
   },
-  { "tani/vim-typo" },
   -- F. Git & Version control
   -- "folke/snacks.nvim" lazygit
   {
