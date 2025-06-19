@@ -165,6 +165,7 @@ brew node
 brew node-build
 brew nodenv
 brew numpy
+brew marp-cli
 brew oniguruma
 brew openblas
 brew opencore-amr

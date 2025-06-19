@@ -20,7 +20,12 @@ bindkey '^x^c' anyframe-widget-cdr
 bindkey '^x^k' anyframe-widget-killfzf_git_switch_branch
 
 ## Claude ##
-function _claude-widget() { claude }
+function _claude-widget() { 
+  # Clear the current line and run claude
+  BUFFER=""
+  zle accept-line
+  claude
+}
 zle -N _claude-widget
 bindkey '^o' _claude-widget
 
@@ -37,3 +42,11 @@ bindkey '^f' _yazi-widget
 ## Completion ##
 zle -N zi
 bindkey '^z' zi
+
+## zsh-skk ##
+# Ctrl+J to toggle Japanese input mode
+# Check if z-skk is loaded before setting up keybindings
+if (( ${+functions[z-skk-setup-keybindings]} )); then
+    z-skk-setup-keybindings
+fi
+# The actual binding will be set up by z-skk when it loads

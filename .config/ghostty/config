@@ -5,8 +5,6 @@ clipboard-trim-trailing-spaces
 copy-on-select = true
 font-family = "UDEV Gothic LG Regular"
 keybind = global:f18=toggle_quick_terminal
-# キーバインディングを無効化（コメントアウト）
-# keybind = ctrl+j=text:\x0A
 macos-icon-frame = chrome
 macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = transparent
@@ -18,4 +16,6 @@ theme = Wez
 window-inherit-working-directory = true
 window-padding-balance = true
 window-save-state = always
-# keybind = shift+enter=text:\n
+keybind = shift+enter=text:\x0a
+keybind = ctrl+enter=text:\x0a
+keybind = alt+enter=text:\x0a
