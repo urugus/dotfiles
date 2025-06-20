@@ -266,7 +266,6 @@ cask visual-studio-code
 cask vivaldi
 cask warp
 cask wezterm
-cask slack-cli
 cask zoom
 
 tap homebrew/services
