@@ -19,27 +19,8 @@ lspconfig.astro.setup({
 
 
 -- ruby
-lspconfig.solargraph.setup({
-  cmd = { "solargraph", "stdio" },  -- 余分なパラメータを削除
-  filetypes = { "ruby" },
-  init_options = {
-    formatting = true,
-    diagnostics = true,
-    autoformat = false,  -- 自動フォーマットを無効化して起動を早める
-    completion = true
-  },
-  settings = {
-    solargraph = {
-      commandPath = vim.fn.exepath("solargraph"),
-      useBundler = true,  -- Bundlerを使う設定に
-      bundlerPath = vim.fn.exepath("bundle"),
-      transport = "stdio",
-      logLevel = "info",  -- ログレベルを上げて詳細を確認
-      promptDownload = false,  -- プロンプトを表示しない
-      diagnostics = true
-    }
-  }
-})
+-- Mason-lspconfigでSolargraphが管理されているため、ここでの設定を削除
+-- Solargraphの設定はMasonのハンドラーで行われる
 
 -- terraform
 lspconfig.terraformls.setup({

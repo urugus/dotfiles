@@ -115,6 +115,33 @@ mason_lsp.setup({
           },
         })
 
+      -- solargraph は個別設定（無限リロード対策）
+      elseif server_name == "solargraph" then
+        lspconfig.solargraph.setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+          cmd = { "solargraph", "stdio" },
+          filetypes = { "ruby" },
+          root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+          init_options = {
+            formatting = false,
+            diagnostics = true,
+            autoformat = false,
+            completion = true
+          },
+          settings = {
+            solargraph = {
+              useBundler = false,  -- Bundlerを無効化して安定性向上
+              transport = "stdio",
+              logLevel = "warn",
+              promptDownload = false,
+              diagnostics = true,
+              checkGemVersion = false,
+              folding = false
+            }
+          }
+        })
+
       -- それ以外は lspconfig で標準設定
       else
         lspconfig[server_name].setup({

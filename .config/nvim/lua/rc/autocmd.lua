@@ -69,7 +69,8 @@ vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained" }, {
   group = group_name,
   pattern = "*",
   callback = function()
-    if vim.fn.bufexists("[Command Line]") == 0 then
+    -- Rubyファイルではchecktimeを実行しない（Solargraphの無限リロードを防ぐ）
+    if vim.fn.bufexists("[Command Line]") == 0 and vim.bo.filetype ~= "ruby" then
       vim.cmd([[checktime]])
     end
   end,
