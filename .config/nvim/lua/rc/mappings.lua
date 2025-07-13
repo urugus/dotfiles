@@ -82,6 +82,23 @@ api.nvim_set_keymap("n", "[Octo]rs", "<Cmd>Octo review start<Cr>", {})
 api.nvim_set_keymap("n", "[Octo]re", "<Cmd>Octo review submit<Cr>", {})
 api.nvim_set_keymap("n", "[Octo]rc", "<Cmd>Octo review comments<Cr>", {})
 
+-- [LSP]
+map("n", "gd", function()
+  require("snacks").picker.lsp_definitions()
+end, { noremap = true, silent = true })
+map("n", "gD", function()
+  require("snacks").picker.lsp_declarations()
+end, { noremap = true, silent = true })
+map("n", "gr", function()
+  require("snacks").picker.lsp_references()
+end, { noremap = true, silent = true })
+map("n", "gI", function()
+  require("snacks").picker.lsp_implementations()
+end, { noremap = true, silent = true })
+map("n", "gy", function()
+  require("snacks").picker.lsp_type_definitions()
+end, { noremap = true, silent = true })
+
 -- [FuzzyFinder]
 api.nvim_set_keymap("n", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
 api.nvim_set_keymap("v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true })
