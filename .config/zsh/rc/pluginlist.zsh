@@ -71,15 +71,3 @@ zinit wait'1' lucid \
 # move directory
 #--------------------------------#
 eval "$(zoxide init zsh)"
-
-#--------------------------------#
-# SKK
-#--------------------------------#
-zinit ice wait'0' lucid
-zinit light urugus/z-skk 
-
-# Personal dictionary path (default: ~/.skk-jisyo)
-export SKK_JISYO_PATH="$HOME/backup/skk/skk-jisyo.utf8"
-
-# System dictionary path (optional)
-export SKK_SYSTEM_JISYO_PATH="$HOME/backup/skk/SKK-JISYO.L"
