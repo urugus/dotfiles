@@ -16,6 +16,7 @@ theme = Wez
 window-inherit-working-directory = true
 window-padding-balance = true
 window-save-state = always
-keybind = shift+enter=text:\x0a
 keybind = ctrl+enter=text:\x0a
 keybind = alt+enter=text:\x0a
+keybind = shift+enter=text:\n
+keybind = ctrl+j=ignore
