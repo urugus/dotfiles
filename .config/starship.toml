@@ -19,6 +19,7 @@ $os\
 \n$character"""
 
 add_newline = true
+command_timeout = 1000
 
 # left_promptとright_promptの間を何で埋めるか設定
 [fill]
