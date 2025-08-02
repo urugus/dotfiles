@@ -36,28 +36,28 @@ require("lazy").setup({
 
   ------------------------------------------------------------
   -- II. Snipped & IME
-  { "vim-denops/denops.vim" },
-  {
-    "vim-skk/skkeleton",
-    config = function()
-      require("rc/pluginconfig/skkeleton")
-    end,
-  },
-  {
-    "urugus/skkeleton-snacks",
-    dependencies = {
-      "vim-skk/skkeleton",
-      "folke/snacks.nvim",
-    },
-    event = "VeryLazy", -- 遅延読み込み
-    config = true,
-  },
-  {
-    "delphinus/skkeleton_indicator.nvim",
-    config = function()
-      require("rc/pluginconfig/skkeleton_indicator")
-    end,
-  },
+  -- { "vim-denops/denops.vim" },
+  -- {
+  --   "vim-skk/skkeleton",
+  --   config = function()
+  --     require("rc/pluginconfig/skkeleton")
+  --   end,
+  -- },
+  -- {
+  --   "urugus/skkeleton-snacks",
+  --   dependencies = {
+  --     "vim-skk/skkeleton",
+  --     "folke/snacks.nvim",
+  --   },
+  --   event = "VeryLazy", -- 遅延読み込み
+  --   config = true,
+  -- },
+  -- {
+  --   "delphinus/skkeleton_indicator.nvim",
+  --   config = function()
+  --     require("rc/pluginconfig/skkeleton_indicator")
+  --   end,
+  -- },
 
   ------------------------------------------------------------
   -- III. Appearance & UI
@@ -243,7 +243,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-nvim-lua", lazy = true },
   { "hrsh7th/cmp-emoji", lazy = true },
   { "hrsh7th/cmp-calc", lazy = true },
-  { "rinx/cmp-skkeleton", lazy = true },
+  -- { "rinx/cmp-skkeleton", lazy = true },
   { "f3fora/cmp-spell", lazy = true },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   {

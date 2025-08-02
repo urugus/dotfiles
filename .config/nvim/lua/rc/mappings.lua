@@ -18,9 +18,22 @@
 local map = vim.keymap.set
 local api = vim.api
 
--- input
-map("i", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true })
-map("c", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true })
+-- AquaSKK: InsertLeave時にASCIIモードに切り替え
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    -- 複数の方法を組み合わせて確実に切り替える
+    vim.defer_fn(function()
+      -- 1. まずim-selectでABCに切り替え
+      vim.fn.system("/opt/homebrew/bin/im-select jp.sourceforge.inputmethod.aquaskk")
+      -- 2. 少し待ってからAquaSKKのASCIIモードに戻す
+      vim.defer_fn(function()
+        vim.fn.system("/opt/homebrew/bin/im-select jp.sourceforge.inputmethod.aquaskk.Ascii")
+      end, 100)
+    end, 10)
+  end,
+  desc = "Switch to ASCII mode when leaving insert mode",
+})
 
 -- buffer move
 map("n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true })
