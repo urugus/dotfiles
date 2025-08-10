@@ -1,4 +1,4 @@
-local wezterm = require "wezterm"
+local wezterm = require("wezterm")
 local act = wezterm.action
 require("on")
 
@@ -6,7 +6,7 @@ require("on")
 --- Config
 ---------------------------------------------------------------
 
-return  {
+return {
   animation_fps = 10,
   use_ime = false,
   window_background_opacity = 0.7,
@@ -21,11 +21,11 @@ return  {
     { key = "c", mods = "ALT", action = act({ CopyTo = "Clipboard" }) },
     { key = "v", mods = "ALT", action = act({ PasteFrom = "Clipboard" }) },
     { key = "x", mods = "ALT", action = act({ CloseCurrentPane = { confirm = true } }) },
-    { key = "j", mods = "CTRL", action = act.SendString "\x18@j"},
+    { key = "j", mods = "CTRL", action = act.SendString("\x18@j") },
   },
-  font = wezterm.font_with_fallback {
+  font = wezterm.font_with_fallback({
     "UDEV Gothic LG",
     "Hack Nerd Font",
-    "Fira Code"
-  },
+    "Fira Code",
+  }),
 }
