@@ -41,6 +41,9 @@
 !/.config/nvim/lua/rc/**
 !/.config/nvim/lua/rc/pluginconfig/**
 
+## mise
+!/.config/mise/config.toml
+
 ## library
 
 !/.config/lazygit/**
