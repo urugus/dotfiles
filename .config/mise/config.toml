@@ -1,0 +1,44 @@
+[tasks.rspec]
+alias = "rs"
+description = "rspec を実行する (ファイルパス指定可能)"
+run = "docker-compose exec rspec bundle exec rspec {{arg(name='file', var=true)}}"
+sources = []
+
+[tasks.rubocop]
+alias = "rc"
+description = "rubocop を実行する (ファイルパス指定可能)"
+run = "docker-compose exec rspec bundle exec rubocop {{arg(name='file', var=true)}}"
+sources = []
+
+[tasks.rspec-and-rubocop]
+alias = "rr"
+description = "rspec & rubocop を実行する (ファイルパス指定可能)"
+run = "docker-compose exec rspec bundle exec rspec {{arg(name='file', var=true)}} && docker-compose exec rspec bundle exec rubocop {{arg(name='file', var=true)}}"
+sources = []
+
+[tasks.create-pr]
+alias = "pr"
+description = "PRを作成する"
+run = "claude -p '/create-pull-request'"
+sources = []
+
+[tasks.docker-compose-up-app]
+alias = "dua"
+description = "docker-compose up app を実行する"
+run = "docker-compose up app"
+sources = []
+
+[tasks.docker-compose-up-rspec]
+alias = "dur"
+description = "docker-compose up rspec を実行する"
+run = "docker-compose up rspec"
+sources = []
+
+[tasks.docker-compose-down]
+alias = "dud"
+description = "docker-compose up down を実行する"
+run = "docker-compose down"
+sources = []
+
+[settings]
+idiomatic_version_file_enable_tools = []
