@@ -171,13 +171,13 @@ end, { noremap = true, silent = true })
 map("n", "gzz", "zz", { noremap = true, silent = true })
 map("n", "gj", "j", { noremap = true, silent = true })
 map("n", "gk", "k", { noremap = true, silent = true })
-map("n", "X", "<Cmd>tabclose<CR>", { noremap = true, silent = true })
+map("n", "Q", "<Cmd>tabclose<CR>", { noremap = true, silent = true })
 
 -- move cursor
-vim.keymap.set({ "n", "x" }, "j", function()
+map({ "n", "x" }, "j", function()
   return vim.v.count > 0 and "j" or "gj"
 end, { noremap = true, expr = true })
-vim.keymap.set({ "n", "x" }, "k", function()
+map({ "n", "x" }, "k", function()
   return vim.v.count > 0 and "k" or "gk"
 end, { noremap = true, expr = true })
 
@@ -186,7 +186,7 @@ map("n", "gq", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true })
 
 -- インクリメント設定
 map({ "n", "x" }, "+", "<C-a>", { noremap = true, silent = true })
-map({ "n", "x" }, "_", "<C-x>", { noremap = true, silent = true })
+map({ "n", "x" }, "-", "<C-x>", { noremap = true, silent = true })
 
 -- paste
 map({ "n", "x" }, "p", "]p", { noremap = true, silent = true })
