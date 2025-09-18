@@ -3,6 +3,7 @@ background-blur-radius = 2
 background-opacity = 0.7
 clipboard-trim-trailing-spaces
 copy-on-select = true
+custom-shader-animation = true
 font-family = "UDEV Gothic LG Regular"
 keybind = global:f18=toggle_quick_terminal
 macos-icon-frame = chrome
@@ -10,7 +11,8 @@ macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = transparent
 mouse-hide-while-typing = true
 quick-terminal-animation-duration = 0
-quick-terminal-position = "bottom"
+quick-terminal-position = "right"
+quick-terminal-size = 30%
 quick-terminal-screen = "main"
 theme = Wez
 window-inherit-working-directory = true
@@ -20,3 +22,4 @@ keybind = ctrl+enter=text:\x0a
 keybind = alt+enter=text:\x0a
 keybind = shift+enter=text:\n
 keybind = ctrl+j=ignore
+macos-window-buttons = hidden
