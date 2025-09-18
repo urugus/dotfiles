@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = group_name,
 })
 
-local lspconfig = require("lspconfig")
+local lspconfig = vim.lsp.config
 local capabilities = vim.tbl_deep_extend(
   "force",
   vim.lsp.protocol.make_client_capabilities(),
