@@ -66,3 +66,8 @@
 !/install.sh
 !/install_scripts/
 !/install_scripts/**
+
+# AI Agents
+
+!/AGENTS.md
+!/CLAUDE.md
