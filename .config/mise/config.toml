@@ -40,5 +40,17 @@ description = "docker-compose up down を実行する"
 run = "docker-compose down"
 sources = []
 
+[tasks.github-actions]
+alias = "ga"
+description = "GitHub Actions のワークフローをローカルで実行する"
+run = "wrflw"
+sources = []
+
+[tasks.github-actions-validation]
+alias = "gav"
+description = "GitHub Actions のワークフローのバリデーションをローカルで実行する"
+run = "wrflw vlidate {{arg(name='file', var=true)}}"
+sources = []
+
 [settings]
 idiomatic_version_file_enable_tools = []
