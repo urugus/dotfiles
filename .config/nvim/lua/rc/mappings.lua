@@ -201,3 +201,6 @@ map("n", "<Leader>mc", "<Cmd>MarkdownClose<CR>", { noremap = true, silent = true
 
 -- [Window]
 map("n", "<Leader>wc", "<Cmd>NoNeckPain<CR>", { noremap = true, silent = true })
+
+-- [AI]
+map("n", "<leader>co", "<Cmd>Codex<CR>", { desc = "Toggle Codex popup" })

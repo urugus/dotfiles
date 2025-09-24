@@ -578,6 +578,14 @@ require("lazy").setup({
       require("rc/pluginconfig/claude-code")
     end,
   },
+  {
+    "johnseth97/codex.nvim",
+    lazy = true,
+    cmd = { "Codex" },
+    config = function()
+      require("rc/pluginconfig/codex")
+    end,
+  },
   -- L. Browser support
   {
     "subnut/nvim-ghost.nvim",
