@@ -9,6 +9,7 @@ require("conform").setup({
     yaml = { "yamlfmt" },
     lua = { "stylua" },
     terraform = { "terraform_fmt" },
+    haskell = { "ormolu" },
   },
   formatters = {
     rubocop = {

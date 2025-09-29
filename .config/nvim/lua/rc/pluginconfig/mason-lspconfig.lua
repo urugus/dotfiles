@@ -5,6 +5,7 @@ require("mason-lspconfig").setup({
     "ts_ls", -- TypeScript
     "pyright", -- Python
     "solargraph", -- Ruby
+    "hls", -- Haskell
   },
 })
 
@@ -73,7 +74,7 @@ local mason_lsp = require("mason-lspconfig")
 mason.setup()
 mason_lsp.setup({
   -- 必要なら ensure_installed にサーバー名を列挙
-  ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls" },
+  ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "hls" },
 
   handlers = {
     -- デフォルトハンドラ（全サーバー共通）
