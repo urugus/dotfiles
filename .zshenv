@@ -32,6 +32,7 @@ typeset -U path PATH manpath sudo_path
 
 # paths
 path=(
+  $HOME/.ghcup/bin(N-/)
   /opt/homebrew/bin
   /usr/local/bin
   $HOME/.rbenv/shims
@@ -40,6 +41,7 @@ path=(
   $HOME/.local/bin(N-/)
   $HOME/go/bin(N-/)
   $HOME/.go/bin(N-/)
+  $HOME/Library/Python/3.9/bin(N-/)
   $HOME/.cargo/bin(N-/)
   $HOME/.rustup/toolchains/*/bin(N-/)
   $HOME/.nimble/bin(N-/)
