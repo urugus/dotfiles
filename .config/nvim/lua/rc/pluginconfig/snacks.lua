@@ -381,13 +381,13 @@ snacks.setup({
   },
   scroll = {
     animate = {
-      duration = { step = 10, total = 100 },
+      duration = { step = 3, total = 200 },
       easing = "linear",
     },
     animate_repeat = {
-      delay = 100, -- delay in ms before using the repeat animation
-      duration = { step = 5, total = 50 },
-      easing = "linear",
+      delay = 50, -- delay in ms before using the repeat animation
+      duration = { step = 3, total = 100 },
+      easing = "quadratic",
     },
   },
 })
