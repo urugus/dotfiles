@@ -27,3 +27,14 @@ lspconfig.terraformls.setup({
   filetypes = { "terraform", "terraform-vars", "tf" },
   cmd = { "terraform-ls", "serve" }
 })
+
+-- haskell (managed by ghcup)
+lspconfig.hls.setup({
+  cmd = { "haskell-language-server-wrapper", "--lsp" },
+  filetypes = { "haskell", "lhaskell" },
+  settings = {
+    haskell = {
+      formattingProvider = "ormolu"
+    }
+  }
+})
