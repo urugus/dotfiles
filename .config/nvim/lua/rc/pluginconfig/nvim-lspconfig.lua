@@ -29,9 +29,17 @@ lspconfig.terraformls.setup({
 })
 
 -- haskell (managed by ghcup)
+-- Get capabilities from cmp_nvim_lsp
+local capabilities = vim.tbl_deep_extend(
+  "force",
+  vim.lsp.protocol.make_client_capabilities(),
+  require("cmp_nvim_lsp").default_capabilities()
+)
+
 lspconfig.hls.setup({
   cmd = { "haskell-language-server-wrapper", "--lsp" },
   filetypes = { "haskell", "lhaskell" },
+  capabilities = capabilities,
   settings = {
     haskell = {
       formattingProvider = "ormolu"

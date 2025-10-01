@@ -1,9 +1,10 @@
 local snacks = require("snacks")
+local easing = require("snacks.animate.easing")
 snacks.setup({
   animate = {
     duration = 80,
     fps = 60,
-    easing = "linear",
+    easing = easing.linear,
   },
   bigfile = {
     notify = true,
@@ -382,12 +383,12 @@ snacks.setup({
   scroll = {
     animate = {
       duration = { step = 3, total = 200 },
-      easing = "linear",
+      easing = easing.linear,
     },
     animate_repeat = {
       delay = 50, -- delay in ms before using the repeat animation
       duration = { step = 3, total = 100 },
-      easing = "quadratic",
+      easing = easing.inOutQuad,
     },
   },
 })
