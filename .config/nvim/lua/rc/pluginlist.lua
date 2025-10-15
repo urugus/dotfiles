@@ -26,7 +26,7 @@ require("lazy").setup({
   },
   {
     "williamboman/mason.nvim",
-    event = { "VeryLazy" },
+    lazy = false,
     build = ":MasonUpdate",
     config = function()
       require("rc/pluginconfig/mason")
@@ -269,7 +269,16 @@ require("lazy").setup({
     end,
   },
   {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    event = "VimEnter",
+    config = function()
+      require("rc/pluginconfig/mason-lspconfig")
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
+    dependencies = { "williamboman/mason-lspconfig.nvim" },
     event = "VimEnter",
     config = function()
       require("rc/pluginconfig/nvim-lspconfig")
@@ -280,13 +289,6 @@ require("lazy").setup({
     event = "VeryLazy",
     config = function()
       require("rc/pluginconfig/tiny-inline-diagnostic")
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VimEnter",
-    config = function()
-      require("rc/pluginconfig/mason-lspconfig")
     end,
   },
   {
