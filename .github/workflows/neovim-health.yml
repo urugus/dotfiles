@@ -1,0 +1,44 @@
+name: neovim-health
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check:
+    name: Neovim ${{ matrix.channel }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [stable, nightly]
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim
+        env:
+          NEOVIM_CHANNEL: ${{ matrix.channel }}
+        run: |
+          set -eux
+          curl -L "https://github.com/neovim/neovim/releases/download/${NEOVIM_CHANNEL}/nvim-linux64.tar.gz" -o nvim.tar.gz
+          tar xzf nvim.tar.gz
+          echo "$PWD/nvim-linux64/bin" >> "$GITHUB_PATH"
+
+      - name: Cache lazy.nvim directories
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ github.workspace }}/.local/share/nvim
+            ${{ github.workspace }}/.local/state/nvim
+            ${{ github.workspace }}/.cache/nvim
+          key: ${{ runner.os }}-nvim-${{ matrix.channel }}-${{ hashFiles('.config/nvim/lazy-lock.json', 'scripts/check-neovim.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-nvim-${{ matrix.channel }}-
+            ${{ runner.os }}-nvim-
+
+      - name: Run Neovim deprecated check
+        run: scripts/check-neovim.sh
