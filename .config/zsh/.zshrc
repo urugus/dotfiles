@@ -3,7 +3,7 @@
 #==============================================================#
 
 # profile
-if [ "$ZSHRC_PROFILE" != "" ]; then  
+if [ "$ZSHRC_PROFILE" != "" ]; then
   zmodload zsh/zprof && zprof > /dev/null
 fi
 
