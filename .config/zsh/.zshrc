@@ -49,3 +49,6 @@ source "$ZRCDIR/function.zsh"
 # fi
 
 
+
+# Added by Antigravity
+export PATH="/Users/urugus/.antigravity/antigravity/bin:$PATH"
