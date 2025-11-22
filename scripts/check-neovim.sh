@@ -45,8 +45,16 @@ fi
 
 status=0
 
-if grep -E "WARNING|ERROR" "$health_log" >/dev/null 2>&1; then
-  echo "Neovim checkhealth reported warnings or errors:"
+# WARNINGは外部プラグイン由来の可能性があるため情報表示のみ
+if grep -q "WARNING" "$health_log" 2>/dev/null; then
+  echo "Neovim checkhealth reported warnings (informational only):"
+  cat "$health_log"
+  echo ""
+fi
+
+# ERRORのみを失敗条件とする
+if grep -q "ERROR" "$health_log" 2>/dev/null; then
+  echo "Neovim checkhealth reported errors:"
   cat "$health_log"
   status=1
 fi
