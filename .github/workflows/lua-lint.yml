@@ -16,22 +16,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install stylua
-        run: |
-          curl -LO https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip
-          unzip stylua-linux-x86_64.zip
-          chmod +x stylua
-          sudo mv stylua /usr/local/bin/
+      - name: Cache lint tools
+        id: cache-tools
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/bin
+          key: lint-tools-stylua-0.20.0-selene-0.27.1
 
-      - name: Install selene
+      - name: Install stylua & selene
+        if: steps.cache-tools.outputs.cache-hit != 'true'
         run: |
+          mkdir -p ~/.local/bin
+          curl -LO https://github.com/JohnnyMorganz/StyLua/releases/download/v0.20.0/stylua-linux-x86_64.zip
+          unzip stylua-linux-x86_64.zip -d ~/.local/bin
+          chmod +x ~/.local/bin/stylua
+          rm stylua-linux-x86_64.zip
           curl -LO https://github.com/Kampfkarren/selene/releases/download/0.27.1/selene-0.27.1-linux.zip
-          unzip selene-0.27.1-linux.zip
-          chmod +x selene
-          sudo mv selene /usr/local/bin/
+          unzip selene-0.27.1-linux.zip -d ~/.local/bin
+          chmod +x ~/.local/bin/selene
+          rm selene-0.27.1-linux.zip
+
+      - name: Add tools to PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Run stylua formatting check
-        run: stylua --config stylua.toml --check .config/nvim
+        run: stylua --config-path stylua.toml --check .config/nvim
 
       - name: Run selene lint
         run: selene --config selene.toml .config/nvim
