@@ -35,6 +35,7 @@
 /.github/workflows/**
 !/.github/workflows/
 !/.github/workflows/neovim-health.yml
+!/.github/workflows/lua-lint.yml
 
 ## neovim
 !/.config/nvim
@@ -53,6 +54,8 @@
 ## stylelint
 
 !/stylua.toml
+!/selene.toml
+!/neovim.yml
 
 ## skk
 !/.config/skk
