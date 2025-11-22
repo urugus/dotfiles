@@ -34,7 +34,7 @@ local sections_2 = {
   lualine_z = { "location" },
 }
 
-function LualineToggle()
+_G.LualineToggle = function()
   local lualine_require = require("lualine_require")
   local modules = lualine_require.lazy_require({ config_module = "lualine.config" })
   local utils = require("lualine.utils.utils")
@@ -101,10 +101,7 @@ local get_exit_status = function()
 end
 
 local terminal_status = function()
-  if
-    vim.api.nvim_exec([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]], true)
-    ~= ""
-  then
+  if vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]]) ~= "" then
     local result = get_exit_status()
     if result == nil then
       return "Finished"
@@ -115,10 +112,7 @@ local terminal_status = function()
     end
     return "Finished"
   end
-  if
-    vim.api.nvim_exec([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]], true)
-    ~= ""
-  then
+  if vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]]) ~= "" then
     return "Running"
   end
   return "Command"
@@ -129,9 +123,7 @@ local function get_terminal_status()
     return ""
   end
   local status = terminal_status()
-  vim.api.nvim_command(
-    "hi LualineToggleTermStatus guifg=" .. colors.background .. " guibg=" .. terminal_status_color(status)
-  )
+  vim.cmd("hi LualineToggleTermStatus guifg=" .. colors.background .. " guibg=" .. terminal_status_color(status))
   return status
 end
 

@@ -43,4 +43,4 @@ jobs:
         run: stylua --config-path stylua.toml --check .config/nvim
 
       - name: Run selene lint
-        run: selene --config selene.toml --allow-warnings .config/nvim
+        run: selene --config selene.toml .config/nvim

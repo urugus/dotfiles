@@ -6,14 +6,11 @@ require("rc/autocmd")
 require("rc/editor")
 
 -- Configuration
-vim.api.nvim_exec(
-  [[
+vim.cmd([[
 for f in split(glob('~/.config/nvim/rc/myplugins/*.vim'), '\n')
   execute 'source ' . f
 endfor
-]],
-  true
-)
+]])
 
 vim.schedule(function()
   for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/rc/myplugins/opt", [[v:val =~ '\.lua$']])) do
