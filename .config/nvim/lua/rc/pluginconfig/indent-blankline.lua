@@ -6,7 +6,7 @@ local highlight = {
 require("ibl").setup({
   indent = {
     highlight = highlight,
-    char = ""
+    char = "",
   },
   whitespace = {
     highlight = highlight,
@@ -36,7 +36,5 @@ require("ibl").setup({
       "coc-explorer",
     },
   },
-  scope = { enabled = false }
+  scope = { enabled = false },
 })
-
-

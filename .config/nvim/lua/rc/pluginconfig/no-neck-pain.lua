@@ -5,16 +5,16 @@ require("no-neck-pain").setup({
   buffers = {
     scratchPad = {
       enabled = true,
-      location = "./.idea/"
+      location = "./.idea/",
     },
     bo = {
-      filetype = "md"
-    }
+      filetype = "md",
+    },
   },
   bufferOptionsScratchPad = {
     enabled = true,
     fileName = "memo.md",
-    pathToFile = "./.idea/"
+    pathToFile = "./.idea/",
   },
   disableOnLastBuffer = true,
   killAllBuffersOnDisable = false,

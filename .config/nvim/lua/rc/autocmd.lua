@@ -29,7 +29,8 @@ vim.api.nvim_create_autocmd({ "QuickfixCmdPost" }, {
   end,
   once = false,
 })
-vim.api.nvim_create_autocmd({ "QuickfixCmdPost" }, { group = group_name,
+vim.api.nvim_create_autocmd({ "QuickfixCmdPost" }, {
+  group = group_name,
   pattern = { "lmake", "lgrep", "lgrepadd", "lvimgrep", "lvimgrepadd" },
   callback = function()
     vim.cmd([[lwin]])

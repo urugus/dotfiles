@@ -6,11 +6,11 @@ amenu Edit.Diff.Revision_1 :echo 'rev_1' | amenu Edit.Diff.Revision_2 :echo 'rev
 ]])
 
 for i = 1, 16 do
-	vim.cmd("amenu OverflowList.Test_Thing_" .. i .. " :echo " .. i)
+  vim.cmd("amenu OverflowList.Test_Thing_" .. i .. " :echo " .. i)
 end
 
 vim.keymap.set("n", "<F12>", function()
-	require("stylish").ui_menu(vim.fn.menu_get(""), { kind = "menu", prompt = "Main menu" }, function(res)
-		print("### " .. res)
-	end)
+  require("stylish").ui_menu(vim.fn.menu_get(""), { kind = "menu", prompt = "Main menu" }, function(res)
+    print("### " .. res)
+  end)
 end, { noremap = true, silent = true })

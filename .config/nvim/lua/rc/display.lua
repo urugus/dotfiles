@@ -8,7 +8,6 @@ vim.cmd.syntax("enable")
 vim.g.transparency = 0.7
 vim.o.background = "dark"
 
-
 -- colorscheme pluginconfig -> colorscheme
 vim.o.cursorline = false
 
@@ -53,5 +52,3 @@ vim.opt.fillchars = {
   vertright = "┣",
   verthoriz = "╋",
 }
-
-
