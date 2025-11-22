@@ -54,6 +54,8 @@
 ## stylelint
 
 !/stylua.toml
+!/selene.toml
+!/neovim.yml
 
 ## skk
 !/.config/skk
