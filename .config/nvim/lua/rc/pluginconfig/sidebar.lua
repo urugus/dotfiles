@@ -8,8 +8,8 @@ require("sidebar-nvim").setup({
   files = {
     icon = "",
     show_hidden = false,
-    ignored_paths = {"%.git$"}
-        },
+    ignored_paths = { "%.git$" },
+  },
   open = false,
   side = "right",
   initial_width = 35,

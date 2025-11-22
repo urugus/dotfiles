@@ -6,6 +6,5 @@ git.setup({
     blame = "[git]gb",
     -- Open file/folder in git repository
     browse = "[git]go",
-  }
+  },
 })
-

@@ -11,4 +11,3 @@ vim.api.nvim_set_keymap("x", "gP", "<Plug>(YankyGPutBefore)", {})
 -- vim.api.nvim_set_keymap("n", "<C-n>", "<Plug>(YankyCycleBackward)", {})
 vim.api.nvim_set_keymap("n", "y", "<Plug>(YankyYank)", {})
 vim.api.nvim_set_keymap("x", "y", "<Plug>(YankyYank)", {})
-

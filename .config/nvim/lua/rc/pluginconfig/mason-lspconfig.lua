@@ -31,7 +31,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     buf_set_keymap("n", "g?", vim.lsp.buf.signature_help)
     buf_set_keymap("n", "[_Lsp]wa", vim.lsp.buf.add_workspace_folder)
     buf_set_keymap("n", "[_Lsp]wr", vim.lsp.buf.remove_workspace_folder)
-    buf_set_keymap("n", "[_Lsp]wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end)
+    buf_set_keymap("n", "[_Lsp]wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end)
     buf_set_keymap("n", "[_Lsp]a", vim.lsp.buf.code_action)
     buf_set_keymap("n", "[_Lsp]e", vim.diagnostic.open_float)
     buf_set_keymap("n", "[d", vim.diagnostic.goto_prev)
@@ -58,7 +60,7 @@ require("mason-lspconfig").setup({
 -- Configure LSP servers with custom settings using vim.lsp.config()
 
 -- lua_ls: Lua Language Server
-vim.lsp.config('lua_ls', {
+vim.lsp.config("lua_ls", {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -76,7 +78,7 @@ vim.lsp.config('lua_ls', {
 })
 
 -- solargraph: Ruby Language Server (custom config to prevent infinite reload)
-vim.lsp.config('solargraph', {
+vim.lsp.config("solargraph", {
   capabilities = capabilities,
   cmd = { "solargraph", "stdio" },
   filetypes = { "ruby" },
@@ -100,19 +102,19 @@ vim.lsp.config('solargraph', {
 })
 
 -- hls: Haskell Language Server (managed by ghcup, not Mason)
-vim.lsp.config('hls', {
+vim.lsp.config("hls", {
   capabilities = capabilities,
   cmd = { "haskell-language-server-wrapper", "--lsp" },
   filetypes = { "haskell", "lhaskell" },
   settings = {
     haskell = {
-      formattingProvider = "ormolu"
-    }
-  }
+      formattingProvider = "ormolu",
+    },
+  },
 })
 
 -- astro: Astro Language Server (not managed by Mason)
-vim.lsp.config('astro', {
+vim.lsp.config("astro", {
   capabilities = capabilities,
   cmd = { "astro-ls", "--studio" },
   filetypes = { "astro" },
@@ -128,7 +130,7 @@ if ok then
     },
   })
 else
-  vim.lsp.config('rust_analyzer', {
+  vim.lsp.config("rust_analyzer", {
     capabilities = capabilities,
   })
 end
@@ -138,12 +140,12 @@ end
 -- Servers with custom config: lua_ls, solargraph, rust_analyzer
 -- Servers managed outside Mason: hls, astro
 vim.lsp.enable({
-  'ts_ls',
-  'lua_ls',
-  'rust_analyzer',
-  'solargraph',
-  'terraformls',
-  'pyright',
-  'hls',
-  'astro',
+  "ts_ls",
+  "lua_ls",
+  "rust_analyzer",
+  "solargraph",
+  "terraformls",
+  "pyright",
+  "hls",
+  "astro",
 })

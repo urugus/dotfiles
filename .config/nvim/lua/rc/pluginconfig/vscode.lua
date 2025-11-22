@@ -1,9 +1,9 @@
-vim.o.background = 'dark'
+vim.o.background = "dark"
 
-local vscode = require('vscode')
+local vscode = require("vscode")
 
 vscode.setup({
-  style = 'dark',
+  style = "dark",
   -- Enable transparent background
   transparent = true,
 
@@ -15,8 +15,8 @@ vscode.setup({
 
   -- Override colors (see ./lua/vscode/colors.lua)
   color_overrides = {
-      vscLineNumber = '#FFFFFF',
+    vscLineNumber = "#FFFFFF",
   },
 })
 
-vim.cmd.colorscheme('vscode')
+vim.cmd.colorscheme("vscode")

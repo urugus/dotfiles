@@ -14,23 +14,23 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local util = require("rc.util")
+local conf = util.safe_config
+local source = util.safe_source
+
 -- Setup lazy.nvim
 require("lazy").setup({
   ------------------------------------------------------------
   -- I. Initial setting, Plugins manager
   {
     "folke/lazy.nvim",
-    config = function()
-      require("rc/pluginconfig/lazy")
-    end,
+    config = conf("rc/pluginconfig/lazy"),
   },
   {
     "williamboman/mason.nvim",
     lazy = false,
     build = ":MasonUpdate",
-    config = function()
-      require("rc/pluginconfig/mason")
-    end,
+    config = conf("rc/pluginconfig/mason"),
   },
   { "folke/which-key.nvim", event = "VeryLazy" },
 
@@ -64,9 +64,7 @@ require("lazy").setup({
   -- A. Color scheme, Fonts, Animation
   {
     "Mofiqul/vscode.nvim",
-    config = function()
-      require("rc/pluginconfig/vscode")
-    end,
+    config = conf("rc/pluginconfig/vscode"),
   },
   {
     "kyazdani42/nvim-web-devicons",
@@ -79,9 +77,7 @@ require("lazy").setup({
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    config = function()
-      require("rc/pluginconfig/snacks")
-    end,
+    config = conf("rc/pluginconfig/snacks"),
   },
   {
     "sphamba/smear-cursor.nvim",
@@ -103,29 +99,21 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/indent-blankline")
-    end,
+    config = conf("rc/pluginconfig/indent-blankline"),
   },
   -- "folke/snacks.nvim" indent
   {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/Comment")
-    end,
+    config = conf("rc/pluginconfig/Comment"),
   },
   {
     "xiyaowong/nvim-cursorword",
-    config = function()
-      require("rc/pluginconfig/nvim-cursorword")
-    end,
+    config = conf("rc/pluginconfig/nvim-cursorword"),
   },
   {
     "RRethy/vim-illuminate",
-    config = function()
-      require("rc/pluginconfig/vim-illuminate")
-    end,
+    config = conf("rc/pluginconfig/vim-illuminate"),
   },
   {
     "norcalli/nvim-colorizer.lua",
@@ -135,15 +123,11 @@ require("lazy").setup({
   },
   {
     "folke/todo-comments.nvim",
-    config = function()
-      require("rc/pluginconfig/todo-comments")
-    end,
+    config = conf("rc/pluginconfig/todo-comments"),
   },
   {
     "mvllow/modes.nvim",
-    config = function()
-      require("rc/pluginconfig/modes")
-    end,
+    config = conf("rc/pluginconfig/modes"),
   },
   { "slim-template/vim-slim" },
   -- C. Sidebar, Scroll
@@ -151,52 +135,38 @@ require("lazy").setup({
   {
     "GustavoKatel/sidebar.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/sidebar")
-    end,
+    config = conf("rc/pluginconfig/sidebar"),
   },
   {
     "petertriho/nvim-scrollbar",
     lazy = true,
-    config = function()
-      require("rc/pluginconfig/nvim-scrollbar")
-    end,
+    config = conf("rc/pluginconfig/nvim-scrollbar"),
   },
   {
     "kevinhwang91/nvim-ufo",
     dependencies = {
       "kevinhwang91/promise-async",
     },
-    config = function()
-      require("rc/pluginconfig/nvim-ufo")
-    end,
+    config = conf("rc/pluginconfig/nvim-ufo"),
   },
 
   ------------------------------------------------------------
   -- IV. Window, Buffers
   {
     "famiu/bufdelete.nvim",
-    config = function()
-      require("rc/pluginconfig/bufdelete")
-    end,
+    config = conf("rc/pluginconfig/bufdelete"),
   },
   {
     "akinsho/bufferline.nvim",
-    config = function()
-      require("rc/pluginconfig/bufferline")
-    end,
+    config = conf("rc/pluginconfig/bufferline"),
   },
   {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("rc/pluginconfig/lualine")
-    end,
+    config = conf("rc/pluginconfig/lualine"),
   },
   {
     "shortcuts/no-neck-pain.nvim",
-    config = function()
-      require("rc/pluginconfig/no-neck-pain")
-    end,
+    config = conf("rc/pluginconfig/no-neck-pain"),
   },
 
   ------------------------------------------------------------
@@ -204,25 +174,19 @@ require("lazy").setup({
   {
     "gbprod/yanky.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/yanky")
-    end,
+    config = conf("rc/pluginconfig/yanky"),
   },
   {
     "tversteeg/registers.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/registers")
-    end,
+    config = conf("rc/pluginconfig/registers"),
   },
 
   ------------------------------------------------------------
   -- VI. Search, Filer
   {
     "haya14busa/vim-asterisk",
-    config = function()
-      vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-asterisk.vim")
-    end,
+    config = source("~/.config/nvim/rc/pluginconfig/vim-asterisk.vim"),
   },
   -- "folke/snacks.nvim" picker
 
@@ -232,9 +196,7 @@ require("lazy").setup({
   {
     "hrsh7th/nvim-cmp",
     event = "VimEnter",
-    config = function()
-      require("rc/pluginconfig/nvim-cmp")
-    end,
+    config = conf("rc/pluginconfig/nvim-cmp"),
   },
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
   { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true },
@@ -257,39 +219,29 @@ require("lazy").setup({
   {
     "onsails/lspkind-nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/lspkind-nvim")
-    end,
+    config = conf("rc/pluginconfig/lspkind-nvim"),
   },
   -- B. LSP
   {
     "folke/neoconf.nvim",
-    config = function()
-      require("rc/pluginconfig/neoconf")
-    end,
+    config = conf("rc/pluginconfig/neoconf"),
   },
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     event = "VimEnter",
-    config = function()
-      require("rc/pluginconfig/mason-lspconfig")
-    end,
+    config = conf("rc/pluginconfig/mason-lspconfig"),
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     event = "VimEnter",
-    config = function()
-      require("rc/pluginconfig/nvim-lspconfig")
-    end,
+    config = conf("rc/pluginconfig/nvim-lspconfig"),
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/tiny-inline-diagnostic")
-    end,
+    config = conf("rc/pluginconfig/tiny-inline-diagnostic"),
   },
   {
     "weilbith/nvim-lsp-smag",
@@ -299,33 +251,25 @@ require("lazy").setup({
   {
     "nvimdev/lspsaga.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/lspsaga")
-    end,
+    config = conf("rc/pluginconfig/lspsaga"),
   },
   {
     "folke/trouble.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/trouble")
-    end,
+    config = conf("rc/pluginconfig/trouble"),
   },
   {
     "j-hui/fidget.nvim",
     tag = "legacy",
     event = "BufEnter",
-    config = function()
-      require("rc/pluginconfig/fidget")
-    end,
+    config = conf("rc/pluginconfig/fidget"),
   },
   -- D. Snipped
   {
     "L3MON4D3/LuaSnip",
     event = "VimEnter",
     build = "make install_jsregexp",
-    config = function()
-      require("rc/pluginconfig/LuaSnip")
-    end,
+    config = conf("rc/pluginconfig/LuaSnip"),
   },
   -- {
   --   "benfowler/telescope-luasnip.nvim",
@@ -341,9 +285,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     event = { "VeryLazy" },
     build = ":TSUpdateSync",
-    config = function()
-      require("rc/pluginconfig/nvim-treesitter")
-    end,
+    config = conf("rc/pluginconfig/nvim-treesitter"),
   },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   { "nvim-treesitter/nvim-treesitter-refactor", lazy = true },
@@ -353,38 +295,28 @@ require("lazy").setup({
     "RRethy/nvim-treesitter-endwise",
     lazy = true,
     event = "InsertEnter",
-    config = function()
-      require("rc/pluginconfig/nvim-treesitter-endwise")
-    end,
+    config = conf("rc/pluginconfig/nvim-treesitter-endwise"),
   },
   { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
   {
     "chrisgrieser/nvim-various-textobjs",
     lazy = true,
-    config = function()
-      require("rc/pluginconfig/nvim-various-textobjs")
-    end,
+    config = conf("rc/pluginconfig/nvim-various-textobjs"),
   },
   {
     "mizlan/iswap.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/iswap")
-    end,
+    config = conf("rc/pluginconfig/iswap"),
   },
   {
     "mfussenegger/nvim-treehopper",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim-treehopper")
-    end,
+    config = conf("rc/pluginconfig/nvim-treehopper"),
   },
   {
     "David-Kunz/treesitter-unit",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/treesitter-unit")
-    end,
+    config = conf("rc/pluginconfig/treesitter-unit"),
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
@@ -398,9 +330,7 @@ require("lazy").setup({
   {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/hlargs")
-    end,
+    config = conf("rc/pluginconfig/hlargs"),
   },
   {
     "romgrk/nvim-treesitter-context",
@@ -421,9 +351,7 @@ require("lazy").setup({
   {
     "danymat/neogen",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/neogen")
-    end,
+    config = conf("rc/pluginconfig/neogen"),
   },
   -- C. Programing support
   {
@@ -434,9 +362,7 @@ require("lazy").setup({
     enabled = function()
       return vim.fn.executable("deno")
     end,
-    config = function()
-      require("rc/pluginconfig/peek")
-    end,
+    config = conf("rc/pluginconfig/peek"),
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -448,76 +374,56 @@ require("lazy").setup({
   {
     "HakonHarnes/img-clip.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/img-clip")
-    end,
+    config = conf("rc/pluginconfig/img-clip"),
   },
   -- D. Text object
   {
     "andymass/vim-matchup",
     event = "VeryLazy",
-    config = function()
-      vim.cmd("source ~/.config/nvim/rc/pluginconfig/vim-matchup.vim")
-    end,
+    config = source("~/.config/nvim/rc/pluginconfig/vim-matchup.vim"),
   },
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim-autopairs")
-    end,
+    config = conf("rc/pluginconfig/nvim-autopairs"),
   },
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim-surround")
-    end,
+    config = conf("rc/pluginconfig/nvim-surround"),
   },
   -- E. Lint & Formatter
   {
     "mfussenegger/nvim-lint",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim-lint")
-    end,
+    config = conf("rc/pluginconfig/nvim-lint"),
   },
   {
     "stevearc/conform.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/conform")
-    end,
+    config = conf("rc/pluginconfig/conform"),
   },
   -- F. Git & Version control
   -- "folke/snacks.nvim" lazygit
   {
     "NeogitOrg/neogit",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/neogit")
-    end,
+    config = conf("rc/pluginconfig/neogit"),
   },
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/diffview")
-    end,
+    config = conf("rc/pluginconfig/diffview"),
   },
   { "akinsho/git-conflict.nvim" },
   {
     "lewis6991/gitsigns.nvim",
-    config = function()
-      require("rc/pluginconfig/gitsigns")
-    end,
+    config = conf("rc/pluginconfig/gitsigns"),
   },
   {
     "dinhhuy258/git.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/git")
-    end,
+    config = conf("rc/pluginconfig/git"),
   },
   -- G. Notification
   -- "folke/snacks.nvim" notifier
@@ -529,25 +435,19 @@ require("lazy").setup({
   -- I. Standard enhancement
   {
     "akinsho/toggleterm.nvim",
-    config = function()
-      require("rc/pluginconfig/toggleterm")
-    end,
+    config = conf("rc/pluginconfig/toggleterm"),
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
     event = "VimEnter",
     branch = "main",
-    config = function()
-      require("rc/pluginconfig/neo-tree")
-    end,
+    config = conf("rc/pluginconfig/neo-tree"),
   },
   -- J. Github
   {
     "pwntester/octo.nvim",
     dependencies = { "folke/snacks.nvim" },
-    config = function()
-      require("rc/pluginconfig/octo")
-    end,
+    config = conf("rc/pluginconfig/octo"),
   },
   -- K. AI Support
   { "github/copilot.vim" },
@@ -555,18 +455,14 @@ require("lazy").setup({
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
     config = function()
-      vim.defer_fn(function()
-        require("rc/pluginconfig/copilot")
-      end, 100)
+      vim.defer_fn(conf("rc/pluginconfig/copilot"), 100)
     end,
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     event = "VeryLazy",
     branch = "main",
-    config = function()
-      require("rc/pluginconfig/CopilotChat")
-    end,
+    config = conf("rc/pluginconfig/CopilotChat"),
     opts = {
       debug = true,
     },
@@ -576,25 +472,19 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for git operations
     },
-    config = function()
-      require("rc/pluginconfig/claude-code")
-    end,
+    config = conf("rc/pluginconfig/claude-code"),
   },
   {
     "johnseth97/codex.nvim",
     lazy = true,
     cmd = { "Codex" },
-    config = function()
-      require("rc/pluginconfig/codex")
-    end,
+    config = conf("rc/pluginconfig/codex"),
   },
   -- L. Browser support
   {
     "subnut/nvim-ghost.nvim",
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/nvim-ghost")
-    end,
+    config = conf("rc/pluginconfig/nvim-ghost"),
   },
   -- M. Startup menu
   -- "folke/snacks.nvim" dashboard
@@ -603,9 +493,7 @@ require("lazy").setup({
   {
     "klen/nvim-test",
     lazy = true,
-    config = function()
-      require("rc/pluginconfig/nvim-test")
-    end,
+    config = conf("rc/pluginconfig/nvim-test"),
   },
   -- O. Analyzer
   { "wakatime/vim-wakatime" },
@@ -625,9 +513,7 @@ require("lazy").setup({
       "folke/snacks.nvim",
     },
     event = "VeryLazy",
-    config = function()
-      require("rc/pluginconfig/neo-slack")
-    end,
+    config = conf("rc/pluginconfig/neo-slack"),
   },
 
   ------------------------------------------------------------

@@ -7,12 +7,12 @@ require("rc/editor")
 
 -- Configuration
 vim.api.nvim_exec(
- [[
+  [[
 for f in split(glob('~/.config/nvim/rc/myplugins/*.vim'), '\n')
   execute 'source ' . f
 endfor
 ]],
- true
+  true
 )
 
 vim.schedule(function()
@@ -26,4 +26,3 @@ end)
 if vim.fn.filereadable(vim.fn.expand("~/.nvim_local_init.lua")) ~= 0 then
   dofile(vim.fn.expand("~/.nvim_local_init.lua"))
 end
-
