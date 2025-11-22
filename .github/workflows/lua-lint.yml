@@ -39,6 +39,10 @@ jobs:
       - name: Add tools to PATH
         run: echo "$HOME/.local/bin" >> $GITHUB_PATH
 
+      - name: Download selene neovim stdlib
+        run: |
+          curl -LO https://raw.githubusercontent.com/Kampfkarren/selene/main/selene-lib/default_std/neovim.yml
+
       - name: Run stylua formatting check
         run: stylua --config-path stylua.toml --check .config/nvim
 
