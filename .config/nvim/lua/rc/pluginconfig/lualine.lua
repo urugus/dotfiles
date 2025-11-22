@@ -101,10 +101,7 @@ local get_exit_status = function()
 end
 
 local terminal_status = function()
-  if
-    vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]])
-    ~= ""
-  then
+  if vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]]) ~= "" then
     local result = get_exit_status()
     if result == nil then
       return "Finished"
@@ -115,10 +112,7 @@ local terminal_status = function()
     end
     return "Finished"
   end
-  if
-    vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]])
-    ~= ""
-  then
+  if vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]]) ~= "" then
     return "Running"
   end
   return "Command"
