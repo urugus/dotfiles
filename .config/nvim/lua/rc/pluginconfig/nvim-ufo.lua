@@ -8,7 +8,7 @@ vim.o.foldenable = true -- フォールドを有効化
 
 -- UFO のセットアップ
 ufo.setup({
-  provider_selector = function(bufnr, filetype, buftype)
+  provider_selector = function(_, _, _)
     return { "lsp", "indent" }
   end,
   fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
