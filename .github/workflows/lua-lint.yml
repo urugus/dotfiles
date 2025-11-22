@@ -1,0 +1,47 @@
+name: Lua formatting & lint
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  lint:
+    name: stylua + selene
+    runs-on: ubuntu-slim
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Rust toolchain
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: stable
+
+      - name: Cache cargo artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-stylua-selene-v1
+          restore-keys: |
+            ${{ runner.os }}-cargo-stylua-selene-
+
+      - name: Make cargo binaries available
+        run: echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+      - name: Install stylua & selene
+        run: |
+          cargo install stylua --force --locked
+          cargo install selene --force --locked
+
+      - name: Run stylua formatting check
+        run: stylua --config stylua.toml --check .config/nvim
+
+      - name: Run selene lint
+        run: selene --config selene.toml .config/nvim
