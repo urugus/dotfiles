@@ -79,14 +79,14 @@ cmp.setup({
   mapping = {
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-    ["<Up>"] = cmp.mapping(function(fallback)
+    ["<Up>"] = cmp.mapping(function(_)
       if cmp.visible() then
         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
       else
         vim.api.nvim_feedkeys(t("<Up>"), "n", true)
       end
     end, { "i" }),
-    ["<Down>"] = cmp.mapping(function(fallback)
+    ["<Down>"] = cmp.mapping(function(_)
       if cmp.visible() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       else
