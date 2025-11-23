@@ -18,17 +18,34 @@ local util = require("rc.util")
 local conf = util.safe_config
 local source = util.safe_source
 
+local lazy_opts = {
+  checker = { enabled = true },
+  performance = {
+    cache = { enabled = true },
+    profiling = { enabled = true },
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "man",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+}
+
 -- Setup lazy.nvim
 require("lazy").setup({
   ------------------------------------------------------------
   -- I. Initial setting, Plugins manager
   {
-    "folke/lazy.nvim",
-    config = conf("rc/pluginconfig/lazy"),
-  },
-  {
     "williamboman/mason.nvim",
-    lazy = false,
+    event = "VeryLazy",
     build = ":MasonUpdate",
     config = conf("rc/pluginconfig/mason"),
   },
@@ -109,14 +126,17 @@ require("lazy").setup({
   },
   {
     "xiyaowong/nvim-cursorword",
+    event = { "BufReadPre", "BufNewFile" },
     config = conf("rc/pluginconfig/nvim-cursorword"),
   },
   {
     "RRethy/vim-illuminate",
+    event = "BufReadPost",
     config = conf("rc/pluginconfig/vim-illuminate"),
   },
   {
     "norcalli/nvim-colorizer.lua",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("colorizer").setup()
     end,
@@ -139,7 +159,7 @@ require("lazy").setup({
   },
   {
     "petertriho/nvim-scrollbar",
-    lazy = true,
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/nvim-scrollbar"),
   },
   {
@@ -147,6 +167,7 @@ require("lazy").setup({
     dependencies = {
       "kevinhwang91/promise-async",
     },
+    event = "BufReadPost",
     config = conf("rc/pluginconfig/nvim-ufo"),
   },
 
@@ -154,18 +175,22 @@ require("lazy").setup({
   -- IV. Window, Buffers
   {
     "famiu/bufdelete.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/bufdelete"),
   },
   {
     "akinsho/bufferline.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/bufferline"),
   },
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/lualine"),
   },
   {
     "shortcuts/no-neck-pain.nvim",
+    cmd = "NoNeckPain",
     config = conf("rc/pluginconfig/no-neck-pain"),
   },
 
@@ -186,6 +211,7 @@ require("lazy").setup({
   -- VI. Search, Filer
   {
     "haya14busa/vim-asterisk",
+    event = "VeryLazy",
     config = source("~/.config/nvim/rc/pluginconfig/vim-asterisk.vim"),
   },
   -- "folke/snacks.nvim" picker
@@ -224,6 +250,7 @@ require("lazy").setup({
   -- B. LSP
   {
     "folke/neoconf.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/neoconf"),
   },
   {
@@ -343,6 +370,7 @@ require("lazy").setup({
   -- A. Data display, Utilities
   {
     "hat0uma/csvview.nvim",
+    ft = { "csv" },
     config = function()
       require("csvview").setup()
     end,
@@ -415,9 +443,10 @@ require("lazy").setup({
     event = "VeryLazy",
     config = conf("rc/pluginconfig/diffview"),
   },
-  { "akinsho/git-conflict.nvim" },
+  { "akinsho/git-conflict.nvim", event = "BufReadPre" },
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     config = conf("rc/pluginconfig/gitsigns"),
   },
   {
@@ -435,6 +464,7 @@ require("lazy").setup({
   -- I. Standard enhancement
   {
     "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/toggleterm"),
   },
   {
@@ -447,10 +477,14 @@ require("lazy").setup({
   {
     "pwntester/octo.nvim",
     dependencies = { "folke/snacks.nvim" },
+    cmd = "Octo",
     config = conf("rc/pluginconfig/octo"),
   },
   -- K. AI Support
-  { "github/copilot.vim" },
+  {
+    "github/copilot.vim",
+    event = "InsertEnter",
+  },
   {
     "zbirenbaum/copilot.lua",
     event = "VeryLazy",
@@ -472,6 +506,7 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim", -- Required for git operations
     },
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/claude-code"),
   },
   {
@@ -492,16 +527,16 @@ require("lazy").setup({
   -- N. Test
   {
     "klen/nvim-test",
-    lazy = true,
+    cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
     config = conf("rc/pluginconfig/nvim-test"),
   },
   -- O. Analyzer
-  { "wakatime/vim-wakatime" },
+  { "wakatime/vim-wakatime", event = "VeryLazy" },
 
   -- P. GUI
   {
     "3rd/image.nvim",
-    lazy = true,
+    ft = { "markdown", "norg", "org", "text" },
   },
 
   -- Q. External services
@@ -515,8 +550,4 @@ require("lazy").setup({
     event = "VeryLazy",
     config = conf("rc/pluginconfig/neo-slack"),
   },
-
-  ------------------------------------------------------------
-  -- 自動プラグイン更新チェック
-  checker = { enabled = true },
-})
+}, lazy_opts)
