@@ -149,5 +149,3 @@ require("neo-tree").setup({
     },
   },
 })
--- vim.keymap.set("n", "<C-s>", "<Cmd>NeoTreeRevealToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-s>", "<Cmd>Neotree focus<CR>", { noremap = true, silent = true })

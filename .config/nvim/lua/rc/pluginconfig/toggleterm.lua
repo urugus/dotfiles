@@ -32,31 +32,6 @@ require("toggleterm").setup({
   },
 })
 
-vim.api.nvim_set_keymap(
-  "n",
-  "tt",
-  '<Cmd>execute v:count1 . "ToggleTerm direction=horizontal"<CR>',
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "tv",
-  '<Cmd>execute v:count1 . "ToggleTerm direction=vertical"<CR>',
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "tf",
-  '<Cmd>execute v:count1 . "ToggleTerm direction=float"<CR>',
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "tb",
-  '<Cmd>execute v:count1 . "ToggleTerm direction=tab"<CR>',
-  { noremap = true, silent = true }
-)
-
 vim.g.toglleterm_win_num = vim.fn.winnr()
 local groupname = "vimrc_toggleterm"
 vim.api.nvim_create_augroup(groupname, { clear = true })

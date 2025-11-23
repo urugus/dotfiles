@@ -2,6 +2,9 @@
 /*
 /.**
 
+# Allow dotfiles we manage
+!/.config
+
 ## Secrets
 /.config/gh/**
 /.config/github-copilot/**
@@ -40,9 +43,12 @@
 ## neovim
 !/.config/nvim
 !/.config/nvim/**
+!/.config/nvim/lua
 !/.config/nvim/lua/**
+!/.config/nvim/lua/rc
 !/.config/nvim/lua/rc/**
 !/.config/nvim/lua/rc/pluginconfig/**
+!/.config/nvim/lua/rc/keymaps/**
 
 ## mise
 !/.config/mise/config.toml

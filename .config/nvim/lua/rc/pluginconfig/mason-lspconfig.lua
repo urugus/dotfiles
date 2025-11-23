@@ -1,5 +1,3 @@
--- LSP Keymappings and Inlay Hints
--- These are automatically applied when LSP attaches to a buffer
 local group_name = "vimrc_lsp_attach"
 vim.api.nvim_create_augroup(group_name, { clear = true })
 
@@ -8,38 +6,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-    -- Enable inlay hints if supported
-    if client and client.supports_method("textDocument/inlayHint") then
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
-
-    -- Keymappings
-    local function buf_set_keymap(mode, lhs, rhs, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      opts.noremap = true
-      opts.silent = true
-      vim.keymap.set(mode, lhs, rhs, opts)
-    end
-
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    -- LSP keybindings
-    -- Note: gd, gD, gr, gI, gy are mapped in mappings.lua using snacks.picker
-    buf_set_keymap("n", "?", vim.lsp.buf.hover)
-    buf_set_keymap("n", "g?", vim.lsp.buf.signature_help)
-    buf_set_keymap("n", "[_Lsp]wa", vim.lsp.buf.add_workspace_folder)
-    buf_set_keymap("n", "[_Lsp]wr", vim.lsp.buf.remove_workspace_folder)
-    buf_set_keymap("n", "[_Lsp]wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end)
-    buf_set_keymap("n", "[_Lsp]a", vim.lsp.buf.code_action)
-    buf_set_keymap("n", "[_Lsp]e", vim.diagnostic.open_float)
-    buf_set_keymap("n", "[d", vim.diagnostic.goto_prev)
-    buf_set_keymap("n", "]d", vim.diagnostic.goto_next)
-    buf_set_keymap("n", "[_Lsp]q", vim.diagnostic.setloclist)
-    buf_set_keymap("n", "[_Lsp]f", vim.lsp.buf.format)
+    require("rc.keymaps.lsp").apply(client, bufnr)
   end,
   group = group_name,
 })

@@ -1,6 +1,21 @@
 local group_name = "vimrc_vimrc"
 vim.api.nvim_create_augroup(group_name, { clear = true })
 
+-- AquaSKK: InsertLeave 時に ASCII モードへ強制切替
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = group_name,
+  pattern = "*",
+  callback = function()
+    vim.defer_fn(function()
+      vim.fn.system("/opt/homebrew/bin/im-select jp.sourceforge.inputmethod.aquaskk")
+      vim.defer_fn(function()
+        vim.fn.system("/opt/homebrew/bin/im-select jp.sourceforge.inputmethod.aquaskk.Ascii")
+      end, 100)
+    end, 10)
+  end,
+  desc = "Switch to ASCII mode when leaving insert mode",
+})
+
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   group = group_name,
   pattern = "*",
@@ -85,19 +100,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
       higroup = (vim.fn.hlexists("HighlightedyankRegion") > 0 and "HighlightedyankRegion" or "Visual"),
       timeout = 200,
     })
-  end,
-  once = false,
-})
-vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
-  group = group_name,
-  pattern = "*",
-  callback = function()
-    if vim.bo.buftype == "prompt" then
-      vim.keymap.set("i", "<C-j>", "<Esc><C-w>j", { noremap = true, silent = true, buffer = true })
-      vim.keymap.set("i", "<C-k>", "<Esc><C-w>k", { noremap = true, silent = true, buffer = true })
-      vim.keymap.set("i", "<C-h>", "<Esc><C-w>h", { noremap = true, silent = true, buffer = true })
-      vim.keymap.set("i", "<C-l>", "<Esc><C-w>l", { noremap = true, silent = true, buffer = true })
-    end
   end,
   once = false,
 })
