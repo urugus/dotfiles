@@ -527,7 +527,6 @@ require("lazy").setup({
   -- N. Test
   {
     "klen/nvim-test",
-    lazy = true,
     cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
     config = conf("rc/pluginconfig/nvim-test"),
   },
