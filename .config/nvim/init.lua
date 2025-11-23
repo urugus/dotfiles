@@ -1,7 +1,7 @@
 require("rc/option")
 require("rc/display")
 require("rc/pluginlist")
-require("rc/mappings")
+require("rc/keymaps").setup()
 require("rc/autocmd")
 require("rc/editor")
 

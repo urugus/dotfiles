@@ -38,9 +38,3 @@ ufo.setup({
     return newVirtText
   end,
 })
-
--- Keymaps
-vim.keymap.set("n", "[ufo]R", ufo.openAllFolds, { desc = "Open all folds" })
-vim.keymap.set("n", "[ufo]M", ufo.closeAllFolds, { desc = "Close all folds" })
-vim.keymap.set("n", "[ufo]r", ufo.openFoldsExceptKinds, { desc = "Open folds except kinds" })
-vim.keymap.set("n", "[ufo]m", ufo.closeFoldsWith, { desc = "Close folds with level" })
