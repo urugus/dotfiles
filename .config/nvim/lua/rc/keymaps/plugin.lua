@@ -356,7 +356,7 @@ return function()
     ------------------------------------------------------------
     -- nvim-treehopper
     {
-      { "o" },
+      "o",
       "m",
       function()
         require("tsht").nodes()
@@ -364,7 +364,7 @@ return function()
       { noremap = false, expr = false, silent = true, plugin = "nvim-treehopper" },
     },
     {
-      { "x" },
+      "x",
       "m",
       ":lua require('tsht').nodes()<CR>",
       { noremap = true, expr = false, silent = true, plugin = "nvim-treehopper" },
