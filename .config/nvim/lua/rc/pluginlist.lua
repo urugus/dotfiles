@@ -536,7 +536,6 @@ require("lazy").setup({
   -- P. GUI
   {
     "3rd/image.nvim",
-    lazy = true,
     ft = { "markdown", "norg", "org", "text" },
   },
 
