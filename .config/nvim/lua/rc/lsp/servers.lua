@@ -1,4 +1,16 @@
--- LSP server configuration for Neovim 0.11+ (new LSP API)
+--[[
+  LSP server configuration for Neovim 0.11+ using the new LSP API.
+
+  This module configures and enables LSP servers using:
+    - vim.lsp.config(): to set up individual server configurations.
+    - vim.lsp.enable(): to enable the specified servers after configuration.
+
+  Implementation approach:
+    * Server-specific settings are defined in `server_configs`.
+    * All servers in `server_configs` (except rust_analyzer) are configured via `vim.lsp.config()`.
+    * rust_analyzer is handled specially, preferring rust-tools if available.
+    * Servers are enabled collectively using `vim.lsp.enable()`.
+]]
 
 local capabilities_mod = require("rc.lsp.capabilities")
 
@@ -101,19 +113,20 @@ function M.setup(capabilities)
   -- rust_analyzer セットアップ
   local rust_tools_enabled = setup_rust_analyzer(caps)
 
+  -- server_configs と default_servers から有効化するサーバーリストを構築
   -- rust-tools が有効な場合は rust_analyzer を除外
-  local servers_to_enable = {
-    "ts_ls",
-    "lua_ls",
-    "solargraph",
-    "terraformls",
-    "pyright",
-    "hls",
-    "astro",
-  }
-  if not rust_tools_enabled then
-    table.insert(servers_to_enable, "rust_analyzer")
+  local servers_set = {}
+  for name, _ in pairs(server_configs) do
+    if name ~= "rust_analyzer" or not rust_tools_enabled then
+      servers_set[name] = true
+    end
   end
+  for _, name in ipairs(default_servers) do
+    if name ~= "rust_analyzer" or not rust_tools_enabled then
+      servers_set[name] = true
+    end
+  end
+  local servers_to_enable = vim.tbl_keys(servers_set)
   vim.lsp.enable(servers_to_enable)
 end
 
