@@ -61,10 +61,10 @@ return {
     config = conf("rc/pluginconfig/git"),
   },
 
-  -- Lua libraries
-  { "nvim-lua/popup.nvim" },
-  { "nvim-lua/plenary.nvim" },
-  { "MunifTanjim/nui.nvim" },
+  -- Lua libraries (lazy loaded, pulled in by dependents)
+  { "nvim-lua/popup.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "MunifTanjim/nui.nvim", lazy = true },
 
   -- Terminal / file explorer
   {
@@ -74,8 +74,13 @@ return {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    event = "VimEnter",
+    cmd = "Neotree",
     branch = "main",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
     config = conf("rc/pluginconfig/neo-tree"),
   },
 

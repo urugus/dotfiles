@@ -5,19 +5,20 @@ return {
   -- Color scheme, fonts, animation
   {
     "Mofiqul/vscode.nvim",
+    lazy = false,
+    priority = 1000,
     config = conf("rc/pluginconfig/vscode"),
   },
   {
     "kyazdani42/nvim-web-devicons",
-    lazy = false,
+    event = "VeryLazy",
     enabled = function()
       return not os.getenv("DISABLE_DEVICONS") or os.getenv("DISABLE_DEVICONS") == "false"
     end,
   },
   {
     "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/snacks"),
   },
   {
@@ -65,13 +66,15 @@ return {
   },
   {
     "folke/todo-comments.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/todo-comments"),
   },
   {
     "mvllow/modes.nvim",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/modes"),
   },
-  { "slim-template/vim-slim" },
+  { "slim-template/vim-slim", ft = "slim" },
 
   -- Sidebar / scroll
   {

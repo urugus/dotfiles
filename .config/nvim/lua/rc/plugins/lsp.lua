@@ -18,7 +18,7 @@ return {
   -- Completion
   {
     "hrsh7th/nvim-cmp",
-    event = "VimEnter",
+    event = "InsertEnter",
     config = conf("rc/pluginconfig/nvim-cmp"),
   },
   { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
@@ -60,13 +60,13 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
-    event = "VimEnter",
+    event = "BufReadPre",
     config = conf("rc/lsp"),
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
-    event = "VimEnter",
+    event = "BufReadPre",
     config = false,
   },
   {
@@ -100,7 +100,7 @@ return {
   -- Snippets
   {
     "L3MON4D3/LuaSnip",
-    event = "VimEnter",
+    event = "InsertEnter",
     build = "make install_jsregexp",
     config = conf("rc/pluginconfig/LuaSnip"),
   },
