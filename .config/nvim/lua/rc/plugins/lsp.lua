@@ -21,6 +21,7 @@ return {
     event = "VimEnter",
     config = conf("rc/pluginconfig/nvim-cmp"),
   },
+  { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
   {
     "tzachar/cmp-tabnine",
     lazy = true,
@@ -38,6 +39,10 @@ return {
   { "f3fora/cmp-spell", lazy = true },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   { "ray-x/cmp-treesitter", lazy = true },
+  { "hrsh7th/cmp-cmdline", lazy = true },
+  { "dmitmel/cmp-cmdline-history", lazy = true },
+  { "uga-rosa/cmp-dictionary", lazy = true },
+  { "uga-rosa/cmp-mocword", lazy = true },
   { "lukas-reineke/cmp-rg", lazy = true },
   { "lukas-reineke/cmp-under-comparator", lazy = true },
   {
