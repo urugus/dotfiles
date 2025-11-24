@@ -160,6 +160,7 @@ require("lazy").setup({
   {
     "petertriho/nvim-scrollbar",
     event = "VeryLazy",
+    dependencies = { "kevinhwang91/nvim-hlslens" },
     config = conf("rc/pluginconfig/nvim-scrollbar"),
   },
   {
@@ -213,6 +214,11 @@ require("lazy").setup({
     "haya14busa/vim-asterisk",
     event = "VeryLazy",
     config = source("~/.config/nvim/rc/pluginconfig/vim-asterisk.vim"),
+  },
+  {
+    "kevinhwang91/nvim-hlslens",
+    event = "VeryLazy",
+    config = conf("rc/pluginconfig/nvim-hlslens"),
   },
   -- "folke/snacks.nvim" picker
 
