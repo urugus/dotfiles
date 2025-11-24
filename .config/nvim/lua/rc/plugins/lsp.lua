@@ -42,7 +42,7 @@ return {
   { "hrsh7th/cmp-cmdline", lazy = true },
   { "dmitmel/cmp-cmdline-history", lazy = true },
   { "uga-rosa/cmp-dictionary", lazy = true },
-  { "uga-rosa/cmp-mocword", lazy = true },
+  { "yutkat/cmp-mocword", lazy = true },
   { "lukas-reineke/cmp-rg", lazy = true },
   { "lukas-reineke/cmp-under-comparator", lazy = true },
   {
