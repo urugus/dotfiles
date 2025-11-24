@@ -17,7 +17,7 @@ alias gswb='fzf_git_switch_branch'
 
 # Ruby on Rails
 alias be='bundle_exec_command'
-alias bersdif='bundle exec rspec $(git diff --name-only HEAD^ | rg _spec.rb/ | peco)'
+alias bersdif='bundle exec rspec $(git diff --name-only HEAD^ | rg "_spec\\.rb$" | peco)'
 alias br='bin/rails'
 
 # Pythhon
