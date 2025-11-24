@@ -60,13 +60,13 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     config = conf("rc/lsp"),
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     config = false,
   },
   {
