@@ -9,13 +9,23 @@ return {
     build = ":MasonUpdate",
     config = conf("rc/pluginconfig/mason"),
   },
-  { "folke/which-key.nvim", event = "VeryLazy" },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = conf("rc/pluginconfig/which-key"),
+  },
 
   -- Completion
   {
     "hrsh7th/nvim-cmp",
     event = "VimEnter",
     config = conf("rc/pluginconfig/nvim-cmp"),
+  },
+  {
+    "tzachar/cmp-tabnine",
+    lazy = true,
+    build = "./install.sh",
+    config = conf("rc/pluginconfig/cmp-tabnine"),
   },
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
   { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true },
@@ -27,11 +37,6 @@ return {
   -- { "rinx/cmp-skkeleton", lazy = true },
   { "f3fora/cmp-spell", lazy = true },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
-  {
-    "tzachar/cmp-tabnine",
-    lazy = true,
-    build = "./install.sh",
-  },
   { "ray-x/cmp-treesitter", lazy = true },
   { "lukas-reineke/cmp-rg", lazy = true },
   { "lukas-reineke/cmp-under-comparator", lazy = true },

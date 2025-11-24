@@ -82,7 +82,7 @@ return {
   {
     "romgrk/nvim-treesitter-context",
     cmd = { "TSContextEnable" },
-    config = true,
+    config = conf("rc/pluginconfig/treesitter-context"),
   },
 
   -- Text objects / surround
