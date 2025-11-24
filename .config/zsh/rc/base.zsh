@@ -8,7 +8,7 @@ HISTFILE="${ZDATADIR}/zsh_history"
 HISTSIZE=10000                    # Number of histories in memory
 SAVEHIST=100000                   # Number of histories to be saved
 HISTTIMEFORMAT="%y/%m/%d %H:%M:%S: "
-HISTORY_IGNORE="(ls|cd|pwd|zsh|exit|cd ..)"
+HIST_IGNORE_PATTERN="(ls|cd|pwd|zsh|exit|cd ..)"
 LISTMAX=1000                      # number of completion listings to ask for (1=shut up, 0=ask when window overflows)
 setopt hist_ignore_dups           # ignore duplication command history
 setopt hist_ignore_space          # ignore duplication command history
@@ -20,8 +20,10 @@ setopt hist_expand                # expand history in line
 setopt share_history              # share command history data
 
 # Display
-eval "$(starship init zsh)"
+# Prompt initialization is handled in .zshrc
 
 # Others
 setopt no_beep
-
+if [[ -t 0 ]]; then
+  stty -ixon 2>/dev/null
+fi

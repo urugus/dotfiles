@@ -17,7 +17,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 bindkey '^x^b' fzf_git_switch_branch
 bindkey '^x^c' anyframe-widget-cdr
-bindkey '^x^k' anyframe-widget-killfzf_git_switch_branch
+bindkey '^x^k' anyframe-widget-kill
 
 ## Claude ##
 function _claude-widget() { 
