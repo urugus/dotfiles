@@ -11,7 +11,7 @@ return {
   },
   {
     "kyazdani42/nvim-web-devicons",
-    event = "VeryLazy",
+    lazy = true,
     enabled = function()
       return not os.getenv("DISABLE_DEVICONS") or os.getenv("DISABLE_DEVICONS") == "false"
     end,
@@ -105,11 +105,13 @@ return {
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = conf("rc/pluginconfig/bufferline"),
   },
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = conf("rc/pluginconfig/lualine"),
   },
   {

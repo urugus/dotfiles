@@ -18,7 +18,7 @@ return {
   -- Completion
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     config = conf("rc/pluginconfig/nvim-cmp"),
   },
   { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
