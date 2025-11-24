@@ -19,6 +19,13 @@ function M.safe_config(module_name)
           vim.notify(string.format("config %s execution failed: %s", module_name, err), vim.log.levels.WARN)
         end)
       end
+    elseif type(result) == "table" and type(result.setup) == "function" then
+      local fn_ok, err = pcall(result.setup)
+      if not fn_ok then
+        vim.schedule(function()
+          vim.notify(string.format("config %s.setup() failed: %s", module_name, err), vim.log.levels.WARN)
+        end)
+      end
     end
   end
 end

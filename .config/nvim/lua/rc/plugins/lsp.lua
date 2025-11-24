@@ -51,13 +51,13 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     event = "VimEnter",
-    config = conf("rc/pluginconfig/mason-lspconfig"),
+    config = conf("rc/lsp"),
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = { "williamboman/mason-lspconfig.nvim" },
     event = "VimEnter",
-    config = conf("rc/pluginconfig/nvim-lspconfig"),
+    config = false,
   },
   {
     "rachartier/tiny-inline-diagnostic.nvim",
