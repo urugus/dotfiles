@@ -69,8 +69,12 @@ return {
     "HiPhish/rainbow-delimiters.nvim",
     event = "VeryLazy",
     config = function()
-      if vim.fn.expand("%:p") ~= "" then
-        vim.cmd.edit({ bang = true })
+      local buf = vim.api.nvim_get_current_buf()
+      local name = vim.api.nvim_buf_get_name(buf)
+      -- 未変更かつファイル名があるバッファのみリロードして再ハイライト
+      -- 変更中や無名バッファはプラグインが自動でハイライトするため何もしない
+      if name ~= "" and not vim.bo[buf].modified then
+        vim.cmd.edit()
       end
     end,
   },
