@@ -15,7 +15,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy_opts = {
-  checker = { enabled = true },
+  defaults = { lazy = true },
+  checker = { enabled = false },
   performance = {
     cache = { enabled = true },
     profiling = { enabled = true },
