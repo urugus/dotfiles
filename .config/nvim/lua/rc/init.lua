@@ -11,8 +11,10 @@ endfor
   -- Optional Lua add-ons under rc/myplugins/opt/*.lua (lazy-loaded)
   vim.schedule(function()
     local opt_dir = vim.fn.stdpath("config") .. "/lua/rc/myplugins/opt"
-    for _, file in ipairs(vim.fn.readdir(opt_dir, [[v:val =~ '\.lua$']])) do
-      require("rc/myplugins/opt/" .. file:gsub("%.lua$", ""))
+    if vim.fn.isdirectory(opt_dir) == 1 then
+      for _, file in ipairs(vim.fn.readdir(opt_dir, [[v:val =~ '\.lua$']])) do
+        require("rc/myplugins/opt/" .. file:gsub("%.lua$", ""))
+      end
     end
   end)
 
