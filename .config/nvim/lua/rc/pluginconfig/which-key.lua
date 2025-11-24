@@ -2,6 +2,7 @@ require("which-key").setup({
   plugins = {
     marks = false, -- shows a list of your marks on ' and `
     registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode the presets plugin, adds help for a bunch of default keybindings in Neovim
+    spelling = { enabled = false },
     -- No actual key bindings are created
     presets = {
       operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
@@ -13,29 +14,23 @@ require("which-key").setup({
       g = false, -- bindings for prefixed with g
     },
   },
-  -- add operators that will trigger motion and text object completion
-  -- to enable all native operators, set the preset / operators plugin above
-  operators = { gc = "Comments" },
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
     group = "+", -- symbol prepended to a group
   },
-  window = {
+  win = {
     border = "none", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    padding = { 2, 2 }, -- extra window padding [top/bottom, right/left]
   },
   layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
   },
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true, -- show help message on the command line when the popup is visible
-  -- triggers = "auto", -- automatically setup triggers
-  triggers = { "<Leader>" }, -- or specify a list manually
+  triggers = {
+    { "<leader>", mode = { "n", "v" } },
+  }, -- or specify a list manually
 })
 
 vim.api.nvim_set_keymap("n", "<Leader><CR>", "<Cmd>WhichKey \\ <CR>", { noremap = true })
