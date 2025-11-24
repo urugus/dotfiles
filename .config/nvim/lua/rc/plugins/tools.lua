@@ -1,6 +1,5 @@
 local shared = require("rc.plugins.shared")
 local conf = shared.conf
-local source = shared.source
 
 return {
   -- Data display / utilities
