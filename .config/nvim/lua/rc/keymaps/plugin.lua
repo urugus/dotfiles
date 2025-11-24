@@ -4,22 +4,22 @@ return function()
   set({
     -- プレフィックス
     { "n", "[_Lsp]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>l", "[_Lsp]", { noremap = true, silent = true, desc = "LSP prefix" } },
+    { "n", "<Leader>l", "[_Lsp]", { remap = true, silent = true, desc = "LSP prefix" } },
 
     { "n", "[Copilot]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>c", "[Copilot]", { noremap = true, silent = true, desc = "Copilot prefix" } },
+    { "n", "<Leader>c", "[Copilot]", { remap = true, silent = true, desc = "Copilot prefix" } },
 
     { "n", "[git]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>g", "[git]", { noremap = true, silent = true, desc = "Git prefix" } },
+    { "n", "<Leader>g", "[git]", { remap = true, silent = true, desc = "Git prefix" } },
 
     { "n", "[Octo]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>gg", "[Octo]", { noremap = true, silent = true, desc = "Octo prefix" } },
-    { "v", "<Leader>gg", "[Octo]", { noremap = true, silent = true, desc = "Octo prefix" } },
+    { "n", "<Leader>gg", "[Octo]", { remap = true, silent = true, desc = "Octo prefix" } },
+    { "v", "<Leader>gg", "[Octo]", { remap = true, silent = true, desc = "Octo prefix" } },
 
     { "n", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true } },
     { "v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>f", "[FuzzyFinder]", { noremap = true, silent = true, desc = "Finder prefix" } },
-    { "v", "<Leader>f", "[FuzzyFinder]", { noremap = true, silent = true, desc = "Finder prefix" } },
+    { "n", "<Leader>f", "[FuzzyFinder]", { remap = true, silent = true, desc = "Finder prefix" } },
+    { "v", "<Leader>f", "[FuzzyFinder]", { remap = true, silent = true, desc = "Finder prefix" } },
 
     ------------------------------------------------------------
     -- Bufferline
