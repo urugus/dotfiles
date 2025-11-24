@@ -1,5 +1,3 @@
-local set_buf = require("rc.keymaps.util").set_buf
-
 local M = {}
 
 function M.setup_autocmd()
@@ -14,14 +12,6 @@ function M.setup_autocmd()
       require("rc.keymaps.lsp").apply(client, bufnr)
     end,
     group = group_name,
-  })
-end
-
--- Optional shared mappings that don't belong in keymaps.lsp
-function M.basic_buffer_maps(bufnr)
-  set_buf(bufnr, {
-    { "n", "[d", vim.diagnostic.goto_prev },
-    { "n", "]d", vim.diagnostic.goto_next },
   })
 end
 
