@@ -19,7 +19,7 @@ return {
   {
     "haya14busa/vim-asterisk",
     event = "VeryLazy",
-    config = source("~/.config/nvim/rc/pluginconfig/vim-asterisk.vim"),
+    config = source("~/.config/nvim/lua/rc/pluginconfig/vim-asterisk.vim"),
   },
   {
     "kevinhwang91/nvim-hlslens",
@@ -93,7 +93,7 @@ return {
   {
     "andymass/vim-matchup",
     event = "VeryLazy",
-    config = source("~/.config/nvim/rc/pluginconfig/vim-matchup.vim"),
+    config = source("~/.config/nvim/lua/rc/pluginconfig/vim-matchup.vim"),
   },
   {
     "windwp/nvim-autopairs",
