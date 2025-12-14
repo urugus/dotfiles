@@ -89,7 +89,7 @@ return function()
     -- Git / Octo
     {
       "n",
-      "<C-g>",
+      "<C-\\>",
       function()
         require("snacks").lazygit()
       end,

@@ -32,7 +32,7 @@ bindkey '^o' _claude-widget
 ## Git ##
 function _lazygit-widget() { lazygit }
 zle -N _lazygit-widget
-bindkey '^g' _lazygit-widget
+bindkey '^\\' _lazygit-widget
 
 ## Filer ##
 function _yazi-widget() { yazi }
