@@ -29,7 +29,7 @@ export AQUA_SKK_DIR=$HOME/Library/Application\ Support/AquaSKK
 
 
 # editor
-export EDITOR="ghostty nvim"
+export EDITOR="nvim"
 
 # AI
 # export CLAUDE_CODE_USE_BEDROCK=1
