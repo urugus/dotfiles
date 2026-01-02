@@ -37,6 +37,10 @@ vim.o.guifont = "UDEV Gothic LG,Hack Nerd Font,Fira Code"
 -- Cursor style
 vim.o.guicursor = "n-v-c-sm:block-Cursor/lCursor-blinkon0,i-ci-ve:ver25-Cursor/lCursor,r-cr-o:hor20-Cursor/lCursor"
 
+-- Cursor color (薄い緑)
+vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#90EE90" })
+vim.api.nvim_set_hl(0, "lCursor", { fg = "#000000", bg = "#90EE90" })
+
 vim.o.cursorlineopt = "number"
 
 -- ステータスライン関連
