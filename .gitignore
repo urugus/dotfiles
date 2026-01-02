@@ -40,6 +40,10 @@
 !/.github/workflows/neovim-health.yml
 !/.github/workflows/lua-lint.yml
 
+## ghostty
+!/.config/ghostty/config
+!/.config/ghostty/shaders/**
+
 ## neovim
 !/.config/nvim
 !/.config/nvim/**
