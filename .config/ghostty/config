@@ -1,3 +1,7 @@
+# Some shaders can be found in this repo, they're usually uploaded to discord
+# https://github.com/hackrmomo/ghostty-shaders
+custom-shader = shaders/cursor_smear.glsl
+
 adjust-cell-width = -13%
 background-blur-radius = 2
 background-opacity = 0.7
@@ -23,3 +27,4 @@ keybind = alt+enter=text:\x0a
 keybind = shift+enter=text:\n
 keybind = ctrl+j=ignore
 macos-window-buttons = hidden
+unfocused-split-opacity = 0.7

@@ -21,20 +21,6 @@ return {
     event = "VeryLazy",
     config = conf("rc/pluginconfig/snacks"),
   },
-  {
-    "sphamba/smear-cursor.nvim",
-    event = "VeryLazy",
-    version = "*",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      smear_between_buffers = true,
-      smear_between_neighbor_lines = true,
-      scroll_buffer_space = true,
-      legacy_computing_symbols_support = false,
-      smear_insert_mode = true,
-      cursor_color = "#d3cdc3",
-    },
-  },
 
   -- Layout / visual aids
   {
