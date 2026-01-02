@@ -40,7 +40,7 @@ vec2 normalize(vec2 value, float isPosition) {
   return (value * 2.0 - (iResolution.xy * isPosition)) / iResolution.y;
 }
 
-float antialiasing(float distance) {
+float antialising(float distance) {
   return 1. - smoothstep(0., normalize(vec2(2., 2.), 0.).x, distance);
 }
 
@@ -63,11 +63,11 @@ float ease(float x) {
 // Use this site to convert from HEX to vec4
 // https://enchanted.games/app/colour-converter/
 // const vec4 TRAIL_COLOR = vec4(1., 1., 0., 1.0); // yellow
-// const vec4 TRAIL_COLOR = vec4(0.95, 1.0, 0.0, 0.8); // neon yellow
+// const vec4 TRAIL_COLOR = vec4(0.976, 0.302, 1.0, 1.0); // cursor
 // const vec4 TRAIL_COLOR = vec4(0.914, 0.702, 0.992, 1.0); // light cursor
 // const vec4 TRAIL_COLOR = vec4(0.016, 0.82, 0.976, 1.0); // cyan
 const vec4 TRAIL_COLOR = vec4(0.216, 0.957, 0.6, 1.0); // green
-const float OPACITY = 0.4;
+const float OPACITY = 0.6;
 const float DURATION = 0.10; //IN SECONDS
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord)
@@ -108,9 +108,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 
   vec4 newColor = vec4(fragColor);
   // Draw trail
-  newColor = mix(newColor, TRAIL_COLOR, antialiasing(sdfTrail));
+  newColor = mix(newColor, TRAIL_COLOR, antialising(sdfTrail));
   // Draw current cursor
-  newColor = mix(newColor, TRAIL_COLOR, antialiasing(sdfCurrentCursor));
+  newColor = mix(newColor, TRAIL_COLOR, antialising(sdfCurrentCursor));
   newColor = mix(newColor, fragColor, step(sdfCurrentCursor, 0.));
   // newColor = mix(fragColor, newColor, OPACITY);
   fragColor = mix(fragColor, newColor, step(sdfCurrentCursor, easedProgress * lineLength));
