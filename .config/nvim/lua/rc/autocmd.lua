@@ -1,26 +1,6 @@
 local group_name = "vimrc_vimrc"
 vim.api.nvim_create_augroup(group_name, { clear = true })
 
-local im_select_cmd = "/opt/homebrew/bin/im-select"
-
--- AquaSKK: InsertLeave 時に ASCII モードへ強制切替（im-select がある場合のみ）
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = group_name,
-  pattern = "*",
-  callback = function()
-    if vim.fn.executable(im_select_cmd) ~= 1 then
-      return
-    end
-    vim.defer_fn(function()
-      vim.fn.system(string.format("%s %s", im_select_cmd, "jp.sourceforge.inputmethod.aquaskk"))
-      vim.defer_fn(function()
-        vim.fn.system(string.format("%s %s", im_select_cmd, "jp.sourceforge.inputmethod.aquaskk.Ascii"))
-      end, 100)
-    end, 10)
-  end,
-  desc = "Switch to ASCII mode when leaving insert mode",
-})
-
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   group = group_name,
   pattern = "*",
