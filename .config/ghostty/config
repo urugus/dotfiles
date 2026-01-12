@@ -26,7 +26,6 @@ window-save-state = always
 keybind = ctrl+enter=text:\x0a
 keybind = alt+enter=text:\x0a
 keybind = shift+enter=text:\n
-keybind = ctrl+j=ignore
 macos-window-buttons = hidden
 unfocused-split-opacity = 0.7
 

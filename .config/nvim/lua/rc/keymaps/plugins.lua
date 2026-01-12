@@ -406,6 +406,11 @@ return function()
     },
 
     ------------------------------------------------------------
+    -- skkeleton
+    { "i", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true, plugin = "skkeleton" } },
+    { "c", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true, plugin = "skkeleton" } },
+
+    ------------------------------------------------------------
     -- toggleterm (global mappingsのみ)
     {
       "n",

@@ -35,8 +35,25 @@ return {
   { "hrsh7th/cmp-nvim-lua", lazy = true },
   { "hrsh7th/cmp-emoji", lazy = true },
   { "hrsh7th/cmp-calc", lazy = true },
-  -- { "rinx/cmp-skkeleton", lazy = true },
+  { "rinx/cmp-skkeleton", lazy = true },
   { "f3fora/cmp-spell", lazy = true },
+
+  -- SKK (Japanese input)
+  {
+    "vim-denops/denops.vim",
+    lazy = false,
+  },
+  {
+    "vim-skk/skkeleton",
+    dependencies = { "vim-denops/denops.vim" },
+    event = { "InsertEnter", "CmdlineEnter", "TermEnter" },
+    config = conf("rc/pluginconfig/skkeleton"),
+  },
+  { "urugus/skkeleton-snacks" },
+  {
+    "delphinus/skkeleton_indicator.nvim",
+    config = conf("rc/pluginconfig/skkeleton_indicator"),
+  },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   { "ray-x/cmp-treesitter", lazy = true },
   { "hrsh7th/cmp-cmdline", lazy = true },
