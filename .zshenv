@@ -63,3 +63,6 @@ eval "$(rbenv init -)"
 setopt no_global_rcs
 
 . "$HOME/.cargo/env"
+
+# Load local secrets (not tracked by git)
+[[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
