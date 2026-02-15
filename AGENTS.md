@@ -1,3 +1,9 @@
+# Agent Guidelines
+
+Always prefer simplicity over pathological correctness.
+YAGNI, KISS, DRY. 
+No backwords-compat shims or fallback paths unless they comes free without adding cyclomatic complexity.
+
 # Repository Guidelines
 
 ## Project Structure & Module Organization
