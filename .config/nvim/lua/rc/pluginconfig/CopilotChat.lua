@@ -48,3 +48,34 @@ copilot_chat.setup({
     },
   },
 })
+
+local group = vim.api.nvim_create_augroup("rc_copilotchat_enter_submit", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = group,
+  pattern = "copilot-chat",
+  callback = function(ev)
+    local bufnr = ev.buf
+    vim.keymap.set("i", "<CR>", function()
+      if vim.fn["skkeleton#is_enabled"]() == 1 then
+        local result = vim.fn["skkeleton#handle"]("handleKey", {
+          ["function"] = "kakutei",
+          key = vim.api.nvim_replace_termcodes("<NL>", true, false, true),
+          expr = true,
+        })
+        if result ~= "" then
+          vim.api.nvim_feedkeys(result, "nit", false)
+        end
+      end
+
+      vim.schedule(function()
+        local constants = require("CopilotChat.constants")
+        local message = copilot_chat.chat:get_message(constants.ROLE.USER, true)
+        if not message then
+          return
+        end
+        copilot_chat.ask(message.content)
+      end)
+    end, { buffer = bufnr, silent = true })
+  end,
+})
