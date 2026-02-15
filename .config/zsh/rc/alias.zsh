@@ -10,6 +10,14 @@ alias lla='ll -A'
 
 ### docker
 alias dc='docker_compose'
+alias docker-cleanup='docker system prune -f --filter "until=168h"'
+alias dw-ps='docker ps --format "table {{.Names}}\t{{.Ports}}" | grep dw_worker'
+
+# Git Worktree (gwq)
+alias gw='gwq cd'
+alias gwa='gwq add'
+alias gwr='gwq remove'
+alias gws='gwq status'
 
 # Git
 alias g='git_command'

@@ -54,3 +54,18 @@ source "$ZRCDIR/function.zsh"
 
 # Added by Antigravity
 export PATH="/Users/urugus/.antigravity/antigravity/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+#--------------------------------------------------------------#
+##          Docker Cleanup                                    ##
+#--------------------------------------------------------------#
+DOCKER_PRUNE_MARKER="$HOME/.docker_last_prune"
+if [[ ! -f "$DOCKER_PRUNE_MARKER" ]] || [[ $(find "$DOCKER_PRUNE_MARKER" -mtime +7 2>/dev/null) ]]; then
+  if docker info &>/dev/null; then
+    echo "Docker cleanup (7+ days old resources)..."
+    docker system prune -f --filter "until=168h" 2>/dev/null
+    touch "$DOCKER_PRUNE_MARKER"
+  fi
+fi

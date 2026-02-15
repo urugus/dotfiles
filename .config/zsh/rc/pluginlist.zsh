@@ -71,3 +71,10 @@ zinit wait'1' lucid \
 # move directory
 #--------------------------------#
 eval "$(zoxide init zsh)"
+
+#--------------------------------#
+# gwq completion
+#--------------------------------#
+if command -v gwq &>/dev/null; then
+  source <(gwq completion zsh)
+fi
