@@ -69,3 +69,19 @@ if [[ ! -f "$DOCKER_PRUNE_MARKER" ]] || [[ $(find "$DOCKER_PRUNE_MARKER" -mtime 
     touch "$DOCKER_PRUNE_MARKER"
   fi
 fi
+
+# pnpm
+export PNPM_HOME="/Users/urugus/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# second-brain Codex lifecycle wrapper
+if [ -x "$HOME/.codex/hooks/codex-with-sb-session.sh" ]; then
+  codex() {
+    "$HOME/.codex/hooks/codex-with-sb-session.sh" "$@"
+  }
+fi
+export PATH="$HOME/.npm-global/bin:$PATH"
