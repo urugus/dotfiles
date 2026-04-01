@@ -16,8 +16,25 @@ function main() {
   fi
 
   echo "Brewfile is not installed. Installing Brewfile..."
-  # Brewfileのインストール
-  curl -o install.sh -fsSL https://raw.github.com/rcmdnk/homebrew-file/install/install.sh
+
+  # Supply-chain hardening: pin to a specific commit on the install branch
+  local brewfile_commit="723acc6f3e0db4677c03bb87c4ea33157d549e26"
+  local expected_sha256="464d39329e5e13939861dab96fbaf64e30513ef4a0666b7edaf7784079ba6fa7"
+
+  curl -o install.sh -fsSL \
+    "https://raw.githubusercontent.com/rcmdnk/homebrew-file/${brewfile_commit}/install.sh"
+
+  # Verify SHA256 checksum before execution (update hash when bumping commit)
+  local actual_sha256
+  actual_sha256=$(shasum -a 256 install.sh | awk '{print $1}')
+  if [ "$actual_sha256" != "$expected_sha256" ]; then
+    echo "🚨ERROR🚨 homebrew-file install script checksum mismatch!"
+    echo "  expected: ${expected_sha256}"
+    echo "  actual:   ${actual_sha256}"
+    rm -f install.sh
+    exit 1
+  fi
+
   chmod 755 ./install.sh
    ./install.sh
   rm -f install.sh

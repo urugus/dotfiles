@@ -1,7 +1,12 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  -- Supply-chain hardening: pin to a specific commit instead of --branch=stable
+  -- Commit from lazy-lock.json; update both when upgrading lazy.nvim
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--single-branch", lazyrepo, lazypath })
+  if vim.v.shell_error == 0 then
+    vim.fn.system({ "git", "-C", lazypath, "checkout", "306a05526ada86a7b30af95c5cc81ffba93fef97" })
+  end
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },

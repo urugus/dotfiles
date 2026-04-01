@@ -14,11 +14,12 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v4
+      # Supply-chain hardening: pin actions to full commit SHA
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Cache lint tools
         id: cache-tools
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ~/.local/bin
           key: lint-tools-stylua-0.20.0-selene-0.27.1
@@ -27,11 +28,18 @@ jobs:
         if: steps.cache-tools.outputs.cache-hit != 'true'
         run: |
           mkdir -p ~/.local/bin
+
+          # Supply-chain hardening: verify checksums of downloaded binaries
+          STYLUA_SHA256="28eddb9257bf85b20b1c337e536b7a3d16ba308863f067d447c1f4d24c6dec64"
           curl -LO https://github.com/JohnnyMorganz/StyLua/releases/download/v0.20.0/stylua-linux-x86_64.zip
+          echo "${STYLUA_SHA256}  stylua-linux-x86_64.zip" | sha256sum -c -
           unzip stylua-linux-x86_64.zip -d ~/.local/bin
           chmod +x ~/.local/bin/stylua
           rm stylua-linux-x86_64.zip
+
+          SELENE_SHA256="22dabfe070c6d10cbb0b8ae56a82abfa131fbb902bff03d9924f0f73fd3d3318"
           curl -LO https://github.com/Kampfkarren/selene/releases/download/0.27.1/selene-0.27.1-linux.zip
+          echo "${SELENE_SHA256}  selene-0.27.1-linux.zip" | sha256sum -c -
           unzip selene-0.27.1-linux.zip -d ~/.local/bin
           chmod +x ~/.local/bin/selene
           rm selene-0.27.1-linux.zip
