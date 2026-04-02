@@ -29,7 +29,7 @@ function main() {
   local brewfile_commit="723acc6f3e0db4677c03bb87c4ea33157d549e26"
   local expected_sha256="464d39329e5e13939861dab96fbaf64e30513ef4a0666b7edaf7784079ba6fa7"
   local install_script
-  install_script=$(mktemp)
+  install_script=$(mktemp "${TMPDIR:-/tmp}/brewfile-install.XXXXXX")
   trap 'rm -f "$install_script"' EXIT
 
   curl -fsSL -o "$install_script" \

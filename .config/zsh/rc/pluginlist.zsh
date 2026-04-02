@@ -7,8 +7,9 @@ fi
 if ! test -d "$ZPLG_HOME"; then
   mkdir -p "$ZPLG_HOME"
   chmod g-rwX "$ZPLG_HOME"
-  # Supply-chain hardening: pin zinit to tag v3.14.0
-  git clone --depth 10 --branch v3.14.0 https://github.com/zdharma-continuum/zinit.git "${ZPLG_HOME}/bin"
+  # Supply-chain hardening: pin zinit to commit corresponding to v3.14.0
+  git clone --depth 1 https://github.com/zdharma-continuum/zinit.git "${ZPLG_HOME}/bin"
+  (cd "${ZPLG_HOME}/bin" && git checkout --detach 412ff3b6d9c0cd9ceb4b4f17aea39dda9e1abad5)
 fi
 typeset -gAH ZPLGM
 ZPLGM[HOME_DIR]="${ZPLG_HOME}"

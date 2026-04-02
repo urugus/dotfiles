@@ -24,7 +24,7 @@ verify_checksum() {
   fi
 }
 
-FONT_TMPDIR=$(mktemp -d)
+FONT_TMPDIR=$(mktemp -d "${TMPDIR:-/tmp}/dotinstaller-fonts.XXXXXX")
 trap 'rm -rf "$FONT_TMPDIR"' EXIT
 
 mkdir -p ~/.local/share/fonts

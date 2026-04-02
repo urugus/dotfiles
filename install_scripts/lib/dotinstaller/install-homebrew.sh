@@ -29,7 +29,7 @@ function main() {
   local brew_commit="6d5e2670d07961e7985d2079a2f0a484420f3c38"
   local expected_sha256="dfd5145fe2aa5956a600e35848765273f5798ce6def01bd08ecec088a1268d91"
   local brew_script
-  brew_script=$(mktemp)
+  brew_script=$(mktemp -t brew_install.XXXXXX)
   trap 'rm -f "$brew_script"' EXIT
 
   curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/${brew_commit}/install.sh" \
