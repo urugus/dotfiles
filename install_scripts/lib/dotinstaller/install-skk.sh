@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # install yaskkserv2
-if ! command -v yaskkserv2 >/dev/temp/null; then
-  cargo install --git https://github.com/wachikun/yaskkserv2 --locked --bins
+# Supply-chain hardening: pin to a specific release tag
+if ! command -v yaskkserv2 >/dev/null 2>&1; then
+  cargo install --git https://github.com/wachikun/yaskkserv2 --tag 0.1.7 --locked --bins
 fi
 
 # setup launch agent
