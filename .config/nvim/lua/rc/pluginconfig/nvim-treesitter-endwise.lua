@@ -1,5 +1,2 @@
-require("nvim-treesitter.configs").setup({
-  endwise = {
-    enable = true,
-  },
-})
+-- nvim-treesitter-endwise requires no configuration in the new API.
+-- It activates automatically when loaded.

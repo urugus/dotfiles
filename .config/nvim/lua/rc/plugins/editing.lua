@@ -30,21 +30,23 @@ return {
   -- Treesitter & text objects
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "VeryLazy" },
-    build = ":TSUpdateSync",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
     config = conf("rc/pluginconfig/nvim-treesitter"),
   },
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-  { "nvim-treesitter/nvim-treesitter-refactor", lazy = true },
-  { "nvim-treesitter/nvim-tree-docs", lazy = true },
-  { "yioneko/nvim-yati", lazy = true },
   {
     "RRethy/nvim-treesitter-endwise",
     lazy = true,
     event = "InsertEnter",
-    config = conf("rc/pluginconfig/nvim-treesitter-endwise"),
   },
-  { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    event = "VeryLazy",
+    config = conf("rc/pluginconfig/nvim-treesitter-textobjects"),
+  },
   {
     "chrisgrieser/nvim-various-textobjs",
     lazy = true,
