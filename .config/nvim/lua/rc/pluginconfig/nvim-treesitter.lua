@@ -14,7 +14,7 @@ local parsers = {
   "typescript",
 }
 
-local installed = require("nvim-treesitter").installed()
+local installed = require("nvim-treesitter").get_installed()
 local missing = vim.tbl_filter(function(p)
   return not vim.tbl_contains(installed, p)
 end, parsers)

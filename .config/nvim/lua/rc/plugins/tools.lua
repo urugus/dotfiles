@@ -135,12 +135,6 @@ return {
     config = conf("rc/pluginconfig/nvim-ghost"),
   },
 
-  -- Test
-  {
-    "klen/nvim-test",
-    cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast", "TestVisit" },
-    config = conf("rc/pluginconfig/nvim-test"),
-  },
 
   -- Analyzer
   { "wakatime/vim-wakatime", event = "VeryLazy" },

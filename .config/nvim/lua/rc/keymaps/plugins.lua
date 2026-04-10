@@ -328,12 +328,6 @@ return function()
     { "n", "[_Lsp]o", "<cmd>LSoutlineToggle<CR>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
 
     ------------------------------------------------------------
-    -- nvim-test
-    { "n", "<Space>ta", "<Cmd>TestFile<CR>", { noremap = true, silent = true, plugin = "nvim-test" } },
-    { "n", "<Space>te", "<Cmd>TestEdit<CR>", { noremap = true, silent = true, plugin = "nvim-test" } },
-    { "n", "<Space>tl", "<Cmd>TestNearest<CR>", { noremap = true, silent = true, plugin = "nvim-test" } },
-
-    ------------------------------------------------------------
     -- neogen
     { "n", "gca", "<Cmd>lua require('neogen').generate()<CR>", { noremap = true, silent = true, plugin = "neogen" } },
 
