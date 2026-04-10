@@ -17,7 +17,7 @@ alias dw-ps='docker ps --format "table {{.Names}}\t{{.Ports}}" | grep dw_worker'
 alias gw='gwq cd'
 alias gwa='gwq add'
 alias gwr='gwq remove'
-alias gws='gwq status'
+alias gwqs='gwq status'
 
 # Git
 alias g='git_command'
