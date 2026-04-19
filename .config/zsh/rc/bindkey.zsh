@@ -20,14 +20,23 @@ bindkey '^x^c' anyframe-widget-cdr
 bindkey '^x^k' anyframe-widget-kill
 
 ## Claude ##
-function _claude-widget() { 
-  # Clear the current line and run claude
+function _claude-widget() {
   BUFFER=""
   zle accept-line
   claude
 }
 zle -N _claude-widget
-bindkey '^o' _claude-widget
+bindkey '^o'   _claude-widget
+bindkey '^x^a' _claude-widget
+
+## Codex ##
+function _codex-widget() {
+  BUFFER=""
+  zle accept-line
+  codex
+}
+zle -N _codex-widget
+bindkey '^x^g' _codex-widget
 
 ## Git ##
 function _lazygit-widget() { lazygit }
