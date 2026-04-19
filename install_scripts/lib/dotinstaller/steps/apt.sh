@@ -14,7 +14,6 @@ PACKAGES=(
   wget
   git
   zsh
-  neovim
   tmux
   unzip
   jq
