@@ -3,7 +3,7 @@
 # Install Deno from upstream release archives.
 #
 # Required by the denops.vim runtime that several Neovim plugins
-# (skkeleton, neo-slack.nvim, etc.) depend on.
+# (skkeleton, etc.) depend on.
 
 set -ue
 

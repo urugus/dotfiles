@@ -144,16 +144,4 @@ return {
     "3rd/image.nvim",
     ft = { "markdown", "norg", "org", "text" },
   },
-
-  -- External services
-  {
-    "urugus/neo-slack.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "junegunn/vim-emoji",
-      "folke/snacks.nvim",
-    },
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/neo-slack"),
-  },
 }
