@@ -135,7 +135,6 @@ return {
     config = conf("rc/pluginconfig/nvim-ghost"),
   },
 
-
   -- Analyzer
   { "wakatime/vim-wakatime", event = "VeryLazy" },
 
