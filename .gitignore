@@ -74,6 +74,10 @@
 ## wezterm
 /.config/wezterm/local.lua
 
+## zellij
+!/.config/zellij/
+!/.config/zellij/config.kdl
+
 
 # global #
 !/.README.md
