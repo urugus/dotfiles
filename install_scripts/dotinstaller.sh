@@ -25,7 +25,7 @@ pipeline_for() {
   case "$mode:$os" in
     link:*)          echo link gitconfig ;;
     install:macos)   echo link gitconfig homebrew brewfile fonts mac-defaults ;;
-    install:linux)   echo link gitconfig apt neovim fonts ;;
+    install:linux)   echo link gitconfig apt neovim deno fonts ;;
     update:macos)    echo brewfile-update ;;
     update:linux)    echo apt-update ;;
     *)
