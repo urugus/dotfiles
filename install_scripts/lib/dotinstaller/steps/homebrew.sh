@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -ue
 
-function is_homebrew_installed() {
-  command -v brew >/dev/null 2>&1
-}
+source "$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")/.." && pwd)/utilfuncs.sh"
 
 _sha256() {
   if command -v sha256sum >/dev/null 2>&1; then
@@ -14,16 +12,12 @@ _sha256() {
   fi
 }
 
-function main() {
-  local current_dir
-  current_dir=$(dirname "${BASH_SOURCE[0]:-$0}")
-  source "$current_dir/utilfuncs.sh"
-
-  if is_homebrew_installed; then
+run() {
+  if command -v brew >/dev/null 2>&1; then
     return 0
   fi
 
-  echo "Homebrew is not installed. Installing Homebrew..."
+  print_info "Homebrew is not installed. Installing Homebrew..."
 
   # Supply-chain hardening: pin to a specific commit instead of HEAD
   local brew_commit="6d5e2670d07961e7985d2079a2f0a484420f3c38"
@@ -35,25 +29,23 @@ function main() {
   curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/${brew_commit}/install.sh" \
     -o "$brew_script"
 
-  # Verify SHA256 checksum before execution (update hash when bumping brew_commit)
   local actual_sha256
   actual_sha256=$(_sha256 "$brew_script")
   if [ "$actual_sha256" != "$expected_sha256" ]; then
-    echo "🚨ERROR🚨 Homebrew install script checksum mismatch!"
-    echo "  expected: ${expected_sha256}"
-    echo "  actual:   ${actual_sha256}"
+    print_error "🚨 Homebrew install script checksum mismatch!"
+    print_error "  expected: ${expected_sha256}"
+    print_error "  actual:   ${actual_sha256}"
     exit 1
   fi
 
   /bin/bash "$brew_script"
 
-  # インストールが成功したか再確認
-  if is_homebrew_installed; then
-    echo "Homebrew installed successfully.🎉"
+  if command -v brew >/dev/null 2>&1; then
+    print_success "Homebrew installed 🎉"
   else
-    echo "🚨ERROR🚨 Homebrew installation failed. Please check the installation logs."
+    print_error "🚨 Homebrew installation failed."
     exit 1
   fi
 }
 
-main "$@"
+run "$@"

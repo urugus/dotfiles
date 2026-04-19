@@ -1,97 +1,69 @@
-
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -ue
 
+SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)"
+LIB_DIR="$SELF_DIR/lib/dotinstaller"
 
-#--------------------------------------------------------------#
-##          Functions                                         ##
-#--------------------------------------------------------------#
+source "$LIB_DIR/utilfuncs.sh"
+source "$LIB_DIR/pipeline.sh"
 
-function helpmsg() {
-  print_default "Usage: ${BASH_SOURCE[0]:-$0} [install | update | link] [--with-gui] [--help | -h]" 0>&2
-  print_default "  install: add require package install and symbolic link to $HOME from dotfiles [default]"
-  print_default "  update: add require package install or update."
-  print_default "  link: only symbolic link to $HOME from dotfiles."
+helpmsg() {
+  print_default "Usage: $(basename "${BASH_SOURCE[0]:-$0}") [install|update|link] [--help|-h]"
+  print_default "  install: link dotfiles + install packages for the current OS [default]"
+  print_default "  update:  refresh OS-level packages"
+  print_default "  link:    only symlink dotfiles and set git include"
   print_default ""
+  print_default "Supported OS: macOS (Homebrew) and Linux/Debian-family (apt)."
 }
 
-#--------------------------------------------------------------#
-##          main                                              ##
-#--------------------------------------------------------------#
+# Compose the pipeline for a given (mode, os) pair.
+# This is where the Composite pattern pays off: each branch is just an ordered
+# list of leaf step names, no platform-specific branching inside the steps.
+pipeline_for() {
+  local mode="$1" os="$2"
+  case "$mode:$os" in
+    link:*)          echo link gitconfig ;;
+    install:macos)   echo link gitconfig homebrew brewfile fonts mac-defaults ;;
+    install:linux)   echo link gitconfig apt fonts ;;
+    update:macos)    echo brewfile-update ;;
+    update:linux)    echo apt-update ;;
+    *)
+      print_error "unsupported combination: mode=$mode os=$os"
+      return 1
+      ;;
+  esac
+}
 
-function main() {
-  local current_dir
-  current_dir=$(dirname "${BASH_SOURCE[0]:-$0}")
-  source $current_dir/lib/dotinstaller/utilfuncs.sh
-
-  local is_link="false"
-  local is_install="false"
-  local is_update="false"
-
+main() {
+  local mode=""
   while [ $# -gt 0 ]; do
-    case ${1} in
-      --help | -h)
-        helpmsg
-        exit 1
-        ;;
-      install)
-        is_install="true"
-        is_link="true"
-        ;;
-      update)
-        is_update="true"
-        ;;
-      link)
-        is_link="true"
-        ;;
-      *)
-        print_error "[ERROR] Invalid arguments '${1}'"
-        helpmsg
-        exit 1
-        ;;
+    case "$1" in
+      -h|--help) helpmsg; exit 0 ;;
+      install|update|link) mode="$1" ;;
+      *) print_error "[ERROR] Invalid argument '$1'"; helpmsg; exit 1 ;;
     esac
     shift
   done
+  : "${mode:=install}"
 
-  # default befavior
-  if [[ "$is_link" == false && "$is_install" == false ]]; then
-    is_link="true"
-    is_install="true"
-    is_update="false"
+  local os
+  os="$(current_os)"
+  if [[ "$os" == "unknown" ]]; then
+    print_error "unsupported OS: $(uname)"
+    exit 1
   fi
 
-  # is_link: true
-  if [[ "$is_link" = true ]]; then
-    # Add Symbolic Link
-    source "$current_dir/lib/dotinstaller/link-to-homedir.sh"
-    # Set git config
-    source "$current_dir/lib/dotinstaller/gitconfig.sh"
-    print_info ""
-    print_info "#####################################################"
-    print_info "$(basename "${BASH_SOURCE[0]:-$0}") link success!!!"
-    print_info "#####################################################"
-    print_info ""
-  fi
+  local steps
+  read -r -a steps <<< "$(pipeline_for "$mode" "$os")"
 
-  # is_install: true
-  if [[ "$is_install" = true ]]; then
-    # install Homebrew
-    source $current_dir/lib/dotinstaller/install-homebrew.sh
+  print_info "pipeline: mode=$mode os=$os steps=(${steps[*]})"
+  run_pipeline "${steps[@]}"
 
-    # install Homebrew file
-    source $current_dir/lib/dotinstaller/install-brewfile.sh
-
-    # install libraries & GUI Apps
-    brew file install
-    # install fonts
-    source $current_dir/lib/dotinstaller/install-fonts.sh
-  fi
-
-  # is_update: true
-  if [[ "$is_update" = true ]]; then
-    brew file update
-  fi
+  print_info ""
+  print_info "#####################################################"
+  print_info "dotinstaller '$mode' finished successfully"
+  print_info "#####################################################"
 }
 
 main "$@"

@@ -73,9 +73,33 @@ parse_settings_file() {
 
 # macOS環境かどうかをチェックする関数
 is_macos() {
-  if [[ "$(uname)" == "Darwin" ]]; then
-    return 0  # macOSの場合
+  [[ "$(uname)" == "Darwin" ]]
+}
+
+# Linux環境かどうかをチェックする関数
+is_linux() {
+  [[ "$(uname)" == "Linux" ]]
+}
+
+# 現在のOS名（pipelineの分岐用）: macos / linux / unknown
+current_os() {
+  if is_macos; then
+    echo "macos"
+  elif is_linux; then
+    echo "linux"
   else
-    return 1  # macOS以外の場合
+    echo "unknown"
+  fi
+}
+
+# rootでなければsudoを前置して実行する
+run_privileged() {
+  if [[ $EUID -eq 0 ]]; then
+    "$@"
+  elif command -v sudo >/dev/null 2>&1; then
+    sudo "$@"
+  else
+    print_error "root privileges required but sudo is not available: $*"
+    return 1
   fi
 }

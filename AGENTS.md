@@ -10,12 +10,12 @@ No backwords-compat shims or fallback paths unless they comes free without addin
 - `.config/nvim/` hosts the Neovim profile; Lua modules under `lua/rc/` define plugins, keymaps, and options.
 - `.config/zsh/rc/` splits shell setup into focused fragments (`alias.zsh`, `bindkey.zsh`, etc.) while helpers live under `.config/zsh/functions/`.
 - `.config/wezterm/` and `.config/ghostty/` hold terminal themes; update both when changing keymaps or palettes.
-- `install_scripts/` houses provisioning; `dotinstaller.sh` handles Homebrew bundles plus linking, fonts, and Mac defaults via `lib/dotinstaller/`.
+- `install_scripts/` houses provisioning; `dotinstaller.sh` composes per-OS pipelines (macOS → Homebrew/Brewfile/mac defaults, Linux → apt) from leaf steps under `lib/dotinstaller/steps/`. `lib/dotinstaller/pipeline.sh` is the composite runner.
 - `.github/workflows/gitguardian.yml` runs GitGuardian on push/PR; keep secrets out of version control.
 
 ## Build, Test, and Development Commands
-- `./setup.sh --install` bootstraps a macOS host: installs Homebrew, fonts, and links dotfiles.
-- `./setup.sh --update` refreshes packages through `brew file update`; use after touching the Brewfile.
+- `./setup.sh --install` bootstraps the current host (macOS: Homebrew + Brewfile + mac defaults; Linux/Debian-family: apt) and links dotfiles.
+- `./setup.sh --update` refreshes OS-level packages (`brew file update` on macOS, `apt upgrade` on Linux).
 - `./install_scripts/dotinstaller.sh link` relinks configs without reinstalling packages, ideal for local iteration.
 - `mise run rs` / `mise run rc` trigger the Docker-backed Ruby tasks from `.config/mise/config.toml`; ensure the companion compose services are up.
 - `stylua .config/nvim` keeps Lua formatting consistent with `stylua.toml`; add `--check` to gate CI.
@@ -40,4 +40,4 @@ No backwords-compat shims or fallback paths unless they comes free without addin
 
 ## Security & Configuration Tips
 - Store machine-specific secrets in environment files or keychain entries; never commit values that would trip GitGuardian.
-- Document tweaks to `install_scripts/lib/dotinstaller/mac_defaults.json` and test via `install_scripts/lib/dotinstaller/mac-setting.sh` before merging.
+- Document tweaks to `install_scripts/lib/dotinstaller/mac_defaults.json` and test via `install_scripts/lib/dotinstaller/steps/mac-defaults.sh` before merging.

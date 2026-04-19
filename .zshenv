@@ -59,10 +59,10 @@ path=(
 
 export PATH
 
-eval "$(rbenv init -)"
+command -v rbenv >/dev/null && eval "$(rbenv init -)"
 setopt no_global_rcs
 
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # Load local secrets (not tracked by git)
 [[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
