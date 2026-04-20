@@ -38,6 +38,15 @@ function _codex-widget() {
 zle -N _codex-widget
 bindkey '^x^g' _codex-widget
 
+## Zellij ##
+function _zellij-widget() {
+  BUFFER=""
+  zle accept-line
+  [[ -z $ZELLIJ ]] && zellij
+}
+zle -N _zellij-widget
+bindkey '^[z' _zellij-widget
+
 ## Git ##
 function _lazygit-widget() { lazygit }
 zle -N _lazygit-widget
