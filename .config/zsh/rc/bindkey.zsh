@@ -40,9 +40,9 @@ bindkey '^x^g' _codex-widget
 
 ## Zellij ##
 function _zellij-widget() {
-  BUFFER=""
+  [[ -n $ZELLIJ ]] && return
+  BUFFER="zellij"
   zle accept-line
-  [[ -z $ZELLIJ ]] && zellij
 }
 zle -N _zellij-widget
 bindkey '^[z' _zellij-widget
