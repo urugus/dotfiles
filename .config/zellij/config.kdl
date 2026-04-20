@@ -255,9 +255,6 @@ plugins {
     status-bar location="zellij:status-bar"
     strider location="zellij:strider"
     tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" {
-        welcome_screen true
-    }
 }
 
 // Plugins to load in the background when a new session starts
@@ -276,7 +273,7 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
+theme "iceberg-dark"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -313,8 +310,8 @@ default_mode "normal"
 // Options:
 //   - true (default)
 //   - false
-// 
-// mouse_mode false
+//
+mouse_mode false
  
 // Toggle having pane frames around the panes
 // Options:
@@ -440,8 +437,8 @@ serialize_pane_viewport true
 // Enable or disable support for the enhanced Kitty Keyboard Protocol (the host terminal must also support it)
 // (Requires restart)
 // Default: true (if the host terminal supports it)
-// 
-// support_kitty_keyboard_protocol false
+//
+support_kitty_keyboard_protocol false
  
 // Whether to stack panes when resizing beyond a certain size
 // Default: true
@@ -450,10 +447,10 @@ serialize_pane_viewport true
  
 // Whether to show tips on startup
 // Default: true
-// 
-// show_startup_tips false
- 
+//
+show_startup_tips false
+
 // Whether to show release notes on first version run
 // Default: true
-// 
-// show_release_notes false
+//
+show_release_notes false
