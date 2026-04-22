@@ -70,6 +70,10 @@
 ## skk
 !/.config/skk
 !/.config/skk/**
+### AquaSKK personal/system dictionaries (privacy & size)
+/.config/skk/aquaskk/SKK-JISYO.*
+/.config/skk/aquaskk/skk-jisyo*
+/.config/skk/aquaskk/.skk-jisyo*
 
 ## wezterm
 /.config/wezterm/local.lua
