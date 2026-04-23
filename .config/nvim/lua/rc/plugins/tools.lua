@@ -16,14 +16,13 @@ return {
     config = conf("rc/pluginconfig/neogen"),
   },
   {
-    "toppair/peek.nvim",
-    build = "deno task --quiet build:fast",
-    event = "VeryLazy",
+    "delphinus/md-render.nvim",
+    version = "*",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons", version = "*" },
+      { "delphinus/budoux.lua", version = "*" },
+    },
     ft = { "markdown" },
-    enabled = function()
-      return vim.fn.executable("deno")
-    end,
-    config = conf("rc/pluginconfig/peek"),
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
