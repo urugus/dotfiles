@@ -282,8 +282,8 @@ return function()
 
     ------------------------------------------------------------
     -- Markdown
-    { "n", "<Leader>mo", "<Cmd>MarkdownOpen<CR>", { noremap = true, silent = true } },
-    { "n", "<Leader>mc", "<Cmd>MarkdownClose<CR>", { noremap = true, silent = true } },
+    { "n", "<Leader>mo", "<Cmd>MdRender<CR>", { noremap = true, silent = true, plugin = "md-render.nvim" } },
+    { "n", "<Leader>mt", "<Cmd>MdRenderTab<CR>", { noremap = true, silent = true, plugin = "md-render.nvim" } },
 
     ------------------------------------------------------------
     -- Window
