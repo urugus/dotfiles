@@ -81,6 +81,8 @@
 ## zellij
 !/.config/zellij/
 !/.config/zellij/config.kdl
+!/.config/zellij/layouts/
+!/.config/zellij/layouts/**
 
 
 # global #
