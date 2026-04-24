@@ -35,6 +35,9 @@ alias pip='pip3'
 # vi
 alias vi='nvim'
 
+# zellij
+alias zj='zellij'
+
 # AI
 alias claude-bedrock='AWS_PROFILE=bedrock claude'
 
