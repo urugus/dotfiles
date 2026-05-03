@@ -84,6 +84,6 @@ eval "$(zoxide init zsh)"
 #--------------------------------#
 # gwq completion
 #--------------------------------#
-if command -v gwq &>/dev/null; then
+if (( ${+functions[compdef]} )) && command -v gwq &>/dev/null; then
   source <(gwq completion zsh)
 fi

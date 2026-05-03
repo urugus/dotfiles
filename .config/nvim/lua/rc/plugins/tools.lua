@@ -12,7 +12,6 @@ return {
   },
   {
     "danymat/neogen",
-    event = "VeryLazy",
     config = conf("rc/pluginconfig/neogen"),
   },
   {
@@ -23,6 +22,7 @@ return {
       { "delphinus/budoux.lua", version = "*" },
     },
     ft = { "markdown" },
+    cmd = { "MdRender", "MdRenderTab" },
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
@@ -51,7 +51,7 @@ return {
   { "akinsho/git-conflict.nvim", event = "BufReadPre" },
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/gitsigns"),
   },
   {
@@ -68,7 +68,7 @@ return {
   -- Terminal / file explorer
   {
     "akinsho/toggleterm.nvim",
-    event = "VeryLazy",
+    cmd = "ToggleTerm",
     config = conf("rc/pluginconfig/toggleterm"),
   },
   {

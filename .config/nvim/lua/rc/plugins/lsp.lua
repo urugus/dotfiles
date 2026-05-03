@@ -76,14 +76,16 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
-    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
+    event = "VeryLazy",
     config = conf("rc/lsp"),
   },
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "williamboman/mason-lspconfig.nvim" },
-    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
     config = false,
   },
   {
@@ -99,7 +101,10 @@ return {
   -- LSP UI
   {
     "nvimdev/lspsaga.nvim",
-    event = "VeryLazy",
+    cmd = {
+      "Lspsaga",
+      "LSoutlineToggle",
+    },
     config = conf("rc/pluginconfig/lspsaga"),
   },
   {
@@ -110,7 +115,7 @@ return {
   {
     "j-hui/fidget.nvim",
     tag = "legacy",
-    event = "BufEnter",
+    event = "LspAttach",
     config = conf("rc/pluginconfig/fidget"),
   },
 
