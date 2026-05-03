@@ -15,8 +15,20 @@ local function ensure_state_home()
   end
 end
 
+local function truncate_large_lsp_log()
+  local max_size = 10 * 1024 * 1024
+  local log_path = vim.lsp.log.get_filename()
+  local stat = vim.uv.fs_stat(log_path)
+
+  if stat and stat.size > max_size then
+    vim.fn.writefile({}, log_path)
+  end
+end
+
 function M.setup()
   ensure_state_home()
+  vim.lsp.log.set_level(vim.lsp.log.levels.ERROR)
+  truncate_large_lsp_log()
   diagnostic.setup()
   attach.setup_autocmd()
 

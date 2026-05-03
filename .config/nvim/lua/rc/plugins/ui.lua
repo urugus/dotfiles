@@ -18,7 +18,7 @@ return {
   },
   {
     "folke/snacks.nvim",
-    event = "VeryLazy",
+    lazy = false,
     config = conf("rc/pluginconfig/snacks"),
   },
 
@@ -40,12 +40,12 @@ return {
   },
   {
     "RRethy/vim-illuminate",
-    event = "BufReadPost",
+    event = "VeryLazy",
     config = conf("rc/pluginconfig/vim-illuminate"),
   },
   {
     "norcalli/nvim-colorizer.lua",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     config = function()
       require("colorizer").setup()
     end,
@@ -78,7 +78,6 @@ return {
     dependencies = {
       "kevinhwang91/promise-async",
     },
-    event = "BufReadPost",
     config = conf("rc/pluginconfig/nvim-ufo"),
   },
 
@@ -90,7 +89,14 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    event = "VeryLazy",
+    cmd = {
+      "BufferLinePick",
+      "BufferLineCyclePrev",
+      "BufferLineCycleNext",
+      "BufferLineMovePrev",
+      "BufferLineMoveNext",
+      "BufferLineGoToBuffer",
+    },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = conf("rc/pluginconfig/bufferline"),
   },
