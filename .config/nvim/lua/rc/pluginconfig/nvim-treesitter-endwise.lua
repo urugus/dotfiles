@@ -1,2 +1,0 @@
--- nvim-treesitter-endwise requires no configuration in the new API.
--- It activates automatically when loaded.
