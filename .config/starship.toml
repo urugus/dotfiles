@@ -63,6 +63,9 @@ ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
 staged = '[++\($count\)](fg: #0abf53, bg: #394260)'
+# libgit2 (used by starship) reports phantom untracked entries due to differences
+# in .gitignore handling vs git CLI; suppress the noisy `?` symbol.
+untracked = ''
 
 [nodejs]
 symbol = ""
