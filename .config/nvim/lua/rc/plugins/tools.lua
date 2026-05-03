@@ -127,13 +127,6 @@ return {
     config = conf("rc/pluginconfig/codex"),
   },
 
-  -- Browser support
-  {
-    "subnut/nvim-ghost.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/nvim-ghost"),
-  },
-
   -- Analyzer
   { "wakatime/vim-wakatime", event = "VeryLazy" },
 
