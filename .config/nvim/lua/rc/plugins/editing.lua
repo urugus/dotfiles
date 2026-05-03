@@ -9,11 +9,6 @@ return {
     event = "VeryLazy",
     config = conf("rc/pluginconfig/yanky"),
   },
-  {
-    "tversteeg/registers.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/registers"),
-  },
 
   -- Search / filer
   {
