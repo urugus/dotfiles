@@ -1,8 +1,8 @@
-// Default layout with zellagent tab status via the tab-bar alias.
+// Default layout with zellagent tab status.
 layout {
     default_tab_template {
         pane size=1 borderless=true {
-            plugin location="tab-bar"
+            plugin location="file:~/.config/zellij/plugins/zellagent.wasm"
         }
         children
     }
