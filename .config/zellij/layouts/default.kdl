@@ -1,9 +1,8 @@
-// Default layout — swaps the built-in tab-bar for the zellaude plugin,
-// which shows Claude Code / Codex CLI activity per tab.
+// Default layout with zellagent tab status.
 layout {
     default_tab_template {
         pane size=1 borderless=true {
-            plugin location="file:~/.config/zellij/plugins/zellaude.wasm"
+            plugin location="file:~/.config/zellij/plugins/zellagent.wasm"
         }
         children
     }
