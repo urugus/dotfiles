@@ -4,7 +4,7 @@
   <key>Label</key>            <string>com.user.yaskkserv2</string>
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/$USER/.dotfiles/skk/update-dictionary.zsh</string>
+    <string>@HOME@/dotfiles/.config/skk/update-dictionary.zsh</string>
   </array>
   <key>KeepAlive</key>        <true/>
   <key>RunAtLoad</key>        <true/>
