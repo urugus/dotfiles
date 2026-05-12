@@ -133,6 +133,10 @@ return {
   -- GUI / media
   {
     "3rd/image.nvim",
+    build = false,
     ft = { "markdown", "norg", "org", "text" },
+    opts = {
+      processor = "magick_cli",
+    },
   },
 }
