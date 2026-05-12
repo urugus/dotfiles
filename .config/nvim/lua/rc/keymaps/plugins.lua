@@ -282,7 +282,17 @@ return function()
 
     ------------------------------------------------------------
     -- Markdown
-    { "n", "<Leader>mo", "<Cmd>MdRender<CR>", { noremap = true, silent = true, plugin = "md-render.nvim" } },
+    {
+      "n",
+      "<Leader>mo",
+      function()
+        local width = vim.api.nvim_win_get_width(0)
+        local height = vim.api.nvim_win_get_height(0)
+        local mods = width >= height and { vertical = true } or {}
+        require("md-render").preview.split({ mods = mods })
+      end,
+      { noremap = true, silent = true, plugin = "md-render.nvim" },
+    },
     { "n", "<Leader>mt", "<Cmd>MdRenderTab<CR>", { noremap = true, silent = true, plugin = "md-render.nvim" } },
 
     ------------------------------------------------------------
