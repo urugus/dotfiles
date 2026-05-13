@@ -23,6 +23,7 @@ return {
     },
     ft = { "markdown" },
     cmd = { "MdRender", "MdRenderTab" },
+    config = conf("rc/pluginconfig/md-render"),
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
