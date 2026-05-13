@@ -22,7 +22,7 @@ return {
       { "delphinus/budoux.lua", version = "*" },
     },
     ft = { "markdown" },
-    cmd = { "MdRender", "MdRenderTab" },
+    cmd = { "MdRender", "MdRenderTab", "MdRenderSplit" },
     config = conf("rc/pluginconfig/md-render"),
   },
   {

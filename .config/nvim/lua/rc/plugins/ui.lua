@@ -47,7 +47,19 @@ return {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
     config = function()
-      require("colorizer").setup()
+      local tbl_flatten = vim.tbl_flatten
+      vim.tbl_flatten = function(t)
+        return vim.iter(t):flatten(math.huge):totable()
+      end
+
+      local ok, err = pcall(function()
+        require("colorizer").setup()
+      end)
+
+      vim.tbl_flatten = tbl_flatten
+      if not ok then
+        error(err)
+      end
     end,
   },
   {
