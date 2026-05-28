@@ -1,12 +1,34 @@
 local set = require("rc.keymaps.util").set
 
-local function first_lsp_location(result)
+local function snake_case(value)
+  return value:gsub("::", "/"):gsub("([A-Z]+)([A-Z][a-z])", "%1_%2"):gsub("([a-z%d])([A-Z])", "%1_%2"):lower()
+end
+
+local function lsp_location_uri(location)
+  return location.uri or location.targetUri
+end
+
+local function lsp_location_path(location)
+  local uri = lsp_location_uri(location)
+  return uri and vim.uri_to_fname(uri) or nil
+end
+
+local function best_lsp_location(result)
   if not result then
     return nil
   end
   if result.uri or result.targetUri then
     return result
   end
+
+  local symbol_path = snake_case(vim.fn.expand("<cword>")) .. ".rb"
+  for _, location in ipairs(result) do
+    local path = lsp_location_path(location)
+    if path and path:sub(-#symbol_path) == symbol_path then
+      return location
+    end
+  end
+
   return result[1]
 end
 
@@ -48,7 +70,7 @@ local function lsp_location(method, extend_params)
           return
         end
 
-        local location = first_lsp_location(result)
+        local location = best_lsp_location(result)
         if not location then
           return
         end
