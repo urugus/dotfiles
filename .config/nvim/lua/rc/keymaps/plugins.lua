@@ -1,5 +1,25 @@
 local set = require("rc.keymaps.util").set
 
+local function jump_to_first_location(opts)
+  local item = opts.items and opts.items[1]
+  if not item then
+    return
+  end
+
+  if item.filename then
+    vim.cmd.edit(vim.fn.fnameescape(item.filename))
+  end
+  if item.lnum and item.col then
+    vim.api.nvim_win_set_cursor(0, { item.lnum, math.max(item.col - 1, 0) })
+  end
+end
+
+local function lsp_location(fn)
+  return function()
+    fn({ on_list = jump_to_first_location })
+  end
+end
+
 return function()
   set({
     -- プレフィックス
@@ -120,31 +140,33 @@ return function()
     {
       "n",
       "gd",
-      vim.lsp.buf.definition,
+      lsp_location(vim.lsp.buf.definition),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gD",
-      vim.lsp.buf.declaration,
+      lsp_location(vim.lsp.buf.declaration),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gr",
-      vim.lsp.buf.references,
+      function()
+        vim.lsp.buf.references(nil, { on_list = jump_to_first_location })
+      end,
       { noremap = true, silent = true },
     },
     {
       "n",
       "gI",
-      vim.lsp.buf.implementation,
+      lsp_location(vim.lsp.buf.implementation),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gy",
-      vim.lsp.buf.type_definition,
+      lsp_location(vim.lsp.buf.type_definition),
       { noremap = true, silent = true },
     },
 
