@@ -1,17 +1,3 @@
--- 組み込みの診断表示をオフにする
-vim.diagnostic.config({
-  virtual_text = false, -- 標準のvirtual textをオフに
-  -- 他の診断設定はそのまま維持
-  float = {
-    source = "always",
-  },
-  signs = true,
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-})
-
--- tiny-inline-diagnosticの基本設定
 require("tiny-inline-diagnostic").setup({
   signs = {
     left = "",
