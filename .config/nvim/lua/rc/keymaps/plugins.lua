@@ -359,12 +359,21 @@ return function()
     {
       "n",
       "<Leader>mo",
-      function()
-        require("rc.pluginconfig.md-render").split()
-      end,
-      { noremap = true, silent = true, plugin = "md-render.nvim" },
+      "<Cmd>MarkdownOpen<CR>",
+      { noremap = true, silent = true, plugin = "peek.nvim" },
     },
-    { "n", "<Leader>mt", "<Cmd>MdRenderTab<CR>", { noremap = true, silent = true, plugin = "md-render.nvim" } },
+    {
+      "n",
+      "<Leader>mc",
+      "<Cmd>MarkdownClose<CR>",
+      { noremap = true, silent = true, plugin = "peek.nvim" },
+    },
+    {
+      "n",
+      "<Leader>mt",
+      "<Cmd>RenderMarkdown buf_toggle<CR>",
+      { noremap = true, silent = true, plugin = "render-markdown.nvim" },
+    },
 
     ------------------------------------------------------------
     -- Window

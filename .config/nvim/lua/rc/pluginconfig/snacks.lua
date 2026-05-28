@@ -118,9 +118,6 @@ snacks.setup({
         pos = "left", -- position of the diagnostics
       },
     },
-    preview = function(ctx)
-      return require("md-render.snacks").preview()(ctx)
-    end,
     ---@class snacks.picker.previewers.Config
     previewers = {
       diff = {
