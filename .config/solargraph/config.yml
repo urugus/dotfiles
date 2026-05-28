@@ -1,0 +1,42 @@
+---
+include:
+  - Rakefile
+  - Gemfile
+  - "*.gemspec"
+  - "**/*.rb"
+exclude:
+  - spec/**/*
+  - "**/spec/**/*"
+  - test/**/*
+  - "**/test/**/*"
+  - vendor/**/*
+  - "**/vendor/**/*"
+  - _build/**/*
+  - "**/_build/**/*"
+  - node_modules/**/*
+  - "**/node_modules/**/*"
+  - coverage/**/*
+  - "**/coverage/**/*"
+  - log/**/*
+  - "**/log/**/*"
+  - tmp/**/*
+  - "**/tmp/**/*"
+  - .bundle/**/*
+  - "**/.bundle/**/*"
+  - .ruby-lsp/**/*
+  - "**/.ruby-lsp/**/*"
+require: []
+domains: []
+reporters:
+  - require_not_found
+formatter:
+  rubocop:
+    cops: safe
+    except: []
+    only: []
+    extra_args: []
+type_checker:
+  rules: {}
+require_paths: []
+plugins: []
+max_files: 10000
