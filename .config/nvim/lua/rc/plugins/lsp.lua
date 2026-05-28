@@ -77,6 +77,8 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
+      "folke/neoconf.nvim",
+      "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
     },

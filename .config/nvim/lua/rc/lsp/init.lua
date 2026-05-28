@@ -32,7 +32,6 @@ function M.setup()
   diagnostic.setup()
   attach.setup_autocmd()
 
-  require("mason").setup()
   require("mason-lspconfig").setup({
     ensure_installed = servers.ensure_installed,
     automatic_enable = false,
