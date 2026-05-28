@@ -71,7 +71,7 @@ return {
   -- LSP core
   {
     "folke/neoconf.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = conf("rc/pluginconfig/neoconf"),
   },
   {
@@ -80,7 +80,7 @@ return {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
     },
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = conf("rc/lsp"),
   },
   {
