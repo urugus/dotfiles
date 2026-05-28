@@ -116,44 +116,36 @@ return function()
     { "n", "[Octo]rc", "<Cmd>Octo review comments<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
 
     ------------------------------------------------------------
-    -- LSP (Snacks picker)
+    -- LSP
     {
       "n",
       "gd",
       vim.lsp.buf.definition,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
+      { noremap = true, silent = true },
     },
     {
       "n",
       "gD",
-      function()
-        require("snacks").picker.lsp_declarations()
-      end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
+      vim.lsp.buf.declaration,
+      { noremap = true, silent = true },
     },
     {
       "n",
       "gr",
-      function()
-        require("snacks").picker.lsp_references()
-      end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
+      vim.lsp.buf.references,
+      { noremap = true, silent = true },
     },
     {
       "n",
       "gI",
-      function()
-        require("snacks").picker.lsp_implementations()
-      end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
+      vim.lsp.buf.implementation,
+      { noremap = true, silent = true },
     },
     {
       "n",
       "gy",
-      function()
-        require("snacks").picker.lsp_type_definitions()
-      end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
+      vim.lsp.buf.type_definition,
+      { noremap = true, silent = true },
     },
 
     ------------------------------------------------------------
