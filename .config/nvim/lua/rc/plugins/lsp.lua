@@ -80,7 +80,7 @@ return {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
     },
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = conf("rc/lsp"),
   },
   {
