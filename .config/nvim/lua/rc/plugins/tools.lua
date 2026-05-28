@@ -15,22 +15,29 @@ return {
     config = conf("rc/pluginconfig/neogen"),
   },
   {
-    "delphinus/md-render.nvim",
-    version = "*",
-    dependencies = {
-      { "nvim-tree/nvim-web-devicons", version = "*" },
-      { "delphinus/budoux.lua", version = "*" },
-    },
-    ft = { "markdown" },
-    cmd = { "MdRender", "MdRenderTab", "MdRenderSplit" },
-    config = conf("rc/pluginconfig/md-render"),
-  },
-  {
     "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    cmd = { "RenderMarkdown" },
     opts = {
       file_types = { "markdown" },
+      completions = {
+        lsp = { enabled = true },
+      },
     },
     ft = { "markdown" },
+  },
+  {
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast",
+    cmd = { "MarkdownOpen", "MarkdownClose" },
+    ft = { "markdown" },
+    enabled = function()
+      return vim.fn.executable("deno") == 1
+    end,
+    config = conf("rc/pluginconfig/peek"),
   },
   {
     "HakonHarnes/img-clip.nvim",

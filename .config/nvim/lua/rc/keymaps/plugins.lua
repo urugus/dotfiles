@@ -46,6 +46,10 @@ local function jump_to_lsp_location(location, client_id)
   vim.lsp.util.jump_to_location(location, offset_encoding, true)
 end
 
+local function has_deno()
+  return vim.fn.executable("deno") == 1
+end
+
 local function lsp_location(method, extend_params)
   return function()
     local clients = vim.tbl_filter(function(client)
@@ -358,13 +362,10 @@ return function()
     -- Markdown
     {
       "n",
-      "<Leader>mo",
-      function()
-        require("rc.pluginconfig.md-render").split()
-      end,
-      { noremap = true, silent = true, plugin = "md-render.nvim" },
+      "<Leader>mt",
+      "<Cmd>RenderMarkdown buf_toggle<CR>",
+      { noremap = true, silent = true, plugin = "render-markdown.nvim" },
     },
-    { "n", "<Leader>mt", "<Cmd>MdRenderTab<CR>", { noremap = true, silent = true, plugin = "md-render.nvim" } },
 
     ------------------------------------------------------------
     -- Window
@@ -512,4 +513,21 @@ return function()
       { noremap = true, silent = true, plugin = "toggleterm.nvim" },
     },
   })
+
+  if has_deno() then
+    set({
+      {
+        "n",
+        "<Leader>mo",
+        "<Cmd>MarkdownOpen<CR>",
+        { noremap = true, silent = true, plugin = "peek.nvim" },
+      },
+      {
+        "n",
+        "<Leader>mc",
+        "<Cmd>MarkdownClose<CR>",
+        { noremap = true, silent = true, plugin = "peek.nvim" },
+      },
+    })
+  end
 end
