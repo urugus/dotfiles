@@ -1,22 +1,62 @@
 local set = require("rc.keymaps.util").set
 
-local function jump_to_first_location(opts)
-  local item = opts.items and opts.items[1]
-  if not item then
-    return
+local function first_lsp_location(result)
+  if not result then
+    return nil
   end
-
-  if item.filename then
-    vim.cmd.edit(vim.fn.fnameescape(item.filename))
+  if result.uri or result.targetUri then
+    return result
   end
-  if item.lnum and item.col then
-    vim.api.nvim_win_set_cursor(0, { item.lnum, math.max(item.col - 1, 0) })
-  end
+  return result[1]
 end
 
-local function lsp_location(fn)
+local function jump_to_lsp_location(location, client_id)
+  local client = vim.lsp.get_client_by_id(client_id)
+  local offset_encoding = client and client.offset_encoding or "utf-16"
+
+  if location.targetUri then
+    location = {
+      uri = location.targetUri,
+      range = location.targetSelectionRange or location.targetRange,
+    }
+  end
+
+  vim.lsp.util.jump_to_location(location, offset_encoding, true)
+end
+
+local function lsp_location(method, extend_params)
   return function()
-    fn({ on_list = jump_to_first_location })
+    local clients = vim.tbl_filter(function(client)
+      return client:supports_method(method, 0)
+    end, vim.lsp.get_clients({ bufnr = 0 }))
+    local client = clients[1]
+    if not client then
+      return
+    end
+
+    local offset_encoding = client and client.offset_encoding or "utf-16"
+    local params = vim.lsp.util.make_position_params(0, offset_encoding)
+    local jumped = false
+
+    if extend_params then
+      extend_params(params)
+    end
+
+    for _, lsp_client in ipairs(clients) do
+      lsp_client:request(method, params, function(err, result, ctx)
+        if jumped or err then
+          return
+        end
+
+        local location = first_lsp_location(result)
+        if not location then
+          return
+        end
+
+        jumped = true
+        jump_to_lsp_location(location, ctx.client_id)
+      end, 0)
+    end
   end
 end
 
@@ -140,33 +180,33 @@ return function()
     {
       "n",
       "gd",
-      lsp_location(vim.lsp.buf.definition),
+      lsp_location("textDocument/definition"),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gD",
-      lsp_location(vim.lsp.buf.declaration),
+      lsp_location("textDocument/declaration"),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gr",
-      function()
-        vim.lsp.buf.references(nil, { on_list = jump_to_first_location })
-      end,
+      lsp_location("textDocument/references", function(params)
+        params.context = { includeDeclaration = true }
+      end),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gI",
-      lsp_location(vim.lsp.buf.implementation),
+      lsp_location("textDocument/implementation"),
       { noremap = true, silent = true },
     },
     {
       "n",
       "gy",
-      lsp_location(vim.lsp.buf.type_definition),
+      lsp_location("textDocument/typeDefinition"),
       { noremap = true, silent = true },
     },
 
