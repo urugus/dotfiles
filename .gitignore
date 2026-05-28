@@ -54,6 +54,10 @@
 !/.config/nvim/lua/rc/pluginconfig/**
 !/.config/nvim/lua/rc/keymaps/**
 
+## solargraph
+!/.config/solargraph
+!/.config/solargraph/**
+
 ## mise
 !/.config/mise/config.toml
 

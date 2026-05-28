@@ -35,6 +35,7 @@ function M.setup()
   require("mason").setup()
   require("mason-lspconfig").setup({
     ensure_installed = servers.ensure_installed,
+    automatic_enable = false,
   })
 
   servers.setup(capabilities.get())
