@@ -120,9 +120,7 @@ return function()
     {
       "n",
       "gd",
-      function()
-        require("snacks").picker.lsp_definitions({ include_current = true })
-      end,
+      vim.lsp.buf.definition,
       { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
