@@ -28,7 +28,14 @@ source "$ZRCDIR/pluginlist.zsh"
 #--------------------------------------------------------------#
 ##             Shell Prompt                                   ##
 #--------------------------------------------------------------#
-eval "$(starship init zsh)"
+# Remove stale Starship hooks when this file is re-sourced.
+precmd_functions=(${precmd_functions:#__starship_precmd})
+preexec_functions=(${preexec_functions:#__starship_preexec})
+chpwd_functions=(${chpwd_functions:#__starship_chpwd})
+unfunction __starship_precmd __starship_preexec __starship_chpwd 2>/dev/null || true
+unset STARSHIP_SHELL STARSHIP_SESSION_KEY STARSHIP_START_TIME
+PROMPT='%F{244}%1~ %#%f '
+RPROMPT=''
 
 #--------------------------------------------------------------#
 ##          Key Bindings                                      ##
