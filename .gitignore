@@ -20,9 +20,6 @@
 !/zsh/.zshenv
 !/zsh/rc/**
 
-### starship
-!/.config/starship.toml
-
 ## brew-file
 !/.config/Brewfile
 !/.config/Brewfile/**
