@@ -5,7 +5,7 @@ local M = {}
 M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright", "solargraph" }
 
 local function solargraph_root_dir(bufnr, on_dir)
-  local root = vim.fs.root(bufnr, { ".solargraph.yml", "Gemfile", ".git" })
+  local root = vim.fs.root(bufnr, { { ".solargraph.yml", "Gemfile", ".git" } })
   if not root then
     return
   end
