@@ -4,6 +4,20 @@ local M = {}
 
 M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright", "solargraph" }
 
+local function solargraph_root_dir(bufnr, on_dir)
+  local root = vim.fs.root(bufnr, { ".solargraph.yml", "Gemfile", ".git" })
+  if not root then
+    return
+  end
+
+  -- ~/Gemfile を拾ってホーム全体を Ruby workspace にしない。
+  if root == vim.uv.os_homedir() then
+    return
+  end
+
+  on_dir(root)
+end
+
 local servers = {
   ts_ls = {},
   rust_analyzer = {},
@@ -32,6 +46,7 @@ local servers = {
     },
   },
   solargraph = {
+    root_dir = solargraph_root_dir,
     init_options = {
       formatting = false,
       diagnostics = false,
