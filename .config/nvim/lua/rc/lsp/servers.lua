@@ -18,6 +18,17 @@ local function solargraph_root_dir(bufnr, on_dir)
   on_dir(root)
 end
 
+local function solargraph_cmd()
+  -- Prefer Homebrew because Mason 0.59.2 can hang while mapping workspaces.
+  for _, path in ipairs({ "/opt/homebrew/bin/solargraph", "/usr/local/bin/solargraph" }) do
+    if vim.fn.executable(path) == 1 then
+      return { path, "stdio" }
+    end
+  end
+
+  return { "solargraph", "stdio" }
+end
+
 local servers = {
   ts_ls = {},
   rust_analyzer = {},
@@ -46,6 +57,7 @@ local servers = {
     },
   },
   solargraph = {
+    cmd = solargraph_cmd(),
     root_dir = solargraph_root_dir,
     init_options = {
       formatting = false,
