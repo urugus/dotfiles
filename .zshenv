@@ -34,10 +34,6 @@ export EDITOR="nvim"
 # AI
 # export CLAUDE_CODE_USE_BEDROCK=1
 
-# Android SDK (adb / emulator / sdkmanager)
-export ANDROID_HOME="$HOME/Library/Android/sdk"
-export ANDROID_SDK_ROOT="$ANDROID_HOME"
-
 typeset -U path PATH manpath sudo_path
 
 # paths
@@ -58,9 +54,6 @@ path=(
   $HOME/.yarn/bin(N-/)
   $HOME/.config/yarn/global/node_modules/.bin(N-/)
   $HOME/.deno/bin(N-/)
-  $ANDROID_HOME/platform-tools(N-/)
-  $ANDROID_HOME/emulator(N-/)
-  $ANDROID_HOME/cmdline-tools/latest/bin(N-/)
   $path
 )
 
@@ -73,3 +66,20 @@ setopt no_global_rcs
 
 # Load local secrets (not tracked by git)
 [[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
+
+# Android SDK (adb / emulator / sdkmanager)
+if [ -z "${ANDROID_HOME:-}" ] && [ -d "$HOME/Library/Android/sdk" ]; then
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+fi
+
+if [ -n "${ANDROID_HOME:-}" ]; then
+  export ANDROID_HOME
+  export ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-$ANDROID_HOME}"
+  path=(
+    $ANDROID_HOME/platform-tools(N-/)
+    $ANDROID_HOME/emulator(N-/)
+    $ANDROID_HOME/cmdline-tools/latest/bin(N-/)
+    $path
+  )
+  export PATH
+fi
