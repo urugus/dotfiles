@@ -93,3 +93,17 @@ if [ -x "$HOME/.codex/hooks/codex-with-sb-session.sh" ]; then
   }
 fi
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+# Android SDK (adb / emulator / sdkmanager)
+# Re-assert here because interactive plugin loading (zinit) drops the path
+# entries set in .zshenv.
+if [ -n "${ANDROID_HOME:-}" ]; then
+  typeset -U path PATH
+  path=(
+    $ANDROID_HOME/platform-tools(N-/)
+    $ANDROID_HOME/emulator(N-/)
+    $ANDROID_HOME/cmdline-tools/latest/bin(N-/)
+    $path
+  )
+  export PATH
+fi
