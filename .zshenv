@@ -34,6 +34,10 @@ export EDITOR="nvim"
 # AI
 # export CLAUDE_CODE_USE_BEDROCK=1
 
+# Android SDK (adb / emulator / sdkmanager)
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export ANDROID_SDK_ROOT="$ANDROID_HOME"
+
 typeset -U path PATH manpath sudo_path
 
 # paths
@@ -54,6 +58,9 @@ path=(
   $HOME/.yarn/bin(N-/)
   $HOME/.config/yarn/global/node_modules/.bin(N-/)
   $HOME/.deno/bin(N-/)
+  $ANDROID_HOME/platform-tools(N-/)
+  $ANDROID_HOME/emulator(N-/)
+  $ANDROID_HOME/cmdline-tools/latest/bin(N-/)
   $path
 )
 
