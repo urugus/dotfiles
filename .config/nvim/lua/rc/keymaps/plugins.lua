@@ -414,22 +414,6 @@ return function()
     { "n", "gca", "<Cmd>lua require('neogen').generate()<CR>", { noremap = true, silent = true, plugin = "neogen" } },
 
     ------------------------------------------------------------
-    -- copilot.lua
-    {
-      "i",
-      "<C-c>e",
-      function()
-        pcall(function()
-          require("cmp").mapping.abort()
-        end)
-        pcall(function()
-          require("copilot.suggestion").accept()
-        end)
-      end,
-      { desc = "[copilot] accept suggestion", silent = true, plugin = "copilot.lua" },
-    },
-
-    ------------------------------------------------------------
     -- nvim-treehopper
     {
       "o",

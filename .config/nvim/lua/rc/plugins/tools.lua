@@ -105,13 +105,6 @@ return {
     event = "InsertEnter",
   },
   {
-    "zbirenbaum/copilot.lua",
-    event = "VeryLazy",
-    config = function()
-      vim.defer_fn(conf("rc/pluginconfig/copilot"), 100)
-    end,
-  },
-  {
     "CopilotC-Nvim/CopilotChat.nvim",
     event = "VeryLazy",
     branch = "main",
