@@ -38,6 +38,9 @@ alias vi='nvim'
 # zellij
 alias zj='zellij'
 
+# terminal-browser
+alias tb='terminal-browser'
+
 # AI
 alias claude-bedrock='AWS_PROFILE=bedrock claude'
 
