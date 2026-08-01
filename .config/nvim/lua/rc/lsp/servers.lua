@@ -2,7 +2,10 @@ local capabilities_mod = require("rc.lsp.capabilities")
 
 local M = {}
 
-M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright", "solargraph" }
+-- solargraph is intentionally NOT Mason-managed: on macOS it comes from Homebrew
+-- (see solargraph_cmd); Mason's install is fragile here. On Linux install it via
+-- the system (e.g. `gem install solargraph`) so it is on PATH.
+M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright" }
 
 local function solargraph_root_dir(bufnr, on_dir)
   local root = vim.fs.root(bufnr, { { ".solargraph.yml", "Gemfile", ".git" } })
