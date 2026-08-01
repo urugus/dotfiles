@@ -75,7 +75,7 @@ return {
     dependencies = {
       "kevinhwang91/promise-async",
     },
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     config = conf("rc/pluginconfig/nvim-ufo"),
   },
 
