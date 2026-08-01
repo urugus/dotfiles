@@ -43,7 +43,8 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     lazy = true,
-    config = conf("rc/pluginconfig/nvim-various-textobjs"),
+    main = "various-textobjs",
+    opts = { useDefaultKeymaps = false },
   },
   {
     "mizlan/iswap.nvim",
@@ -52,7 +53,6 @@ return {
   {
     "mfussenegger/nvim-treehopper",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/nvim-treehopper"),
   },
   {
     "David-Kunz/treesitter-unit",
@@ -74,7 +74,7 @@ return {
   {
     "m-demare/hlargs.nvim",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/hlargs"),
+    opts = {},
   },
   {
     "romgrk/nvim-treesitter-context",
@@ -91,11 +91,11 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/nvim-autopairs"),
+    opts = { map_cr = false },
   },
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/nvim-surround"),
+    opts = {},
   },
 }

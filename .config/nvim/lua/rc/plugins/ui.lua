@@ -42,7 +42,9 @@ return {
   {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/vim-illuminate"),
+    init = function()
+      vim.g.Illuminate_delay = 300
+    end,
   },
   {
     "norcalli/nvim-colorizer.lua",
@@ -56,7 +58,7 @@ return {
   {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/todo-comments"),
+    opts = {},
   },
   {
     "mvllow/modes.nvim",

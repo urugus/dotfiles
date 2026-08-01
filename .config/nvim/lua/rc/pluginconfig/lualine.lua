@@ -1,26 +1,16 @@
-local function is_available_gps()
-  local ok, _ = pcall(require, "nvim-gps")
-  if not ok then
-    return false
-  end
-  return require("nvim-gps").is_available()
-end
-
 local function copilot_status()
   -- Copilot の有効状態を取得
-  local status = vim.fn["copilot#Enabled"]()
-  if status == 1 then
-    return "" -- Copilot が有効ならロゴ付きで表示
-  else
-    return "" -- 無効なら Off 表示
+  if vim.fn["copilot#Enabled"]() == 1 then
+    return ""
   end
+  return ""
 end
 
 local sections_1 = {
   lualine_a = { "mode" },
   lualine_b = { { "filetype", icon_only = true }, { "filename", path = 1 } },
-  lualine_c = { { 'require("nvim-gps").get_location()', cond = is_available_gps } },
-  lualine_x = { "require'lsp-status'.status()", "diagnostics", copilot_status },
+  lualine_c = {},
+  lualine_x = { "diagnostics", copilot_status },
   lualine_y = { "branch", "diff" },
   lualine_z = { "location" },
 }
@@ -34,7 +24,8 @@ local sections_2 = {
   lualine_z = { "location" },
 }
 
-_G.LualineToggle = function()
+-- キーマップ (<Leader>ul) は rc/keymaps/plugins.lua にある
+vim.api.nvim_create_user_command("LualineToggle", function()
   local lualine_require = require("lualine_require")
   local modules = lualine_require.lazy_require({ config_module = "lualine.config" })
   local utils = require("lualine.utils.utils")
@@ -46,24 +37,10 @@ _G.LualineToggle = function()
     current_config.sections = utils.deepcopy(sections_1)
   end
   require("lualine").setup(current_config)
-end
+end, { desc = "Toggle lualine sections" })
 
--- キーマップ (<Leader>ul) は rc/keymaps/plugins.lua にある
-
+-- nordfox
 local colors = {
-  -- onedark
-  -- blue = '#61afef',
-  -- green = '#98c379',
-  -- purple = '#c678dd',
-  -- red1 = '#e06c75',
-  -- red2 = '#be5046',
-  -- yellow = '#e5c07b',
-  -- fg = '#abb2bf',
-  -- bg = '#282c34',
-  -- gray1 = '#5c6370',
-  -- gray2 = '#2c323d',
-  -- gray3 = '#3e4452'
-  -- nordfox
   black = "#3b4252",
   red = "#bf616a",
   green = "#a3be8c",
@@ -76,19 +53,15 @@ local colors = {
   background = "#2e3440",
 }
 
-local terminal_status_color = function(status)
-  local mode_colors = {
-    Running = colors.orange,
-    Finished = colors.purple,
-    Success = colors.blue,
-    Error = colors.red,
-    Command = colors.green,
-  }
+local terminal_status_colors = {
+  Running = colors.yellow,
+  Finished = colors.magenta,
+  Success = colors.blue,
+  Error = colors.red,
+  Command = colors.green,
+}
 
-  return mode_colors[status]
-end
-
-local get_exit_status = function()
+local function get_exit_status()
   local ln = vim.api.nvim_buf_line_count(0)
   while ln >= 1 do
     local l = vim.api.nvim_buf_get_lines(0, ln - 1, ln, true)[1]
@@ -100,19 +73,26 @@ local get_exit_status = function()
   end
 end
 
-local terminal_status = function()
-  if vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaF"))]]) ~= "" then
+-- :ls! のフラグ (F = 終了した端末ジョブ, R = 実行中) で現在のバッファを絞り込む。
+-- vim.cmd("echo ...") は出力をメッセージ領域へ出すだけで戻り値が常に "" になるため、
+-- 出力を受け取れる vim.fn.execute を使う。
+local function terminal_buffer_matches(flag)
+  local name = vim.fn.escape(vim.api.nvim_buf_get_name(0), "~/")
+  local ok, out = pcall(vim.fn.execute, "filter /" .. name .. "/ ls! ua" .. flag)
+  return ok and vim.trim(out) ~= ""
+end
+
+local function terminal_status()
+  if terminal_buffer_matches("F") then
     local result = get_exit_status()
-    if result == nil then
-      return "Finished"
-    elseif result == 0 then
+    if result == 0 then
       return "Success"
-    elseif result >= 1 then
+    elseif result ~= nil and result >= 1 then
       return "Error"
     end
     return "Finished"
   end
-  if vim.cmd([[echo trim(execute("filter /" . escape(nvim_buf_get_name(bufnr()), '~/') . "/ ls! uaR"))]]) ~= "" then
+  if terminal_buffer_matches("R") then
     return "Running"
   end
   return "Command"
@@ -123,12 +103,15 @@ local function get_terminal_status()
     return ""
   end
   local status = terminal_status()
-  vim.cmd("hi LualineToggleTermStatus guifg=" .. colors.background .. " guibg=" .. terminal_status_color(status))
+  vim.api.nvim_set_hl(0, "LualineToggleTermStatus", {
+    fg = colors.background,
+    bg = terminal_status_colors[status],
+  })
   return status
 end
 
 local function toggleterm_statusline()
-  return "ToggleTerm #" .. vim.b.toggle_number
+  return "ToggleTerm #" .. tostring(vim.b.toggle_number)
 end
 
 local my_toggleterm = {
@@ -137,11 +120,6 @@ local my_toggleterm = {
     lualine_z = { { get_terminal_status, color = "LualineToggleTermStatus" } },
   },
   filetypes = { "toggleterm" },
-}
-
-local my_extension = {
-  sections = { lualine_b = { "filetype" } },
-  filetypes = { "packager", "vista", "NvimTree", "coc-explorer" },
 }
 
 require("lualine").setup({
@@ -164,5 +142,5 @@ require("lualine").setup({
     lualine_z = {},
   },
   tabline = {},
-  extensions = { "quickfix", my_toggleterm, "symbols-outline", my_extension },
+  extensions = { "quickfix", my_toggleterm },
 })
