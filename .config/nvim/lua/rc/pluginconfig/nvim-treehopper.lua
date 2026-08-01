@@ -1,1 +1,0 @@
--- キーマップは rc/keymaps/plugin.lua で定義

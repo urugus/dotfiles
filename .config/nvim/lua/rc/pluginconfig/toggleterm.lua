@@ -47,67 +47,17 @@ vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
   group = groupname,
   pattern = "term://*#toggleterm#[^9]",
   callback = function()
-    vim.keymap.set("n", "<Esc>", "<Cmd>exe 'ToggleTerm'<CR>", { noremap = true, silent = true, buffer = true })
+    local opts = { noremap = true, silent = true, buffer = true }
+    vim.keymap.set("n", "<Esc>", "<Cmd>exe 'ToggleTerm'<CR>", opts)
+    vim.keymap.set("t", "<C-z>", "<C-\\><C-n>:exe 'ToggleTerm'<CR>", opts)
   end,
-  once = false,
-})
-vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
-  group = groupname,
-  pattern = "term://*#toggleterm#[^9]",
-  callback = function()
-    vim.keymap.set("t", "<C-z>", "<C-\\><C-n>:exe 'ToggleTerm'<CR>", { noremap = true, silent = true, buffer = true })
-  end,
-  once = false,
 })
 vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
   group = groupname,
   pattern = "term://*#toggleterm#*",
   callback = function()
     vim.keymap.set("n", "gf", function()
-      local function go_to_file_from_terminal()
-        local r = vim.fn.expand("<cfile>")
-        if vim.fn.filereadable(vim.fn.expand(r)) ~= 0 then
-          return r
-        end
-        vim.cmd([[normal! j]])
-        local r1 = vim.fn.expand("<cfile>")
-        if vim.fn.filereadable(vim.fn.expand(r .. r1)) ~= 0 then
-          return r .. r1
-        end
-        vim.cmd([[normal! 2k]])
-        local r2 = vim.fn.expand("<cfile>")
-        if vim.fn.filereadable(vim.fn.expand(r2 .. r)) ~= 0 then
-          return r2 .. r
-        end
-        vim.cmd([[normal! j]])
-        return r
-      end
-      local function open_file_with_line_col(file, word)
-        local f = vim.fn.findfile(file)
-        local num = vim.fn.matchstr(word, file .. ":" .. "\\zsd*\\ze")
-        print(f)
-        if vim.fn.empty(f) ~= 1 then
-          vim.cmd([[ wincmd p ]])
-          vim.fn.execute("e " .. f)
-          if vim.fn.empty(num) ~= 1 then
-            vim.fn.execute(num)
-            local col = vim.fn.matchstr(word, file .. ":\\d*:" .. "\\zs\\d*\\ze")
-            if vim.fn.empty(col) ~= 1 then
-              vim.fn.execute("normal! " .. col .. "|")
-            end
-          end
-        end
-      end
-      local function toggle_term_open_in_normal_window()
-        local file = go_to_file_from_terminal()
-        local word = vim.fn.expand("<cWORD>")
-        if vim.fn.has_key(vim.api.nvim_win_get_config(vim.fn.win_getid()), "anchor") ~= 0 then
-          vim.cmd([[ToggleTerm]])
-        end
-        open_file_with_line_col(file, word)
-      end
-      toggle_term_open_in_normal_window()
+      require("rc.terminal").goto_file_from_terminal()
     end, { noremap = true, silent = true, buffer = true })
   end,
-  once = false,
 })

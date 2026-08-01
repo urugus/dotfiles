@@ -4,10 +4,8 @@ vim.o.synmaxcol = 200
 vim.cmd.syntax("enable")
 -- vim.o.t_Co = 256
 vim.g.transparency = 0.7
-vim.o.background = "dark"
-
--- colorscheme pluginconfig -> colorscheme
-vim.o.cursorline = false
+-- background は colorscheme 側 (pluginconfig/vscode.lua) で設定する
+-- cursorline は modes.nvim (pluginconfig/modes.lua) が管理する
 
 vim.o.display = "lastline" -- 長い行も一行で収まるように
 vim.o.showmode = false
@@ -22,12 +20,9 @@ vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 vim.o.pumheight = 10 -- 補完候補の表示数
 
--- 折りたたみ設定
--- vim.o.foldmethod="marker"
+-- 折りたたみ設定 (foldlevel / foldlevelstart / foldcolumn / foldenable は
+-- pluginconfig/nvim-ufo.lua が設定する)
 vim.o.foldmethod = "manual"
-vim.o.foldlevel = 1
-vim.o.foldlevelstart = 99
--- foldcolumn は pluginconfig/nvim-ufo.lua で設定する
 
 -- font
 vim.o.guifont = "UDEV Gothic LG,Hack Nerd Font,Fira Code"

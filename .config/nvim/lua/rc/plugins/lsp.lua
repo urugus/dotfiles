@@ -52,7 +52,7 @@ return {
   { "urugus/skkeleton-snacks" },
   {
     "delphinus/skkeleton_indicator.nvim",
-    config = conf("rc/pluginconfig/skkeleton_indicator"),
+    opts = { fadeOutMs = 600 },
   },
   { "saadparwaiz1/cmp_luasnip", lazy = true },
   { "ray-x/cmp-treesitter", lazy = true },
@@ -72,7 +72,7 @@ return {
   {
     "folke/neoconf.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = conf("rc/pluginconfig/neoconf"),
+    opts = { local_settings = ".nvim/neoconf.json" },
   },
   {
     "williamboman/mason-lspconfig.nvim",

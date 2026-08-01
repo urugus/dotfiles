@@ -19,11 +19,12 @@ local function load_local_configs()
 end
 
 function M.setup()
-  -- core → plugins → ui → automation → local overrides
-  require("rc.core").setup()
+  require("rc.option")
   require("rc.plugins").setup()
-  require("rc.ui").setup()
-  require("rc.automation").setup()
+  require("rc.display")
+  require("rc.keymaps").setup()
+  require("rc.autocmd")
+  require("rc.editor")
   load_local_configs()
 end
 

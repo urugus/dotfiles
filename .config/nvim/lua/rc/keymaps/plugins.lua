@@ -124,7 +124,7 @@ return function()
     { "n", "<C-s>", "<Cmd>Neotree focus<CR>" },
     { "n", "<C-z>", "<Cmd>SidebarNvimToggle<CR>" },
     { "n", "<Leader>wc", "<Cmd>NoNeckPain<CR>" },
-    { "n", "<Leader>ul", "<Cmd>lua LualineToggle()<CR>", { desc = "Toggle lualine" } },
+    { "n", "<Leader>ul", "<Cmd>LualineToggle<CR>", { desc = "Toggle lualine" } },
 
     ------------------------------------------------------------
     -- yanky (p / P / gp / gP / y を占有する。<Plug> なので remap 必須)
