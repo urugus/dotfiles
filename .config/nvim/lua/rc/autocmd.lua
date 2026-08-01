@@ -81,7 +81,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   group = group_name,
   pattern = "*",
   callback = function()
-    vim.highlight.on_yank({
+    vim.hl.on_yank({
       higroup = (vim.fn.hlexists("HighlightedyankRegion") > 0 and "HighlightedyankRegion" or "Visual"),
       timeout = 200,
     })
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     local function auto_mkdir(dir, force)
       if
         vim.fn.empty(dir) == 1
-        or string.match(dir, "^%w%+://")
+        or string.match(dir, "^%a[%w%+%-%.]*://") -- RFC 3986 の scheme (git+ssh:// 等を含む)
         or vim.fn.isdirectory(dir) == 1
         or string.match(dir, "^suda:")
       then
@@ -104,11 +104,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       if not force then
         vim.fn.inputsave()
         local result = vim.fn.input(string.format('"%s" does not exist. Create? [y/N]', dir), "")
+        vim.fn.inputrestore()
         if vim.fn.empty(result) == 1 then
           print("Canceled")
           return
         end
-        vim.fn.inputrestore()
       end
       vim.fn.mkdir(dir, "p")
     end

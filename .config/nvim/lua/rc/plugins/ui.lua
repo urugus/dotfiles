@@ -19,6 +19,7 @@ return {
   {
     "folke/snacks.nvim",
     lazy = false,
+    priority = 1000,
     config = conf("rc/pluginconfig/snacks"),
   },
 
@@ -46,20 +47,10 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
+    -- setup() は引数を省略した時だけ全ファイルタイプ (FileType *) に登録する。
+    -- config = true だと空テーブルが渡り、どこにも登録されず無効化される。
     config = function()
-      local tbl_flatten = vim.tbl_flatten
-      vim.tbl_flatten = function(t)
-        return vim.iter(t):flatten(math.huge):totable()
-      end
-
-      local ok, err = pcall(function()
-        require("colorizer").setup()
-      end)
-
-      vim.tbl_flatten = tbl_flatten
-      if not ok then
-        error(err)
-      end
+      require("colorizer").setup()
     end,
   },
   {

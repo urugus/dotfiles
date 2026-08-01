@@ -1,13 +1,6 @@
 local M = {}
 
 local function load_local_configs()
-  -- Vimscript plugin fragments under rc/myplugins/*.vim
-  vim.cmd([[
-for f in split(glob('~/.config/nvim/rc/myplugins/*.vim'), '\n')
-  execute 'source ' . f
-endfor
-]])
-
   -- Optional Lua add-ons under rc/myplugins/opt/*.lua (lazy-loaded)
   vim.schedule(function()
     local opt_dir = vim.fn.stdpath("config") .. "/lua/rc/myplugins/opt"

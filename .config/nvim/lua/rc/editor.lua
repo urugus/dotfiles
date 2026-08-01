@@ -2,7 +2,7 @@
 -- Editor Configuration
 -- ===============================
 -- neovide
-if vim.fn.exists("g:neovide") then
+if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.13
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_opacity = 0.7
