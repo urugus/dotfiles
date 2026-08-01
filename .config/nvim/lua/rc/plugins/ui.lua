@@ -50,7 +50,15 @@ return {
     -- norcalli/nvim-colorizer.lua は未メンテで、0.13 の vim.tbl_flatten 削除で壊れる
     "catgoose/nvim-colorizer.lua",
     event = "VeryLazy",
-    opts = {}, -- filetypes は既定で { "*" }
+    -- filetypes は既定で { "*" }。既定のパーサは hex と名前付き色だけなので、
+    -- rgb()/hsl() などの CSS 関数と Tailwind のクラス名も拾うようにする。
+    -- tailwind は boolean を渡すとエラーになるのでテーブルで指定する。
+    opts = {
+      parsers = {
+        css = true,
+        tailwind = { enable = true, lsp = { enable = true } },
+      },
+    },
   },
   {
     "folke/todo-comments.nvim",
