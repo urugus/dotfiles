@@ -118,7 +118,7 @@ function M.location(method, extend_params)
     for _, lsp_client in ipairs(clients) do
       lsp_client:request(method, params, function(err, result, ctx)
         pending = pending - 1
-        if jumped then
+        if jumped or finished then
           return
         end
         if err then

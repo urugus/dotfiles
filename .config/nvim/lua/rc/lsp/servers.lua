@@ -2,7 +2,7 @@ local capabilities_mod = require("rc.lsp.capabilities")
 
 local M = {}
 
-M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright" }
+M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright", "solargraph" }
 
 local function solargraph_root_dir(bufnr, on_dir)
   local root = vim.fs.root(bufnr, { { ".solargraph.yml", "Gemfile", ".git" } })
@@ -27,6 +27,19 @@ local function solargraph_cmd()
   end
 
   return { "solargraph", "stdio" }
+end
+
+local solargraph_command = solargraph_cmd()
+
+local function solargraph_cmd_env()
+  local exe = solargraph_command[1]
+  local path = vim.env.PATH or ""
+  -- Prepend the resolved solargraph's own dir so its `cache` subprocess can't
+  -- fall back to an obsolete solargraph earlier on PATH (rbenv/Mason shim).
+  if exe:find("/", 1, true) then
+    path = vim.fn.fnamemodify(exe, ":h") .. ":" .. path
+  end
+  return { PATH = path }
 end
 
 local servers = {
@@ -57,8 +70,8 @@ local servers = {
     },
   },
   solargraph = {
-    cmd = solargraph_cmd(),
-    cmd_env = { PATH = "/opt/homebrew/bin:" .. vim.env.PATH },
+    cmd = solargraph_command,
+    cmd_env = solargraph_cmd_env(),
     root_dir = solargraph_root_dir,
     init_options = {
       formatting = false,
