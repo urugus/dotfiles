@@ -1,6 +1,4 @@
--- nvim color
-vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
-
+-- nvim color (true color は option.lua の termguicolors)
 vim.o.synmaxcol = 200
 -- ColorScheme
 vim.cmd.syntax("enable")
@@ -29,7 +27,7 @@ vim.o.pumheight = 10 -- 補完候補の表示数
 vim.o.foldmethod = "manual"
 vim.o.foldlevel = 1
 vim.o.foldlevelstart = 99
-vim.w.foldcolumn = "0:"
+-- foldcolumn は pluginconfig/nvim-ufo.lua で設定する
 
 -- font
 vim.o.guifont = "UDEV Gothic LG,Hack Nerd Font,Fira Code"

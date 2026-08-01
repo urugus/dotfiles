@@ -7,7 +7,7 @@ require("toggleterm").setup({
       return vim.o.columns * 0.5
     end
   end,
-  open_mapping = [[<tt>]],
+  -- 開閉のキーマップは rc/keymaps/plugins.lua の tt/tv/tf/tb で定義している
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_filetypes = {},
   shade_terminals = true,

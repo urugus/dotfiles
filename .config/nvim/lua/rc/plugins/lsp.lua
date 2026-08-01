@@ -103,10 +103,7 @@ return {
   -- LSP UI
   {
     "nvimdev/lspsaga.nvim",
-    cmd = {
-      "Lspsaga",
-      "LSoutlineToggle",
-    },
+    cmd = "Lspsaga",
     config = conf("rc/pluginconfig/lspsaga"),
   },
   {

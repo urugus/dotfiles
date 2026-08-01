@@ -19,6 +19,7 @@ return {
   {
     "folke/snacks.nvim",
     lazy = false,
+    priority = 1000,
     config = conf("rc/pluginconfig/snacks"),
   },
 
@@ -46,21 +47,7 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
-    config = function()
-      local tbl_flatten = vim.tbl_flatten
-      vim.tbl_flatten = function(t)
-        return vim.iter(t):flatten(math.huge):totable()
-      end
-
-      local ok, err = pcall(function()
-        require("colorizer").setup()
-      end)
-
-      vim.tbl_flatten = tbl_flatten
-      if not ok then
-        error(err)
-      end
-    end,
+    config = true,
   },
   {
     "folke/todo-comments.nvim",
