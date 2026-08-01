@@ -53,7 +53,7 @@ local function jump_to_lsp_location(location, client_id)
     }
   end
 
-  vim.lsp.util.jump_to_location(location, offset_encoding, true)
+  vim.lsp.util.show_document(location, offset_encoding, { reuse_win = true, focus = true })
 end
 
 local function notify(message, level, opts)

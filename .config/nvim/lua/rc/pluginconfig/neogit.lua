@@ -15,5 +15,4 @@ neogit.setup({
   },
 })
 
-vim.api.nvim_set_keymap("n", "[git]<Space>", "<Cmd>Neogit<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "[git]s", "<Cmd>Neogit<CR>", { noremap = true, silent = true })
+-- キーマップ ([git]s) は rc/keymaps/plugins.lua にある

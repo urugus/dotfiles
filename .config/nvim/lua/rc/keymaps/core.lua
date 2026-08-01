@@ -3,26 +3,22 @@ local set = require("rc.keymaps.util").set
 return function()
   set({
     -- タブ
-    { "n", "<C-t>n", ":tab new<CR>", { noremap = true, silent = true } },
+    { "n", "<C-t>n", ":tab new<CR>" },
 
     -- ターミナル
-    { "t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = false } },
-
-    -- sandwich 占有を解除
-    { { "n", "x" }, "s", "<Nop>", { noremap = true, silent = true } },
-    { { "n", "x" }, "S", "<Nop>", { noremap = true, silent = true } },
+    { "t", "<Esc>", "<C-\\><C-n>", { silent = false } },
 
     -- カーソル/表示
-    { "n", "gzz", "zz", { noremap = true, silent = true } },
-    { "n", "gj", "j", { noremap = true, silent = true } },
-    { "n", "gk", "k", { noremap = true, silent = true } },
+    { "n", "gzz", "zz" },
+    { "n", "gj", "j" },
+    { "n", "gk", "k" },
     {
       { "n", "x" },
       "j",
       function()
         return vim.v.count > 0 and "j" or "gj"
       end,
-      { noremap = true, expr = true },
+      { expr = true },
     },
     {
       { "n", "x" },
@@ -30,20 +26,17 @@ return function()
       function()
         return vim.v.count > 0 and "k" or "gk"
       end,
-      { noremap = true, expr = true },
+      { expr = true },
     },
-    { "n", "Q", "<Cmd>tabclose<CR>", { noremap = true, silent = true } },
-    { "n", "gq", "<Cmd>nohlsearch<CR>", { noremap = true, silent = true } },
+    { "n", "Q", "<Cmd>tabclose<CR>" },
+    { "n", "gq", "<Cmd>nohlsearch<CR>" },
 
     -- 数値
-    { { "n", "x" }, "+", "<C-a>", { noremap = true, silent = true } },
-    { { "n", "x" }, "-", "<C-x>", { noremap = true, silent = true } },
+    { { "n", "x" }, "+", "<C-a>" },
+    { { "n", "x" }, "-", "<C-x>" },
 
-    -- ペースト系
-    { { "n", "x" }, "p", "]p", { noremap = true, silent = true } },
-    { { "n", "x" }, "gp", "p", { noremap = true, silent = true } },
-    { { "n", "x" }, "gP", "P", { noremap = true, silent = true } },
-    { { "n", "x" }, "<LocalLeader>p", '"+p', { noremap = true, silent = true } },
-    { { "n", "x" }, "<LocalLeader>P", '"+P', { noremap = true, silent = true } },
+    -- ペースト系 (p / P / gp / gP / y は yanky が持つ。plugins.lua を参照)
+    { { "n", "x" }, "<LocalLeader>p", '"+p' },
+    { { "n", "x" }, "<LocalLeader>P", '"+P' },
   })
 end

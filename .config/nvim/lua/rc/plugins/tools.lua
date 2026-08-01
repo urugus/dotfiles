@@ -54,7 +54,6 @@ return {
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/diffview"),
   },
   { "akinsho/git-conflict.nvim", event = "BufReadPre" },
   {

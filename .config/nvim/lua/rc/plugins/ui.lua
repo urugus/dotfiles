@@ -88,7 +88,6 @@ return {
   {
     "famiu/bufdelete.nvim",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/bufdelete"),
   },
   {
     "akinsho/bufferline.nvim",

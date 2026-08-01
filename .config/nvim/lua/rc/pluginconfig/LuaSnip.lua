@@ -78,9 +78,4 @@ ls.filetype_extend("all", { "_" })
 
 -- require("luasnip.loaders.from_snipmate").lazy_load() -- Lazy loading
 
--- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
--- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
--- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
--- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("i", "<C-Down>", "<Plug>luasnip-next-choice", {})
-vim.api.nvim_set_keymap("s", "<C-Down>", "<Plug>luasnip-next-choice", {})
+-- キーマップ (<C-Down>) は rc/keymaps/plugins.lua にある

@@ -24,8 +24,7 @@ vim.api.nvim_create_autocmd("User", {
   group = vim.api.nvim_create_augroup("SkkeletonInitPre", { clear = true }),
 })
 
--- ターミナルモード用キーマッピング
-vim.keymap.set("t", "<C-j>", "<Plug>(skkeleton-toggle)")
+-- トグルのキーマップ (<C-j>) は rc/keymaps/plugins.lua にある
 
 local group = vim.api.nvim_create_augroup("SkkeletonTerminalEnterSubmit", { clear = true })
 

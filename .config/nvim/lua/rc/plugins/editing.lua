@@ -1,6 +1,4 @@
-local shared = require("rc.plugins.shared")
-local conf = shared.conf
-local source = shared.source
+local conf = require("rc.plugins.shared").conf
 
 return {
   -- Yank / registers
@@ -14,7 +12,7 @@ return {
   {
     "haya14busa/vim-asterisk",
     event = "VeryLazy",
-    config = source("~/.config/nvim/rc/pluginconfig/vim-asterisk.vim"),
+    config = conf("rc/pluginconfig/vim-asterisk"),
   },
   {
     "kevinhwang91/nvim-hlslens",
@@ -50,7 +48,6 @@ return {
   {
     "mizlan/iswap.nvim",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/iswap"),
   },
   {
     "mfussenegger/nvim-treehopper",
@@ -60,7 +57,6 @@ return {
   {
     "David-Kunz/treesitter-unit",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/treesitter-unit"),
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
@@ -90,7 +86,7 @@ return {
   {
     "andymass/vim-matchup",
     event = "VeryLazy",
-    config = source("~/.config/nvim/rc/pluginconfig/vim-matchup.vim"),
+    config = conf("rc/pluginconfig/vim-matchup"),
   },
   {
     "windwp/nvim-autopairs",
