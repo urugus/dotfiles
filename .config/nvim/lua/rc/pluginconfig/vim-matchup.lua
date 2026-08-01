@@ -6,8 +6,9 @@ vim.g.matchup_matchparen_deferred_show_delay = 300
 vim.g.matchup_delim_start_plaintext = 0
 vim.g.matchup_delim_end_plaintext = 0
 
-vim.api.nvim_set_hl(0, "MatchParenCur", { underline = true, cterm = { underline = true } })
-vim.api.nvim_set_hl(0, "MatchWordCur", { underline = true, cterm = { underline = true } })
+-- cterm 属性は指定しなければ gui 側から導出されるので underline だけでよい
+vim.api.nvim_set_hl(0, "MatchParenCur", { underline = true })
+vim.api.nvim_set_hl(0, "MatchWordCur", { underline = true })
 
 -- 入力中のハイライト更新は重いので無効化する
 vim.api.nvim_clear_autocmds({
