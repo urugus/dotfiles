@@ -3,10 +3,10 @@ local M = {}
 function M.setup()
   local severity = vim.diagnostic.severity
   local icons = {
-    [severity.ERROR] = "",
-    [severity.WARN] = "",
+    [severity.ERROR] = "󰅚",
+    [severity.WARN] = "󰀪",
     [severity.HINT] = "󰛩",
-    [severity.INFO] = "",
+    [severity.INFO] = "󰋽",
   }
 
   vim.diagnostic.config({

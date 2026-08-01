@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     local function auto_mkdir(dir, force)
       if
         vim.fn.empty(dir) == 1
-        or string.match(dir, "^%w+://")
+        or string.match(dir, "^%a[%w%+%-%.]*://") -- RFC 3986 の scheme (git+ssh:// 等を含む)
         or vim.fn.isdirectory(dir) == 1
         or string.match(dir, "^suda:")
       then

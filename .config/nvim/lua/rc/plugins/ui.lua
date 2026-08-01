@@ -47,7 +47,11 @@ return {
   {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
-    config = true,
+    -- setup() は引数を省略した時だけ全ファイルタイプ (FileType *) に登録する。
+    -- config = true だと空テーブルが渡り、どこにも登録されず無効化される。
+    config = function()
+      require("colorizer").setup()
+    end,
   },
   {
     "folke/todo-comments.nvim",
