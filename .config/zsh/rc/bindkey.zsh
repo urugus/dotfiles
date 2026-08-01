@@ -47,6 +47,14 @@ function _zellij-widget() {
 zle -N _zellij-widget
 bindkey '^[z' _zellij-widget
 
+## terminal-browser ##
+function _terminal-browser-widget() {
+  BUFFER="terminal-browser open"
+  zle accept-line
+}
+zle -N _terminal-browser-widget
+bindkey '^x^t' _terminal-browser-widget
+
 ## Git ##
 function _lazygit-widget() { lazygit }
 zle -N _lazygit-widget
