@@ -40,7 +40,8 @@ local function open_with_position(file, word)
   end
 
   vim.cmd([[wincmd p]])
-  vim.fn.execute("e " .. found)
+  -- スペースや | を含むパスでも壊れないようエスケープする
+  vim.cmd.edit(vim.fn.fnameescape(found))
 
   local line = vim.fn.matchstr(word, file .. ":" .. "\\zs\\d*\\ze")
   if vim.fn.empty(line) == 1 then

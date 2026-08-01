@@ -1,9 +1,9 @@
 local function copilot_status()
   -- Copilot の有効状態を取得
   if vim.fn["copilot#Enabled"]() == 1 then
-    return ""
+    return ""
   end
-  return ""
+  return ""
 end
 
 local sections_1 = {
