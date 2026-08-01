@@ -29,6 +29,19 @@ local function solargraph_cmd()
   return { "solargraph", "stdio" }
 end
 
+local solargraph_command = solargraph_cmd()
+
+local function solargraph_cmd_env()
+  local exe = solargraph_command[1]
+  local path = vim.env.PATH or ""
+  -- Prepend the resolved solargraph's own dir so its `cache` subprocess can't
+  -- fall back to an obsolete solargraph earlier on PATH (rbenv/Mason shim).
+  if exe:find("/", 1, true) then
+    path = vim.fn.fnamemodify(exe, ":h") .. ":" .. path
+  end
+  return { PATH = path }
+end
+
 local servers = {
   ts_ls = {},
   rust_analyzer = {},
@@ -57,7 +70,8 @@ local servers = {
     },
   },
   solargraph = {
-    cmd = solargraph_cmd(),
+    cmd = solargraph_command,
+    cmd_env = solargraph_cmd_env(),
     root_dir = solargraph_root_dir,
     init_options = {
       formatting = false,
