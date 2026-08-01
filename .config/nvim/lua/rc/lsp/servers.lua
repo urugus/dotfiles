@@ -2,7 +2,7 @@ local capabilities_mod = require("rc.lsp.capabilities")
 
 local M = {}
 
-M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright", "solargraph" }
+M.ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "terraformls", "pyright" }
 
 local function solargraph_root_dir(bufnr, on_dir)
   local root = vim.fs.root(bufnr, { { ".solargraph.yml", "Gemfile", ".git" } })
@@ -58,6 +58,7 @@ local servers = {
   },
   solargraph = {
     cmd = solargraph_cmd(),
+    cmd_env = { PATH = "/opt/homebrew/bin:" .. vim.env.PATH },
     root_dir = solargraph_root_dir,
     init_options = {
       formatting = false,
