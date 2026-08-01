@@ -41,12 +41,6 @@ return {
     config = conf("rc/pluginconfig/nvim-treesitter-textobjects"),
   },
   {
-    "chrisgrieser/nvim-various-textobjs",
-    lazy = true,
-    main = "various-textobjs",
-    opts = { useDefaultKeymaps = false },
-  },
-  {
     "mizlan/iswap.nvim",
     event = "VeryLazy",
   },

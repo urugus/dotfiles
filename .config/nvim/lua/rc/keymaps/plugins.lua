@@ -122,7 +122,6 @@ return function()
       { desc = "Delete buffer" },
     },
     { "n", "<C-s>", "<Cmd>Neotree focus<CR>" },
-    { "n", "<C-z>", "<Cmd>SidebarNvimToggle<CR>" },
     { "n", "<Leader>wc", "<Cmd>NoNeckPain<CR>" },
     { "n", "<Leader>ul", "<Cmd>LualineToggle<CR>", { desc = "Toggle lualine" } },
 

@@ -1,16 +1,8 @@
-local function copilot_status()
-  -- Copilot の有効状態を取得
-  if vim.fn["copilot#Enabled"]() == 1 then
-    return ""
-  end
-  return ""
-end
-
 local sections_1 = {
   lualine_a = { "mode" },
   lualine_b = { { "filetype", icon_only = true }, { "filename", path = 1 } },
   lualine_c = {},
-  lualine_x = { "diagnostics", copilot_status },
+  lualine_x = { "diagnostics" },
   lualine_y = { "branch", "diff" },
   lualine_z = { "location" },
 }

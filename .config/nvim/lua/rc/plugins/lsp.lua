@@ -22,12 +22,6 @@ return {
     config = conf("rc/pluginconfig/nvim-cmp"),
   },
   { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
-  {
-    "tzachar/cmp-tabnine",
-    lazy = true,
-    build = "./install.sh",
-    config = conf("rc/pluginconfig/cmp-tabnine"),
-  },
   { "hrsh7th/cmp-nvim-lsp", lazy = true },
   { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true },
   { "hrsh7th/cmp-buffer", lazy = true },
@@ -45,13 +39,18 @@ return {
   },
   {
     "vim-skk/skkeleton",
-    dependencies = { "vim-denops/denops.vim" },
+    dependencies = {
+      "vim-denops/denops.vim",
+      "urugus/skkeleton-snacks",
+      "delphinus/skkeleton_indicator.nvim",
+    },
     event = { "InsertEnter", "CmdlineEnter", "TermEnter" },
     config = conf("rc/pluginconfig/skkeleton"),
   },
-  { "urugus/skkeleton-snacks" },
+  { "urugus/skkeleton-snacks", lazy = true },
   {
     "delphinus/skkeleton_indicator.nvim",
+    lazy = true,
     opts = { fadeOutMs = 600 },
   },
   { "saadparwaiz1/cmp_luasnip", lazy = true },

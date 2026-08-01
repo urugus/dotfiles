@@ -12,6 +12,7 @@ return {
   },
   {
     "danymat/neogen",
+    cmd = "Neogen",
     config = conf("rc/pluginconfig/neogen"),
   },
   {
@@ -61,11 +62,6 @@ return {
     event = "VeryLazy",
     config = conf("rc/pluginconfig/gitsigns"),
   },
-  {
-    "dinhhuy258/git.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/git"),
-  },
 
   -- Lua libraries (lazy loaded, pulled in by dependents)
   { "nvim-lua/popup.nvim", lazy = true },
@@ -99,10 +95,6 @@ return {
   },
 
   -- AI support
-  {
-    "github/copilot.vim",
-    event = "InsertEnter",
-  },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     event = "VeryLazy",
