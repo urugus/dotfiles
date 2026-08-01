@@ -48,7 +48,7 @@ _G.LualineToggle = function()
   require("lualine").setup(current_config)
 end
 
-vim.api.nvim_set_keymap("n", "!", "<Cmd>lua LualineToggle()<CR>", { noremap = true, silent = true })
+-- キーマップ (<Leader>ul) は rc/keymaps/plugins.lua にある
 
 local colors = {
   -- onedark

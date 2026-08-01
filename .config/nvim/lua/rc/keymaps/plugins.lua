@@ -5,100 +5,154 @@ local function has_deno()
   return vim.fn.executable("deno") == 1
 end
 
+-- nvim-treesitter-textobjects の select / move は組み合わせが多いので表から生成する
+local ts_select = {
+  ["af"] = "@function.outer",
+  ["if"] = "@function.inner",
+  ["ac"] = "@class.outer",
+  ["ic"] = "@class.inner",
+  ["iB"] = "@block.inner",
+  ["aB"] = "@block.outer",
+  ["ii"] = "@conditional.inner",
+  ["ai"] = "@conditional.outer",
+  ["il"] = "@loop.inner",
+  ["al"] = "@loop.outer",
+  ["ip"] = "@parameter.inner",
+  ["ap"] = "@parameter.outer",
+}
+
+local ts_move = {
+  { "]m", "goto_next_start", "@function.outer" },
+  { "]M", "goto_next_end", "@function.outer" },
+  { "]]", "goto_next_start", "@class.outer" },
+  { "][", "goto_next_end", "@class.outer" },
+  { "[m", "goto_previous_start", "@function.outer" },
+  { "[M", "goto_previous_end", "@function.outer" },
+  { "[[", "goto_previous_start", "@class.outer" },
+  { "[]", "goto_previous_end", "@class.outer" },
+}
+
+local function treesitter_textobject_maps()
+  local maps = {}
+
+  for lhs, capture in pairs(ts_select) do
+    table.insert(maps, {
+      { "x", "o" },
+      lhs,
+      function()
+        require("nvim-treesitter-textobjects.select").select_textobject(capture, "textobjects")
+      end,
+      { desc = "TS " .. capture },
+    })
+  end
+
+  for _, m in ipairs(ts_move) do
+    local lhs, fn, capture = m[1], m[2], m[3]
+    table.insert(maps, {
+      { "n", "x", "o" },
+      lhs,
+      function()
+        require("nvim-treesitter-textobjects.move")[fn](capture, "textobjects")
+      end,
+      { desc = "TS move " .. capture },
+    })
+  end
+
+  return maps
+end
+
 return function()
   set({
+    ------------------------------------------------------------
     -- プレフィックス
-    { "n", "[_Lsp]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>l", "[_Lsp]", { remap = true, silent = true, desc = "LSP prefix" } },
+    { "n", "[_Lsp]", "<Nop>" },
+    { "n", "<Leader>l", "[_Lsp]", { remap = true, desc = "LSP prefix" } },
 
-    { "n", "[Copilot]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>c", "[Copilot]", { remap = true, silent = true, desc = "Copilot prefix" } },
+    { "n", "[git]", "<Nop>" },
+    { "n", "<Leader>g", "[git]", { remap = true, desc = "Git prefix" } },
 
-    { "n", "[git]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>g", "[git]", { remap = true, silent = true, desc = "Git prefix" } },
+    { "n", "[Octo]", "<Nop>" },
+    { "n", "<Leader>o", "[Octo]", { remap = true, desc = "Octo prefix" } },
 
-    { "n", "[Octo]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>gg", "[Octo]", { remap = true, silent = true, desc = "Octo prefix" } },
-    { "v", "<Leader>gg", "[Octo]", { remap = true, silent = true, desc = "Octo prefix" } },
+    { "n", "[FuzzyFinder]", "<Nop>" },
+    { "n", "<Leader>f", "[FuzzyFinder]", { remap = true, desc = "Finder prefix" } },
 
-    { "n", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true } },
-    { "v", "[FuzzyFinder]", "<Nop>", { noremap = true, silent = true } },
-    { "n", "<Leader>f", "[FuzzyFinder]", { remap = true, silent = true, desc = "Finder prefix" } },
-    { "v", "<Leader>f", "[FuzzyFinder]", { remap = true, silent = true, desc = "Finder prefix" } },
+    { "n", "[ufo]", "<Nop>" },
+    { "n", "<Leader>z", "[ufo]", { remap = true, desc = "Fold prefix" } },
 
     ------------------------------------------------------------
-    -- Bufferline
-    { "n", "<Leader>b", "<Cmd>BufferLinePick<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    { "n", "<C-h>", "<Cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    { "n", "<C-l>", "<Cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    { "n", "<<", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    { "n", ">>", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    { "n", "<C-S-F2>", "<Cmd>BufferLineMovePrev<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    { "n", "<C-S-F3>", "<Cmd>BufferLineMoveNext<CR>", { noremap = true, silent = true, plugin = "bufferline.nvim" } },
-    {
-      "n",
-      "<Space>1",
-      "<Cmd>BufferLineGoToBuffer 1<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>2",
-      "<Cmd>BufferLineGoToBuffer 2<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>3",
-      "<Cmd>BufferLineGoToBuffer 3<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>4",
-      "<Cmd>BufferLineGoToBuffer 4<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>5",
-      "<Cmd>BufferLineGoToBuffer 5<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>6",
-      "<Cmd>BufferLineGoToBuffer 6<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>7",
-      "<Cmd>BufferLineGoToBuffer 7<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>8",
-      "<Cmd>BufferLineGoToBuffer 8<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
-    {
-      "n",
-      "<Space>9",
-      "<Cmd>BufferLineGoToBuffer 9<CR>",
-      { noremap = true, silent = true, plugin = "bufferline.nvim" },
-    },
+    -- which-key (プレフィックスの一覧表示)
+    { "n", "<LocalLeader><CR>", "<Cmd>WhichKey <LocalLeader><CR>" },
+    { "n", "[_Lsp]<CR>", "<Cmd>WhichKey [_Lsp]<CR>" },
+    { "n", "[git]<CR>", "<Cmd>WhichKey [git]<CR>" },
+    { "n", "[Octo]<CR>", "<Cmd>WhichKey [Octo]<CR>" },
+    { "n", "[FuzzyFinder]<CR>", "<Cmd>WhichKey [FuzzyFinder]<CR>" },
+    { "n", "[ufo]<CR>", "<Cmd>WhichKey [ufo]<CR>" },
+    { "n", "g<CR>", "<Cmd>WhichKey g<CR>" },
+    { "n", "[<CR>", "<Cmd>WhichKey [<CR>" },
+    { "n", "]<CR>", "<Cmd>WhichKey ]<CR>" },
 
     ------------------------------------------------------------
-    -- Git / Octo
+    -- bufferline
+    { "n", "<Leader>b", "<Cmd>BufferLinePick<CR>" },
+    { "n", "<C-h>", "<Cmd>BufferLineCyclePrev<CR>" },
+    { "n", "<C-l>", "<Cmd>BufferLineCycleNext<CR>" },
+    { "n", "<<", "<Cmd>BufferLineMovePrev<CR>" },
+    { "n", ">>", "<Cmd>BufferLineMoveNext<CR>" },
+    { "n", "<C-S-F2>", "<Cmd>BufferLineMovePrev<CR>" },
+    { "n", "<C-S-F3>", "<Cmd>BufferLineMoveNext<CR>" },
+    { "n", "<Space>1", "<Cmd>BufferLineGoToBuffer 1<CR>" },
+    { "n", "<Space>2", "<Cmd>BufferLineGoToBuffer 2<CR>" },
+    { "n", "<Space>3", "<Cmd>BufferLineGoToBuffer 3<CR>" },
+    { "n", "<Space>4", "<Cmd>BufferLineGoToBuffer 4<CR>" },
+    { "n", "<Space>5", "<Cmd>BufferLineGoToBuffer 5<CR>" },
+    { "n", "<Space>6", "<Cmd>BufferLineGoToBuffer 6<CR>" },
+    { "n", "<Space>7", "<Cmd>BufferLineGoToBuffer 7<CR>" },
+    { "n", "<Space>8", "<Cmd>BufferLineGoToBuffer 8<CR>" },
+    { "n", "<Space>9", "<Cmd>BufferLineGoToBuffer 9<CR>" },
+
+    ------------------------------------------------------------
+    -- bufdelete / no-neck-pain / neo-tree / sidebar / lualine
+    {
+      "n",
+      "<C-q>",
+      function()
+        require("bufdelete").bufdelete(0, true)
+      end,
+      { desc = "Delete buffer" },
+    },
+    { "n", "<C-s>", "<Cmd>Neotree focus<CR>" },
+    { "n", "<C-z>", "<Cmd>SidebarNvimToggle<CR>" },
+    { "n", "<Leader>wc", "<Cmd>NoNeckPain<CR>" },
+    { "n", "<Leader>ul", "<Cmd>lua LualineToggle()<CR>", { desc = "Toggle lualine" } },
+
+    ------------------------------------------------------------
+    -- yanky (p / P / gp / gP / y を占有する。<Plug> なので remap 必須)
+    { { "n", "x" }, "p", "<Plug>(YankyPutAfter)", { remap = true } },
+    { { "n", "x" }, "P", "<Plug>(YankyPutBefore)", { remap = true } },
+    { { "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", { remap = true } },
+    { { "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", { remap = true } },
+    { { "n", "x" }, "y", "<Plug>(YankyYank)", { remap = true } },
+
+    ------------------------------------------------------------
+    -- Comment
+    { "n", "<C-_>", "<Cmd>lua require('Comment.api').toggle_current_linewise()<CR>" },
+    { "i", "<C-_>", "<Esc>:<C-u>lua require('Comment.api').toggle_current_linewise()<CR>\"_cc" },
+    { "v", "<C-_>", "gc", { remap = true } },
+
+    ------------------------------------------------------------
+    -- iswap
+    { "n", "<Leader>s", "<Cmd>ISwap<CR>" },
+
+    ------------------------------------------------------------
+    -- Git
     {
       "n",
       "<C-\\>",
       function()
         require("snacks").lazygit()
       end,
-      { noremap = true, silent = true, desc = "LazyGit", plugin = "snacks.nvim" },
+      { desc = "LazyGit" },
     },
     {
       "n",
@@ -106,64 +160,75 @@ return function()
       function()
         require("snacks").gitbrowse({ notify = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
+      { desc = "Git browse" },
     },
-    { "n", "[Octo]l", "<Cmd>Octo pr list<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]is", "<Cmd>Octo issue search<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]ib", "<Cmd>Octo issue browser<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]ps", "<Cmd>Octo pr search<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]pn", "<Cmd>Octo pr create<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]pp", "<Cmd>Octo pr draft<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]pb", "<Cmd>Octo pr browser<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]rva", "<Cmd>Octo reviewer add<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]rs", "<Cmd>Octo review start<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]re", "<Cmd>Octo review submit<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
-    { "n", "[Octo]rc", "<Cmd>Octo review comments<Cr>", { silent = true, noremap = true, plugin = "octo.nvim" } },
+    { "n", "[git]s", "<Cmd>Neogit<CR>", { desc = "Neogit" } },
+    { "n", "[git]d", "<Cmd>DiffviewOpen<CR>", { desc = "Diffview" } },
 
     ------------------------------------------------------------
-    -- LSP
-    {
-      "n",
-      "gd",
-      lsp_location("textDocument/definition"),
-      { noremap = true, silent = true },
-    },
-    {
-      "n",
-      "gD",
-      lsp_location("textDocument/declaration"),
-      { noremap = true, silent = true },
-    },
+    -- Octo
+    { "n", "[Octo]l", "<Cmd>Octo pr list<CR>" },
+    { "n", "[Octo]is", "<Cmd>Octo issue search<CR>" },
+    { "n", "[Octo]ib", "<Cmd>Octo issue browser<CR>" },
+    { "n", "[Octo]ps", "<Cmd>Octo pr search<CR>" },
+    { "n", "[Octo]pn", "<Cmd>Octo pr create<CR>" },
+    { "n", "[Octo]pp", "<Cmd>Octo pr draft<CR>" },
+    { "n", "[Octo]pb", "<Cmd>Octo pr browser<CR>" },
+    { "n", "[Octo]rva", "<Cmd>Octo reviewer add<CR>" },
+    { "n", "[Octo]rs", "<Cmd>Octo review start<CR>" },
+    { "n", "[Octo]re", "<Cmd>Octo review submit<CR>" },
+    { "n", "[Octo]rc", "<Cmd>Octo review comments<CR>" },
+
+    ------------------------------------------------------------
+    -- LSP (rc.lsp.locate 経由のジャンプ)
+    { "n", "gd", lsp_location("textDocument/definition") },
+    { "n", "gD", lsp_location("textDocument/declaration") },
     {
       "n",
       "gr",
       lsp_location("textDocument/references", function(params)
         params.context = { includeDeclaration = true }
       end),
-      { noremap = true, silent = true },
     },
+    { "n", "gI", lsp_location("textDocument/implementation") },
+    { "n", "gy", lsp_location("textDocument/typeDefinition") },
+
+    ------------------------------------------------------------
+    -- Lspsaga (? と [_Lsp]f はバッファローカルの LSP マップが持つ。keymaps/lsp.lua を参照)
+    { "n", "[_Lsp]r", "<Cmd>Lspsaga rename<CR>" },
+    { { "n", "x" }, "M", "<Cmd>Lspsaga code_action<CR>" },
+    { "n", "[_Lsp]j", "<Cmd>Lspsaga diagnostic_jump_next<CR>" },
+    { "n", "[_Lsp]k", "<Cmd>Lspsaga diagnostic_jump_prev<CR>" },
+    { "n", "[_Lsp]F", "<Cmd>Lspsaga finder<CR>" },
+    { "n", "[_Lsp]d", "<Cmd>Lspsaga peek_definition<CR>" },
+    { "n", "[_Lsp]o", "<Cmd>Lspsaga outline<CR>" },
+
+    ------------------------------------------------------------
+    -- trouble
+    { "n", "[_Lsp]xx", "<Cmd>Trouble diagnostics toggle<CR>" },
+    { "n", "[_Lsp]xd", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>" },
+    { "n", "[_Lsp]xl", "<Cmd>Trouble loclist toggle<CR>" },
+    { "n", "[_Lsp]xq", "<Cmd>Trouble qflist toggle<CR>" },
+
+    ------------------------------------------------------------
+    -- neogen
     {
       "n",
-      "gI",
-      lsp_location("textDocument/implementation"),
-      { noremap = true, silent = true },
-    },
-    {
-      "n",
-      "gy",
-      lsp_location("textDocument/typeDefinition"),
-      { noremap = true, silent = true },
+      "[_Lsp]n",
+      function()
+        require("neogen").generate()
+      end,
+      { desc = "Generate annotation" },
     },
 
     ------------------------------------------------------------
-    -- FuzzyFinder (Snacks picker)
+    -- FuzzyFinder (snacks picker)
     {
       "n",
       "<Leader><Leader>",
       function()
         require("snacks").picker.smart({ ignored = true, hidden = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -171,7 +236,6 @@ return function()
       function()
         require("snacks").picker.files({ ignored = true, hidden = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -186,7 +250,6 @@ return function()
           },
         })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -194,7 +257,6 @@ return function()
       function()
         require("snacks").picker.search_history()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -202,7 +264,6 @@ return function()
       function()
         require("snacks").picker.registers()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -210,7 +271,6 @@ return function()
       function()
         require("snacks").picker.keymaps()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -218,7 +278,6 @@ return function()
       function()
         require("snacks").picker.grep({ cmd = "rg", regex = true, live = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -226,7 +285,6 @@ return function()
       function()
         require("snacks").picker.grep_word({ cmd = "rg", live = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -234,7 +292,6 @@ return function()
       function()
         require("snacks").picker.lsp_symbols({ live = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -242,7 +299,6 @@ return function()
       function()
         require("snacks").picker.git_log({ live = true })
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -250,7 +306,6 @@ return function()
       function()
         require("snacks").picker.notifications()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -258,7 +313,6 @@ return function()
       function()
         require("snacks").picker.marks()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -266,7 +320,6 @@ return function()
       function()
         require("snacks").picker.projects()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
     {
       "n",
@@ -274,63 +327,14 @@ return function()
       function()
         require("snacks").picker.spelling()
       end,
-      { noremap = true, silent = true, plugin = "snacks.nvim" },
     },
 
     ------------------------------------------------------------
-    -- Markdown
-    {
-      "n",
-      "<Leader>mt",
-      "<Cmd>RenderMarkdown buf_toggle<CR>",
-      { noremap = true, silent = true, plugin = "render-markdown.nvim" },
-    },
-
-    ------------------------------------------------------------
-    -- Window
-    { "n", "<C-s>", "<Cmd>Neotree focus<CR>", { noremap = true, silent = true, plugin = "neo-tree.nvim" } },
-    { "n", "<Leader>wc", "<Cmd>NoNeckPain<CR>", { noremap = true, silent = true, plugin = "no-neck-pain.nvim" } },
-
-    ------------------------------------------------------------
-    -- AI / Codex
-    {
-      "n",
-      "<leader>co",
-      "<Cmd>Codex<CR>",
-      { noremap = true, silent = true, desc = "Toggle Codex", plugin = "codex.nvim" },
-    },
-
-    ------------------------------------------------------------
-    -- Lspsaga
-    { "n", "[_Lsp]r", "<cmd>Lspsaga rename<cr>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-    { "n", "M", "<cmd>Lspsaga code_action<cr>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-    { "x", "M", ":<c-u>Lspsaga range_code_action<cr>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-    { "n", "?", "<cmd>Lspsaga hover_doc<cr>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-    {
-      "n",
-      "[_Lsp]j",
-      "<cmd>Lspsaga diagnostic_jump_next<cr>",
-      { silent = true, noremap = true, plugin = "lspsaga.nvim" },
-    },
-    {
-      "n",
-      "[_Lsp]k",
-      "<cmd>Lspsaga diagnostic_jump_prev<cr>",
-      { silent = true, noremap = true, plugin = "lspsaga.nvim" },
-    },
-    { "n", "[_Lsp]f", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-    { "n", "[_Lsp]s", "<Cmd>Lspsaga signature_help<CR>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-    {
-      "n",
-      "[_Lsp]d",
-      "<cmd>Lspsaga preview_definition<CR>",
-      { silent = true, noremap = true, plugin = "lspsaga.nvim" },
-    },
-    { "n", "[_Lsp]o", "<cmd>LSoutlineToggle<CR>", { silent = true, noremap = true, plugin = "lspsaga.nvim" } },
-
-    ------------------------------------------------------------
-    -- neogen
-    { "n", "gca", "<Cmd>lua require('neogen').generate()<CR>", { noremap = true, silent = true, plugin = "neogen" } },
+    -- treesitter-unit
+    { "x", "iu", ':lua require"treesitter-unit".select()<CR>' },
+    { "x", "au", ':lua require"treesitter-unit".select(true)<CR>' },
+    { "o", "iu", ':<C-u>lua require"treesitter-unit".select()<CR>' },
+    { "o", "au", ':<C-u>lua require"treesitter-unit".select(true)<CR>' },
 
     ------------------------------------------------------------
     -- nvim-treehopper
@@ -340,14 +344,19 @@ return function()
       function()
         require("tsht").nodes()
       end,
-      { noremap = false, expr = false, silent = true, plugin = "nvim-treehopper" },
+      { remap = true },
     },
-    {
-      "x",
-      "m",
-      ":lua require('tsht').nodes()<CR>",
-      { noremap = true, expr = false, silent = true, plugin = "nvim-treehopper" },
-    },
+    { "x", "m", ':lua require("tsht").nodes()<CR>' },
+
+    ------------------------------------------------------------
+    -- vim-matchup
+    { "o", "%", "]%", { remap = true } },
+
+    ------------------------------------------------------------
+    -- vim-asterisk (<Plug> なので remap 必須)
+    { "", "g*", "<Plug>(asterisk-z*)", { remap = true } },
+    { "", "g#", "<Plug>(asterisk-z#)", { remap = true } },
+    { "", "*", "<Plug>(asterisk-gz*)", { remap = true } },
 
     ------------------------------------------------------------
     -- nvim-ufo
@@ -357,7 +366,7 @@ return function()
       function()
         require("ufo").openAllFolds()
       end,
-      { desc = "Open all folds", plugin = "nvim-ufo" },
+      { desc = "Open all folds" },
     },
     {
       "n",
@@ -365,7 +374,7 @@ return function()
       function()
         require("ufo").closeAllFolds()
       end,
-      { desc = "Close all folds", plugin = "nvim-ufo" },
+      { desc = "Close all folds" },
     },
     {
       "n",
@@ -373,7 +382,7 @@ return function()
       function()
         require("ufo").openFoldsExceptKinds()
       end,
-      { desc = "Open folds except kinds", plugin = "nvim-ufo" },
+      { desc = "Open folds except kinds" },
     },
     {
       "n",
@@ -381,56 +390,56 @@ return function()
       function()
         require("ufo").closeFoldsWith()
       end,
-      { desc = "Close folds with level", plugin = "nvim-ufo" },
+      { desc = "Close folds with level" },
     },
 
     ------------------------------------------------------------
-    -- skkeleton
-    { "i", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true, plugin = "skkeleton" } },
-    { "c", "<C-j>", "<Plug>(skkeleton-toggle)", { silent = true, plugin = "skkeleton" } },
+    -- skkeleton / LuaSnip (<Plug> なので remap 必須)
+    { { "i", "c", "t" }, "<C-j>", "<Plug>(skkeleton-toggle)", { remap = true } },
+    { { "i", "s" }, "<C-Down>", "<Plug>luasnip-next-choice", { remap = true } },
 
     ------------------------------------------------------------
-    -- toggleterm (global mappingsのみ)
+    -- markdown
+    { "n", "<Leader>mt", "<Cmd>RenderMarkdown buf_toggle<CR>" },
+
+    ------------------------------------------------------------
+    -- AI / Codex
+    { "n", "<Leader>co", "<Cmd>Codex<CR>", { desc = "Toggle Codex" } },
+
+    ------------------------------------------------------------
+    -- toggleterm
+    { "n", "tt", '<Cmd>execute v:count1 . "ToggleTerm direction=horizontal"<CR>' },
+    { "n", "tv", '<Cmd>execute v:count1 . "ToggleTerm direction=vertical"<CR>' },
+    { "n", "tf", '<Cmd>execute v:count1 . "ToggleTerm direction=float"<CR>' },
+    { "n", "tb", '<Cmd>execute v:count1 . "ToggleTerm direction=tab"<CR>' },
+  })
+
+  set(treesitter_textobject_maps())
+
+  -- nvim-treesitter-textobjects: パラメータの入れ替え
+  set({
     {
       "n",
-      "tt",
-      '<Cmd>execute v:count1 . "ToggleTerm direction=horizontal"<CR>',
-      { noremap = true, silent = true, plugin = "toggleterm.nvim" },
+      "'>",
+      function()
+        require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+      end,
+      { desc = "TS swap next parameter" },
     },
     {
       "n",
-      "tv",
-      '<Cmd>execute v:count1 . "ToggleTerm direction=vertical"<CR>',
-      { noremap = true, silent = true, plugin = "toggleterm.nvim" },
-    },
-    {
-      "n",
-      "tf",
-      '<Cmd>execute v:count1 . "ToggleTerm direction=float"<CR>',
-      { noremap = true, silent = true, plugin = "toggleterm.nvim" },
-    },
-    {
-      "n",
-      "tb",
-      '<Cmd>execute v:count1 . "ToggleTerm direction=tab"<CR>',
-      { noremap = true, silent = true, plugin = "toggleterm.nvim" },
+      "'<",
+      function()
+        require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
+      end,
+      { desc = "TS swap prev parameter" },
     },
   })
 
   if has_deno() then
     set({
-      {
-        "n",
-        "<Leader>mo",
-        "<Cmd>MarkdownOpen<CR>",
-        { noremap = true, silent = true, plugin = "peek.nvim" },
-      },
-      {
-        "n",
-        "<Leader>mc",
-        "<Cmd>MarkdownClose<CR>",
-        { noremap = true, silent = true, plugin = "peek.nvim" },
-      },
+      { "n", "<Leader>mo", "<Cmd>MarkdownOpen<CR>" },
+      { "n", "<Leader>mc", "<Cmd>MarkdownClose<CR>" },
     })
   end
 end

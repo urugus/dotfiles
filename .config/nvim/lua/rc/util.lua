@@ -30,25 +30,4 @@ function M.safe_config(module_name)
   end
 end
 
----@param path string
----@return fun()
-function M.safe_source(path)
-  return function()
-    local expanded = vim.fn.expand(path)
-    if vim.fn.filereadable(expanded) == 0 then
-      vim.schedule(function()
-        vim.notify(string.format("source target missing: %s", expanded), vim.log.levels.WARN)
-      end)
-      return
-    end
-
-    local ok, err = pcall(vim.cmd.source, expanded)
-    if not ok then
-      vim.schedule(function()
-        vim.notify(string.format("source error (%s): %s", expanded, err), vim.log.levels.WARN)
-      end)
-    end
-  end
-end
-
 return M

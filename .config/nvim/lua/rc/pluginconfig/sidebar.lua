@@ -17,4 +17,4 @@ require("sidebar-nvim").setup({
   section_separator = "-----",
 })
 
-vim.api.nvim_set_keymap("n", "<C-z>", "<Cmd>SidebarNvimToggle<CR>", { noremap = true, silent = true })
+-- キーマップ (<C-z>) は rc/keymaps/plugins.lua にある
