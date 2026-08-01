@@ -108,17 +108,18 @@ function M.location(method, extend_params)
       end
     end
 
-    -- Safety net so a dropped response never leaves the hint hanging.
+    -- Safety net: replace the spinner if the server is very slow, but keep
+    -- accepting a late response — the jump is gated only by `jumped`.
     vim.defer_fn(function()
       if not jumped then
-        finish("timed out", vim.log.levels.WARN)
+        finish("still searching… (LSP slow)", vim.log.levels.WARN)
       end
     end, 20000)
 
     for _, lsp_client in ipairs(clients) do
       lsp_client:request(method, params, function(err, result, ctx)
         pending = pending - 1
-        if jumped or finished then
+        if jumped then
           return
         end
         if err then
