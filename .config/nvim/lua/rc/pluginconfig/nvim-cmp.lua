@@ -19,8 +19,6 @@ cmp.setup({
         skkeleton = "[Skkeleton]",
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
-        cmp_tabnine = "[TabNine]",
-        copilot = "[Copilot]",
         luasnip = "[LuaSnip]",
         nvim_lua = "[NeovimLua]",
         latex_symbols = "[LaTeX]",
@@ -136,10 +134,8 @@ cmp.setup({
   },
   -- LuaFormatter off
   sources = cmp.config.sources({
-    -- { name = "copilot", priority = 40 }, -- For luasnip users.
     { name = "skkeleton", priority = 80 },
     { name = "nvim_lsp", priority = 100 },
-    { name = "cmp_tabnine", priority = 30 },
     { name = "luasnip", priority = 20 }, -- For luasnip users.
     { name = "path", priority = 100 },
     { name = "emoji", insert = true, priority = 60 },
@@ -158,10 +154,8 @@ cmp.setup({
 
 cmp.setup.filetype({ "gitcommit", "markdown" }, {
   sources = cmp.config.sources({
-    -- { name = "copilot", priority = 90 }, -- For luasnip users.
     { name = "skkeleton", priority = 80 },
     { name = "nvim_lsp", priority = 100 },
-    { name = "cmp_tabnine", priority = 30 },
     { name = "luasnip", priority = 80 }, -- For luasnip users.
     { name = "rg", priority = 70 },
     { name = "path", priority = 100 },

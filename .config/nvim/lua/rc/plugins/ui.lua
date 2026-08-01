@@ -47,13 +47,10 @@ return {
     end,
   },
   {
-    "norcalli/nvim-colorizer.lua",
+    -- norcalli/nvim-colorizer.lua は未メンテで、0.13 の vim.tbl_flatten 削除で壊れる
+    "catgoose/nvim-colorizer.lua",
     event = "VeryLazy",
-    -- setup() は引数を省略した時だけ全ファイルタイプ (FileType *) に登録する。
-    -- config = true だと空テーブルが渡り、どこにも登録されず無効化される。
-    config = function()
-      require("colorizer").setup()
-    end,
+    opts = {}, -- filetypes は既定で { "*" }
   },
   {
     "folke/todo-comments.nvim",
@@ -69,11 +66,6 @@ return {
 
   -- Sidebar / scroll
   {
-    "GustavoKatel/sidebar.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/sidebar"),
-  },
-  {
     "petertriho/nvim-scrollbar",
     event = "VeryLazy",
     config = conf("rc/pluginconfig/nvim-scrollbar"),
@@ -83,6 +75,7 @@ return {
     dependencies = {
       "kevinhwang91/promise-async",
     },
+    event = "BufReadPost",
     config = conf("rc/pluginconfig/nvim-ufo"),
   },
 
