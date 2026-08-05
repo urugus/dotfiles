@@ -118,6 +118,26 @@ return {
     cmd = { "Codex" },
     config = conf("rc/pluginconfig/codex"),
   },
+  {
+    "nwiizo/signalbox.nvim",
+    cmd = {
+      "Signalbox",
+      "SignalboxRefresh",
+      "SignalboxStart",
+      "SignalboxResume",
+      "SignalboxAttach",
+      "SignalboxPrompt",
+      "SignalboxRename",
+      "SignalboxSendVisual",
+      "SignalboxSendFile",
+      "SignalboxSendDiagnostics",
+      "SignalboxHealth",
+    },
+    keys = {
+      { "<C-g>", "<cmd>Signalbox<cr>", mode = { "n", "t" }, desc = "Agent Signalbox" },
+    },
+    opts = {},
+  },
 
   -- Analyzer
   { "wakatime/vim-wakatime", event = "VeryLazy" },
