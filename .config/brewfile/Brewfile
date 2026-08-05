@@ -76,6 +76,7 @@ brew graphite2
 brew graphviz
 brew gts
 brew harfbuzz
+brew herdr
 brew highway
 brew icu4c@75
 brew imath
