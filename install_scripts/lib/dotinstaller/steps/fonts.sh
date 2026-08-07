@@ -55,6 +55,10 @@ run() {
     "https://github.com/tonsky/FiraCode/releases/download/6.2/Fira_Code_v6.2.zip" \
     "0949915ba8eb24d89fd93d10a7ff623f42830d7c5ffc3ecbf960e4ecad3e3e79"
 
+  fetch_font "PlemolJPNF" \
+    "https://github.com/yuru7/PlemolJP/releases/download/v3.0.0/PlemolJP_NF_v3.0.0.zip" \
+    "887e2d0db714d41ac26ab924bdd3a172b922f57b2b480af01e0147180eac3d80"
+
   if command -v fc-cache >/dev/null 2>&1; then
     fc-cache -vf
   else
