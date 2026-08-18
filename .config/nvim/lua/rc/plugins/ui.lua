@@ -94,14 +94,7 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    cmd = {
-      "BufferLinePick",
-      "BufferLineCyclePrev",
-      "BufferLineCycleNext",
-      "BufferLineMovePrev",
-      "BufferLineMoveNext",
-      "BufferLineGoToBuffer",
-    },
+    event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = conf("rc/pluginconfig/bufferline"),
   },
