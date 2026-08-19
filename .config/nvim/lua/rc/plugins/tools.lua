@@ -146,9 +146,10 @@ return {
   {
     "3rd/image.nvim",
     build = false,
-    ft = { "markdown", "norg", "org", "text" },
+    ft = { "markdown", "norg", "org", "svg", "text" },
     opts = {
       processor = "magick_cli",
+      hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif", "*.svg" },
     },
   },
 }
