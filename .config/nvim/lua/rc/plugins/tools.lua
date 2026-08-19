@@ -146,10 +146,14 @@ return {
   {
     "3rd/image.nvim",
     build = false,
-    ft = { "markdown", "norg", "org", "svg", "text" },
+    ft = { "markdown", "norg", "org", "text" },
     opts = {
       processor = "magick_cli",
-      hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif", "*.svg" },
     },
+  },
+  {
+    "brianhuster/live-preview.nvim",
+    cmd = "LivePreview",
+    dependencies = { "folke/snacks.nvim" },
   },
 }

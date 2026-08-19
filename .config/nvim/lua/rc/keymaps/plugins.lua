@@ -398,6 +398,10 @@ return function()
     { { "i", "s" }, "<C-Down>", "<Plug>luasnip-next-choice", { remap = true } },
 
     ------------------------------------------------------------
+    -- live-preview
+    { "n", "<Leader>p", "<Cmd>LivePreview start<CR>", { desc = "Start live preview" } },
+
+    ------------------------------------------------------------
     -- markdown
     { "n", "<Leader>mt", "<Cmd>RenderMarkdown buf_toggle<CR>" },
 
