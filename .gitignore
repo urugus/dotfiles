@@ -23,6 +23,8 @@
 !/.config/zsh/.zshrc
 !/.config/zsh/rc
 !/.config/zsh/rc/**
+!/.config/zsh/functions
+!/.config/zsh/functions/**
 !/zsh/*
 !/zsh/.zshenv
 !/zsh/rc/**
