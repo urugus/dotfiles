@@ -2,11 +2,14 @@
 /*
 /.**
 
-# Allow dotfiles we manage
+# .config whitelist
 !/.config
+/.config/**
 
 ## Secrets
+!/.config/gh
 /.config/gh/**
+!/.config/gh/config.yml
 /.config/github-copilot/**
 
 ## bash
@@ -16,19 +19,23 @@
 
 ### zsh
 !/.zshenv
+!/.config/zsh
+!/.config/zsh/.zshrc
+!/.config/zsh/rc
+!/.config/zsh/rc/**
+!/.config/zsh/functions
+!/.config/zsh/functions/**
 !/zsh/*
 !/zsh/.zshenv
 !/zsh/rc/**
 
 ## brew-file
-!/.config/Brewfile
-!/.config/Brewfile/**
+!/.config/brewfile
+!/.config/brewfile/**
 
 ## git
-
 !/.config/git
-/.config/gh/**
-!/.config/gh/config.yml
+!/.config/git/**
 
 ## github
 !/.github
@@ -38,32 +45,43 @@
 !/.github/workflows/lua-lint.yml
 
 ## ghostty
+!/.config/ghostty
 !/.config/ghostty/config
+!/.config/ghostty/shaders
 !/.config/ghostty/shaders/**
 
 ## neovim
 !/.config/nvim
 !/.config/nvim/**
-!/.config/nvim/lua
-!/.config/nvim/lua/**
-!/.config/nvim/lua/rc
-!/.config/nvim/lua/rc/**
-!/.config/nvim/lua/rc/pluginconfig/**
-!/.config/nvim/lua/rc/keymaps/**
+!/.config/.nvim
+!/.config/.nvim/**
 
 ## solargraph
 !/.config/solargraph
 !/.config/solargraph/**
 
 ## mise
+!/.config/mise
 !/.config/mise/config.toml
 
 ## library
-
+!/.config/lazygit
 !/.config/lazygit/**
 
-## stylelint
+## fish
+!/.config/fish
+!/.config/fish/**
+/.config/fish/completions/*
+!/.config/fish/completions/fisher.fish
+!/.config/fish/completions/tide.fish
+/.config/fish/conf.d/*
+!/.config/fish/conf.d/00_fig_pre.fish
+!/.config/fish/conf.d/99_fig_post.fish
+!/.config/fish/conf.d/fzf.fish
+!/.config/fish/conf.d/tide.fish
+!/.config/fish/conf.d/z.fish
 
+## stylelint
 !/stylua.toml
 !/selene.toml
 !/neovim.yml
@@ -71,20 +89,27 @@
 ## skk
 !/.config/skk
 !/.config/skk/**
-### AquaSKK personal/system dictionaries (privacy & size)
 /.config/skk/aquaskk/SKK-JISYO.*
 /.config/skk/aquaskk/skk-jisyo*
 /.config/skk/aquaskk/.skk-jisyo*
 
 ## wezterm
+!/.config/wezterm
+!/.config/wezterm/**
 /.config/wezterm/local.lua
 
 ## zellij
-!/.config/zellij/
+!/.config/zellij
 !/.config/zellij/config.kdl
-!/.config/zellij/layouts/
+!/.config/zellij/layouts
 !/.config/zellij/layouts/**
 
+## powerline-shell
+!/.config/powerline-shell
+!/.config/powerline-shell/**
+
+## misc
+!/.config/README.md
 
 # global #
 !/.README.md
@@ -98,6 +123,5 @@
 !/scripts/**
 
 # AI Agents
-
 !/AGENTS.md
 !/CLAUDE.md
