@@ -9,10 +9,11 @@ source "$LIB_DIR/utilfuncs.sh"
 source "$LIB_DIR/pipeline.sh"
 
 helpmsg() {
-  print_default "Usage: $(basename "${BASH_SOURCE[0]:-$0}") [install|update|link] [--help|-h]"
+  print_default "Usage: $(basename "${BASH_SOURCE[0]:-$0}") [install|update|link|doctor] [--help|-h]"
   print_default "  install: link dotfiles + install packages for the current OS [default]"
   print_default "  update:  refresh OS-level packages"
   print_default "  link:    only symlink dotfiles and set git include"
+  print_default "  doctor:  check symlink layout (read-only)"
   print_default ""
   print_default "Supported OS: macOS (Homebrew) and Linux/Debian-family (apt)."
 }
@@ -24,6 +25,7 @@ pipeline_for() {
   local mode="$1" os="$2"
   case "$mode:$os" in
     link:*)          echo link gitconfig ;;
+    doctor:*)        echo doctor ;;
     install:macos)   echo link gitconfig homebrew brewfile fonts mac-defaults aquaskk ;;
     install:linux)   echo link gitconfig apt neovim deno fonts ;;
     update:macos)    echo brewfile-update ;;
@@ -40,7 +42,7 @@ main() {
   while [ $# -gt 0 ]; do
     case "$1" in
       -h|--help) helpmsg; exit 0 ;;
-      install|update|link) mode="$1" ;;
+      install|update|link|doctor) mode="$1" ;;
       *) print_error "[ERROR] Invalid argument '$1'"; helpmsg; exit 1 ;;
     esac
     shift
