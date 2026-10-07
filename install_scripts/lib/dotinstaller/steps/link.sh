@@ -27,10 +27,7 @@ link_one() {
 }
 
 run() {
-  if [[ ! -d "$REPO" ]]; then
-    print_error "repo not found at $REPO"
-    return 1
-  fi
+  require_repo
   check_legacy_config
   local src dest
   while IFS=$'\t' read -r src dest; do

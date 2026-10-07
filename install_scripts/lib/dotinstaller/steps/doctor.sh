@@ -16,6 +16,7 @@ problem() {
 }
 
 run() {
+  require_repo
   check_legacy_config || problems=$((problems + 1))
 
   # Tracked entries that are not linked (or linked elsewhere).
@@ -29,13 +30,15 @@ run() {
   done < <(link_targets)
 
   # Links into the repo that are dangling or point at untracked entries.
-  local link target
+  local link target abs repo_real
+  repo_real=$(cd "$REPO" && pwd -P)
   while IFS= read -r link; do
     target=$(readlink "$link")
-    [[ "$target" == "$REPO"/* ]] || continue
+    abs=$(resolve_link "$link")
+    [[ "$abs" == "$repo_real"/* ]] || continue
     if [[ ! -e "$link" ]]; then
       problem "dangling link: $link → $target"
-    elif [[ -z "$(git -C "$REPO" ls-files -- "${target#"$REPO"/}" | head -1)" ]]; then
+    elif [[ -z "$(git -C "$REPO" ls-files -- "${abs#"$repo_real"/}" | head -1)" ]]; then
       problem "untracked link: $link → $target"
     fi
   done < <(find "$HOME" "$HOME/.config" -maxdepth 1 -type l 2>/dev/null)

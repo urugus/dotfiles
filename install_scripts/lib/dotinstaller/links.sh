@@ -18,6 +18,29 @@ is_ignored() {
   return 1
 }
 
+# Fail fast: git errors inside process substitutions do not trip `set -e`,
+# so a missing repo would otherwise look like "nothing to link".
+require_repo() {
+  if ! git -C "$REPO" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    print_error "repo not found at $REPO (or not a git worktree)"
+    return 1
+  fi
+}
+
+# Print the absolute, physical path a symlink points to, resolving relative
+# targets against the link's directory. Works for dangling links as long as
+# the target's parent directory exists.
+resolve_link() {
+  local link="$1" target dir
+  target=$(readlink "$link")
+  [[ "$target" == /* ]] || target="$(dirname "$link")/$target"
+  if dir=$(cd "$(dirname "$target")" 2>/dev/null && pwd -P); then
+    printf '%s/%s\n' "$dir" "$(basename "$target")"
+  else
+    printf '%s\n' "$target"
+  fi
+}
+
 # Print unique first path components of tracked files under $1 ("" = repo root).
 tracked_children() {
   local prefix="$1"
