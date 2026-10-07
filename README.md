@@ -10,8 +10,16 @@ cd dotfiles
 2. Setup
 
 ```
-./setup.sh
+./setup.sh --install
 ```
+
+3. Check links
+
+```
+./install_scripts/dotinstaller.sh doctor
+```
+
+Only git-tracked entries are linked: top-level dotfiles to `~/`, and each child of `.config/` to `~/.config/<name>`. `~/.config` itself must be a real directory, not a symlink to this repo.
 
 # Hardware
  
