@@ -29,17 +29,24 @@ require_repo() {
 }
 
 # Print the absolute, physical path a symlink points to, resolving relative
-# targets against the link's directory. Works for dangling links as long as
-# the target's parent directory exists.
+# targets against the link's directory. Components are walked one by one:
+# existing directories are resolved physically, missing ones lexically, so
+# dangling targets (even with missing parents) still get a comparable path.
 resolve_link() {
-  local link="$1" target dir
+  local link="$1" target part out=""
   target=$(readlink "$link")
   [[ "$target" == /* ]] || target="$(dirname "$link")/$target"
-  if dir=$(cd "$(dirname "$target")" 2>/dev/null && pwd -P); then
-    printf '%s/%s\n' "$dir" "$(basename "$target")"
-  else
-    printf '%s\n' "$target"
-  fi
+  local -a parts
+  IFS=/ read -r -a parts <<< "$target"
+  for part in "${parts[@]}"; do
+    case "$part" in
+      "" | .) continue ;;
+      ..) out=$(dirname "${out:-/}") ;;
+      *) out="${out%/}/$part" ;;
+    esac
+    [[ -d "$out" ]] && out=$(cd "$out" && pwd -P)
+  done
+  printf '%s\n' "${out:-/}"
 }
 
 # Print unique first path components of tracked files under $1 ("" = repo root).
