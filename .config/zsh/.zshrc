@@ -86,12 +86,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-# second-brain Codex lifecycle wrapper
-if [ -x "$HOME/.codex/hooks/codex-with-sb-session.sh" ]; then
-  codex() {
-    "$HOME/.codex/hooks/codex-with-sb-session.sh" "$@"
-  }
-fi
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Android SDK (adb / emulator / sdkmanager)
