@@ -18,6 +18,37 @@ is_ignored() {
   return 1
 }
 
+# Fail fast: git errors inside process substitutions do not trip `set -e`,
+# so a missing repo would otherwise look like "nothing to link".
+require_repo() {
+  # rev-parse exits 0 and prints "false" inside a bare repo, so check output.
+  if [[ "$(git -C "$REPO" rev-parse --is-inside-work-tree 2>/dev/null)" != "true" ]]; then
+    print_error "repo not found at $REPO (or not a git worktree)"
+    return 1
+  fi
+}
+
+# Print the absolute, physical path a symlink points to, resolving relative
+# targets against the link's directory. Components are walked one by one:
+# existing directories are resolved physically, missing ones lexically, so
+# dangling targets (even with missing parents) still get a comparable path.
+resolve_link() {
+  local link="$1" target part out=""
+  target=$(readlink "$link")
+  [[ "$target" == /* ]] || target="$(dirname "$link")/$target"
+  local -a parts
+  IFS=/ read -r -a parts <<< "$target"
+  for part in "${parts[@]}"; do
+    case "$part" in
+      "" | .) continue ;;
+      ..) out=$(dirname "${out:-/}") ;;
+      *) out="${out%/}/$part" ;;
+    esac
+    [[ -d "$out" ]] && out=$(cd "$out" && pwd -P)
+  done
+  printf '%s\n' "${out:-/}"
+}
+
 # Print unique first path components of tracked files under $1 ("" = repo root).
 tracked_children() {
   local prefix="$1"
