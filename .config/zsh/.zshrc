@@ -101,3 +101,6 @@ if [ -n "${ANDROID_HOME:-}" ]; then
   )
   export PATH
 fi
+
+# Unity CLI
+. "/Users/urugus/.unity/env"
