@@ -64,9 +64,10 @@ return {
 
   -- Sidebar / scroll
   {
+    -- v1 / v2 (2026-11-16 に main が v2 へ切り替わる) の両方で通るよう、オプションなしで使う
     "petertriho/nvim-scrollbar",
     event = "VeryLazy",
-    config = conf("rc/pluginconfig/nvim-scrollbar"),
+    opts = {},
   },
   {
     "kevinhwang91/nvim-ufo",
