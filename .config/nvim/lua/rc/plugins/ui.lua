@@ -10,7 +10,7 @@ return {
     config = conf("rc/pluginconfig/vscode"),
   },
   {
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
     lazy = true,
     enabled = function()
       return not os.getenv("DISABLE_DEVICONS") or os.getenv("DISABLE_DEVICONS") == "false"
@@ -28,16 +28,6 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
     config = conf("rc/pluginconfig/indent-blankline"),
-  },
-  {
-    "numToStr/Comment.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/Comment"),
-  },
-  {
-    "xiyaowong/nvim-cursorword",
-    event = { "BufReadPre", "BufNewFile" },
-    config = conf("rc/pluginconfig/nvim-cursorword"),
   },
   {
     "RRethy/vim-illuminate",
@@ -88,10 +78,6 @@ return {
   },
 
   -- Window / buffers
-  {
-    "famiu/bufdelete.nvim",
-    event = "VeryLazy",
-  },
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",

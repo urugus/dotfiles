@@ -1,5 +1,3 @@
-local capabilities_mod = require("rc.lsp.capabilities")
-
 local M = {}
 
 -- solargraph is intentionally NOT Mason-managed: on macOS it comes from Homebrew
@@ -102,15 +100,9 @@ local servers = {
   astro = {},
 }
 
-local function with_cap(capabilities, config)
-  return vim.tbl_deep_extend("force", { capabilities = capabilities }, config or {})
-end
-
-function M.setup(capabilities)
-  local caps = capabilities or capabilities_mod.get()
-
+function M.setup()
   for name, cfg in pairs(servers) do
-    vim.lsp.config(name, with_cap(caps, cfg))
+    vim.lsp.config(name, cfg)
   end
 
   vim.lsp.enable(vim.tbl_keys(servers))

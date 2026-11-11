@@ -28,29 +28,11 @@ return {
     build = ":TSUpdate",
     config = conf("rc/pluginconfig/nvim-treesitter"),
   },
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-  {
-    "RRethy/nvim-treesitter-endwise",
-    lazy = true,
-    event = "InsertEnter",
-  },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
     event = "VeryLazy",
     config = conf("rc/pluginconfig/nvim-treesitter-textobjects"),
-  },
-  {
-    "mizlan/iswap.nvim",
-    event = "VeryLazy",
-  },
-  {
-    "mfussenegger/nvim-treehopper",
-    event = "VeryLazy",
-  },
-  {
-    "David-Kunz/treesitter-unit",
-    event = "VeryLazy",
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
@@ -71,7 +53,7 @@ return {
     opts = {},
   },
   {
-    "romgrk/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-context",
     cmd = { "TSContextEnable" },
     config = conf("rc/pluginconfig/treesitter-context"),
   },

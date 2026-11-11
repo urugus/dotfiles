@@ -1,6 +1,5 @@
 -- LSP "go to X" helper: sends a location request, jumps to the best result, and
--- surfaces progress/outcome via the snacks notifier. (The bundled fidget is the
--- legacy build and has no progress API, so we use snacks here.)
+-- surfaces progress/outcome via the snacks notifier.
 
 local M = {}
 

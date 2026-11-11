@@ -11,11 +11,6 @@ return {
     end,
   },
   {
-    "danymat/neogen",
-    cmd = "Neogen",
-    config = conf("rc/pluginconfig/neogen"),
-  },
-  {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -29,16 +24,6 @@ return {
       },
     },
     ft = { "markdown" },
-  },
-  {
-    "toppair/peek.nvim",
-    build = "deno task --quiet build:fast",
-    cmd = { "MarkdownOpen", "MarkdownClose" },
-    ft = { "markdown" },
-    enabled = function()
-      return vim.fn.executable("deno") == 1
-    end,
-    config = conf("rc/pluginconfig/peek"),
   },
   {
     "HakonHarnes/img-clip.nvim",
@@ -64,7 +49,6 @@ return {
   },
 
   -- Lua libraries (lazy loaded, pulled in by dependents)
-  { "nvim-lua/popup.nvim", lazy = true },
   { "nvim-lua/plenary.nvim", lazy = true },
   { "MunifTanjim/nui.nvim", lazy = true },
 
@@ -94,54 +78,6 @@ return {
     config = conf("rc/pluginconfig/octo"),
   },
 
-  -- AI support
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    event = "VeryLazy",
-    branch = "main",
-    config = conf("rc/pluginconfig/CopilotChat"),
-    opts = {
-      debug = true,
-    },
-  },
-  {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/claude-code"),
-  },
-  {
-    "johnseth97/codex.nvim",
-    lazy = true,
-    cmd = { "Codex" },
-    config = conf("rc/pluginconfig/codex"),
-  },
-  {
-    "nwiizo/signalbox.nvim",
-    cmd = {
-      "Signalbox",
-      "SignalboxRefresh",
-      "SignalboxStart",
-      "SignalboxResume",
-      "SignalboxAttach",
-      "SignalboxPrompt",
-      "SignalboxRename",
-      "SignalboxSendVisual",
-      "SignalboxSendFile",
-      "SignalboxSendDiagnostics",
-      "SignalboxHealth",
-    },
-    keys = {
-      { "<C-g>", "<cmd>Signalbox<cr>", mode = { "n", "t" }, desc = "Agent Signalbox" },
-    },
-    opts = {},
-  },
-
-  -- Analyzer
-  { "wakatime/vim-wakatime", event = "VeryLazy" },
-
   -- GUI / media
   {
     "3rd/image.nvim",
@@ -149,6 +85,11 @@ return {
     ft = { "markdown", "norg", "org", "text" },
     opts = {
       processor = "magick_cli",
+      -- 信頼できない Markdown を開いただけで外部 URL へ取りに行かないようにする
+      integrations = {
+        markdown = { download_remote_images = false },
+        neorg = { download_remote_images = false },
+      },
     },
   },
   {

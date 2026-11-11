@@ -1,4 +1,4 @@
--- select / swap / move のキーマップは rc/keymaps/plugins.lua にある
+-- select / move のキーマップは rc/keymaps/plugins.lua にある
 require("nvim-treesitter-textobjects").setup({
   select = {
     lookahead = true,

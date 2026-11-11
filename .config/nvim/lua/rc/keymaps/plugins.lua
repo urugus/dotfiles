@@ -1,10 +1,6 @@
 local set = require("rc.keymaps.util").set
 local lsp_location = require("rc.lsp.locate").location
 
-local function has_deno()
-  return vim.fn.executable("deno") == 1
-end
-
 -- nvim-treesitter-textobjects の select / move は組み合わせが多いので表から生成する
 local ts_select = {
   ["af"] = "@function.outer",
@@ -117,7 +113,7 @@ return function()
       "n",
       "<C-q>",
       function()
-        require("bufdelete").bufdelete(0, true)
+        require("snacks").bufdelete({ force = true })
       end,
       { desc = "Delete buffer" },
     },
@@ -134,14 +130,9 @@ return function()
     { { "n", "x" }, "y", "<Plug>(YankyYank)", { remap = true } },
 
     ------------------------------------------------------------
-    -- Comment
-    { "n", "<C-_>", "<Cmd>lua require('Comment.api').toggle_current_linewise()<CR>" },
-    { "i", "<C-_>", "<Esc>:<C-u>lua require('Comment.api').toggle_current_linewise()<CR>\"_cc" },
+    -- コメント (Neovim 組み込みの gc)
+    { "n", "<C-_>", "gcc", { remap = true } },
     { "v", "<C-_>", "gc", { remap = true } },
-
-    ------------------------------------------------------------
-    -- iswap
-    { "n", "<Leader>s", "<Cmd>ISwap<CR>" },
 
     ------------------------------------------------------------
     -- Git
@@ -201,24 +192,6 @@ return function()
     { "n", "[_Lsp]F", "<Cmd>Lspsaga finder<CR>" },
     { "n", "[_Lsp]d", "<Cmd>Lspsaga peek_definition<CR>" },
     { "n", "[_Lsp]o", "<Cmd>Lspsaga outline<CR>" },
-
-    ------------------------------------------------------------
-    -- trouble
-    { "n", "[_Lsp]xx", "<Cmd>Trouble diagnostics toggle<CR>" },
-    { "n", "[_Lsp]xd", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>" },
-    { "n", "[_Lsp]xl", "<Cmd>Trouble loclist toggle<CR>" },
-    { "n", "[_Lsp]xq", "<Cmd>Trouble qflist toggle<CR>" },
-
-    ------------------------------------------------------------
-    -- neogen
-    {
-      "n",
-      "[_Lsp]n",
-      function()
-        require("neogen").generate()
-      end,
-      { desc = "Generate annotation" },
-    },
 
     ------------------------------------------------------------
     -- FuzzyFinder (snacks picker)
@@ -329,25 +302,6 @@ return function()
     },
 
     ------------------------------------------------------------
-    -- treesitter-unit
-    { "x", "iu", ':lua require"treesitter-unit".select()<CR>' },
-    { "x", "au", ':lua require"treesitter-unit".select(true)<CR>' },
-    { "o", "iu", ':<C-u>lua require"treesitter-unit".select()<CR>' },
-    { "o", "au", ':<C-u>lua require"treesitter-unit".select(true)<CR>' },
-
-    ------------------------------------------------------------
-    -- nvim-treehopper
-    {
-      "o",
-      "m",
-      function()
-        require("tsht").nodes()
-      end,
-      { remap = true },
-    },
-    { "x", "m", ':lua require("tsht").nodes()<CR>' },
-
-    ------------------------------------------------------------
     -- vim-matchup
     { "o", "%", "]%", { remap = true } },
 
@@ -393,9 +347,8 @@ return function()
     },
 
     ------------------------------------------------------------
-    -- skkeleton / LuaSnip (<Plug> なので remap 必須)
+    -- skkeleton (<Plug> なので remap 必須)
     { { "i", "c", "t" }, "<C-j>", "<Plug>(skkeleton-toggle)", { remap = true } },
-    { { "i", "s" }, "<C-Down>", "<Plug>luasnip-next-choice", { remap = true } },
 
     ------------------------------------------------------------
     -- live-preview
@@ -406,10 +359,6 @@ return function()
     { "n", "<Leader>mt", "<Cmd>RenderMarkdown buf_toggle<CR>" },
 
     ------------------------------------------------------------
-    -- AI / Codex
-    { "n", "<Leader>co", "<Cmd>Codex<CR>", { desc = "Toggle Codex" } },
-
-    ------------------------------------------------------------
     -- toggleterm
     { "n", "tt", '<Cmd>execute v:count1 . "ToggleTerm direction=horizontal"<CR>' },
     { "n", "tv", '<Cmd>execute v:count1 . "ToggleTerm direction=vertical"<CR>' },
@@ -418,31 +367,4 @@ return function()
   })
 
   set(treesitter_textobject_maps())
-
-  -- nvim-treesitter-textobjects: パラメータの入れ替え
-  set({
-    {
-      "n",
-      "'>",
-      function()
-        require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
-      end,
-      { desc = "TS swap next parameter" },
-    },
-    {
-      "n",
-      "'<",
-      function()
-        require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
-      end,
-      { desc = "TS swap prev parameter" },
-    },
-  })
-
-  if has_deno() then
-    set({
-      { "n", "<Leader>mo", "<Cmd>MarkdownOpen<CR>" },
-      { "n", "<Leader>mc", "<Cmd>MarkdownClose<CR>" },
-    })
-  end
 end
