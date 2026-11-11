@@ -176,9 +176,11 @@ return function()
     {
       "n",
       "gr",
-      lsp_location("textDocument/references", function(params)
-        params.context = { includeDeclaration = true }
-      end),
+      -- 参照は一覧で選ぶ (カーソル位置自身は除外。1 件だけなら直接ジャンプする)
+      function()
+        require("snacks").picker.lsp_references()
+      end,
+      { desc = "LSP references" },
     },
     { "n", "gI", lsp_location("textDocument/implementation") },
     { "n", "gy", lsp_location("textDocument/typeDefinition") },
