@@ -1,10 +1,9 @@
-local shared = require("rc.plugins.shared")
-local conf = shared.conf
+local conf = require("rc.plugins.shared").conf
 
 return {
   -- Base
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     event = "VeryLazy",
     build = ":MasonUpdate",
     config = conf("rc/pluginconfig/mason"),
@@ -15,22 +14,18 @@ return {
     config = conf("rc/pluginconfig/which-key"),
   },
 
-  -- Completion
+  -- Completion (markdown のみ)
   {
     "hrsh7th/nvim-cmp",
-    event = { "InsertEnter", "CmdlineEnter" },
+    ft = "markdown",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "rinx/cmp-skkeleton",
+    },
     config = conf("rc/pluginconfig/nvim-cmp"),
   },
-  { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
-  { "hrsh7th/cmp-nvim-lsp", lazy = true },
-  { "hrsh7th/cmp-nvim-lsp-document-symbol", lazy = true },
-  { "hrsh7th/cmp-buffer", lazy = true },
-  { "hrsh7th/cmp-path", lazy = true },
-  { "hrsh7th/cmp-nvim-lua", lazy = true },
-  { "hrsh7th/cmp-emoji", lazy = true },
-  { "hrsh7th/cmp-calc", lazy = true },
-  { "rinx/cmp-skkeleton", lazy = true },
-  { "f3fora/cmp-spell", lazy = true },
 
   -- SKK (Japanese input)
   {
@@ -53,32 +48,12 @@ return {
     lazy = true,
     opts = { fadeOutMs = 600 },
   },
-  { "saadparwaiz1/cmp_luasnip", lazy = true },
-  { "ray-x/cmp-treesitter", lazy = true },
-  { "hrsh7th/cmp-cmdline", lazy = true },
-  { "dmitmel/cmp-cmdline-history", lazy = true },
-  { "uga-rosa/cmp-dictionary", lazy = true },
-  { "yutkat/cmp-mocword", lazy = true },
-  { "lukas-reineke/cmp-rg", lazy = true },
-  { "lukas-reineke/cmp-under-comparator", lazy = true },
-  {
-    "onsails/lspkind-nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/lspkind-nvim"),
-  },
 
   -- LSP core
   {
-    "folke/neoconf.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = { local_settings = ".nvim/neoconf.json" },
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      "folke/neoconf.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
     event = { "BufReadPre", "BufNewFile" },
@@ -89,15 +64,6 @@ return {
     lazy = true,
     config = false,
   },
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/tiny-inline-diagnostic"),
-  },
-  {
-    "weilbith/nvim-lsp-smag",
-    event = "VeryLazy",
-  },
 
   -- LSP UI
   {
@@ -106,34 +72,8 @@ return {
     config = conf("rc/pluginconfig/lspsaga"),
   },
   {
-    "folke/trouble.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/trouble"),
-  },
-  {
     "j-hui/fidget.nvim",
-    tag = "legacy",
     event = "LspAttach",
     config = conf("rc/pluginconfig/fidget"),
-  },
-
-  -- Snippets
-  {
-    "L3MON4D3/LuaSnip",
-    event = "InsertEnter",
-    build = "make install_jsregexp",
-    config = conf("rc/pluginconfig/LuaSnip"),
-  },
-
-  -- Lint & format
-  {
-    "mfussenegger/nvim-lint",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/nvim-lint"),
-  },
-  {
-    "stevearc/conform.nvim",
-    event = "VeryLazy",
-    config = conf("rc/pluginconfig/conform"),
   },
 }

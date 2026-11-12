@@ -1,6 +1,5 @@
 -- LSP "go to X" helper: sends a location request, jumps to the best result, and
--- surfaces progress/outcome via the snacks notifier. (The bundled fidget is the
--- legacy build and has no progress API, so we use snacks here.)
+-- surfaces progress/outcome via the snacks notifier.
 
 local M = {}
 
@@ -68,7 +67,7 @@ local function hide_notify()
   end
 end
 
-function M.location(method, extend_params)
+function M.location(method)
   return function()
     local clients = vim.tbl_filter(function(client)
       return client:supports_method(method, 0)
@@ -81,9 +80,6 @@ function M.location(method, extend_params)
     end
 
     local params = vim.lsp.util.make_position_params(0, client.offset_encoding or "utf-16")
-    if extend_params then
-      extend_params(params)
-    end
 
     local jumped = false
     local finished = false

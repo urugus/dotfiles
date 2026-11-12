@@ -1,7 +1,6 @@
 local diagnostic = require("rc.lsp.diagnostic")
 local attach = require("rc.lsp.attach")
 local servers = require("rc.lsp.servers")
-local capabilities = require("rc.lsp.capabilities")
 
 local M = {}
 
@@ -37,7 +36,7 @@ function M.setup()
     automatic_enable = false,
   })
 
-  servers.setup(capabilities.get())
+  servers.setup()
 end
 
 return M
